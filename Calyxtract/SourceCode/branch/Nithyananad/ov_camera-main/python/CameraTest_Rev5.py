@@ -11,7 +11,7 @@ import StringIO
 
 doc_desc = 'Camera Test'
 doc_number = ''
-doc_rev = 'Rev 4'
+doc_rev = 'Rev 5'
 
 exception = ''
 
@@ -252,7 +252,7 @@ class MainFrame(wx.Frame):
 		return bmp
 
 	def Serial_Process(self):
-		ser = serial.Serial('COM5', 460800, timeout=0.01)
+		ser = serial.Serial('COM4', 460800, timeout=0.01)
 		cnt = 0
 		while not self.quit:
 			if self.tx_string != '':

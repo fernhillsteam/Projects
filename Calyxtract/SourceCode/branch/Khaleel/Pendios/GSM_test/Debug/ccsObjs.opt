@@ -1,0 +1,1 @@
+"./GSM_main_U2.obj" "./startup_ccs.obj" "./src/GSM.obj" "./src/RS_232.obj" "./src/bicolor.obj" "./src/dbg.obj" "./src/delay.obj" "./src/heartbeat.obj" "./src/lcd.obj" "../uart_echo_ccs.cmd" -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" -llibc.a 
