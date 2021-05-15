@@ -1,0 +1,1 @@
+"./spi_main.obj" "./tm4c1294ncpdt_startup_ccs.obj" "./src/address_mapping.obj" "./src/configuration.obj" "./src/controller.obj" "./src/spi_flash.obj" "../tm4c1294ncpdt.cmd" -llibc.a -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" 
