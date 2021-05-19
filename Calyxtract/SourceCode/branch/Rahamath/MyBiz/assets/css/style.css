@@ -154,7 +154,18 @@ h1, h2, h3, h4, h5, h6 {
     /* max-width: 97px; */
     border-radius: 8px;
 }
+.svg-icon {
+   width: 40px;
+   height: 40px;
+   background-size: contain !important;
+   background-repeat: no-repeat !important;
 
+   /*margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 6px;*/
+   /* background: #fff;*/
+}
+}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -539,7 +550,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f2fdff;
+  background-color: #20b5bc;
 }
 
 .section-title {
