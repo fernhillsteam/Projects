@@ -19,13 +19,17 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
+//#include "inc/include.h"
+
+
+
 #include "inc/RS_232.h"
 #include "inc/dbg.h"
 
 /********************************************************************************************
  * select 0: UART0 is initialized for debugging.
- * select 1: UART3 is initialized for board to board communication.
- * select 2: Both UART0 and UART3 is initialized for debugging and board2board communication.
+ * select 1: UART2 is initialized for board to board communication.
+ * select 2: Both UART0 and UART2 is initialized for debugging and board2board communication.
  * ******************************************************************************************/
 
 void rs232_init(uint8_t select)
@@ -35,16 +39,18 @@ switch (select)
 {
     case 1: //UART0 initialization for debugging
     UART0_init();
-
+    dbg_printf("\nUART0 Initiated\n");
     break;
 
     case 2: //UART2 initialization for board 2 board communication
     UART2_init();
+    dbg_printf("\nUART2 Initiated\n");
     break;
 
     case 3: //Both UART0 and UART2 is initialized for debugging and board2board communication.
     UART0_init();
     UART2_init();
+    dbg_printf("\nUART0 & UART2 Initiated\n");
     break;
 
 }

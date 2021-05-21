@@ -13,7 +13,7 @@ src/delay.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/ma
 src/delay.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/sys/_stdint.h
 src/delay.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdbool.h
 src/delay.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
-src/delay.obj: D:/CustomBrd_workspace/GSM_test/inc/delay.h
+src/delay.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/delay.h
 
 ../src/delay.c:
 
@@ -41,5 +41,5 @@ C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdbool.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/delay.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/delay.h:
 

@@ -14,22 +14,11 @@ void GPRS_init();
 //int GSMgetResponse(char *expResponse);
 void GSMread();
 char response_check(char *buf);
-char sendcmd (char *cmd);
-void sendcmdg (char *cmd);
-void readAction(char *cmd);
-void readresponse (char *cmd);
-char response_grab(char *buf);
+void sendcmd (char *cmd);
+unsigned char sendcmdg (char *cmd);
 void server_update();
-void OV_update();
-void SC_update();
-void reset_led_update();
-void GSM_gen_url();
-char* GSM_gen_APN();
-
-
-unsigned char response[200];
-char itoa[50];
-
-#define atapn1 "AT+SAPBR=3,1,\"APN\",\""
+void gen_url();
+char* itoa(int num, char* str, int base);
+void Gsm_readyf();
 
 #endif /* INC_GSM_H_ */

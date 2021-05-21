@@ -1,33 +1,43 @@
 /*
  * atcommand.h
  *
- *  Created on: May 7, 2021
- *      Author: Admin
+ *  Created on: May 18, 2021
+ *      Author: yallo
  */
 
 #ifndef INC_ATCOMMAND_H_
 #define INC_ATCOMMAND_H_
 
-/*
- * These are the GSM Initialization commands to
- * perform basic gsm operations
- * */
-#define Gsm_Ready     "AT+CPIN?\n"
-#define Attention     "AT\r"
+#define Gsm_ready     "AT+CPIN?\n"
+#define Attention     "AT\n"
 #define Auto_Echo_Off "ATE0\n"
+#define Msg_format    "AT+CMGF=1\n"
 #define GPRS_Detach   "AT+CGATT=0\n"
 #define GPRS_Attach   "AT+CGATT=1\n"
 
+#define Contype       "AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"\n"
+#define Apn           "AT+SAPBR=3,1,\"APN\",\"bsnlnet\"\n"
+#define Bearer        "AT+SAPBR=1,1\n"
 
-/*
- * These are the GPRS initialization commands to attach
- * the http connection, POST and GET data, Terminate the
- * http connection
- * */
-#define GPRS_Connection_type  "AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"\n"
-#define Attach_Bearer "AT+SAPBR=1,1\n"
-#define Detach_Bearer "AT+SAPBR=0,1\n"
+#define Httpinit      "AT+HTTPINIT\n"
+#define Httpterm      "AT+HTTPTERM\n"
+#define ContextID     "AT+HTTPPARA=\"CID\",1\n"
+#define URL           "AT+HTTPPARA=\"URL\",\"http://imbrutetechnologies.com/pwa/voltmeter/insert_db2.php?time=10-04-2021_18:42&ac_v=220&ac_c=10&ac_p=2300&dc_v=24&dc_c=10&dc_p=240\"\n"
+#define Httpaction    "AT+HTTPACTION=0\n"
+#define Httpread      "AT+HTTPREAD\n"
 
 
+/////////////////////////////
+//At command functions
+
+uint8_t Gsm_Upready();
+uint8_t Gsm_Attention();
+uint8_t Gsm_EchoOff();
+uint8_t Gsm_msg_format();
+uint8_t Gsm_packet_attach();
+uint8_t Gsm_packet_detach();
+uint8_t Gsm_contype();
+uint8_t Gsm_apn();
+uint8_t Gsm_bearer_attach();
 
 #endif /* INC_ATCOMMAND_H_ */

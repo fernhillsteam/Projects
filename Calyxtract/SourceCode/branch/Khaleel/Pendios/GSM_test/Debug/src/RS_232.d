@@ -24,8 +24,8 @@ src/RS_232.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
 src/RS_232.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h
 src/RS_232.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h
 src/RS_232.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdarg.h
-src/RS_232.obj: D:/CustomBrd_workspace/GSM_test/inc/RS_232.h
-src/RS_232.obj: D:/CustomBrd_workspace/GSM_test/inc/dbg.h
+src/RS_232.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/RS_232.h
+src/RS_232.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h
 
 ../src/RS_232.c:
 
@@ -75,7 +75,7 @@ C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h:
 
 C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdarg.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/RS_232.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/RS_232.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/dbg.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h:
 
