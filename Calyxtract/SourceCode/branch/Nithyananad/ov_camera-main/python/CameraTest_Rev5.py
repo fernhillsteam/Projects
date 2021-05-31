@@ -252,7 +252,7 @@ class MainFrame(wx.Frame):
 		return bmp
 
 	def Serial_Process(self):
-		ser = serial.Serial('COM4', 460800, timeout=0.01)
+		ser = serial.Serial('COM6', 460800, timeout=0.01)
 		cnt = 0
 		while not self.quit:
 			if self.tx_string != '':
