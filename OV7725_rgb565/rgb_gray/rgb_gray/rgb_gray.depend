@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1622722412 source:c:\users\yallo\documents\code_blocks\rgb_gray\rgb_gray\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<image.h>
+
+1622719460 c:\users\yallo\documents\code_blocks\rgb_gray\rgb_gray\image.h
+
