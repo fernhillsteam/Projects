@@ -1,0 +1,11 @@
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\bin\Debug\Blur_VB_Ex.exe
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\bin\Debug\Blur_VB_Ex.pdb
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\bin\Debug\Blur_VB_Ex.xml
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.vbprojAssemblyReference.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.frmBlur.resources
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.Resources.resources
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.vbproj.GenerateResource.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.vbproj.CoreCompileInputs.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.exe
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.xml
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\Blur_VB_Ex\Blur_VB_Ex\Blur_VB_Ex\obj\x86\Debug\Blur_VB_Ex.pdb
