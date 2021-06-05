@@ -1,255 +1,43 @@
-/*r0*/
-document.querySelector('.show-more-button').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+filterSelection("electronics")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
   }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
+}
 
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r1*/
-document.querySelector('.show-more-button1').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
   }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
+}
 
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r2*/
-
-document.querySelector('.show-more-button2').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
   }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r3*/
-
-document.querySelector('.show-more-button3').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r4*/
-
-document.querySelector('.show-more-button4').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r5*/
-
-document.querySelector('.show-more-button5').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r6*/
-
-document.querySelector('.show-more-button6').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
+  element.className = arr1.join(" ");
+}
 
 
-/*r7*/
-
-document.querySelector('.show-more-button7').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r8*/
-
-document.querySelector('.show-more-button8').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r9*/
-
-document.querySelector('.show-more-button9').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-/*r10*/
-
-document.querySelector('.show-more-button10').addEventListener('click', function() {
-  // If text is shown less, then show complete
-  if(this.getAttribute('data-more') == 0) {
-    this.setAttribute('data-more', 1);
-    this.style.display = 'block';
-    this.innerHTML = 'Read Less';
-
-    this.previousElementSibling.style.display = 'none';
-    this.previousElementSibling.previousElementSibling.style.display = 'inline';
-  }
-  // If text is shown complete, then show less
-  else if(this.getAttribute('data-more') == 1) {
-    this.setAttribute('data-more', 0);
-    this.style.display = 'inline';
-    this.innerHTML = 'Read More';
-
-    this.previousElementSibling.style.display = 'inline';
-    this.previousElementSibling.previousElementSibling.style.display = 'none';
-  } 
-});
-
-
-
-
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
