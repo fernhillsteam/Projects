@@ -1,0 +1,563 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.1                     
+******************************************************************************
+>> Linked Sun Jun  6 17:06:44 2021
+
+OUTPUT FILE NAME:   <Camera_test.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00002099
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  00002e1a  000fd1e6  R  X
+  SRAM                  20000000   00040000  00026599  00019a67  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00002e20   00002e20    r-x
+  00000000    00000000    00000200   00000200    r-- .intvecs
+  00000200    00000200    000023e6   000023e6    r-x .text
+  000025e8    000025e8    000004cc   000004cc    r-- .const
+  00002ab8    00002ab8    00000368   00000368    r-- .cinit
+20000000    20000000    00000370   00000000    rw-
+  20000000    20000000    0000026c   00000000    rw- .vtable
+  20000270    20000270    00000100   00000000    rw- .stack
+20000400    20000400    0002622d   00000000    rw-
+  20000400    20000400    00025c30   00000000    rw- .bss
+  20026030    20026030    000005fd   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000200     
+                  00000000    00000200     startup_ccs.obj (.intvecs)
+
+.text      0    00000200    000023e6     
+                  00000200    000002a0     IFTSPI2_2LCD.obj (.text:Lcd_Init)
+                  000004a0    00000278     Camera_main.obj (.text:dbg)
+                  00000718    00000200     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00000918    000001bc     dbg.obj (.text:dbg_printf)
+                  00000ad4    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
+                  00000c8a    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000c8c    0000016c     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  00000df8    00000118                   : sysctl.obj (.text:SysCtlClockGet)
+                  00000f10    00000110     Camera_main.obj (.text:main)
+                  00001020    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.asm.obj (.text)
+                  0000111c    000000e0     ov7725.obj (.text:ov7725_init)
+                  000011fc    000000d0     Camera_main.obj (.text:gpio_init)
+                  000012cc    000000a4     IFTSPI2_2LCD.obj (.text:LCD_ShowChar)
+                  00001370    000000a4     IFTSPI2_2LCD.obj (.text:TivaInit)
+                  00001414    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  000014b0    00000098     ov7725.obj (.text:ov7725_detect)
+                  00001548    00000090     sccb.obj (.text:SCCB0_Write_Byte)
+                  000015d8    00000084     Camera_main.obj (.text:pwm_init)
+                  0000165c    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  000016d6    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  000016d8    00000078     hw.obj (.text:dma_init)
+                  00001750    00000070     ov7725.obj (.text:vsync_handler)
+                  000017c0    00000068     driverlib.lib : interrupt.obj (.text:IntEnable)
+                  00001828    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00001890    00000064     RS_232.obj (.text:UART0_init)
+                  000018f4    00000060     Camera_main.obj (.text:UARTStdioConfig)
+                  00001954    0000005c     sccb.obj (.text:SCCB0_Read_Byte)
+                  000019b0    00000058     driverlib.lib : gpio.obj (.text:GPIOIntTypeSet)
+                  00001a08    00000056     IFTSPI2_2LCD.obj (.text:Address_set)
+                  00001a5e    00000002     startup_ccs.obj (.text:NmiSR)
+                  00001a60    00000050     sccb.obj (.text:SCCB0_Init)
+                  00001ab0    00000050     RS_232.obj (.text:UART2_init)
+                  00001b00    0000004c     driverlib.lib : gpio.obj (.text:GPIOPinConfigure)
+                  00001b4c    0000004c     sccb.obj (.text:SCCB0_No_Ack)
+                  00001b98    0000004c     sccb.obj (.text:SCCB0_Read_Reg)
+                  00001be4    0000004c     ov7725.obj (.text:href_handler)
+                  00001c30    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  00001c78    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_toi_t2.asm.obj (.text)
+                  00001cc0    00000048     driverlib.lib : udma.obj (.text:uDMAChannelAttributeDisable)
+                  00001d08    00000046                   : uart.obj (.text:UARTConfigSetExpClk)
+                  00001d4e    00000002     --HOLE-- [fill = 0]
+                  00001d50    00000044                   : gpio.obj (.text:_GPIOIntNumberGet)
+                  00001d94    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00001dd8    00000040     IFTSPI2_2LCD.obj (.text:LCD_ImageDisp)
+                  00001e18    00000040     sccb.obj (.text:SCCB0_Start)
+                  00001e58    00000040     sccb.obj (.text:SCCB0_Write_Reg)
+                  00001e98    00000040     hw.obj (.text:hw_dma_set_img)
+                  00001ed8    0000003c     IFTSPI2_2LCD.obj (.text:LCD_ShowString)
+                  00001f14    0000003c     sccb.obj (.text:SCCB0_Stop)
+                  00001f50    0000003c     driverlib.lib : ssi.obj (.text:SSIConfigSetExpClk)
+                  00001f8c    00000038     dbg.obj (.text:divOut)
+                  00001fc4    00000038     Camera_main.obj (.text:isr_init)
+                  00001ffc    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  00002030    00000034     IFTSPI2_2LCD.obj (.text:LCD_Clear)
+                  00002064    00000034     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00002098    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  000020cc    00000030     dbg.obj (.text:outDgt)
+                  000020fc    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.asm.obj (.text)
+                  0000212a    00000002     --HOLE-- [fill = 0]
+                  0000212c    0000002c     sccb.obj (.text:Delay_us)
+                  00002158    0000002c     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  00002184    0000002c     ov7725.obj (.text:ov7725_setup_frame_buf)
+                  000021b0    0000002c     ov7725.obj (.text:set_framesize)
+                  000021dc    00000026     ov7725.obj (.text:set_colorbar)
+                  00002202    00000002     --HOLE-- [fill = 0]
+                  00002204    00000024     IFTSPI2_2LCD.obj (.text:LCD_WR_DATA)
+                  00002228    00000022     driverlib.lib : pwm.obj (.text:PWMGenConfigure)
+                  0000224a    00000002     --HOLE-- [fill = 0]
+                  0000224c    00000020                   : uart.obj (.text:UARTDisable)
+                  0000226c    00000020                   : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  0000228c    00000020     ov7725.obj (.text:set_gain_ctrl)
+                  000022ac    00000020     ov7725.obj (.text:set_pixformat)
+                  000022cc    0000001e     driverlib.lib : pwm.obj (.text:PWMPulseWidthSet)
+                  000022ea    0000001e     RS_232.obj (.text:rs232_init)
+                  00002308    0000001e     ov7725.obj (.text:set_vflip)
+                  00002326    00000002     --HOLE-- [fill = 0]
+                  00002328    0000001c     IFTSPI2_2LCD.obj (.text:LCD_WR_DATA8_SSI)
+                  00002344    0000001c     IFTSPI2_2LCD.obj (.text:LCD_WR_REG)
+                  00002360    0000001c     IFTSPI2_2LCD.obj (.text:LCD_Writ_Bus)
+                  0000237c    0000001c     Camera_main.obj (.text:clk_init)
+                  00002398    0000001c     ov7725.obj (.text:ov7725_is_image_acquired)
+                  000023b4    0000001a     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  000023ce    00000018                   : gpio.obj (.text:GPIOIntRegister)
+                  000023e6    00000002     --HOLE-- [fill = 0]
+                  000023e8    00000018     IFTSPI2_2LCD.obj (.text:LCD_DrawPoint)
+                  00002400    00000018     ov7725.obj (.text:ov7725_pwr_dn)
+                  00002418    00000018     ov7725.obj (.text:ov7725_reset)
+                  00002430    00000018     ov7725.obj (.text:set_exposure_ctrl)
+                  00002448    00000018     ov7725.obj (.text:set_hmirror)
+                  00002460    00000018     dbg.obj (.text:uart_putc)
+                  00002478    00000016     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  0000248e    00000016                   : gpio.obj (.text:GPIOPinTypePWM)
+                  000024a4    00000016                   : gpio.obj (.text:GPIOPinTypeSSI)
+                  000024ba    00000016                   : gpio.obj (.text:GPIOPinTypeUART)
+                  000024d0    00000014                   : pwm.obj (.text:PWMClockSet)
+                  000024e4    00000014                   : uart.obj (.text:UARTEnable)
+                  000024f8    00000012                   : pwm.obj (.text:PWMGenPeriodGet)
+                  0000250a    00000012                   : pwm.obj (.text:PWMOutputState)
+                  0000251c    00000012     ov7725.obj (.text:set_whitebal)
+                  0000252e    00000010     driverlib.lib : pwm.obj (.text:PWMGenPeriodSet)
+                  0000253e    00000002     --HOLE-- [fill = 0]
+                  00002540    00000010     dbg.obj (.text:out)
+                  00002550    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000255e    0000000c     driverlib.lib : gpio.obj (.text:GPIODMATriggerEnable)
+                  0000256a    0000000c                   : gpio.obj (.text:GPIOIntEnable)
+                  00002576    0000000c                   : pwm.obj (.text:PWMGenEnable)
+                  00002582    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  0000258e    0000000a     driverlib.lib : ssi.obj (.text:SSIDataPut)
+                  00002598    0000000a                   : ssi.obj (.text:SSIDisable)
+                  000025a2    0000000a                   : ssi.obj (.text:SSIEnable)
+                  000025ac    00000008                   : ssi.obj (.text:SSIBusy)
+                  000025b4    00000006                   : gpio.obj (.text:GPIOIntClear)
+                  000025ba    00000006                   : gpio.obj (.text:GPIOPinRead)
+                  000025c0    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  000025c6    00000006     startup_ccs.obj (.text:ResetISR)
+                  000025cc    00000006     driverlib.lib : ssi.obj (.text:SSIClockSourceSet)
+                  000025d2    00000006                   : sysctl.obj (.text:SysCtlDelay)
+                  000025d8    00000006                   : uart.obj (.text:UARTClockSourceSet)
+                  000025de    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  000025e2    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    000025e8    000004cc     
+                  000025e8    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  00002798    000000d8                   : gpio.obj (.const:g_ppui32GPIOIntMapSnowflake)
+                  00002870    000000c0                   : gpio.obj (.const:g_ppui32GPIOIntMapBlizzard)
+                  00002930    00000090                   : gpio.obj (.const:g_pui32GPIOBaseAddrs)
+                  000029c0    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  00002a2c    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00002a5c    00000024     ov7725.obj (.const:config)
+                  00002a80    00000014     driverlib.lib : interrupt.obj (.const:g_pui32EnRegs)
+                  00002a94    0000000c     Camera_main.obj (.const:g_ui32UARTBase)
+                  00002aa0    0000000c     Camera_main.obj (.const:g_ui32UARTPeriph)
+                  00002aac    00000008     driverlib.lib : sysctl.obj (.const:g_pui32VCOFrequencies)
+
+.cinit     0    00002ab8    00000368     
+                  00002ab8    0000032d     (.cinit..data.load) [load image, compression = lzss]
+                  00002de5    00000003     --HOLE-- [fill = 0]
+                  00002de8    0000000c     (__TI_handler_table)
+                  00002df4    00000004     --HOLE-- [fill = 0]
+                  00002df8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00002e00    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00002e08    00000018     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.vtable    0    20000000    0000026c     UNINITIALIZED
+                  20000000    0000026c     driverlib.lib : interrupt.obj (.vtable)
+
+.bss       0    20000400    00025c30     UNINITIALIZED
+                  20000400    00025800     (.common:qvga_frame)
+                  20025c00    00000400     hw.obj (.bss:dma_table)
+                  20026000    0000000c     dbg.obj (.bss:buf)
+                  2002600c    0000000c     ov7725.obj (.bss)
+                  20026018    0000000a     dbg.obj (.bss)
+                  20026022    00000002     --HOLE--
+                  20026024    00000004     Camera_main.obj (.bss)
+                  20026028    00000004     (.common:BACK_COLOR)
+                  2002602c    00000004     (.common:POINT_COLOR)
+
+.data      0    20026030    000005fd     UNINITIALIZED
+                  20026030    000005f0     IFTSPI2_2LCD.obj (.data:asc2_1608)
+                  20026620    00000008     ov7725.obj (.data)
+                  20026628    00000005     Camera_main.obj (.data)
+
+.stack     0    20000270    00000100     UNINITIALIZED
+                  20000270    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000274    000000fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       Camera_main.obj              1424   24        153617 
+       startup_ccs.obj              12     512       0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1436   536       153617 
+                                                            
+    .\src\
+       IFTSPI2_2LCD.obj             1406   0         1520   
+       hw.obj                       184    0         1024   
+       ov7725.obj                   926    36        20     
+       sccb.obj                     700    0         0      
+       dbg.obj                      588    0         22     
+       RS_232.obj                   210    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       4014   36        2586   
+                                                            
+    C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                   954    596       0      
+       gpio.obj                     820    552       0      
+       interrupt.obj                156    20        620    
+       pwm.obj                      148    0         0      
+       uart.obj                     128    0         0      
+       ssi.obj                      104    0         0      
+       udma.obj                     72     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       2382   1168      620    
+                                                            
+    C:\ti\ccs1011\ccs\tools\compiler\ti-cgt-arm_20.2.1.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_add_t2.asm.obj            438    0         0      
+       fd_mul_t2.asm.obj            252    0         0      
+       memcpy_t2.asm.obj            156    0         0      
+       memset_t2.asm.obj            122    0         0      
+       copy_decompress_lzss.c.obj   104    0         0      
+       fd_toi_t2.asm.obj            72     0         0      
+       autoinit.c.obj               68     0         0      
+       boot_cortex_m.c.obj          52     0         0      
+       i_tofd_t2.asm.obj            46     0         0      
+       copy_decompress_none.c.obj   14     0         0      
+       copy_zero_init.c.obj         12     0         0      
+       exit.c.obj                   4      0         0      
+       pre_init.c.obj               4      0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1344   0         0      
+                                                            
+       Stack:                       0      0         256    
+       Linker Generated:            0      865       0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 9176   2605      157079 
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00002e08 records: 3, size/record: 8, table size: 24
+	.data: load addr=00002ab8, load size=0000032d bytes, run addr=20026030, run size=000005fd bytes, compression=lzss
+	.bss: load addr=00002df8, load size=00000008 bytes, run addr=20000400, run size=00025c30 bytes, compression=zero_init
+	.vtable: load addr=00002e00, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00002de8 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_lzss
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00001a09  Address_set                   
+20026028  BACK_COLOR                    
+000025e3  C$$EXIT                       
+0000212d  Delay_us                      
+0000255f  GPIODMATriggerEnable          
+00002159  GPIODirModeSet                
+000025b5  GPIOIntClear                  
+0000256b  GPIOIntEnable                 
+000023cf  GPIOIntRegister               
+000019b1  GPIOIntTypeSet                
+00000c8d  GPIOPadConfigSet              
+00001b01  GPIOPinConfigure              
+000025bb  GPIOPinRead                   
+00002479  GPIOPinTypeGPIOInput          
+000023b5  GPIOPinTypeGPIOOutput         
+0000248f  GPIOPinTypePWM                
+000024a5  GPIOPinTypeSSI                
+000024bb  GPIOPinTypeUART               
+000025c1  GPIOPinWrite                  
+000017c1  IntEnable                     
+00001ffd  IntRegister                   
+00002031  LCD_Clear                     
+000023e9  LCD_DrawPoint                 
+00001dd9  LCD_ImageDisp                 
+000012cd  LCD_ShowChar                  
+00001ed9  LCD_ShowString                
+00002205  LCD_WR_DATA                   
+00002329  LCD_WR_DATA8_SSI              
+00002345  LCD_WR_REG                    
+00002361  LCD_Writ_Bus                  
+00000201  Lcd_Init                      
+2002602c  POINT_COLOR                   
+000024d1  PWMClockSet                   
+00002229  PWMGenConfigure               
+00002577  PWMGenEnable                  
+000024f9  PWMGenPeriodGet               
+0000252f  PWMGenPeriodSet               
+0000250b  PWMOutputState                
+000022cd  PWMPulseWidthSet              
+000025c7  ResetISR                      
+00001a61  SCCB0_Init                    
+00001b4d  SCCB0_No_Ack                  
+00001955  SCCB0_Read_Byte               
+00001b99  SCCB0_Read_Reg                
+00001e19  SCCB0_Start                   
+00001f15  SCCB0_Stop                    
+00001549  SCCB0_Write_Byte              
+00001e59  SCCB0_Write_Reg               
+000025ad  SSIBusy                       
+000025cd  SSIClockSourceSet             
+00001f51  SSIConfigSetExpClk            
+0000258f  SSIDataPut                    
+00002599  SSIDisable                    
+000025a3  SSIEnable                     
+00000719  SysCtlClockFreqSet            
+00000df9  SysCtlClockGet                
+000025d3  SysCtlDelay                   
+00002065  SysCtlPeripheralEnable        
+00001371  TivaInit                      
+00001891  UART0_init                    
+00001ab1  UART2_init                    
+000025d9  UARTClockSourceSet            
+00001d09  UARTConfigSetExpClk           
+0000224d  UARTDisable                   
+000024e5  UARTEnable                    
+000018f5  UARTStdioConfig               
+20000370  __STACK_END                   
+00000100  __STACK_SIZE                  
+20000370  __STACK_TOP                   
+00002e08  __TI_CINIT_Base               
+00002e20  __TI_CINIT_Limit              
+00002de8  __TI_Handler_Table_Base       
+00002df4  __TI_Handler_Table_Limit      
+00001d95  __TI_auto_init_nobinit_nopinit
+00001829  __TI_decompress_lzss          
+00002551  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00002583  __TI_zero_init                
+00001c79  __aeabi_d2iz                  
+00000adf  __aeabi_dadd                  
+00001021  __aeabi_dmul                  
+00000ad5  __aeabi_dsub                  
+000020fd  __aeabi_i2d                   
+0000165d  __aeabi_memclr                
+0000165d  __aeabi_memclr4               
+0000165d  __aeabi_memclr8               
+00001415  __aeabi_memcpy                
+00001415  __aeabi_memcpy4               
+00001415  __aeabi_memcpy8               
+0000165f  __aeabi_memset                
+0000165f  __aeabi_memset4               
+0000165f  __aeabi_memset8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000270  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+00002099  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+000025df  _system_pre_init              
+000025e3  abort                         
+20026030  asc2_1608                     
+ffffffff  binit                         
+0000237d  clk_init                      
+00002a5c  config                        
+000004a1  dbg                           
+00000919  dbg_printf                    
+000016d9  dma_init                      
+20000000  g_pfnRAMVectors               
+00000000  g_pfnVectors                  
+000011fd  gpio_init                     
+00001be5  href_handler                  
+00001e99  hw_dma_set_img                
+00001fc5  isr_init                      
+00000f11  main                          
+00001415  memcpy                        
+00001665  memset                        
+000014b1  ov7725_detect                 
+0000111d  ov7725_init                   
+00002399  ov7725_is_image_acquired      
+00002401  ov7725_pwr_dn                 
+00002419  ov7725_reset                  
+00002185  ov7725_setup_frame_buf        
+000015d9  pwm_init                      
+20000400  qvga_frame                    
+000022eb  rs232_init                    
+00001cc1  uDMAChannelAttributeDisable   
+00001751  vsync_handler                 
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000100  __STACK_SIZE                  
+00000201  Lcd_Init                      
+000004a1  dbg                           
+00000719  SysCtlClockFreqSet            
+00000919  dbg_printf                    
+00000ad5  __aeabi_dsub                  
+00000adf  __aeabi_dadd                  
+00000c8d  GPIOPadConfigSet              
+00000df9  SysCtlClockGet                
+00000f11  main                          
+00001021  __aeabi_dmul                  
+0000111d  ov7725_init                   
+000011fd  gpio_init                     
+000012cd  LCD_ShowChar                  
+00001371  TivaInit                      
+00001415  __aeabi_memcpy                
+00001415  __aeabi_memcpy4               
+00001415  __aeabi_memcpy8               
+00001415  memcpy                        
+000014b1  ov7725_detect                 
+00001549  SCCB0_Write_Byte              
+000015d9  pwm_init                      
+0000165d  __aeabi_memclr                
+0000165d  __aeabi_memclr4               
+0000165d  __aeabi_memclr8               
+0000165f  __aeabi_memset                
+0000165f  __aeabi_memset4               
+0000165f  __aeabi_memset8               
+00001665  memset                        
+000016d9  dma_init                      
+00001751  vsync_handler                 
+000017c1  IntEnable                     
+00001829  __TI_decompress_lzss          
+00001891  UART0_init                    
+000018f5  UARTStdioConfig               
+00001955  SCCB0_Read_Byte               
+000019b1  GPIOIntTypeSet                
+00001a09  Address_set                   
+00001a61  SCCB0_Init                    
+00001ab1  UART2_init                    
+00001b01  GPIOPinConfigure              
+00001b4d  SCCB0_No_Ack                  
+00001b99  SCCB0_Read_Reg                
+00001be5  href_handler                  
+00001c79  __aeabi_d2iz                  
+00001cc1  uDMAChannelAttributeDisable   
+00001d09  UARTConfigSetExpClk           
+00001d95  __TI_auto_init_nobinit_nopinit
+00001dd9  LCD_ImageDisp                 
+00001e19  SCCB0_Start                   
+00001e59  SCCB0_Write_Reg               
+00001e99  hw_dma_set_img                
+00001ed9  LCD_ShowString                
+00001f15  SCCB0_Stop                    
+00001f51  SSIConfigSetExpClk            
+00001fc5  isr_init                      
+00001ffd  IntRegister                   
+00002031  LCD_Clear                     
+00002065  SysCtlPeripheralEnable        
+00002099  _c_int00_noargs               
+000020fd  __aeabi_i2d                   
+0000212d  Delay_us                      
+00002159  GPIODirModeSet                
+00002185  ov7725_setup_frame_buf        
+00002205  LCD_WR_DATA                   
+00002229  PWMGenConfigure               
+0000224d  UARTDisable                   
+000022cd  PWMPulseWidthSet              
+000022eb  rs232_init                    
+00002329  LCD_WR_DATA8_SSI              
+00002345  LCD_WR_REG                    
+00002361  LCD_Writ_Bus                  
+0000237d  clk_init                      
+00002399  ov7725_is_image_acquired      
+000023b5  GPIOPinTypeGPIOOutput         
+000023cf  GPIOIntRegister               
+000023e9  LCD_DrawPoint                 
+00002401  ov7725_pwr_dn                 
+00002419  ov7725_reset                  
+00002479  GPIOPinTypeGPIOInput          
+0000248f  GPIOPinTypePWM                
+000024a5  GPIOPinTypeSSI                
+000024bb  GPIOPinTypeUART               
+000024d1  PWMClockSet                   
+000024e5  UARTEnable                    
+000024f9  PWMGenPeriodGet               
+0000250b  PWMOutputState                
+0000252f  PWMGenPeriodSet               
+00002551  __TI_decompress_none          
+0000255f  GPIODMATriggerEnable          
+0000256b  GPIOIntEnable                 
+00002577  PWMGenEnable                  
+00002583  __TI_zero_init                
+0000258f  SSIDataPut                    
+00002599  SSIDisable                    
+000025a3  SSIEnable                     
+000025ad  SSIBusy                       
+000025b5  GPIOIntClear                  
+000025bb  GPIOPinRead                   
+000025c1  GPIOPinWrite                  
+000025c7  ResetISR                      
+000025cd  SSIClockSourceSet             
+000025d3  SysCtlDelay                   
+000025d9  UARTClockSourceSet            
+000025df  _system_pre_init              
+000025e3  C$$EXIT                       
+000025e3  abort                         
+00002a5c  config                        
+00002de8  __TI_Handler_Table_Base       
+00002df4  __TI_Handler_Table_Limit      
+00002e08  __TI_CINIT_Base               
+00002e20  __TI_CINIT_Limit              
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000000  g_pfnRAMVectors               
+20000270  __stack                       
+20000370  __STACK_END                   
+20000370  __STACK_TOP                   
+20000400  qvga_frame                    
+20026028  BACK_COLOR                    
+2002602c  POINT_COLOR                   
+20026030  asc2_1608                     
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[132 symbols]

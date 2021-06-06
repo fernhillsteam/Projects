@@ -157,6 +157,21 @@ void dbg(void)
     uint16_t st1;
     uint16_t st2;
 
+
+    uint8_t ui8FirstByte;
+    uint8_t ui8SecondByte;
+    uint8_t ui8Red;
+    uint8_t ui8Green;
+    uint8_t ui8GreenH;
+    uint8_t ui8GreenL;
+    uint8_t ui8Blue;
+    uint8_t ui8GrayScale;
+
+    uint8_t ui8GrayFirstByte;
+    uint8_t ui8GraySecondByte;
+    uint8_t ui8GrayTemp1;
+    uint8_t ui8GrayTemp2;
+
 #if 1==0
     while(1)
     {
@@ -208,8 +223,51 @@ void dbg(void)
                     uint8_t *ptr = (uint8_t *)qvga_frame;
                     for (i = 0; i < 320*240; i++)
                     {
-                        ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[0]);
-                        ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[1]);
+                        /* Separate the pixel Red, Green, Blue*/
+
+                        ui8FirstByte = ((uint8_t *)ptr)[0];
+                        ui8SecondByte = ((uint8_t *)ptr)[1];
+
+                        ui8Red = ui8FirstByte >> 3; // Red Pixel
+
+                        ui8GreenH = ui8FirstByte & 0x07;
+                        ui8GreenL = ui8SecondByte & 0xE0;
+
+                        ui8Green = ui8GreenH | ui8GreenL; // Green Pixel
+
+                        ui8Blue = ui8SecondByte & 0x1f;  // Blue Pixel
+
+                        /* Calculating Gray Scale*/
+
+                        ui8GrayScale = ui8Red * 0.29 + ui8Green * 0.58 + ui8Blue * 0.11; // Method 1
+
+                      //  ui8GrayScale = ui8Red * 0.21 + ui8Green * 0.71 + ui8Blue * 0.07; // Method 2
+                      //  ui8GrayScale = (ui8Red  + ui8Green  + ui8Blue) / 3 ; // Method 3
+
+
+                        /* Packing back to 16 bit BMP format*/
+
+                        ui8GrayTemp1 = ui8GrayScale << 3;
+                        ui8GrayTemp2 = ui8GrayScale >> 3;
+
+                        ui8GrayTemp1 = ui8GrayTemp1 & 0xF1;
+                        ui8GrayTemp2 = ui8GrayTemp2 & 0x07;
+
+                        ui8GrayFirstByte =  ui8GrayTemp1 | ui8GrayTemp2;
+
+                        ui8GrayTemp1 = 0;
+                        ui8GrayTemp2 = 0;
+                        ui8GrayTemp1 =  ui8GrayScale << 5;
+                        ui8GrayTemp1 =  ui8GrayTemp1 & 0xE0;
+                        ui8GrayTemp2 = ui8GrayScale & 0x1F;
+
+                        ui8GraySecondByte =  ui8GrayTemp1 | ui8GrayTemp2;
+
+                        ROM_UARTCharPut(UART0_BASE, ui8GrayFirstByte);
+                        ROM_UARTCharPut(UART0_BASE, ui8GraySecondByte);
+
+                       // ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[0]);
+                        //ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[1]);
                         ptr += 2;
                     }
                 }

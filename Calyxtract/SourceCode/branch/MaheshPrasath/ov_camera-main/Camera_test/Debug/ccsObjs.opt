@@ -1,0 +1,1 @@
+"./Camera_main.obj" "./startup_ccs.obj" "./src/ColorTFTSymbols.obj" "./src/IFTSPI2_2LCD.obj" "./src/RS_232.obj" "./src/bicolor.obj" "./src/dbg.obj" "./src/hw.obj" "./src/ov7725.obj" "./src/sccb.obj" "../uart_echo_ccs.cmd" -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" -llibc.a 

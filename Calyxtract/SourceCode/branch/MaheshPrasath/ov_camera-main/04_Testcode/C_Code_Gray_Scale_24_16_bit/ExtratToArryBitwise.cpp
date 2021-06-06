@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BMP_16
-//#define BMP_24
+//#define BMP_16
+#define BMP_24
 
 void extractToFile()
 {
@@ -19,7 +19,7 @@ void extractToFile()
 	FILE* f = fopen("3.bmp", "rb");
 #endif
  	
-    FILE *fOut = fopen("grayscale9.bmp", "wb");	
+    FILE *fOut = fopen("grayoutput.bmp", "wb");	
 	unsigned char header[54];
 	fread(header, sizeof(unsigned char), 54, f); // read the 54-byte header
     fwrite(header, sizeof(unsigned char), 54, fOut);
@@ -106,10 +106,10 @@ for(i = 0; i < width * height; ++i)
      unsigned char temp01;
      
      temp = gray << 3;
-     temp1 = gray >> 3;
+     temp01 = gray >> 3;
      
      temp = temp & 0xF1;
-     temp1 = temp01 & 0x07;
+     temp01 = temp01 & 0x07;
      
      firstByte =  temp | temp01;
       
