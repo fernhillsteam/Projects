@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="edge detect">
+</Property><Property Name="Solution File" Value="F:\Work\Shakil All\C#\edge detction\edge detect\edge detect.sln">
+</Property><Property Name="User Options File" Value="F:\Work\Shakil All\C#\edge detction\edge detect\edge detect.suo">
+</Property><Property Name="Date" Value="Sunday, December 20, 2009">
+</Property><Property Name="Time" Value="21:09 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="edge detect.sln" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect.sln">
+</Event><Event ErrorLevel="0" Project="" Source="edge detect.suo" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect.suo">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\edge detect.csproj" Description="Project file successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\edge detect.csproj">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Form1.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Form1.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Form1.Designer.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Program.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Program.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Properties\AssemblyInfo.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Properties\Resources.Designer.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Properties\Settings.Designer.cs" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Properties\Settings.settings" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Form1.resx" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Form1.resx">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\Properties\Resources.resx" Description="File successfully backed up as F:\Work\Shakil All\C#\edge detction\edge detect\Backup\edge detect\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\edge detect.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="edge detect" Source="edge detect\edge detect.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="edge detect.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="edge detect.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="edge detect" Source="edge detect\edge detect.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

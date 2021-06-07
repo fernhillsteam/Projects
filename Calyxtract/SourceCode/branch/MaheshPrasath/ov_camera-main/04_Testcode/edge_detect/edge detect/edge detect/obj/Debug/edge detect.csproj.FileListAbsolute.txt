@@ -1,0 +1,9 @@
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\bin\Debug\edge detect.exe
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\bin\Debug\edge detect.pdb
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge detect.csprojAssemblyReference.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge_detect.Form1.resources
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge_detect.Properties.Resources.resources
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge detect.csproj.GenerateResource.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge detect.csproj.CoreCompileInputs.cache
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge detect.exe
+E:\Projects\Clicks_Projects\43_Fernhill_Projects\01_Clax_Contrivation\03_Software\03_Code\04_Testcode\edge_detect\edge detect\edge detect\obj\Debug\edge detect.pdb

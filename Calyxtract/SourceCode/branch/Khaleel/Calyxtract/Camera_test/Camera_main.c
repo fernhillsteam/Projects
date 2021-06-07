@@ -30,9 +30,17 @@
 #include "inc/dbg.h"
 #include "inc/IFT_LCD_PenColor.h"
 #include "inc/IFTSPI2_2LCD.h"
+#include "inc/image.h"
 
+#define gray 1
+
+uint8_t ui8red,ui8green,ui8blue,ui8grayscale, *ui8buff;
+uint16_t ui16gray_buff[240][320];
+uint16_t pixel, red, blue, green,  ui16bw;
+uint16_t qvga_frame[320*240],bw_frame[320*240] ;
 static uint32_t g_ui32SysClock;
-uint16_t qvga_frame[320*240];
+
+
 
 unsigned int BACK_COLOR, POINT_COLOR;
 void clk_init(void)
@@ -148,29 +156,15 @@ void gpio_init(void)
 void dbg(void)
 {
     int i;
+    uint32_t h,w;
 
     uint32_t c;
     uint8_t cmd[5];
     uint8_t wr_cnt = 0;
     uint8_t rd_cnt = 0;
-    bool tmp1 = true;
-    uint16_t st1;
-    uint16_t st2;
-
-
-    uint8_t ui8FirstByte;
-    uint8_t ui8SecondByte;
-    uint8_t ui8Red;
-    uint8_t ui8Green;
-    uint8_t ui8GreenH;
-    uint8_t ui8GreenL;
-    uint8_t ui8Blue;
-    uint8_t ui8GrayScale;
-
-    uint8_t ui8GrayFirstByte;
-    uint8_t ui8GraySecondByte;
-    uint8_t ui8GrayTemp1;
-    uint8_t ui8GrayTemp2;
+//    bool tmp1 = true;
+//    uint16_t st1;
+//    uint16_t st2;
 
 #if 1==0
     while(1)
@@ -216,63 +210,78 @@ void dbg(void)
                 ov7725_setup_frame_buf((uint8_t *)qvga_frame);
                 while (!ov7725_is_image_acquired())
                     ;
+
+//#if gray == 1
+//
+//#endif
                 ROM_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1 ,GPIO_PIN_1);
-                //if(tmp1 == true)
-                {
-                    tmp1 = false;
-                    uint8_t *ptr = (uint8_t *)qvga_frame;
-                    for (i = 0; i < 320*240; i++)
+//                if(tmp1 == true)
+//                {
+//                    tmp1 = false;
+                    //uint8_t *ptr = (uint8_t *)qvga_frame;
+                    uint8_t *ptr = (uint8_t *)bmpdata;
+
+                    for (h = 0; h < 240 ; h++ )
                     {
-                        /* Separate the pixel Red, Green, Blue*/
+                        for (w=0; w<320; w++)
+                        {
 
-                        ui8FirstByte = ((uint8_t *)ptr)[0];
-                        ui8SecondByte = ((uint8_t *)ptr)[1];
+                            pixel = (((uint8_t *)ptr)[1] << 8) | (((uint8_t *)ptr)[0] & 0xff);
+                                                    red = ((pixel & 0xF800)>>11);
+                                                    green = ((pixel & 0x07E0)>>5);
+                                                    blue = (pixel & 0x001F);
+                            ui8red = (uint8_t)red;
+                            ui8green = (uint8_t)green;
+                            ui8blue = (uint8_t)blue;
+                            ui8grayscale = (ui8red+ui8green+ui8blue)/3;              //averaging the rgb colors
 
-                        ui8Red = ui8FirstByte >> 3; // Red Pixel
+                            ui16bw =(ui8grayscale<<11)+(ui8grayscale<<5)+ui8grayscale;      //converting bw value to RGB565 format
 
-                        ui8GreenH = ui8FirstByte & 0x07;
-                        ui8GreenL = ui8SecondByte & 0xE0;
+                            //creating alternate array of grayscale values of format rgb565
+                            ui16gray_buff[h][w] = ui16bw ;
 
-                        ui8Green = ui8GreenH | ui8GreenL; // Green Pixel
-
-                        ui8Blue = ui8SecondByte & 0x1f;  // Blue Pixel
-
-                        /* Calculating Gray Scale*/
-
-                        ui8GrayScale = ui8Red * 0.29 + ui8Green * 0.58 + ui8Blue * 0.11; // Method 1
-
-                      //  ui8GrayScale = ui8Red * 0.21 + ui8Green * 0.71 + ui8Blue * 0.07; // Method 2
-                      //  ui8GrayScale = (ui8Red  + ui8Green  + ui8Blue) / 3 ; // Method 3
-
-
-                        /* Packing back to 16 bit BMP format*/
-
-                        ui8GrayTemp1 = ui8GrayScale << 3;
-                        ui8GrayTemp2 = ui8GrayScale >> 3;
-
-                        ui8GrayTemp1 = ui8GrayTemp1 & 0xF1;
-                        ui8GrayTemp2 = ui8GrayTemp2 & 0x07;
-
-                        ui8GrayFirstByte =  ui8GrayTemp1 | ui8GrayTemp2;
-
-                        ui8GrayTemp1 = 0;
-                        ui8GrayTemp2 = 0;
-                        ui8GrayTemp1 =  ui8GrayScale << 5;
-                        ui8GrayTemp1 =  ui8GrayTemp1 & 0xE0;
-                        ui8GrayTemp2 = ui8GrayScale & 0x1F;
-
-                        ui8GraySecondByte =  ui8GrayTemp1 | ui8GrayTemp2;
-
-                        ROM_UARTCharPut(UART0_BASE, ui8GrayFirstByte);
-                        ROM_UARTCharPut(UART0_BASE, ui8GraySecondByte);
-
-                       // ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[0]);
-                        //ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[1]);
-                        ptr += 2;
+                            ptr += 2;
+                        }
                     }
-                }
-                LCD_ImageDisp(qvga_frame);
 
+                    for (h=0;h<240;h++)
+                    {
+                        for(w=0;w<320;w++)
+                        {
+
+                            ROM_UARTCharPut(UART0_BASE, (ui16gray_buff[h][w] & 0x00ff));
+                            ROM_UARTCharPut(UART0_BASE, (ui16gray_buff[h][w] & 0xff00));
+
+                        }
+
+                    }
+                    //////////////////////////////////////////////////////////////////////////////
+//                    for (i = 0; i < 320*240; i++)
+//                    {
+//                        ///////////////////////////////////////////////
+//                        pixel = (((uint8_t *)ptr)[1] << 8) | (((uint8_t *)ptr)[0] & 0xff);
+//                        red = ((pixel & 0xF800)>>11);
+//                        green = ((pixel & 0x07E0)>>6);
+//                        blue = (pixel & 0x001F);
+////                        grayscale = (0.2126 * red) + (0.7152 * green /2 ) + (0.0722 * blue);
+////                        grayscale = (0.3 * red) + (0.59 * green /2 ) + (0.11 * blue);
+//                        grayscale = (red+green+blue)/3;
+//                        bw =(grayscale<<11)+(grayscale<<6)+grayscale;
+//                        //bw_frame += bw;
+//                        ///////////////////////////////////////////////
+////                        ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[0]);
+////                        ROM_UARTCharPut(UART0_BASE, ((uint8_t *)ptr)[1]);
+////                        ROM_UARTCharPut(UART0_BASE, (grayscale & 0x00ff));
+////                        ROM_UARTCharPut(UART0_BASE, (grayscale & 0xff00));
+//                        ROM_UARTCharPut(UART0_BASE, (bw & 0x00ff));
+//                        ROM_UARTCharPut(UART0_BASE, (bw & 0xff00));
+//                        ptr += 2;
+//                    }
+                  //////////////////////////////////////////////////////////////////////////////////
+//                }
+//                LCD_ImageDisp(qvga_frame);
+//                for (i = 0; i < 320*2*240; i++)
+//                                    ROM_UARTCharPut(UART0_BASE, qvga_frame[i]);
                 dbg_printf("$\r\n");
                 ROM_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1 ,0);
                 break;
@@ -381,7 +390,7 @@ unsigned int i, kli=0;
    rs232_init(3);
 
    //for (i=0;i<99;i++)
-   dbg_printf("Clock Initialised\n");//dbg_printf("UART Initialised \n");
+   //dbg_printf("Clock Initialised\n");//dbg_printf("UART Initialised \n");
 
    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOP);
    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOQ);
@@ -415,7 +424,7 @@ unsigned int i, kli=0;
 
   // OV77255CheckPIDVER();
    ov7725_init();
-   dbg_printf("CAMERA Initialised\n");
+   //dbg_printf("CAMERA Initialised\n");
    ROM_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0 ,GPIO_PIN_0);
 
 //while(1)
@@ -443,28 +452,28 @@ unsigned int i, kli=0;
 //                    dbg_printf("$\r\n");
 //                    while(1);
 
-#ifndef TFTDISP
-#define     LongSBar        1
-#define     ShortSBar       2
-    TivaInit();
-    Lcd_Init();
-    LCD_ImageDisp(qvga_frame);
-    //Battery(10,2);
-    LCD_ShowString(10,10,"hello");
-    //LCD_ShowNum(220,4,8,2);
-//    while(1)
-//    {
+//#ifndef TFTDISP
+//#define     LongSBar        1
+//#define     ShortSBar       2
+//    TivaInit();
+//    Lcd_Init();
+//    LCD_ImageDisp(qvga_frame);
+//    //Battery(10,2);
+//    LCD_ShowString(10,10,"hello");
+//    //LCD_ShowNum(220,4,8,2);
+////    while(1)
+////    {
+////
+////        SignalBar(kli,WHITE,GREEN,RED,LongSBar);
+////        SysCtlDelay(SysCtlClockGet()/50);
+////        kli+=2;
+////        if(kli>99)
+////            kli = 0;
+////        LCD_ShowNum(220,4,kli,2);
+////        SysCtlDelay(SysCtlClockGet()/200);
+////    }
 //
-//        SignalBar(kli,WHITE,GREEN,RED,LongSBar);
-//        SysCtlDelay(SysCtlClockGet()/50);
-//        kli+=2;
-//        if(kli>99)
-//            kli = 0;
-//        LCD_ShowNum(220,4,kli,2);
-//        SysCtlDelay(SysCtlClockGet()/200);
-//    }
-
-#endif
+//#endif
     dbg();
     while(1) ;
 //}
