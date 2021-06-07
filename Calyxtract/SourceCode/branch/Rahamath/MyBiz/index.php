@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Fernhill Technologies</title>
-  <link rel="shortcut icon" href="assets\img\fern-icon.png">
+  <link rel="shortcut icon" href="assets\img\fernhill-icon.png">
   <meta content="" name="description">
   <meta content="" name="keywords">
    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
@@ -85,7 +85,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html"><span><img style="height: 70px; width: 60px;" class="manImg" src="assets\img\fern-icon.png"></img></span></a></h1>
+        <h1><a href="index.html"><span><img style="height: 100px; width: 100px;" class="manImg" src="assets\img\fern-icon.png"></img></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -248,6 +248,19 @@
             </div>
           </div>
 
+          <!-- Slider 11 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/ems.png);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Electronics Manufacturing Service (EMS)</h2>
+                <p class="animate__animated animate__adeInUp">Fernhill, support its customer for Electronics Manufacturing Service (EMS) on demand, Fernhill has its EMS partners located in Bangalore, India, caters to discerning customers for their requirements in the areas of Prototyping, Small and medium volume production.
+                Fernhill offers the unique proposition of a project driven approach to meet the precise requirements of the customer, by deploying a properly chosen mix of skills, for volumes that will be considered small by normal standards.
+                </p>
+                <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
+              </div>
+            </div>
+          </div>
+
 
         </div>
 
@@ -350,7 +363,7 @@
 
         <div class="text-center title">
           <h3>What we have achieved so far</h3>
-          <p>.</p>
+          <!-- <p>.</p> -->
         </div>
 
         <div class="row counters">
@@ -387,7 +400,7 @@
         <div class="section-title">
           <span>Services</span>
           <h2>Services</h2>
-          <p>.</p>
+          <!-- <p>.</p> -->
         </div>
 
         <div class="row">
@@ -553,7 +566,7 @@
         <div class="section-title">
           <span>Portfolio</span>
           <h2>Portfolio</h2>
-          <p>.</p>
+          <!-- <p>.</p> -->
         </div>
 
         <div class="row">
@@ -636,7 +649,7 @@
                 <h4>Smart Home Automation</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Smart Home Automation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/Smart Home Automation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -645,12 +658,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-ind">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/brm.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Burr Removal Machine</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -659,12 +672,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-ind">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/gearbox.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>GearBox Assembly Auotmation</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/GearBox Assembly Auotmation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/GearBox Assembly Auotmation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -673,12 +686,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-ind">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/mutliaxel.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>MutliAxelAlignementSystem</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/MutliAxelAlignementSystem.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/MutliAxelAlignementSystem.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -692,7 +705,7 @@
                 <h4>XY table control panel</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/xy table.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/xy table.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -701,12 +714,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-ind">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/coming-soon.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Coming soon...</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/coming-soon.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -715,12 +728,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-soft">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/coming-soon.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Coming soon...</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/coming-soon.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -729,12 +742,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-mob">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/coming-soon.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Coming soon...</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/coming-soon.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -743,12 +756,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-data">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/coming-soon.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Coming soon...</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/coming-soon.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -767,7 +780,7 @@
         <div class="section-title">
           <span>Team</span>
           <h2>Team</h2>
-          <p>.</p>
+          <!-- <p>.</p> -->
         </div>
 
         <div class="row">
@@ -1001,7 +1014,7 @@
         <div class="section-title">
           <span>Contact</span>
           <h2>Contact</h2>
-          <p>.</p>
+          <!-- <p>.</p> -->
         </div>
       </div>
 
@@ -1026,7 +1039,7 @@
             <div class="col-lg-4 info mt-4 mt-lg-0">
               <i class="ri-mail-line"></i>
               <h4>Email:</h4>
-              <p>sales@fernhilltechnologies.com<br>contact@fernhilltechnologies.com</p>
+              <p>sales@fernhilltechnologies.com</p>
             </div>
 
             <div class="col-lg-4 info mt-4 mt-lg-0">
@@ -1068,7 +1081,7 @@
             <!-- <div  id="status"></div> -->
           </div>
           <div class="g-recaptcha brochure__form__captcha" data-sitekey="6Lck9Q8bAAAAAB2E3A3hCuEwVoUsd1Slr33JAYVq" required></div>
-          <div class="text-center"><button type="submit" name="sendEmail">Send Message</button></div>
+          <div class="text-center"><button type="submit" name="sendEmail" class="btn btn-primary">Send Message</button></div>
         </form>
 
       </div>
@@ -1104,7 +1117,7 @@ $(document).ready(function(){
  /*$('#btnLoginMain').click(function(){
         alert('button clicked');
     });*/
-  // set time out 5 sec
+  // set time out 1 sec
      setTimeout(function(){
         $('#btnLoginMain').trigger('click');
     }, 1000);
@@ -1183,6 +1196,8 @@ $(document).ready(function(){
               <li><i class="bx bx-chevron-right"></i> <a href="#services">UX/UI Design and Development</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Body Shopping</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Corporate Training</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Electronics Manufacturing Service (EMS)</a></li>
+              
             </ul>
           </div>
 
