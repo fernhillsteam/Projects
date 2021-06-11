@@ -16,8 +16,8 @@ src/lcd.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_memmap.h
 src/lcd.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/debug.h
 src/lcd.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h
 src/lcd.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
-src/lcd.obj: D:/CustomBrd_workspace/GSM_test/inc/lcd.h
-src/lcd.obj: D:/CustomBrd_workspace/GSM_test/inc/dbg.h
+src/lcd.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/lcd.h
+src/lcd.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h
 src/lcd.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdarg.h
 
 ../src/lcd.c:
@@ -52,9 +52,9 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/lcd.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/lcd.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/dbg.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h:
 
 C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdarg.h:
 

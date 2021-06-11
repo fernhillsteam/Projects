@@ -30,17 +30,14 @@ GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/rom_map.h
 GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
 GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h
 GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h
-GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.c
-GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_types.h
-GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_uart.h
 GSM_main_U2.obj: ../inc/global.h
-GSM_main_U2.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/timer.h
 GSM_main_U2.obj: ../inc/RS_232.h
 GSM_main_U2.obj: ../inc/dbg.h
 GSM_main_U2.obj: ../inc/GSM.h
-GSM_main_U2.obj: ../inc/heartbeat.h
 GSM_main_U2.obj: ../inc/delay.h
 GSM_main_U2.obj: ../inc/lcd.h
+GSM_main_U2.obj: ../inc/hardware.h
+GSM_main_U2.obj: ../inc/atcommand.h
 
 ../GSM_main_U2.c:
 
@@ -102,15 +99,7 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h:
 
-C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.c:
-
-C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_types.h:
-
-C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_uart.h:
-
 ../inc/global.h:
-
-C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/timer.h:
 
 ../inc/RS_232.h:
 
@@ -118,9 +107,11 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/timer.h:
 
 ../inc/GSM.h:
 
-../inc/heartbeat.h:
-
 ../inc/delay.h:
 
 ../inc/lcd.h:
+
+../inc/hardware.h:
+
+../inc/atcommand.h:
 

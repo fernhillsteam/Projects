@@ -8,55 +8,55 @@ SHELL = cmd.exe
 C_SRCS += \
 ../src/GSM.c \
 ../src/RS_232.c \
-../src/bicolor.c \
+../src/atcommand.c \
 ../src/dbg.c \
 ../src/delay.c \
-../src/heartbeat.c \
+../src/hardware.c \
 ../src/lcd.c 
 
 C_DEPS += \
 ./src/GSM.d \
 ./src/RS_232.d \
-./src/bicolor.d \
+./src/atcommand.d \
 ./src/dbg.d \
 ./src/delay.d \
-./src/heartbeat.d \
+./src/hardware.d \
 ./src/lcd.d 
 
 OBJS += \
 ./src/GSM.obj \
 ./src/RS_232.obj \
-./src/bicolor.obj \
+./src/atcommand.obj \
 ./src/dbg.obj \
 ./src/delay.obj \
-./src/heartbeat.obj \
+./src/hardware.obj \
 ./src/lcd.obj 
 
 OBJS__QUOTED += \
 "src\GSM.obj" \
 "src\RS_232.obj" \
-"src\bicolor.obj" \
+"src\atcommand.obj" \
 "src\dbg.obj" \
 "src\delay.obj" \
-"src\heartbeat.obj" \
+"src\hardware.obj" \
 "src\lcd.obj" 
 
 C_DEPS__QUOTED += \
 "src\GSM.d" \
 "src\RS_232.d" \
-"src\bicolor.d" \
+"src\atcommand.d" \
 "src\dbg.d" \
 "src\delay.d" \
-"src\heartbeat.d" \
+"src\hardware.d" \
 "src\lcd.d" 
 
 C_SRCS__QUOTED += \
 "../src/GSM.c" \
 "../src/RS_232.c" \
-"../src/bicolor.c" \
+"../src/atcommand.c" \
 "../src/dbg.c" \
 "../src/delay.c" \
-"../src/heartbeat.c" \
+"../src/hardware.c" \
 "../src/lcd.c" 
 
 

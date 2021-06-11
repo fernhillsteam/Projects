@@ -26,13 +26,11 @@ src/GSM.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/sysctl.h
 src/GSM.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h
 src/GSM.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h
 src/GSM.obj: C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/string.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/global.h
-src/GSM.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/timer.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/Config.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/RS_232.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/dbg.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/GSM.h
-src/GSM.obj: D:/CustomBrd_workspace/GSM_test/inc/atcommand.h
+src/GSM.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/RS_232.h
+src/GSM.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h
+src/GSM.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/GSM.h
+src/GSM.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/global.h
+src/GSM.obj: D:/CustomBrd_workspace/Tiva_GSM/inc/atcommand.h
 
 ../src/GSM.c:
 
@@ -86,17 +84,13 @@ C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h:
 
 C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/string.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/global.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/RS_232.h:
 
-C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/timer.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/dbg.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/Config.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/GSM.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/RS_232.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/global.h:
 
-D:/CustomBrd_workspace/GSM_test/inc/dbg.h:
-
-D:/CustomBrd_workspace/GSM_test/inc/GSM.h:
-
-D:/CustomBrd_workspace/GSM_test/inc/atcommand.h:
+D:/CustomBrd_workspace/Tiva_GSM/inc/atcommand.h:
 

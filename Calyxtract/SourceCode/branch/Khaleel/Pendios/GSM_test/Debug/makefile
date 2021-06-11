@@ -14,10 +14,10 @@ ORDERED_OBJS += \
 "./startup_ccs.obj" \
 "./src/GSM.obj" \
 "./src/RS_232.obj" \
-"./src/bicolor.obj" \
+"./src/atcommand.obj" \
 "./src/dbg.obj" \
 "./src/delay.obj" \
-"./src/heartbeat.obj" \
+"./src/hardware.obj" \
 "./src/lcd.obj" \
 "../uart_echo_ccs.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -131,35 +131,35 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-GSM_test.out \
+Tiva_GSM.out \
 
 EXE_OUTPUTS__QUOTED += \
-"GSM_test.out" \
+"Tiva_GSM.out" \
 
 BIN_OUTPUTS += \
-GSM_test.bin \
+Tiva_GSM.bin \
 
 BIN_OUTPUTS__QUOTED += \
-"GSM_test.bin" \
+"Tiva_GSM.bin" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "GSM_test.out"
+	@$(MAKE) --no-print-directory -Onone "Tiva_GSM.out"
 
 # Tool invocations
-GSM_test.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Tiva_GSM.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C1294NCPDT --define=TARGET_IS_TM4C129_RA2 -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"uart_echo_ccs.map" --heap_size=0 --stack_size=256 -i"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/lib" -i"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="GSM_test_linkInfo.xml" --rom_model -o "GSM_test.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C1294NCPDT --define=TARGET_IS_TM4C129_RA2 -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"uart_echo_ccs.map" --heap_size=0 --stack_size=256 -i"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/lib" -i"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Tiva_GSM_linkInfo.xml" --rom_model -o "Tiva_GSM.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
 
-GSM_test.bin: $(EXE_OUTPUTS)
+Tiva_GSM.bin: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: Arm Hex Utility'
-	"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armhex" --diag_wrap=off -o "GSM_test.bin" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armhex" --diag_wrap=off -o "Tiva_GSM.bin" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -167,13 +167,13 @@ GSM_test.bin: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "GSM_main_U2.obj" "startup_ccs.obj" "src\GSM.obj" "src\RS_232.obj" "src\bicolor.obj" "src\dbg.obj" "src\delay.obj" "src\heartbeat.obj" "src\lcd.obj" 
-	-$(RM) "GSM_main_U2.d" "startup_ccs.d" "src\GSM.d" "src\RS_232.d" "src\bicolor.d" "src\dbg.d" "src\delay.d" "src\heartbeat.d" "src\lcd.d" 
+	-$(RM) "GSM_main_U2.obj" "startup_ccs.obj" "src\GSM.obj" "src\RS_232.obj" "src\atcommand.obj" "src\dbg.obj" "src\delay.obj" "src\hardware.obj" "src\lcd.obj" 
+	-$(RM) "GSM_main_U2.d" "startup_ccs.d" "src\GSM.d" "src\RS_232.d" "src\atcommand.d" "src\dbg.d" "src\delay.d" "src\hardware.d" "src\lcd.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
 post-build:
-	-"C:/ti/ccs1031/ccs/utils/tiobj2bin/tiobj2bin" "GSM_test.out" "GSM_test.bin" "C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armofd" "C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armhex" "C:/ti/ccs1031/ccs/utils/tiobj2bin/mkhex4bin"
+	-"C:/ti/ccs1031/ccs/utils/tiobj2bin/tiobj2bin" "Tiva_GSM.out" "Tiva_GSM.bin" "C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armofd" "C:/ti/ccs1031/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/bin/armhex" "C:/ti/ccs1031/ccs/utils/tiobj2bin/mkhex4bin"
 	-@echo ' '
 
 .PHONY: all clean dependents

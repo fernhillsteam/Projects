@@ -8,6 +8,9 @@
 #ifndef INC_RS_232_H_
 #define INC_RS_232_H_
 
+
+//#include "utils/uartstdio.c"
+
 void rs232_init(uint8_t select);
 void UART0_init(void);
 void UART2_init(void);

@@ -1,10 +1,8 @@
 /*
- * Title: SIM800l PENDIOS IOT VOLTMETER PROJECT
- * author: khaleel
- * Description: The aim in the project to read the ac(voltage and current) and dc(voltage and current) values and upload the data to server
- * database. The system can also intimates about the error occured at that instant and also accepts trigger commands to perform actions
- * like : ondemand-sms and ondemand- dataupload.
+ * UART0 ANd UART2 testing code.
  * */
+//#include "inc/include.h"
+
 #include <stdint.h>
 #include <stdbool.h>
 #include "stdio.h"
@@ -22,20 +20,23 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
-#include "utils/uartstdio.c"
-
+//#include "utils/uartstdio.c"
 
 #include "inc/global.h"
 #include "inc/RS_232.h"
 #include "inc/dbg.h"
 #include "inc/GSM.h"
-#include "inc/heartbeat.h"
+//#include "inc/heartbeat.h"
 #include "inc/delay.h"
 #include "inc/lcd.h"
+#include "inc/hardware.h"
+#include "inc/atcommand.h"
 
 void gettime();
 
-unsigned char test_count = 0;
+uint8_t p=0;
+bool resp;
+char *url="XOX";
 
 
 
@@ -52,66 +53,37 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #endif
 
 /*GSM interface with Tiva tm4c1294ncpdt launchpad with sim800L*/
-uint8_t SC_status=0, OV_status=0;
-unsigned char* buff2;
+
 
 
 int
 main(void)
 {
 
-    //
-    // Set the clocking to run directly from the crystal at 120MHz.
-    //
-   SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |SYSCTL_OSC_MAIN |SYSCTL_USE_PLL  |SYSCTL_CFG_VCO_480), 120000000);
-   rs232_init(3);
-   dbg_printf("Debug printf working on UART0\n");
+
+    Configure_clk(); // Clock configuration
+    hw_init();
+    dbg_printf("\r\nGSM-GPRS TESTING V1.0\r\nAuthor- KHALEEL \n");
    //Lcd_Init();
-   GSM_init();
-   GPRS_init();
+
+//
 //   server_update();
    //heartbeat_LED_init();
-//   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-//   SysCtlDelay(8000000);SysCtlDelay(8000000);SysCtlDelay(8000000);SysCtlDelay(8000000);SysCtlDelay(8000000);
-//   GPIOPinTypeGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5);
-//   GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_2, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);
-//   GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_3, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);
-
-   //GSM_gen_APN();
-
-  //gettime();
-
-   //convert(240);
-   //GSM_gen_url();
-
-   //convert(uint32_tac_p);
- //  readresponse("AT+HTTPREAD\n"); //OK
-//      SysCtlDelay(8000000);
- //     dbg_printf("\r\nresponse = %s",response);
-   dbg_printf("\r\nUPDATED\n");
+   dbg_printf("\r\ntimer UPDATED\n");//LCD_OutString("TIMER UPDTD");SysCtlDelay(8000000);LCD_Clear();
 
 
+   uint32_tac_v=240;
+   uint32_tac_c=5;
+   uint32_tdc_v=30;
+   uint32_tdc_c=3 ;
+   //uint32_tmstmp[]= "{\"hello\"}";//"\{\"Current_date\" : \"2021-03-25\", \"current_time\" : \"17-30\"\}";   //{"Current_date" : "yyyy-mm-dd", "current_time : "hh-mm"}
+   //gettime();
+  // gen_url();
+//Gsm_readyf();
+
+   //LCD_OutChar('G');SysCtlDelay(64000); LCD_OutChar('O');SysCtlDelay(64000); //LCD_OutChar('O');SysCtlDelay(64000); LCD_OutChar('D');
     while(1)
     {
-//        dbg_printf("\r\nLoop\t");
-//        SysCtlDelay(8000000);
-//        SC_status = GPIOPinRead(GPIO_PORTC_BASE, GPIO_PIN_4);
-//        OV_status = GPIOPinRead(GPIO_PORTC_BASE, GPIO_PIN_5);
-//
-//        if (SC_status == 0)
-//        {
-//            dbg_printf("Short circuit detected");
-//            SysCtlDelay(8000000);
-//            //server_update(3);
-//            SC_update();
-//        }
-//        else if (OV_status == 0)
-//        {
-//            dbg_printf("Overload detected");
-//            SysCtlDelay(8000000);
-//            //server_update(2);
-//            OV_update();
-//        }
 
 //        while(MAP_UARTCharsAvail(UART0_BASE))
 //                   {
