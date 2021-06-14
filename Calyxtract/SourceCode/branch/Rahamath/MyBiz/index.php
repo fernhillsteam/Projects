@@ -85,7 +85,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html"><span><img style="height: 100px; width: 100px;" class="manImg" src="assets\img\fern-icon.png"></img></span></a></h1>
+        <h1><a href="index.php"><span><img style="height: 100px; width: 100px;" class="manImg" src="assets\img\fern-icon.png"></img></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -486,8 +486,8 @@
               <h4><a href="#">Data Science AL/ML</a></h4>
               <p><span class="short-text">Fernhill Data leverages Artificial Intelligence & Big Data technologies to build AI applications for enterprises worldwide.
               Fernhill is a Bangalore based one-stop-shop for Data Sciences, Analytics & Engineering services & products.
-              Fernhill has a decade of exper</span>
-              <span class="long-text">ience in building end-to-end technical solutions for large entities and start-ups worldwide.
+              Fernhill has a decade of </span>
+              <span class="long-text">experience in building end-to-end technical solutions for large entities and start-ups worldwide.
               Fernhill services help organizations transform knowledge into strategic & tactical insights for informed & timely business decisions.
               Data Sciences
               Fernhill  implements end-to-end Big Data solutions with Data Sciences technologies like Artificial Intelligence, Machine Learning, and Deep Learning seamlessly baked into it.
@@ -663,7 +663,7 @@
                 <h4>Burr Removal Machine</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="This was an end to end design for an automobile components manufacturing company in Bangalore. The purpose of the Special purpose machine (SPM) is to remove the extra protruding material after the component is manufactured this process is called components bur removal. "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -677,7 +677,7 @@
                 <h4>GearBox Assembly Auotmation</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/GearBox Assembly Auotmation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/GearBox Assembly Auotmation.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Scope of the project was to design PC based software that can communicated over Ethernet to PLC and control the full automation of the gear box assembly line. There were six stations and each station input and output needs to be managed simultaneously where input of one station acts as input to next station. This was a full featured C# based project that was designed end to end upto the quality test of the manufactured wind mill gear box. "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -691,7 +691,7 @@
                 <h4>MutliAxelAlignementSystem</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/MutliAxelAlignementSystem.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/MutliAxelAlignementSystem.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="The scope of the project was to design the electrical panel, PLC programming and building an intelligent C# based computer application that can control the Multi Axel alignment system. This C# Application all the required intelligence to control the operation of the SPM, calibrating the axel initiating the required alignments and generating the final report. This SPM is fully automated with an single operator button press the SPM works in Dual synchronous mode.  This SPM was developed for Indian Multi Axel truck Manufacturer.  "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -705,7 +705,7 @@
                 <h4>XY table control panel</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/xy table.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/xy table.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="This was an end to end product design for an very reputed University for checking the quality of the photo cells that they manufactured for god particle collusion. We were responsible for providing the design concepts and building the SPM end to end. We use C# for computer application and PLC on the electrical control panel. This was a high precision SPM with an accuracy of 0.01mm error. "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -714,12 +714,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-ind">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/coming-soon.png" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/ucam.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Coming soon...</h4>
+                <h4>Single Axis Controller (SAC)</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/coming-soon.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Coming soon..."><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/ucam.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="This project was to design and develop a raspberry pi based single axis control to controller their rotatory table. Scope of the project was to communicated with the VFD driver through EtherCAT communication and control the various operation of the rotatory table in real time. "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -929,8 +929,15 @@
       </div>
     </section><!-- End Team Section -->
 
+    
+
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
+      <div class="section-title">
+          <span>Core Team</span>
+          <!-- <h2>Core Team</h2> -->
+          <!-- <p>.</p> -->
+        </div>
       <div class="container position-relative">
 
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
@@ -1202,10 +1209,10 @@ $(document).ready(function(){
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
+            <!-- <h4>Our Newsletter</h4>
             <p>Subscribe us for more updates</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email"><input type="submit" value="Subscribe"> -->
             </form>
 
           </div>
@@ -1218,13 +1225,13 @@ $(document).ready(function(){
       <div class="copyright">
         &copy; 2019 Copyright <strong><span>Fernhill Technologies</span></strong>. All Rights Reserved
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mybiz-free-business-bootstrap-theme/ -->
+      <!-- <div class="credits">
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mybiz-free-business-bootstrap-theme/
         Designed by <a href="https://bootstrapmade.com/">Fernhill Technologies</a>
-      </div>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 
