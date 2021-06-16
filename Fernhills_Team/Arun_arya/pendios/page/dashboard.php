@@ -54,7 +54,7 @@ include('auth_session.php');
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-		PENDIOS</a>
+		Pendios</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -70,14 +70,9 @@ include('auth_session.php');
               <p>Configuration</p>
             </a>
           </li>
+         
           <li>
-            <a href="./actions.php">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Actions</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
+            <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>
@@ -91,8 +86,31 @@ include('auth_session.php');
           
           <li class="active-pro">
             <a href="">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Updated Time</p>
+          
+			  <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+	
+	// *************to display Time********************
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		         ?>
+				 <p>Updated Time</p>
+				 <div class="numbers">
+                    <p class="card-title"><?= $row[0] ?> </p>
+					</div>  
+              <?php
+						   }
+			 } ?>
             </a>
           </li>
         </ul>
@@ -110,7 +128,7 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
               </div>
-            <a class="navbar-brand" href="javascript:;">Pendios Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
     <?php
 			
 			  require('db.php');
@@ -200,8 +218,8 @@ include('auth_session.php');
 			
 	                       while($row = mysqli_fetch_row($result)){
 		         ?>
-                    <p class="card-title"><?= $row[3] ?> V<p>
-					  <p class="card-title"><?= $row[6] ?> V<p>
+                    <p class="card-title"><?= $row[3] ?> AC V<p>
+					  <p class="card-title"><?= $row[6] ?> DC V<p>
                     </div>
                   </div>
                 </div>
@@ -269,14 +287,16 @@ include('auth_session.php');
               </div>
             </div>
           </div>
+		  
 		   <?php
 	                  } 
 			    ?>
+			
            <div class="col-lg-12 col-md-6 col-sm-6">
             <div class="card ">
               <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
+                <h5 class="card-title">Voltage VS Time</h5>
+                <p class="card-category">Bar Chart</p>
               </div>
               <div class="card-body ">
 
@@ -359,53 +379,7 @@ include('auth_session.php');
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Email Statistics</h5>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="chartEmail"></canvas>
-              </div>
-              <div class="card-footer ">
-                <div class="legend">
-                  <i class="fa fa-circle text-primary"></i> Opened
-                  <i class="fa fa-circle text-warning"></i> Read
-                  <i class="fa fa-circle text-danger"></i> Deleted
-                  <i class="fa fa-circle text-gray"></i> Unopened
-                </div>
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar"></i> Number of emails sent
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-title">NASDAQ: AAPL</h5>
-                <p class="card-category">Line Chart with Points</p>
-              </div>
-              <div class="card-body">
-                <canvas id="speedChart" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer">
-                <div class="chart-legend">
-                  <i class="fa fa-circle text-info"></i> Tesla Model S
-                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                </div>
-                <hr />
-                <div class="card-stats">
-                  <i class="fa fa-check"></i> Data information certified
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">

@@ -65,12 +65,7 @@ include('auth_session.php');
               <p>Configuration</p>
             </a>
           </li>
-          <li>
-            <a href="./actions.php">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Actions</p>
-            </a>
-          </li>
+        
           <li>
             <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
@@ -86,8 +81,37 @@ include('auth_session.php');
           
           <li class="active-pro">
             <a href="">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Updated Time</p>
+          
+			  <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+	
+	// *************to display Time********************
+   
+	
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		                    ?>
+				             <p>Updated Time</p>
+				             <div class="numbers">
+                            <p class="card-title"><?= $row[0] ?> </p>
+					        </div>  
+                            <?php 
+			  
+			
+						   }
+			 
+			 }
+		 ?>
             </a>
           </li>
         </ul>
@@ -105,7 +129,7 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Pendios Dashboard
+            <a class="navbar-brand" href="javascript:;">History
 </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,26 +183,115 @@ include('auth_session.php');
         </div>
       </nav>
       <!-- End Navbar -->
-	 
+	   <div class="content">
+        <div class="row">
+	   <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-globe text-warning"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Voltage</p>
+		        <?php 
+	// *************to display Device status********************
+			               $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+							  $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+			               $query =    "SELECT * FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		         ?>
+                    <p class="card-title"><?= $row[3] ?> AC V<p>
+					  <p class="card-title"><?= $row[6] ?> DC V<p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-refresh"></i>
+                  Update Now        
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-money-coins text-success"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Current</p>
+                      <p class="card-title"><?= $row[4] ?> A<p>
+					  <p class="card-title"><?= $row[7] ?> A<p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-calendar-o"></i>
+                  Last day
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                      <i class="nc-icon nc-vector text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Power</p>
+                      <p class="card-title"><?= $row[5] ?> W<p>
+			          <p class="card-title"><?= $row[8] ?> W<p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-clock-o"></i>
+                  In the last hour
+                </div>
+              </div>
+            </div>
+          </div>
+		   <?php
+						   }  }
+			    ?>
       <div class="content">
 	  
 				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV('29-04-2021.csv')">Export</button>
-                      <button type="submit" class="btn btn-primary btn-round" id ="print" onclick="PrintTable()">Print</button>
+                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '$time.csv')">Export</button>
+                      <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
                   </div>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">History</h4>
-              </div>
-			   
-		
-              <div class="card-body">
-			  
-			   
-                  
-                  <table class="table" id="Ltable">
+             <div class="card-body">
+			  <table class="table" id="tableList" >
                     <thead class=" text-primary">
                       <th>Sl_no</th>
                       <th>AC Voltage</th>
@@ -210,7 +323,7 @@ include('auth_session.php');
   								<td align="center"><?=$row['dc_v']; ?></td>
   								<td align="center"><?=$row['dc_c']; ?></td>
   								<td align="center"><?=$row['dc_p']; ?></td>
-  								<td align="center"><?=$row['time_stamp']; ?></td>
+  								<td align="center"><?=$row['c_t']; ?></td>
   							</tr>
   							<?php
   					}
@@ -256,22 +369,9 @@ include('auth_session.php');
   </div>
   <!--   Core JS Files   -->
   <script>
-	function PrintTable() {
-       var tab = document.getElementById('Ltable');
- var style = "<style>";
-                style = style + "table {width: 100%;font: 17px Calibri;}";
-                style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
-                style = style + "padding: 2px 3px;text-align: center;}";
-                style = style + "</style>";
 
-            var win = window.open('', '', 'height=700,width=700');
-            win.document.write(style);          //  add the style.
-<!--win.document.write(tab.outerHTML);--> 
-win.document.close();
- win.print();
-    }
 
-function downloadCSV(csv, filename) {
+    function downloadCSV(csv, filename) {
     var csvFile;
     var downloadLink;
 
@@ -295,7 +395,8 @@ function downloadCSV(csv, filename) {
 
     // Click download link
     downloadLink.click();
-}
+  }
+  
 function exportTableToCSV(filename) {
     var csv = [];
     var rows = document.querySelectorAll("table tr");
@@ -321,9 +422,24 @@ function exportTableToCSV(filename) {
   <script src="https://cdn.datatables.net/1.10.24/js/dataTables.jqueryui.min.js"></script>
    <script>
     $(document).ready(function(){
-    $('#Ltable').dataTable();
+    $('#tableList').DataTable();
 	console.log("hello");
          });
+	function PrintTable() {
+       var tab = document.getElementById('tableList');
+	   console.log(tab)
+       var style = "<style>";
+                style = style + "table {width: 100%;font: 17px Calibri;}";
+                style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+                style = style + "padding: 2px 3px;text-align: center;}";
+                style = style + "</style>";
+
+             var win = window.open('', '', 'height=700,width=700');
+             win.document.write(style);          //  add the style.
+             win.document.write(tab.outerHTML);
+             win.document.close();
+             win.print();
+        }
   </script> 
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
