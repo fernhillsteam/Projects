@@ -97,7 +97,8 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="nav-link scrollto"><a href="#contact">Career</a>
+          <li><a class="nav-link scrollto" href="#contact">Career</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
             <!-- <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -113,8 +114,8 @@
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul> -->
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -135,9 +136,9 @@
           <div class="carousel-item active" style="background-image: url(assets/img/slide/fern1.png);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Fernhill Technology</span></h2>
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Fernhill Technologies</span></h2>
                 <p class="animate__animated animate__fadeInUp">Virtue Prespection</p>
-                <p>Headquatered in Bengaluru, FERNHILL TECHNOLOGIES is a Product Engineering Solutions & Services provider since 2019. Our focus is on understanding the unique needs of each customer and providing solutions to match their requirements in a professional & efficient manner, within the customer's budget and time frame.</p>
+                <p>Headquatered in Bengaluru, Fernhill Technologies is a Product Engineering Solutions & Services provider since 2019. Our focus is on understanding the unique needs of each customer and providing solutions to match their requirements in a professional & efficient manner, within the customer's budget and time frame.</p>
                 <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
@@ -148,7 +149,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Electronic Design and Development</h2>
-                <p class="animate__animated animate__fadeInUp">Fernhill Technologies provides a custom electronic design and electronics manufacturing solution for one-off, small run, or large run electronics items.</p>
+                <p class="animate__animated animate__fadeInUp">Fernhill Technologies provides a Customised Electronics Design and Development solution for one-off, small run, or large run electronics product.</p>
                 <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
@@ -205,9 +206,9 @@
           <div class="carousel-item" style="background-image: url(assets/img/slide/data-science.png);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Data Science AL/ML</h2>
+                <h2 class="animate__animated animate__fadeInDown">Data Science Al/ML</h2>
                 <p class="animate__animated animate__adeInUp">Fernhill Data leverages Artificial Intelligence & Big Data technologies to build AI applications for enterprises worldwide.
-                Fernhill is a Bangalore based one-stop-shop for Data Sciences, Analytics & Engineering services & products.
+                Fernhill is a Bengaluru based one-stop-shop for Data Sciences, Analytics & Engineering services & products.
                 Fernhill has a decade of experience in building end-to-end technical solutions for large entities and start-ups worldwide.
                </p>
                 <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
@@ -253,7 +254,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Electronics Manufacturing Service (EMS)</h2>
-                <p class="animate__animated animate__adeInUp">Fernhill, support its customer for Electronics Manufacturing Service (EMS) on demand, Fernhill has its EMS partners located in Bangalore, India, caters to discerning customers for their requirements in the areas of Prototyping, Small and medium volume production.
+                <p class="animate__animated animate__adeInUp">Fernhill, support its customer for Electronics Manufacturing Service (EMS) on demand, Fernhill has its EMS partners located in Bengaluru, India, caters to discerning customers for their requirements in the areas of Prototyping, Small and medium volume production.
                 Fernhill offers the unique proposition of a project driven approach to meet the precise requirements of the customer, by deploying a properly chosen mix of skills, for volumes that will be considered small by normal standards.
                 </p>
                 <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
@@ -351,7 +352,7 @@
             </ul>
             </div>
           </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/about-list-img.png");'></div>
+          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/about-list-img2.png");'></div>
         </div>
 
       </div>
@@ -408,7 +409,7 @@
             <div class="icon-box">
               <!-- <i class="bi bi-briefcase"></i> --><img src="assets/img/chip.png"/>
               <h4><a href="#">Electronics Design & Development</a></h4>
-              <p><span class="short-text">Fernhill Technologies provides a custom electronic design and electronics manufacturing solution for one-off, small run, or large run electronics items. 
+              <p><span class="short-text">Fernhill Technologies provides a custom electronic design and electronics manufacturing solution for one-off, small run, or large run electronics product. 
               Develop embedded software on a variety of processors for real-time applications, sensor interfaces,</span>
               <span class="long-text">  signal processing, communication protocols, Graphical User Interfaces Specialized in low power, small footprint firmware.  </span>
              <span class="text-dots">....</span>
@@ -483,9 +484,9 @@
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
               <!-- <i class="bi bi-calendar4-week"></i> --><img class="svg-icon" src="assets/img/d1.png"/>
-              <h4><a href="#">Data Science AL/ML</a></h4>
+              <h4><a href="#">Data Science Al/ML</a></h4>
               <p><span class="short-text">Fernhill Data leverages Artificial Intelligence & Big Data technologies to build AI applications for enterprises worldwide.
-              Fernhill is a Bangalore based one-stop-shop for Data Sciences, Analytics & Engineering services & products.
+              Fernhill is a Bengaluru based one-stop-shop for Data Sciences, Analytics & Engineering services & products.
               Fernhill has a decade of </span>
               <span class="long-text">experience in building end-to-end technical solutions for large entities and start-ups worldwide.
               Fernhill services help organizations transform knowledge into strategic & tactical insights for informed & timely business decisions.
@@ -545,7 +546,7 @@
             <div class="icon-box">
               <!-- <i class="bi bi-calendar4-week"></i> --><img class="svg-icon" src="assets/img/bulk.png"/>
               <h4><a href="#">Electronics Manufacturing Service (EMS)</a></h4>
-              <p><span class="short-text">Fernhill, support its customer for Electronics Manufacturing Service (EMS) on demand, Fernhill has its EMS partners located in Bangalore, India, caters to discerning customers for their requirements in the areas of Prototyping, Small and medium volume </span>
+              <p><span class="short-text">Fernhill, support its customer for Electronics Manufacturing Service (EMS) on demand, Fernhill has its EMS partners located in Bengaluru, India, caters to discerning customers for their requirements in the areas of Prototyping, Small and medium volume </span>
               <span class="long-text">production.Fernhill offers the unique proposition of a project driven approach to meet the precise requirements of the customer, by deploying a properly chosen mix of skills, for volumes that will be considered small by normal standards.
               </span>
               <span class="text-dots">....</span>
@@ -663,7 +664,7 @@
                 <h4>Burr Removal Machine</h4>
                 <p>Click plus symbol to know more</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="This was an end to end design for an automobile components manufacturing company in Bangalore. The purpose of the Special purpose machine (SPM) is to remove the extra protruding material after the component is manufactured this process is called components bur removal. "><i class="ri-add-fill"></i></a>
+                  <a href="assets/img/portfolio/Burr Removal Machine.mp4" data-gallery="portfolioGallery" class="portfolio-lightbox" title="This was an end to end design for an automobile components manufacturing company in Bengaluru. The purpose of the Special purpose machine (SPM) is to remove the extra protruding material after the component is manufactured this process is called components bur removal. "><i class="ri-add-fill"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="ri-links-fill"></i></a> -->
                 </div>
               </div>
@@ -787,9 +788,9 @@
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-1.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/chip.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Electronics and Hardware team</h4>
+                <h4>Electronics and Hardware Team</h4>
                 <!-- <span>Chief Executive Officer</span> -->
                 <!-- <p>.</p> -->
                 <!-- <div class="social">
@@ -804,7 +805,7 @@
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-2.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/software.png" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4> Software Application Team</h4>
                 <!-- <span>Product Manager</span>
@@ -821,9 +822,9 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-3.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/web-mob.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Web Application team</h4>
+                <h4>Web and Mobile App Team</h4>
                 <!-- <span>CTO</span>
                 <p>.</p> -->
                 <!-- <div class="social">
@@ -838,9 +839,9 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/ind.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/auto.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Industrial Automation team</h4>
+                <h4>Industrial Automation Team</h4>
                 <!-- <span>Accountant</span>
                 <p>.</p> -->
                 <!-- <div class="social">
@@ -857,7 +858,7 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/emb.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Embedded system design team</h4>
+                <h4>Embedded System Design Team</h4>
                 <!-- <span>Accountant</span>
                 <p>.</p> -->
                 <!-- <div class="social">
@@ -872,9 +873,9 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/team-4.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/al-ml.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Mobile Application team</h4>
+                <h4> AI & ML Team</h4>
                 <!-- <span>Accountant</span>
                 <p>.</p> -->
                 <!-- <div class="social">
@@ -891,7 +892,7 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/iot.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4> IOT core platform team</h4>
+                <h4> Internet of Things Team</h4>
                 <!-- <span>Accountant</span>
                 <p>.</p> -->
                 <!-- <div class="social">
@@ -906,7 +907,7 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/team/corporate training.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/team/corp.png" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Corporate Training Team</h4>
                 <!-- <span>Accountant</span>
@@ -946,11 +947,11 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/dp-m.png" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
+                <h3>Mahesh Prasath J.R</h3>
                 <h4>Ceo &amp; Founder</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  CEO, has around 20 years of Experience in the field of Electronics Design, Embedded Systems, Internet of things, Machine Learning, Artificial Intelligence, Industrial automation. Worked with various MNCs Involved and worked on various Research development product executed various projects.  Heads the R&D department for Industrial Automation, AI, ML, IoT 4.0 and day to day company operations.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -958,12 +959,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/dp-f.png" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
+                <img src="assets/img/testimonials/dp.png" class="testimonial-img" alt="">
+                <h3>Sharani Prabha</h3>
+                <h4>VP HR</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  VP HR, has around 10 years of experience in the field of HR and Admin. Heads the HR and Admin operations at Fernhill.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -971,12 +972,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/dp-m.png" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
+                <img src="assets/img/testimonials/dp-m1.png" class="testimonial-img" alt="">
+                <h3>Shashanka</h3>
+                <h4>VP Electronics Design</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  VP Software, has around 20 years of experience in the field of software development, has worked on projects based on web application, cloud front, UI/UX, mobile application, ERP projects, Machine learning and Artificial Intelligence. Heads the software development department at Fernhill.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -984,18 +985,18 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/dp-m.png" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
+                <img src="assets/img/testimonials/dp.png" class="testimonial-img" alt="">
+                <h3>Santhosh</h3>
+                <h4>VP Electronics Design</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  VP Electronics Design, Has around 18 years of experience in the field of Electronics design worked on designs that involve microprocessor, microcontrollers, digital and analogy circuits. Has knowledge on various hardware design standards and delivered project in all most all the domain from consumer, industrial, Power electronics and Medical Electronics. Heads the Electronics design service department at Fernhill.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/dp-m.png" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
@@ -1006,7 +1007,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> --><!-- End testimonial item -->
 
           </div>
           <div class="swiper-pagination"></div>
@@ -1040,7 +1041,7 @@
             <div class="col-lg-4 info">
               <i class="ri-map-pin-line"></i>
               <h4>Location:</h4>
-              <p>Indiranagar<br>Bangalore-560038</p>
+              <p>Indiranagar<br>Bengaluru-560038</p>
             </div>
 
             <div class="col-lg-4 info mt-4 mt-lg-0">
@@ -1165,7 +1166,7 @@ $(document).ready(function(){
             <div class="footer-info">
               <h3>Fernhill Technologies</h3>
               <p>
-                Indiranagar<br>Bangalore-560038<br>
+                Indiranagar<br>Bengaluru-560038<br>
                 Karnataka,India<br>
                 <strong>Phone:</strong>+91 9986646582<br>
                 
@@ -1199,7 +1200,7 @@ $(document).ready(function(){
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Industrial Automation</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Software Development</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Mobile App Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Data Science AL/ML</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Data Science Al/ML</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">UX/UI Design and Development</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Body Shopping</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#services">Corporate Training</a></li>
