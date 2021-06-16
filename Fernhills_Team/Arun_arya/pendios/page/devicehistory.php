@@ -2,14 +2,10 @@
 =========================================================
 * Paper Dashboard 2 - v2.0.1
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/paper-dashboard-2
 * Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
 Coded by www.creative-tim.com
-
  =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
@@ -49,7 +45,7 @@ include('auth_session.php');
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          PENDIOS
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -57,52 +53,41 @@ include('auth_session.php');
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+           <li >
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.php">
+            <a href="./configuration.php">
               <i class="nc-icon nc-diamond"></i>
-              <p>Configutation</p>
+              <p>Configuration</p>
             </a>
           </li>
           <li>
-            <a href="./map.php">
+            <a href="./actions.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Actions</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.php">
+            <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Fault-logs</p>
-            </a>
-          </li>
-          <li>
-            <a href="./devicehistory.php">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Device-Histroy</p>
+              <p>Fault-Logs</p>
             </a>
           </li>
           <li class="active ">
-            <a href="./tables.php">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
+            <a href="./devicehistory.php">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Device-History</p>
             </a>
           </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Updated Time</p>
             </a>
           </li>
         </ul>
@@ -120,7 +105,8 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Pendios Dashboard
+</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -177,7 +163,7 @@ include('auth_session.php');
       <div class="content">
 	  
 				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round">Export</button>
+                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV('29-04-2021.csv')">Export</button>
                       <button type="submit" class="btn btn-primary btn-round" id ="print" onclick="PrintTable()">Print</button>
                   </div>
         <div class="row">
@@ -284,7 +270,51 @@ include('auth_session.php');
 win.document.close();
  win.print();
     }
-</script>
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+        
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+
+     </script>
  
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -312,8 +342,3 @@ win.document.close();
 </body>
 
 </html>
-
-
-
-
-

@@ -12,9 +12,6 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-<?php
-include('auth_session.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +45,7 @@ include('auth_session.php');
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          PENDIOS
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -56,52 +53,41 @@ include('auth_session.php');
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
-            <a href="./dashboard.html">
+           <li >
+            <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./configuration.php">
               <i class="nc-icon nc-diamond"></i>
-              <p>Icons</p>
+              <p>Configuration</p>
             </a>
           </li>
-          <li>
-            <a href="./map.html">
+          <li class="active ">
+            <a href="./actions.php">
               <i class="nc-icon nc-pin-3"></i>
-              <p>Maps</p>
+              <p>Actions</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Notifications</p>
+              <p>Fault-Logs</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./devicehistory.php">
               <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
+              <p>Device-History</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="active  active-pro " class="active-pro">
-            <a href="./upgrade.html">
+          
+          <li class="active-pro">
+            <a href="">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Updated Time</p>
             </a>
           </li>
         </ul>
@@ -119,7 +105,7 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Pendios Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -174,40 +160,13 @@ include('auth_session.php');
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <div class="card card-upgrade">
-              <div class="card-header text-center">
-                <h4 class="card-title">Last Updated Time</h3>
-                  <!--<p class="card-category">Are you looking for more components? Please check our Premium Version of Paper Dashboard PRO.</p>-->
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header ">
+               Actions
               </div>
-              <div class="card-body">
-                <hr>
-				<?php
-			
-			  require('db.php');
+              <div class="card-body ">
               
-			 //***.php*************** to display user id and user name**************************
-			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
-               $result = mysqli_query($con, $query) or die(mysql_error());
-               
-			 while($row = mysqli_fetch_row($result)){
-			
-  
-	            $query = "SELECT `time_stamp` FROM `users_details` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
-			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
-                 $result = mysqli_query($con, $query) or die(mysql_error());
-			
-	                       while($row = mysqli_fetch_row($result)){
-	   
-	   
-			 
-	          ?>
-			  <h1><?= $row[0] ?></h1>
-			   
-			  <?php
-			  
-			 }}
-			 ?>
               </div>
             </div>
           </div>
@@ -249,6 +208,11 @@ include('auth_session.php');
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      demo.initGoogleMaps();
+    });
+  </script>
 </body>
 
 </html>

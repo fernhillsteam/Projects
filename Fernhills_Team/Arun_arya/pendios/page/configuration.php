@@ -45,7 +45,7 @@ Coded by www.creative-tim.com
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          PENDIOS
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -53,52 +53,41 @@ Coded by www.creative-tim.com
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+          <li >
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="./icons.php">
+          <li class="active">
+            <a href="./configuration.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Configuration</p>
             </a>
           </li>
           <li>
-            <a href="./map.php">
+            <a href="./actions.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Actions</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.php">
+            <a href="./faultlogs.html">
               <i class="nc-icon nc-bell-55"></i>
-              <p>Fault-logs</p>
+              <p>Fault-Logs</p>
             </a>
           </li>
           <li>
             <a href="./devicehistory.php">
               <i class="nc-icon nc-single-02"></i>
-              <p>device-history</p>
+              <p>Device-History</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Updated Time</p>
             </a>
           </li>
         </ul>
@@ -116,7 +105,8 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Pendios Dashboard
+</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -174,8 +164,8 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card demo-icons">
               <div class="card-header">
-                <h5 class="card-title">100 Awesome Nucleo Icons</h5>
-                <p class="card-category">Handcrafted by our friends from <a href="https://nucleoapp.com/?ref=1712" rel="nofollow">NucleoApp</a></p>
+                <h5 class="card-title">Configuration</h5>
+             <!--   <p class="card-category">Handcrafted by our friends from <a href="https://nucleoapp.com/?ref=1712" rel="nofollow">NucleoApp</a></p>
               </div>
               <div class="card-body all-icons">
                 <div id="icons-wrapper">
@@ -589,7 +579,7 @@ Coded by www.creative-tim.com
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">

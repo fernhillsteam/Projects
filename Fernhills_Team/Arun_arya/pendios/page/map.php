@@ -53,50 +53,39 @@ Coded by www.creative-tim.com
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+           <li class="active ">
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.php">
+            <a href="./configuration.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Configuration</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="./map.php">
+          <li>
+            <a href="./map.html">
               <i class="nc-icon nc-pin-3"></i>
               <p>Actions</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.php">
+            <a href="./notifications.html">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>
           </li>
           <li>
-            <a href="./user.php">
+            <a href="./devicehistory.php">
               <i class="nc-icon nc-single-02"></i>
               <p>Device-History</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="./upgrade.php">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
             </a>

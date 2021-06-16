@@ -54,15 +54,11 @@ include('auth_session.php');
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-           PENDIOS
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
-        </a>
+		PENDIOS</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+          <li  class="active">
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
@@ -75,7 +71,7 @@ include('auth_session.php');
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="./actions.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Actions</p>
             </a>
@@ -92,22 +88,11 @@ include('auth_session.php');
               <p>Device-History</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
-            <a href="./upgrade.php">
+            <a href="">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Updated Time</p>
             </a>
           </li>
         </ul>

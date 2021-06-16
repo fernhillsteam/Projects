@@ -45,7 +45,7 @@ Coded by www.creative-tim.com
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+          PENDIOS
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -66,13 +66,13 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li>
-            <a href="./map.php">
+            <a href="./actions.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Actions</p>
             </a>
           </li>
           <li class="active ">
-            <a href="./notifications.php">
+            <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>fault-logs</p>
             </a>
@@ -83,22 +83,11 @@ Coded by www.creative-tim.com
               <p>device-history</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Updated Time</p>
             </a>
           </li>
         </ul>
@@ -116,7 +105,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Pendios Dashboard</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -174,8 +163,8 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Notifications</h5>
-                <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>
+                <h5 class="card-title">Fault-Logs</h5>
+               <!-- <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -303,7 +292,7 @@ Coded by www.creative-tim.com
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
