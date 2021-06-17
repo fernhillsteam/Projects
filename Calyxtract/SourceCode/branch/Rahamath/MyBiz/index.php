@@ -338,7 +338,7 @@
               <h4>Pioneers</h4>
               <p>A design engineering firm that works with you from product concept to market release
               Develop world-class products by leveraging our expertise in software, firmware, electronics and mechanical<br>
-              Domain expertise in Life Sciences , Industrial and Internet of Things
+              Domain expertise in Data Science with Al & ML, Industrial and Internet of Things
               Our global delivery model and quality focused approach, makes us your partner of choice</p>
             </div>
             <div class="icon-box mt-5">
@@ -974,7 +974,7 @@
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/dp-m1.png" class="testimonial-img" alt="">
                 <h3>Shashanka</h3>
-                <h4>VP Electronics Design</h4>
+                <h4>VP Software</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   VP Software, has around 20 years of experience in the field of software development, has worked on projects based on web application, cloud front, UI/UX, mobile application, ERP projects, Machine learning and Artificial Intelligence. Heads the software development department at Fernhill.
