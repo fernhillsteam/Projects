@@ -137,7 +137,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Fernhill Technologies</span></h2>
-                <p class="animate__animated animate__fadeInUp">Virtue Prespection</p>
+                <p class="animate__animated animate__fadeInUp">Virtue Perspection</p>
                 <p>Headquatered in Bengaluru, Fernhill Technologies is a Product Engineering Solutions & Services provider since 2019. Our focus is on understanding the unique needs of each customer and providing solutions to match their requirements in a professional & efficient manner, within the customer's budget and time frame.</p>
                 <a href="#services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Read More</a>
               </div>
