@@ -12,6 +12,9 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include('auth_session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,8 +89,31 @@ Coded by www.creative-tim.com
           
           <li class="active-pro">
             <a href="">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Updated Time</p>
+          
+			  <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+	
+	// *************to display Time********************
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		         ?>
+				 <p>Updated Time</p>
+				 <div class="numbers">
+                    <p class="card-title"><?= $row[0] ?> </p>
+					</div>  
+              <?php
+						   }
+			 } ?>
             </a>
           </li>
         </ul>
@@ -105,7 +131,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Pendios Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Actions</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -159,14 +185,21 @@ Coded by www.creative-tim.com
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        <div class="row">
+        
           <div class="col-md-12">
             <div class="card ">
-              <div class="card-header ">
-               Actions
-              </div>
-              <div class="card-body ">
-              
+             
+			  
+              <div class="card-body">
+		
+             
+                      <button type="submit" class="btn btn-primary btn-round" >Send SMS On Demand</button>
+                      <button type="submit" class="btn btn-primary btn-round" >Update Server On Demand</button>
+					
+					  <button type="submit" class="btn btn-primary btn-round" >Authorize Access</button>
+                      <button type="submit" class="btn btn-primary btn-round" >ShutDown</button>
+               
+				  </div> 
               </div>
             </div>
           </div>

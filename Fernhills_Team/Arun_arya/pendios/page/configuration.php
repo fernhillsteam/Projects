@@ -12,6 +12,9 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include('auth_session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,13 +69,7 @@ Coded by www.creative-tim.com
             </a>
           </li>
           <li>
-            <a href="./actions.php">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Actions</p>
-            </a>
-          </li>
-          <li>
-            <a href="./faultlogs.html">
+            <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>
@@ -86,8 +83,31 @@ Coded by www.creative-tim.com
           
           <li class="active-pro">
             <a href="">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Updated Time</p>
+          
+			  <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+	
+	// *************to display Time********************
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		         ?>
+				 <p>Updated Time</p>
+				 <div class="numbers">
+                    <p class="card-title"><?= $row[0] ?> </p>
+					</div>  
+              <?php
+						   }
+			 } ?>
             </a>
           </li>
         </ul>
@@ -105,8 +125,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Pendios Dashboard
-</a>
+            <a class="navbar-brand" href="javascript:;">Configuration</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -164,7 +183,7 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card demo-icons">
               <div class="card-header">
-                <h5 class="card-title">Configuration</h5>
+              
              <!--   <p class="card-category">Handcrafted by our friends from <a href="https://nucleoapp.com/?ref=1712" rel="nofollow">NucleoApp</a></p>
               </div>
               <div class="card-body all-icons">

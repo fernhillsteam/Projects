@@ -12,6 +12,9 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include('auth_session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,29 +68,46 @@ Coded by www.creative-tim.com
               <p>Configuration</p>
             </a>
           </li>
-          <li>
-            <a href="./actions.php">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Actions</p>
-            </a>
-          </li>
-          <li class="active ">
+         <li class="active ">
             <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
-              <p>fault-logs</p>
+              <p>Fault-Logs</p>
             </a>
           </li>
           <li>
             <a href="./devicehistory.php">
               <i class="nc-icon nc-single-02"></i>
-              <p>device-history</p>
+              <p>Device-History</p>
             </a>
           </li>
           
           <li class="active-pro">
             <a href="">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Updated Time</p>
+          
+			  <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+	
+	// *************to display Time********************
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
+                           $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
+		         ?>
+				 <p>Updated Time</p>
+				 <div class="numbers">
+                    <p class="card-title"><?= $row[0] ?> </p>
+					</div>  
+              <?php
+						   }
+			 } ?>
             </a>
           </li>
         </ul>
@@ -105,7 +125,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Pendios Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Fault-Logs</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -163,7 +183,7 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Fault-Logs</h5>
+              
                <!-- <p class="card-category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>
               </div>
               <div class="card-body">

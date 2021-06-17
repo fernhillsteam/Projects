@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.long-text {
+  display: none
+}
+</style>
+</head>
+<body>
+
+<h2>Read More Read Less Button</h2>
+<div>
+  <span class="short-text">At the end of the day, you are solely responsible for your success
+   and your failure. And the sooner you realize that, you accept that, and integr</span>
+  <span class="long-text">ate that into your work ethic, you will start being successful. As 
+  long as you blame others for the reason you aren't where you want to be, you will 
+  always be a failure.</span>
+  <span class="text-dots">....</span>
+  <span class="show-more-button" data-more="0">Read More</span>
+</div>
+
+<div>
+  <span class="short-text">At the end of the day, you are solely responsible for your success
+   and your failure. And the sooner you realize that, you accept that, and integr</span>
+  <span class="long-text">ate that into your work ethic, you will start being successful. As 
+  long as you blame others for the reason you aren't where you want to be, you will 
+  always be a failure.</span>
+  <span class="text-dots">....</span>
+  <span class="show-more-button1" data-more="0">Read More</span>
+</div>
+
+<div>
+  <span class="short-text">At the end of the day, you are solely responsible for your success
+   and your failure. And the sooner you realize that, you accept that, and integr</span>
+  <span class="long-text">ate that into your work ethic, you will start being successful. As 
+  long as you blame others for the reason you aren't where you want to be, you will 
+  always be a failure.</span>
+  <span class="text-dots">....</span>
+  <span class="show-more-button2" data-more="0">Read More</span>
+</div>
+
+<script>
+document.querySelector('.show-more-button').addEventListener('click', function() {
+  // If text is shown less, then show complete
+  if(this.getAttribute('data-more') == 0) {
+    this.setAttribute('data-more', 1);
+    this.style.display = 'block';
+    this.innerHTML = 'Read Less';
+
+    this.previousElementSibling.style.display = 'none';
+    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+  }
+  // If text is shown complete, then show less
+  else if(this.getAttribute('data-more') == 1) {
+    this.setAttribute('data-more', 0);
+    this.style.display = 'inline';
+    this.innerHTML = 'Read More';
+
+    this.previousElementSibling.style.display = 'inline';
+    this.previousElementSibling.previousElementSibling.style.display = 'none';
+  } 
+});
+
+document.querySelector('.show-more-button1').addEventListener('click', function() {
+  // If text is shown less, then show complete
+  if(this.getAttribute('data-more') == 0) {
+    this.setAttribute('data-more', 1);
+    this.style.display = 'block';
+    this.innerHTML = 'Read Less';
+
+    this.previousElementSibling.style.display = 'none';
+    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+  }
+  // If text is shown complete, then show less
+  else if(this.getAttribute('data-more') == 1) {
+    this.setAttribute('data-more', 0);
+    this.style.display = 'inline';
+    this.innerHTML = 'Read More';
+
+    this.previousElementSibling.style.display = 'inline';
+    this.previousElementSibling.previousElementSibling.style.display = 'none';
+  } 
+});
+
+document.querySelector('.show-more-button2').addEventListener('click', function() {
+  // If text is shown less, then show complete
+  if(this.getAttribute('data-more') == 0) {
+    this.setAttribute('data-more', 1);
+    this.style.display = 'block';
+    this.innerHTML = 'Read Less';
+
+    this.previousElementSibling.style.display = 'none';
+    this.previousElementSibling.previousElementSibling.style.display = 'inline';
+  }
+  // If text is shown complete, then show less
+  else if(this.getAttribute('data-more') == 1) {
+    this.setAttribute('data-more', 0);
+    this.style.display = 'inline';
+    this.innerHTML = 'Read More';
+
+    this.previousElementSibling.style.display = 'inline';
+    this.previousElementSibling.previousElementSibling.style.display = 'none';
+  } 
+});
+
+</script>
+
+</body>
+</html>
