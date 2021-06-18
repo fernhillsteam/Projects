@@ -13,11 +13,6 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
-//include auth_session.php file on all user panel pages
-
-?>
-
-<?php
 include('auth_session.php');
 ?>
 <!DOCTYPE html>
@@ -29,10 +24,11 @@ include('auth_session.php');
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+   Pendios
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
@@ -40,46 +36,49 @@ include('auth_session.php');
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="./dashboard.php" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-		Pendios</a>
+        <a href="./dashboard.php" class="simple-text logo-normal">
+          PENDIOS
+          <!-- <div class="logo-image-big">
+            <img src="../assets/img/logo-big.png">
+          </div> -->
+        </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li  class="active">
-            <a href="./dashboard.php">
-              <i class="nc-icon nc-bank"></i>
+           <li class="active ">
+		  <a href="./dashboard.php">
+          <i class="fas fa-home"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
             <a href="./configuration.php">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
           </li>
-         
+        
           <li>
             <a href="./faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>
           </li>
-          <li>
+          <li >
             <a href="./devicehistory.php">
-              <i class="nc-icon nc-single-02"></i>
+              <i class="fas fa-history"></i>
               <p>Device-History</p>
             </a>
           </li>
@@ -98,19 +97,25 @@ include('auth_session.php');
 			 while($row = mysqli_fetch_row($result)){
 	
 	// *************to display Time********************
+   
+	
 			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
 			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
                            $result = mysqli_query($con, $query) or die(mysql_error());
 			
 	                       while($row = mysqli_fetch_row($result)){
-		         ?>
-				 <p>Updated Time</p>
-				 <div class="numbers">
-                    <p class="card-title"><?= $row[0] ?> </p>
-					</div>  
-              <?php
+		                    ?>
+				             <p>Updated Time</p>
+				             <div class="numbers">
+                            <p class="card-title"><?= $row[0] ?> </p>
+					        </div>  
+                            <?php 
+			  
+			
 						   }
-			 } ?>
+			 
+			 }
+		 ?>
             </a>
           </li>
         </ul>
@@ -118,7 +123,7 @@ include('auth_session.php');
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -129,6 +134,8 @@ include('auth_session.php');
               </button>
               </div>
             <a class="navbar-brand" href="javascript:;">Dashboard</a>
+		   </div>	
+			  
     <?php
 			
 			  require('db.php');
@@ -140,27 +147,20 @@ include('auth_session.php');
 			 while($row = mysqli_fetch_row($result)){
 			 
     ?>
-	       <div class="user">
-			 <h3><?= $row[1] ?></h3>
-			 <h3>Device_ID : <?= $row[2] ?></h3>
- 	      </div>		
-          </div>
+		 
+		  <div class="text-center" >
+		
+			 <p><?= $row[1] ?></p>
+			 <p>Device_ID :</p>
+			 <p><?= $row[2] ?></p>
+ 	      </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+            
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="javascript:;">
@@ -196,15 +196,15 @@ include('auth_session.php');
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="content">
+	   <div class="content">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
+	   <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-globe text-warning"></i>
+                       <i> <img src="icons/voltage.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -212,14 +212,18 @@ include('auth_session.php');
                       <p class="card-category">Voltage</p>
 		        <?php 
 	// *************to display Device status********************
+			               $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+							  $result = mysqli_query($con, $query) or die(mysql_error());
+			
+	                       while($row = mysqli_fetch_row($result)){
 			               $query =    "SELECT * FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
 			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
                            $result = mysqli_query($con, $query) or die(mysql_error());
 			
 	                       while($row = mysqli_fetch_row($result)){
 		         ?>
-                    <p class="card-title"><?= $row[3] ?> AC V<p>
-					  <p class="card-title"><?= $row[6] ?> DC V<p>
+                    <p class="card-title"><?= $row[3] ?> V <small>AC</small><p>
+					  <p class="card-title"><?= $row[6] ?> V <small>DC</small><p>
                     </div>
                   </div>
                 </div>
@@ -239,7 +243,7 @@ include('auth_session.php');
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-money-coins text-success"></i>
+                      <i> <img src="icons/current.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -266,7 +270,7 @@ include('auth_session.php');
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-vector text-danger"></i>
+                       <i> <img src="icons/power.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -287,20 +291,79 @@ include('auth_session.php');
               </div>
             </div>
           </div>
-		  
+		  </div>
 		   <?php
-	                  } 
+						   } }  }
 			    ?>
 			
-           <div class="col-lg-12 col-md-6 col-sm-6">
+
+	<div class="row">  
+	<div class="col">
+	  <div class="card">
+              <div class="card-header">
+               <!-- <h4 class="card-title">Device Status</h4>-->
+              </div>
+              <div class="card-body">
+                <div class="row">
+                 <?php
+   require('db.php');
+   $query ="SELECT * FROM `indicator` WHERE `Sl_no`=6";
+                 $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			     while($row = mysqli_fetch_row($result)){
+					 
+                    $short  =$row[0];
+					$shutdown=$row[1];
+					$overload=$row[2];
+					$tamper=$row[3];
+					$health=$row[4];
+		 
+?>				
+				 <div class="col-lg col-md-6 col-6 ml-auto text-center">
+				<?php echo  "<div style='color: ".($short == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				 <p class="card-category text-center">Short Circuit</p>
+                </div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($shutdown == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Shutdown</p>
+				</div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($overload == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Overload</p>
+				</div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($tamper == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Tampering</p>
+		        </div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($health == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Health</p>
+				
+				</div>
+				
+ 
+<?php                  
+}
+
+?>	
+			  
+                  </div>
+                   
+                  </div>
+              </div>
+            </div>	
+		</div>	
+			<div class="row">	 
+		  <div class="col-lg-12 col-md-14 col-sm-10">
             <div class="card ">
               <div class="card-header ">
                 <h5 class="card-title">Voltage VS Time</h5>
                 <p class="card-category">Bar Chart</p>
               </div>
+			  
               <div class="card-body ">
 
-			  <canvas id="myChart" width="400" height="100"></canvas>
+			  <canvas id="myChart" width="400" height="auto"></canvas>
 	    <?php
 	             $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                  $result = mysqli_query($con, $query) or die(mysql_error());
@@ -347,7 +410,7 @@ include('auth_session.php');
 					 },
 					 {
 						  
-						 label:'dc_v',
+						 label:'DC Voltage',
 						 backgroundColor:'#FFD700',
 						 borderColor:'red',
 						 data:dc_v
@@ -361,25 +424,19 @@ include('auth_session.php');
 					 data:datas
 					}
 				 
-			    var bargraph = new Chart(ctx,graph);
-				 console.log(bargraph);
-             </script>
+			              var bargraph = new Chart(ctx,graph);
+				           console.log(bargraph);
+                        </script>
 			   
-        <?php			   
-			 }  
-          }
-		?>			   
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
+                  <?php			   
+			           }  
+                        
+		          ?>			   
+               </div>
+			</div> 
+           </div>	
           </div>
-        </div>
-      
+				
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -402,11 +459,41 @@ include('auth_session.php');
       </footer>
     </div>
   </div>
+ 
+	
+ 
+
+
   <!--   Core JS Files   -->
   
-  <script src="../assets/js/core/bargraph.js"></script>
+
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.jqueryui.min.js"></script>
+   <script>
+    $(document).ready(function(){
+    $('#tableList').DataTable();
+	console.log("hello");
+         });
+	function PrintTable() {
+       var tab = document.getElementById('tableList');
+	   console.log(tab)
+       var style = "<style>";
+                style = style + "table {width: 100%;font: 17px Calibri;}";
+                style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+                style = style + "padding: 2px 3px;text-align: center;}";
+                style = style + "</style>";
+
+             var win = window.open('', '', 'height=700,width=700');
+             win.document.write(style);          //  add the style.
+             win.document.write(tab.outerHTML);
+             win.document.close();
+             win.print();
+        }
+  </script> 
   <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script> 
+  <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
@@ -418,14 +505,7 @@ include('auth_session.php');
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-	  
-    });
-  </script>
- 
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>

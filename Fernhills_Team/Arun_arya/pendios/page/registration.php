@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Registration</title>
+    <title>Pendios</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>

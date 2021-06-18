@@ -19,11 +19,13 @@ include('auth_session.php');
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
   <title>
-    Paper Dashboard 2 by Creative Tim
+    Pendios
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
@@ -32,19 +34,20 @@ include('auth_session.php');
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="./dashboard.php" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./dashboard.php" class="simple-text logo-normal">
           PENDIOS
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -55,13 +58,13 @@ include('auth_session.php');
         <ul class="nav">
            <li >
             <a href="./dashboard.php">
-              <i class="nc-icon nc-bank"></i>
+              <i class="fas fa-home"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
             <a href="./configuration.php">
-              <i class="nc-icon nc-diamond"></i>
+              <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
           </li>
@@ -74,7 +77,7 @@ include('auth_session.php');
           </li>
           <li class="active ">
             <a href="./devicehistory.php">
-              <i class="nc-icon nc-single-02"></i>
+              <i class="fas fa-history"></i>
               <p>Device-History</p>
             </a>
           </li>
@@ -191,7 +194,7 @@ include('auth_session.php');
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-globe text-warning"></i>
+                       <i> <img src="icons/voltage.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -209,8 +212,8 @@ include('auth_session.php');
 			
 	                       while($row = mysqli_fetch_row($result)){
 		         ?>
-                    <p class="card-title"><?= $row[3] ?> AC V<p>
-					  <p class="card-title"><?= $row[6] ?> DC V<p>
+                    <p class="card-title"><?= $row[3] ?> V <small>AC</small><p>
+					  <p class="card-title"><?= $row[6] ?> V <small>DC</small><p>
                     </div>
                   </div>
                 </div>
@@ -230,7 +233,7 @@ include('auth_session.php');
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-money-coins text-success"></i>
+                      <i> <img src="icons/current.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -257,7 +260,7 @@ include('auth_session.php');
                 <div class="row">
                   <div class="col-5 col-md-4">
                     <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-vector text-danger"></i>
+                       <i> <img src="icons/power.png"></i>
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
@@ -278,17 +281,78 @@ include('auth_session.php');
               </div>
             </div>
           </div>
+		  </div>
 		   <?php
 						   }  }
 			    ?>
-      <div class="content">
-	  
+					<div class="row">  
+	<div class="col">
+	  <div class="card">
+              <div class="card-header">
+               <!-- <h4 class="card-title">Device Status</h4>-->
+              </div>
+              <div class="card-body">
+                <div class="row">
+                 <?php
+   require('db.php');
+   $query ="SELECT * FROM `indicator` WHERE `Sl_no`=6";
+                 $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			     while($row = mysqli_fetch_row($result)){
+					 
+                    $short  =$row[0];
+					$shutdown=$row[1];
+					$overload=$row[2];
+					$tamper=$row[3];
+					$health=$row[4];
+		 
+?>				
+				 <div class="col-lg col-md-6 col-6 ml-auto text-center">
+				<?php echo  "<div style='color: ".($short == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				 <p class="card-category text-center">Short Circuit</p>
+                </div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($shutdown == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Shutdown</p>
+				</div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($overload == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Overload</p>
+				</div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($tamper == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Tampering</p>
+		        </div>
+				<div class="col-lg col-md-6 col-6 ml-auto text-center">
+		        <?php echo  "<div style='color: ".($health == 1 ? "green" : "red")."' ><i class='fas fa-circle '></i></div>"; ?>
+				<p class="card-category text-center">Health</p>
+				
+				</div>
+				
+ 
+<?php                  
+}
+
+?>	
+			  
+                  </div>
+                   
+                  </div>
+              </div>
+            </div>	
+		</div>	
+				<div class="row">
+				  <div class="col-lg-12 col-md-12 col-sm-14">
+      
+	
 				  <div class="text-right">
                       <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '$time.csv')">Export</button>
                       <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
                   </div>
-        <div class="row">
-          <div class="col-md-12">
+              </div>
+			  </div>
+		<div class="row">	  
+         <div class="col-lg-12 col-md-12 col-sm-14"> 
             <div class="card">
              <div class="card-body">
 			  <table class="table" id="tableList" >
@@ -343,8 +407,9 @@ include('auth_session.php');
                 
               </div>
             </div>
-          </div>
-      
+          </div>   
+      </div>
+	
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -367,7 +432,14 @@ include('auth_session.php');
       </footer>
     </div>
   </div>
+ 
+	
+ 
+
+
   <!--   Core JS Files   -->
+  
+  
   <script>
 
 
