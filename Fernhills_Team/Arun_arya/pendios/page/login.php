@@ -49,7 +49,6 @@
         <input type="text" class="login-input" name="mobilenumber" placeholder="Mobile Number" autofocus="true"/>
         <input type="password" class="login-input" name="password" placeholder="Password"/>
         <input type="submit" value="Login" name="submit" class="login-button"/>
-        <p class="link"><a href="registration.php">New Registration</a></p>
   </form>
 <?php
     }

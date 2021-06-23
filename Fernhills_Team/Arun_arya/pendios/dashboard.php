@@ -2,10 +2,14 @@
 =========================================================
 * Paper Dashboard 2 - v2.0.1
 =========================================================
+
 * Product Page: https://www.creative-tim.com/product/paper-dashboard-2
 * Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
 Coded by www.creative-tim.com
+
  =========================================================
+
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
@@ -19,13 +23,12 @@ include('auth_session.php');
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  
   <title>
-    Pendios
+   Pendios
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
@@ -33,8 +36,6 @@ include('auth_session.php');
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 
 <body class="">
@@ -56,14 +57,14 @@ include('auth_session.php');
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-           <li >
-            <a href="./dashboard.php">
-              <i class="fas fa-home"></i>
+           <li class="active ">
+		  <a href="./dashboard.php">
+          <i class="fas fa-home"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./configuration.php">
+            <a href="./config.php">
               <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
@@ -75,7 +76,7 @@ include('auth_session.php');
               <p>Fault-Logs</p>
             </a>
           </li>
-          <li class="active ">
+          <li >
             <a href="./devicehistory.php">
               <i class="fas fa-history"></i>
               <p>Device-History</p>
@@ -122,7 +123,7 @@ include('auth_session.php');
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -131,26 +132,35 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
-            </div>
-            <a class="navbar-brand" href="javascript:;">History
-</a>
-          </div>
+              </div>
+            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+		   </div>	
+			  
+    <?php
+			
+			  require('db.php');
+    
+			 //****************** to display user id and user name**************************
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+               $result = mysqli_query($con, $query) or die(mysql_error());
+               
+			 while($row = mysqli_fetch_row($result)){
+			 
+    ?>
+		 
+		  <div class="text-center" >
+		
+			 <p><?= $row[1] ?></p>
+			 <p>Device_ID :</p>
+			 <p><?= $row[2] ?></p>
+ 	      </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+            
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="javascript:;">
@@ -186,28 +196,21 @@ include('auth_session.php');
         </div>
       </nav>
       <!-- End Navbar -->
-	  <?php
-
-				  $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
-               $result = mysqli_query($con, $query) or die(mysql_error());
-              
-			 while($row = mysqli_fetch_row($result)){
-				  
-
-						 $query =    "SELECT * FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 " ;     
-						 $result= mysqli_query($con, $query);
-						 $row = mysqli_fetch_row($result);
-						 
-							  if(mysqli_num_rows($result)==1){
-								  
-
-								  ?>
 	   <div class="content">
         <div class="row">
 	   <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="card card-stats">
               <div class="card-body ">
-			          <?php 
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                    <div class="icon-big text-center icon-warning">
+                       <i> <img src="icons/voltage.png"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Voltage</p>
+		        <?php 
 	// *************to display Device status********************
 			               $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
 							  $result = mysqli_query($con, $query) or die(mysql_error());
@@ -219,15 +222,6 @@ include('auth_session.php');
 			
 	                       while($row = mysqli_fetch_row($result)){
 		         ?>
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                       <i> <img src="icons/voltage.png"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Voltage</p>
                     <p class="card-title"><?= $row[3] ?> V <small>AC</small><p>
 					  <p class="card-title"><?= $row[6] ?> V <small>DC</small><p>
                     </div>
@@ -297,11 +291,13 @@ include('auth_session.php');
               </div>
             </div>
           </div>
-		  </div>
+		  
 		   <?php
-						   }  }
+						   } }  }
 			    ?>
-					<div class="row">  
+			
+
+	  
 	<div class="col">
 	  <div class="card">
               <div class="card-header">
@@ -310,23 +306,17 @@ include('auth_session.php');
               <div class="card-body">
                 <div class="row">
                  <?php
- 
-   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
-               
-                  $result = mysqli_query($con, $query) or die(mysql_error());
-               	
-			 while($row = mysqli_fetch_row($result)){
-				 //********* to update Device status depending up on Sl_no increase*********
-                         $query ="SELECT * FROM `indicator` WHERE `user_id` = '".$row[0]."' order by `Sl_no` DESC limit 1 ";
-                         $result = mysqli_query($con, $query) or die(mysql_error());
+   require('db.php');
+   $query ="SELECT * FROM `indicator` WHERE `Sl_no`=6";
+                 $result = mysqli_query($con, $query) or die(mysql_error());
                
 			     while($row = mysqli_fetch_row($result)){
 					 
-                    $short  =$row[2];
-					$shutdown=$row[3];
-					$overload=$row[4];
-					$tamper=$row[5];
-					$health=$row[6];
+                    $short  =$row[0];
+					$shutdown=$row[1];
+					$overload=$row[2];
+					$tamper=$row[3];
+					$health=$row[4];
 		 
 ?>				
 				 <div class="col-lg col-md-6 col-6 ml-auto text-center">
@@ -353,7 +343,7 @@ include('auth_session.php');
 				
  
 <?php                  
-			 } }
+}
 
 ?>	
 			  
@@ -362,98 +352,91 @@ include('auth_session.php');
                   </div>
               </div>
             </div>	
-		</div>	
-				<div class="row">
-				  <div class="col-lg-12 col-md-12 col-sm-14">
-      
-	
-				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '$time.csv')">Export</button>
-                      <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
-                  </div>
+			
+		 
+		  <div class="col-lg-12 col-md-14 col-sm-10">
+            <div class="card ">
+              <div class="card-header ">
+                <h5 class="card-title">Voltage VS Time</h5>
+                <p class="card-category">Bar Chart</p>
               </div>
-			  </div>
-		<div class="row">	  
-         <div class="col-lg-12 col-md-12 col-sm-14"> 
-            <div class="card">
-             <div class="card-body">
-			  <table class="table" id="tableList" >
-                    <thead class=" text-primary">
-                      <th>Sl_no</th>
-                      <th>AC Voltage</th>
-                      <th>AC Current</th>
-                      <th>AC Power</th>
-					  <th>DC Voltage</th>
-                      <th>DC Current</th>
-                      <th>DC Power</th>
-                      <th>Time Stamp</th>
-                    </thead>
-                    <tbody>
-                        <?php
-						 require('db.php');
-				 $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+			  
+              <div class="card-body ">
+
+			  <canvas id="myChart" width="400" height="auto"></canvas>
+	    <?php
+	             $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                  $result = mysqli_query($con, $query) or die(mysql_error());
                
-			     while($row = mysqli_fetch_row($result)){		 
-						 
-                $query ="SELECT * FROM `voltmeter` WHERE `user_id`='".$row[0]."'";
+			     while($row = mysqli_fetch_row($result)){
+			 
+
+                $query ="SELECT `ac_v`,`dc_v`,`c_t` FROM `voltmeter` WHERE `user_id`='".$row[0]."'";
                 $result = mysqli_query($con, $query) or die(mysql_error());
-  				if(mysqli_num_rows($result) >0){
-  					foreach($result as $row) {
-  							?>
-  							<tr>
-  								<td align="center"><?=$row['Sl_no']; ?></td>
-  								<td align="center"><?=$row['ac_v']; ?></td>
-  								<td align="center"><?=$row['ac_c']; ?></td>
-  								<td align="center"><?=$row['ac_p']; ?></td>
-  								<td align="center"><?=$row['dc_v']; ?></td>
-  								<td align="center"><?=$row['dc_c']; ?></td>
-  								<td align="center"><?=$row['dc_p']; ?></td>
-  								<td align="center"><?=$row['c_t']; ?></td>
-  							</tr>
-  							<?php
-  					}
-  				}
-  				else{
-  					?>
-  					<tr>
-  						<td colspan="6">No Record Found</td>
-  					</tr>
-  					<?php
-
-  				}
-				 }
-            ?>
-                    </tbody>
-                  </table>
-                
-              </div>
-            </div>
-          </div>   
-      </div>
-	  					  
-				<?php	  
-					  }else{		 
-				  ?>	
+			    $data = array();
 				
-			  <div class="content">
-                     
-					  <div class="text-center">
-                       <h1>No data </h1>
-					  </div>
-			       
-				 </div> 
-		
-			<?php
-			 			 
 			
-				}
-					
-				 }
-			// closing connection
-                mysqli_close($con); 	
-    ?>
+			    foreach($result as $value){
+			           $data[] = $value;
+			   }
+			 
+		?>
+			   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.1/dist/chart.min.js"></script>
 
+			    <script >
+            
+					
+				 var data = <?php echo json_encode($data); ?>;
+				 console.log(data); 
+                 var ac_v =[];
+				 var dc_v =[];
+				 var c_t  = [];
+				 
+				 for(var i in data){
+					ac_v .push( data[i].ac_v);
+					dc_v .push( data[i].dc_v);
+					 c_t.push(data[i].c_t);   
+						 
+				 }
+				 
+				 var datas={
+					 labels:c_t,
+					 datasets:[{
+						  
+						 label:'AC Voltage',
+						 backgroundColor:'#FF8C00',
+						 borderColor:'red',
+						 data:ac_v
+					 },
+					 {
+						  
+						 label:'DC Voltage',
+						 backgroundColor:'#FFD700',
+						 borderColor:'red',
+						 data:dc_v
+					 }]
+				 }
+				 
+			    var ctx =document.getElementById("myChart");
+				
+				var graph ={
+					 type:'bar',
+					 data:datas
+					}
+				 
+			              var bargraph = new Chart(ctx,graph);
+				           console.log(bargraph);
+                        </script>
+			   
+                  <?php			   
+			           }  
+                        
+		          ?>			   
+               </div>
+			</div> 
+           </div>	
+          </div>
+				
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -475,7 +458,7 @@ include('auth_session.php');
         </div>
       </footer>
     </div>
-  </div>
+ 
  
 	
  
@@ -483,55 +466,7 @@ include('auth_session.php');
 
   <!--   Core JS Files   -->
   
-  
-  <script>
 
-
-    function downloadCSV(csv, filename) {
-    var csvFile;
-    var downloadLink;
-
-    // CSV file
-    csvFile = new Blob([csv], {type: "text/csv"});
-
-    // Download link
-    downloadLink = document.createElement("a");
-
-    // File name
-    downloadLink.download = filename;
-
-    // Create a link to the file
-    downloadLink.href = window.URL.createObjectURL(csvFile);
-
-    // Hide download link
-    downloadLink.style.display = "none";
-
-    // Add the link to DOM
-    document.body.appendChild(downloadLink);
-
-    // Click download link
-    downloadLink.click();
-  }
-  
-function exportTableToCSV(filename) {
-    var csv = [];
-    var rows = document.querySelectorAll("table tr");
-    
-    for (var i = 0; i < rows.length; i++) {
-        var row = [], cols = rows[i].querySelectorAll("td, th");
-        
-        for (var j = 0; j < cols.length; j++) 
-            row.push(cols[j].innerText);
-        
-        csv.push(row.join(","));        
-    }
-
-    // Download CSV file
-    downloadCSV(csv.join("\n"), filename);
-}
-
-
-     </script>
  
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
