@@ -35,6 +35,26 @@ include('auth_session.php');
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  	  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	
+						
+				<style>
+    	
+     button{
+            background-color: #c80e13;
+     		color: white;
+			border:none;
+            font-family: Helvetica;
+     		font-size: 16px;
+     		border-radius: 12px;
+		}
+
+     button.foo { 
+            background-color: #1c9517; 
+        }
+
+
+</style>		
 </head>
 
 <body class="">
@@ -121,7 +141,7 @@ include('auth_session.php');
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -185,20 +205,40 @@ include('auth_session.php');
       </nav>
       <!-- End Navbar -->
       <div class="content">
-        
+	     
+        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
+               <script>
+			   
+			   $(document).ready(function () {
+                       $("button").click(function () {
+						   console.log("hello");
+                         $(this).toggleClass('foo');
+                        var ele = $(this).attr('id');
+                        if ($(this).css("background-color") == "rgb(200, 14, 19)" ) {
+                             	update0(ele);
+
+                           } 
+                         if($(this).css("background-color") == "rgb(28, 149, 23)"){
+       		                   update1(ele);
+                          }
+
+
+                      });
+                  });
+				  
+			</script>
           <div class="col-md-12">
             <div class="card ">
              
 			  
               <div class="card-body">
-		
-             
-                      <button type="submit" class="btn btn-primary btn-round" >Send SMS On Demand</button>
-                      <button type="submit" class="btn btn-primary btn-round" >Update Server On Demand</button>
-					
-					  <button type="submit" class="btn btn-primary btn-round" >Authorize Access</button>
-                      <button type="submit" class="btn btn-primary btn-round" >ShutDown</button>
-               
+		 <div class="btn-class">
+                      <button  id="btn1" >Send SMS On Demand</button>
+                      <button  id="btn2" >Update Server On Demand</button>
+					  <button  id="btn3" >Authorize Access</button>
+                      <button  id="btn4" >ShutDown</button>
+			</div>
+          
 				  </div> 
               </div>
             </div>
@@ -216,6 +256,8 @@ include('auth_session.php');
               </ul>
             </nav>
             <div class="credits ml-auto">
+
+
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
@@ -228,6 +270,98 @@ include('auth_session.php');
     </div>
   </div>
   <!--   Core JS Files   -->
+  		
+			 <script>
+  function setcolor(ch,data){
+switch(ch){
+case 1:
+
+    if(data==1){
+      $('#btn1').toggleClass('foo');
+    }
+    break;
+
+case 2:
+
+    if(data==1){
+      $('#btn2').toggleClass('foo');
+    }
+    
+    break;
+
+case 3:
+
+    if(data==1){
+     $('#btn3').toggleClass('foo');
+    }
+    
+    break;
+
+ case 4:
+
+    if(data==1){
+      $('#btn4').toggleClass('foo');
+    }
+   
+    break;
+
+ 
+}
+}
+ </script>
+ 
+ <script>
+ function disp(){
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+   setcolor(1,myObj[0]);
+   setcolor(2,myObj[1]);
+   setcolor(3,myObj[2]);
+   setcolor(4,myObj[3]);
+ 
+  }
+};
+xmlhttp.open("GET", "actionvalue.php", true);
+xmlhttp.send();
+
+}
+
+disp();
+
+
+ </script>
+
+ <script>
+ 	function update1(ele) {
+ 		$.ajax({
+            url: "update1.php",
+            type: "POST",
+            data: {'colname': ele },                   
+            success: function(data)
+                        {
+                           alert(data)                                   
+                        }
+        });
+ 		
+ 	}
+ </script>
+
+<script>
+	function update0(ele) {
+ 		$.ajax({
+            url: "update0.php",
+            type: "POST",
+            data: {'colname': ele },                   
+            success: function(data)
+                        {
+                                                            
+                        }
+        });
+ 		
+ 	}
+</script>
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
