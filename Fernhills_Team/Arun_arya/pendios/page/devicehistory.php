@@ -132,8 +132,7 @@ include('auth_session.php');
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">History
-</a>
+            <a class="navbar-brand" href="javascript:;">History</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -365,10 +364,12 @@ include('auth_session.php');
 		</div>	
 				<div class="row">
 				  <div class="col-lg-12 col-md-12 col-sm-14">
-      
+	<?php			  
+      $current_date = date('Y-m-d');
+	  ?>
 	
 				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '$time.csv')">Export</button>
+                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')">Export</button>
                       <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
                   </div>
               </div>
@@ -377,7 +378,8 @@ include('auth_session.php');
          <div class="col-lg-12 col-md-12 col-sm-14"> 
             <div class="card">
              <div class="card-body">
-			  <table class="table" id="tableList" >
+			  <div class="table-responsive-md">
+			  <table class="table  table-hover w-auto" id="tableList" >
                     <thead class=" text-primary">
                       <th>Sl_no</th>
                       <th>AC Voltage</th>
@@ -426,7 +428,7 @@ include('auth_session.php');
             ?>
                     </tbody>
                   </table>
-                
+                </div>
               </div>
             </div>
           </div>   
@@ -534,12 +536,12 @@ function exportTableToCSV(filename) {
      </script>
  
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.jqueryui.min.js"></script>
-   <script>
+ <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script> 
+ <script>
     $(document).ready(function(){
     $('#tableList').DataTable();
-	console.log("hello");
+
          });
 	function PrintTable() {
        var tab = document.getElementById('tableList');
