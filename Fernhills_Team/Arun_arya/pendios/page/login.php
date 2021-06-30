@@ -1,34 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>
-    Pendios
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-<?php
-    require('db.php');
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Pendios</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<!-- <div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Pendios</h2>
+				</div>
+			</div> -->
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(images/bg-1.png);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Welcome To User LogIn</h3>
+			      		</div>
+								<!-- <div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+									</p>
+								</div> -->
+			      	</div>
+			      	<?php
+   
     session_start();
+	 require('db.php');
     // When form submitted, check and create user session.
-    if (isset($_POST['submit1'])) {
+    if (isset($_POST['submit'])) {
         $mobilenumber = stripslashes($_REQUEST['mobilenumber']);    // removes backslashes
         $mobilenumber = mysqli_real_escape_string($con, $mobilenumber);
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `users` WHERE mobilenumber ='$mobilenumber'
-                     AND password='" . md5($password) . "'";
+        $query    = "SELECT * FROM `users` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
@@ -42,25 +62,57 @@
                   </div>";
         }
     } else {
-
+		
 ?>
-    <form class="form" method="post" name="login">
+							<form  method="post" name="login" class="signin-form">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Mobile Number</label>
+			      			<input type="text" class="form-control" name="mobilenumber" placeholder="Mobile Number" autofocus="true" required>
+			      		</div>
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" name="password" placeholder="Password" required>
+		            </div>
+		            <div class="form-group">
+		            	<button type="submit" value="Login" name="submit" class="form-control btn btn-primary rounded submit px-3">Log In</button>
+		            </div>
+					
+				    <div class="row">
+                          <div class="col">
+						  
+                             <a href="#"  data-target="#pwdModal" data-toggle="modal">Forgot password ?</a>
+                          </div>
+                          <div class="col">
+                               <p class="text-right">Log In as Admin!<a href="admin.php">&nbsp;Login</a></p>
+                           </div>
+                     </div>
+				   <div class="form-group d-md-flex">
+		            	<!-- <div class="w-50 text-left">
+			            	<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+										</label>
+									</div> -->
+									<!-- <div class="w-50 text-md-right">
+										<a href="#">Forgot Password</a>
+									</div> -->
+		            </div>
+		          </form>
+		
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
  
-        <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="mobilenumber" placeholder="Mobile Number" autofocus="true"/>
-        <input type="password" class="login-input" name="password" placeholder="Password"/>
-		 
-        <input type="submit" value="Login" name="submit1" class="login-button"/><br></br>
-		<a href="#" data-target="#pwdModal" data-toggle="modal">Forgot password ?</a>
-  </form>
- 
- 
-
-
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 <?php
-	}
-  
-   // When form submitted, check and create user session.
+    }
+	  // When form submit Reset Password
    if (isset($_POST['submit2'])) {
 		$mobilenumber = stripslashes($_REQUEST['mobilenumber']);    // removes backslashes
         $mobilenumber = mysqli_real_escape_string($con, $mobilenumber);
@@ -89,27 +141,33 @@
                 <div class="panel panel-default">
 				
                     <div class="panel-body">
-                        <div class="text-center">
-                          
+                     
+                     <div class="text-center">     
                           <p>If you have forgotten your password you can reset it here.</p>
+						  </div>
                             <div class="panel-body">
 							   <form action="" method="post">
-                                <fieldset>
+                               
 								    <div class="form-group">
                                        <input class="form-control input-lg" placeholder="mobilenumber" name="mobilenumber" type="text">
                                     </div>
                                     <div class="form-group">
+									
                                         <input class="form-control input-lg"  id ="newPwd" placeholder="New Password" name="newpwd" type="password">
-                                    </div>
+								    
+									</div>
 									<div class="form-group">
-                                        <input class="form-control input-lg"   id ="confirmPwd" placeholder="Confirm password" name="confirmpwd" type="password">
-                                    </div>
+                                        <input class="form-control"   id ="confirmPwd" placeholder="Confirm password" name="confirmpwd" type="password">
+									  <input type="checkbox" onclick="myFunction('confirmPwd', 'newPwd')" >Show Password
+		                            </div>
                                     <input class="btn  btn-primary btn-block" id= "btnSubmit" value=" Reset Password" type="submit" name="submit2">
-                                </fieldset>
-								 </form>
+								<div class="mb-3">
+  
+
+	                   	 </form>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
       </div>
@@ -134,12 +192,25 @@
             return true;
         });
     });
+	
+         
+			 function myFunction(id1,id2) {
+  var x = document.getElementById(id1);
+  var y = document.getElementById(id2);
+  if (x.type === "password" || y.type === "password" ) {
+    x.type = "text";
+	y.type = "text";
+  } else {
+    x.type = "password";
+	 y.type = "password";
+  }
+}
 </script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- 
-    
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  <script src="bootstrap-4.0.0/dist/js/bootstrap.js"></script>
  <script src="../assets/js/core/bootstrap.min.js"></script>
-</body>
+ 
+ 
+ </body>
 </html>
+
