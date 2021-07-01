@@ -1,0 +1,100 @@
+/*
+ * main_b2b.c
+ *
+ *  Created on: Nov 5, 2020
+ *      Author: Admin
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_ints.h"
+#include "inc/hw_memmap.h"
+#include "driverlib/debug.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/rom.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/uart.h"
+#include "utils/uartstdio.h"
+#include "utils/uartstdio.c"
+
+#include "inc/RS_232.h"
+#include "inc/dbg.h"
+#include "inc/bicolor.h"
+
+//****************************************************************************
+//
+// System clock rate in Hz.
+//
+//****************************************************************************
+uint32_t g_ui32SysClock;
+
+//*****************************************************************************
+//
+// The error routine that is called if the driver library encounters an error.
+//
+//*****************************************************************************
+#ifdef DEBUG
+void
+__error__(char *pcFilename, uint32_t ui32Line)
+{
+}
+#endif
+
+uint8_t u8_ctrl_bit = 'c';
+int
+main(void)
+{
+
+    //
+    // Set the clocking to run directly from the crystal at 120MHz.
+    //
+   SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |SYSCTL_OSC_MAIN |SYSCTL_USE_PLL  |SYSCTL_CFG_VCO_480), 120000000);
+   bicolor_init();
+   rs232_init(3);
+   dbg_printf("B2B COMM\n");
+    //
+    // Prompt for text to be entered.
+    //
+    //UARTprintf("**** HELLO WORLD UART2 ####\n");
+    //dbg_printf("Debug printf working UART2\n");
+
+    while(1)
+    {
+    if(u8_ctrl_bit == 'c')
+    {
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4,GPIO_PIN_4);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5,GPIO_PIN_5);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_6,GPIO_PIN_6);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_7,GPIO_PIN_7);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_0,GPIO_PIN_0);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1,GPIO_PIN_1);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_2,GPIO_PIN_2);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_3,GPIO_PIN_3);
+        SysCtlDelay(8000000);
+
+
+                       u8_ctrl_bit =0;
+                       dbg_printf("c");
+    }
+    else
+    {
+
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4,0);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_5,0);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_6,0);
+        GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_7,0);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_0,0);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1,0);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_2,0);
+        GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_3,0);
+        SysCtlDelay(8000000);
+    }
+    u8_ctrl_bit= MAP_UARTCharGetNonBlocking(UART0_BASE);
+}
+
+}
+
+
