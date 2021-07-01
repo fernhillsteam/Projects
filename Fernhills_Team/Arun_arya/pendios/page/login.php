@@ -48,7 +48,7 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `users` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
+        $query    = "SELECT * FROM `usersp` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
@@ -119,7 +119,7 @@
         $newpwd = stripslashes($_REQUEST['newpwd']);
         $newpwd = mysqli_real_escape_string($con, $newpwd);
 	  
-	    $query  =	"update `users` set `password` = '" . md5($newpwd) . "'  where `mobilenumber` = '$mobilenumber'";
+	    $query  =	"update `usersp` set `password` = '" . md5($newpwd) . "'  where `mobilenumber` = '$mobilenumber'";
 		$result   = mysqli_query($con, $query);
 
 	
