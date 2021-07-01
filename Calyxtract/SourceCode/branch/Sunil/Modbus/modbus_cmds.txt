@@ -1,0 +1,3 @@
+{"dir": "fwd", "frq": "5000", "encoder": "On"}
+{"dir": "rev", "frq": "5000", "encoder": "On"}
+{"dir": "stp", "frq": "5000", "encoder": "On"}
