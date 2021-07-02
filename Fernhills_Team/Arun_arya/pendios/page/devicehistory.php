@@ -90,7 +90,7 @@ include('auth_session.php');
 			  require('db.php');
     
 			 //****************** to display user id and user name**************************
-			   $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                $result = mysqli_query($con, $query) or die(mysql_error());
                
 			 while($row = mysqli_fetch_row($result)){
@@ -98,7 +98,7 @@ include('auth_session.php');
 	// *************to display Time********************
    
 	
-			               $query =    "SELECT `c_t` FROM `voltmeterp` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
 			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
                            $result = mysqli_query($con, $query) or die(mysql_error());
 			
@@ -140,7 +140,7 @@ include('auth_session.php');
 			  require('db.php');
 
 			 //****************** to display user id and user name**************************
-			   $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                $result = mysqli_query($con, $query) or die(mysql_error());
 
 			 while($row = mysqli_fetch_row($result)){
@@ -185,13 +185,13 @@ include('auth_session.php');
       <!-- End Navbar -->
 	  <?php
 
-				  $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+				  $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                $result = mysqli_query($con, $query) or die(mysql_error());
               
 			 while($row = mysqli_fetch_row($result)){
 				  
 
-						 $query =    "SELECT * FROM `voltmeterp` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 " ;     
+						 $query =    "SELECT * FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 " ;     
 						 $result= mysqli_query($con, $query);
 						 $row = mysqli_fetch_row($result);
 						 
@@ -206,11 +206,11 @@ include('auth_session.php');
               <div class="card-body ">
 			          <?php 
 	// *************to display Device status********************
-			               $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+			               $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
 							  $result = mysqli_query($con, $query) or die(mysql_error());
 			
 	                       while($row = mysqli_fetch_row($result)){
-			               $query =    "SELECT * FROM `voltmeterp` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			               $query =    "SELECT * FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
 			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
                            $result = mysqli_query($con, $query) or die(mysql_error());
 			
@@ -308,7 +308,7 @@ include('auth_session.php');
                 <div class="row">
                  <?php
  
-   $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                
                   $result = mysqli_query($con, $query) or die(mysql_error());
                	
@@ -391,12 +391,12 @@ include('auth_session.php');
                     <tbody>
                         <?php
 						 require('db.php');
-				 $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+				 $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                  $result = mysqli_query($con, $query) or die(mysql_error());
                
 			     while($row = mysqli_fetch_row($result)){		 
 						 
-                $query ="SELECT * FROM `voltmeterp` WHERE `user_id`='".$row[0]."'";
+                $query ="SELECT * FROM `voltmeter` WHERE `user_id`='".$row[0]."'";
                 $result = mysqli_query($con, $query) or die(mysql_error());
   				if(mysqli_num_rows($result) >0){
   					foreach($result as $row) {
@@ -439,7 +439,7 @@ include('auth_session.php');
 			  <div class="content">
                      
 					  <div class="text-center">
-                       <h1>No Data Available</h1>
+                       <h1>No data </h1>
 					  </div>
 			       
 				 </div> 
