@@ -48,7 +48,7 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `users` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
+        $query    = "SELECT * FROM `usersp` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
@@ -110,20 +110,6 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
-<<<<<<< HEAD
-=======
-<?php
-    }
-	  // When form submit Reset Password
-   if (isset($_POST['submit2'])) {
-		$mobilenumber = stripslashes($_REQUEST['mobilenumber']);    // removes backslashes
-        $mobilenumber = mysqli_real_escape_string($con, $mobilenumber);
-        $newpwd = stripslashes($_REQUEST['newpwd']);
-        $newpwd = mysqli_real_escape_string($con, $newpwd);
-	  
-	    $query  =	"update `users` set `password` = '" . md5($newpwd) . "'  where `mobilenumber` = '$mobilenumber'";
-		$result   = mysqli_query($con, $query);
->>>>>>> 26666ee2d628593e4ed0fb8986538b33f5a97cf9
 
 
 <?php	  
