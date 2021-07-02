@@ -439,7 +439,7 @@ include('auth_session.php');
 			  <div class="content">
                      
 					  <div class="text-center">
-                       <h1>No Data Available</h1>
+                       <h1>No data </h1>
 					  </div>
 			       
 				 </div> 
