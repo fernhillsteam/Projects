@@ -48,7 +48,7 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `users` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
+        $query    = "SELECT * FROM `usersp` WHERE mobilenumber ='$mobilenumber' AND password='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
@@ -61,8 +61,7 @@
                   <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
                   </div>";
         }
-    } else {
-		
+    }else{
 ?>
 							<form  method="post" name="login" class="signin-form">
 			      		<div class="form-group mb-3">
@@ -80,7 +79,8 @@
 				    <div class="row">
                           <div class="col">
 						  
-                             <a href="#"  data-target="#pwdModal" data-toggle="modal">Forgot password ?</a>
+                             <a href="#"  data-target="#pwdModal" data-toggle="modal" >Forgot password ?</a>
+							
                           </div>
                           <div class="col">
                                <p class="text-right">Log In as Admin!<a href="admin.php">&nbsp;Login</a></p>
@@ -110,22 +110,16 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
-<?php
-    }
-	  // When form submit Reset Password
-   if (isset($_POST['submit2'])) {
-		$mobilenumber = stripslashes($_REQUEST['mobilenumber']);    // removes backslashes
-        $mobilenumber = mysqli_real_escape_string($con, $mobilenumber);
-        $newpwd = stripslashes($_REQUEST['newpwd']);
-        $newpwd = mysqli_real_escape_string($con, $newpwd);
-	  
-	    $query  =	"update `users` set `password` = '" . md5($newpwd) . "'  where `mobilenumber` = '$mobilenumber'";
-		$result   = mysqli_query($con, $query);
 
-	
+
+<?php	  
 	}
 
+ 
 ?>
+
+     
+
 	<!-- forgot password--->
     <div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
@@ -134,13 +128,14 @@
 	 <h3 class="modal-title w-100">Reset Password</h3>
 	   <h3 ></h3>
           
- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">×</button>
       </div>
       <div class="modal-body">
           <div class="col-md-12">
                 <div class="panel panel-default">
 				
                     <div class="panel-body">
+                 
                      
                      <div class="text-center">     
                           <p>If you have forgotten your password you can reset it here.</p>
@@ -149,7 +144,7 @@
 							   <form action="" method="post">
                                
 								    <div class="form-group">
-                                       <input class="form-control input-lg" placeholder="mobilenumber" name="mobilenumber" type="text">
+                                       <input class="form-control input-lg" id="user" placeholder="User Name" name="username" type="text">
                                     </div>
                                     <div class="form-group">
 									
@@ -160,12 +155,13 @@
                                         <input class="form-control"   id ="confirmPwd" placeholder="Confirm password" name="confirmpwd" type="password">
 									  <input type="checkbox" onclick="myFunction('confirmPwd', 'newPwd')" >Show Password
 		                            </div>
-                                    <input class="btn  btn-primary btn-block" id= "btnSubmit" value=" Reset Password" type="submit" name="submit2">
-								<div class="mb-3">
-  
-
-	                   	 </form>
-                            </div>
+                                    <input class="btn  btn-primary btn-block" id= "submit" value=" Reset Password" type="button" >
+									
+								 <div class="mb-3 text-center">
+								 <span id="error_message" class="text-danger "></span>  
+                                 <span id="success_message" class="text-success "></span>  
+                	          </form>
+					        </div>
                         </div>
                     
                 </div>
@@ -176,23 +172,53 @@
   </div>
 </div>
 
+
+
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ <script>  
+
+ $(document).ready(function(){  
+      $('#submit').click(function(){  
+           var username = $('#user').val();  
+           var newpwd = $('#newPwd').val();  
+		    var confirmpwd = $('#confirmPwd').val(); 
+		   
+           if(newpwd == '' || confirmpwd == '')  
+           {  
+                $('#error_message').html("All Fields are required");  
+           }  
+           else if(newpwd  != confirmpwd ) 
+           {  
+                  $('#error_message').html("password do not match");                 
+           }
+		   else{
+			   $('#error_message').html('');  
+                $.ajax({  
+                     url:"forgotpwd.php",  
+                     method:"POST",  
+                     data:{username:username, newpwd:newpwd},  
+                     success:function(data){  
+					 $('#success_message').html("success");   
+                          $("form").trigger("reset");  
+                          $('#success_message').fadeIn().html(data);  
+                          setTimeout(function(){  
+                               $('#success_message').fadeOut("Slow");  
+                          }, 2000);  
+                     }  
+                });  
+           }  
+      });  
+ });  
+ $(document).ready(function(){  
+      $('#close').click(function(){
+		   $("form").trigger("reset");
+		   $('#error_message').html('');  
+		  });
+		});  
+ </script> 
 <script type="text/javascript">
-   $(document).ready(function() {
-        $("#btnSubmit").click(function () {
-            var newpassword = $("#newPwd").val();
-            var confirmPassword = $("#confirmPwd").val();
-            if (newpassword != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }else if(newpassword=="" && confirmPassword==""){
-				 alert("Passwords require.");
-				 return false;
-			}
-            return true;
-        });
-    });
-	
+
          
 			 function myFunction(id1,id2) {
   var x = document.getElementById(id1);
@@ -206,6 +232,7 @@
   }
 }
 </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
  <script src="bootstrap-4.0.0/dist/js/bootstrap.js"></script>
  <script src="../assets/js/core/bootstrap.min.js"></script>
