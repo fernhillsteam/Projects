@@ -4,7 +4,7 @@
    require('db.php');
 
 			
-   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+   $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
    $result = mysqli_query($con, $query) or die(mysql_error());
 
 			 while($row = mysqli_fetch_row($result)){
