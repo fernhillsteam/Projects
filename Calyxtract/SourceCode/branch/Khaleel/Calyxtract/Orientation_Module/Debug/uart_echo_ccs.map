@@ -1,29 +1,33 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.4                     
 ******************************************************************************
->> Linked Thu Jul  1 19:11:51 2021
+>> Linked Wed Jul  7 10:00:25 2021
 
 OUTPUT FILE NAME:   <Orientation_Module.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000201
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000f95
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00100000  00000242  000ffdbe  R  X
-  SRAM                  20000000   00040000  00000100  0003ff00  RW X
+  FLASH                 00000000   00100000  000016d8  000fe928  R  X
+  SRAM                  20000000   00040000  0000050c  0003faf4  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000242   00000242    r-x
+00000000    00000000    000016d8   000016d8    r-x
   00000000    00000000    00000200   00000200    r-- .intvecs
-  00000200    00000200    00000042   00000042    r-x .text
-20000000    20000000    00000100   00000000    rw-
-  20000000    20000000    00000100   00000000    rw- .stack
+  00000200    00000200    00001188   00001188    r-x .text
+  00001388    00001388    00000320   00000320    r-- .const
+  000016a8    000016a8    00000030   00000030    r-- .cinit
+20000000    20000000    0000050f   00000000    rw-
+  20000000    20000000    00000405   00000000    rw- .bss
+  20000408    20000408    00000100   00000000    rw- .stack
+  20000508    20000508    00000007   00000000    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -34,24 +38,125 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000200     
                   00000000    00000200     startup_ccs.obj (.intvecs)
 
-.text      0    00000200    00000042     
-                  00000200    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  0000022c    00000006     startup_ccs.obj (.text:ResetISR)
-                  00000232    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000236    00000004                                   : exit.c.obj (.text:abort:abort)
-                  0000023a    00000002     startup_ccs.obj (.text:FaultISR)
-                  0000023c    00000002     startup_ccs.obj (.text:IntDefaultHandler)
-                  0000023e    00000002     startup_ccs.obj (.text:NmiSR)
-                  00000240    00000002     Orientation_main.obj (.text:main)
+.text      0    00000200    00001188     
+                  00000200    00000200     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00000400    0000016c                   : gpio.obj (.text:GPIOPadConfigSet)
+                  0000056c    00000118                   : sysctl.obj (.text:SysCtlClockGet)
+                  00000684    000000a4     encoder.obj (.text:Init_QEI0)
+                  00000728    000000a4     controller.obj (.text:controller)
+                  000007cc    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000868    00000090     sccb.obj (.text:SCCB0_Write_Byte)
+                  000008f8    00000090     ov7725.obj (.text:cam_ov7725_init)
+                  00000988    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  00000a02    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000a04    00000078     hardware.obj (.text:hw_DMA_init)
+                  00000a7c    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000ae4    00000064     RS_232.obj (.text:UART0_init)
+                  00000b48    00000060     Orientation_main.obj (.text:UARTStdioConfig)
+                  00000ba8    0000005c     sccb.obj (.text:SCCB0_Read_Byte)
+                  00000c04    00000050     sccb.obj (.text:SCCB0_Init)
+                  00000c54    00000050     RS_232.obj (.text:UART2_init)
+                  00000ca4    0000004c     driverlib.lib : gpio.obj (.text:GPIOPinConfigure)
+                  00000cf0    0000004c     sccb.obj (.text:SCCB0_No_Ack)
+                  00000d3c    0000004c     sccb.obj (.text:SCCB0_Read_Reg)
+                  00000d88    00000048     driverlib.lib : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  00000dd0    00000048                   : udma.obj (.text:uDMAChannelAttributeDisable)
+                  00000e18    00000046                   : uart.obj (.text:UARTConfigSetExpClk)
+                  00000e5e    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00000e60    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000ea4    00000040     sccb.obj (.text:SCCB0_Start)
+                  00000ee4    00000040     sccb.obj (.text:SCCB0_Write_Reg)
+                  00000f24    0000003c     sccb.obj (.text:SCCB0_Stop)
+                  00000f60    00000034     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00000f94    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000fc8    00000030     hardware.obj (.text:hw_gpio_inout)
+                  00000ff8    0000002c     sccb.obj (.text:Delay_us)
+                  00001024    0000002c     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  00001050    0000002c     ov7725.obj (.text:set_framesize)
+                  0000107c    00000022     hardware.obj (.text:hw_init)
+                  0000109e    00000002     startup_ccs.obj (.text:NmiSR)
+                  000010a0    00000020     driverlib.lib : uart.obj (.text:UARTDisable)
+                  000010c0    00000020                   : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  000010e0    00000020     ov7725.obj (.text:set_gain_ctrl)
+                  00001100    00000020     ov7725.obj (.text:set_pixformat)
+                  00001120    0000001e     RS_232.obj (.text:rs232_init)
+                  0000113e    0000001e     ov7725.obj (.text:set_vflip)
+                  0000115c    0000001a     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  00001176    00000002     --HOLE-- [fill = 0]
+                  00001178    00000018     ov7725.obj (.text:ov7725_pwr_dn)
+                  00001190    00000018     ov7725.obj (.text:ov7725_reset)
+                  000011a8    00000018     ov7725.obj (.text:set_exposure_ctrl)
+                  000011c0    00000018     ov7725.obj (.text:set_hmirror)
+                  000011d8    00000016     driverlib.lib : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  000011ee    00000016                   : gpio.obj (.text:GPIOPinTypeQEI)
+                  00001204    00000016                   : gpio.obj (.text:GPIOPinTypeUART)
+                  0000121a    00000014                   : uart.obj (.text:UARTEnable)
+                  0000122e    00000012     ov7725.obj (.text:set_whitebal)
+                  00001240    00000010     driverlib.lib : qei.obj (.text:QEIVelocityConfigure)
+                  00001250    00000010     pneumatic.obj (.text:channelizer_fwd)
+                  00001260    00000010     pneumatic.obj (.text:channelizer_rev)
+                  00001270    00000010     hardware.obj (.text:hw_clk_config)
+                  00001280    00000010     pneumatic.obj (.text:pod_accept_off)
+                  00001290    00000010     pneumatic.obj (.text:pod_accept_on)
+                  000012a0    00000010     pneumatic.obj (.text:pod_reject_off)
+                  000012b0    00000010     pneumatic.obj (.text:pod_reject_on)
+                  000012c0    00000010     pneumatic.obj (.text:pod_tilter_down)
+                  000012d0    00000010     pneumatic.obj (.text:pod_tilter_up)
+                  000012e0    0000000e     driverlib.lib : qei.obj (.text:QEIConfigure)
+                  000012ee    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  000012fc    0000000c     driverlib.lib : qei.obj (.text:QEIFilterConfigure)
+                  00001308    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  00001314    0000000c     Orientation_main.obj (.text:main)
+                  00001320    0000000c     hardware.obj (.text:wait_up)
+                  0000132c    0000000a     driverlib.lib : qei.obj (.text:QEIDisable)
+                  00001336    0000000a                   : qei.obj (.text:QEIEnable)
+                  00001340    0000000a                   : qei.obj (.text:QEIFilterEnable)
+                  0000134a    0000000a                   : qei.obj (.text:QEIIntDisable)
+                  00001354    0000000a                   : qei.obj (.text:QEIVelocityEnable)
+                  0000135e    00000006                   : gpio.obj (.text:GPIOPinRead)
+                  00001364    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  0000136a    00000006     startup_ccs.obj (.text:ResetISR)
+                  00001370    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  00001376    00000006                   : uart.obj (.text:UARTClockSourceSet)
+                  0000137c    00000004                   : qei.obj (.text:QEIPositionSet)
+                  00001380    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00001384    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    00000000    00000000     UNINITIALIZED
+.const     0    00001388    00000320     
+                  00001388    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  00001538    00000090                   : gpio.obj (.const:g_pui32GPIOBaseAddrs)
+                  000015c8    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  00001634    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00001664    00000024     ov7725.obj (.const:config)
+                  00001688    0000000c     Orientation_main.obj (.const:g_ui32UARTBase)
+                  00001694    0000000c     Orientation_main.obj (.const:g_ui32UARTPeriph)
+                  000016a0    00000008     driverlib.lib : sysctl.obj (.const:g_pui32VCOFrequencies)
+
+.cinit     0    000016a8    00000030     
+                  000016a8    0000000c     (__TI_handler_table)
+                  000016b4    00000004     --HOLE-- [fill = 0]
+                  000016b8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000016c0    00000008     (.cinit..data.load) [load image, compression = lzss]
+                  000016c8    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
-.stack     0    20000000    00000100     UNINITIALIZED
-                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
-                  20000004    000000fc     --HOLE--
+.bss       0    20000000    00000405     UNINITIALIZED
+                  20000000    00000400     hardware.obj (.bss:dma_table)
+                  20000400    00000001     (.common:L_orient)
+                  20000401    00000001     (.common:R_orient)
+                  20000402    00000001     (.common:bad_chilli)
+                  20000403    00000001     (.common:entry_sensor)
+                  20000404    00000001     (.common:good_chilli)
+
+.data      0    20000508    00000007     UNINITIALIZED
+                  20000508    00000005     Orientation_main.obj (.data)
+                  2000050d    00000002     controller.obj (.data)
+
+.stack     0    20000408    00000100     UNINITIALIZED
+                  20000408    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  2000040c    000000fc     --HOLE--
 
 __llvm_prf_cnts 
 *          0    20000000    00000000     UNINITIALIZED
@@ -60,77 +165,293 @@ __llvm_prf_cnts
 
 MODULE SUMMARY
 
-       Module                 code   ro data   rw data
-       ------                 ----   -------   -------
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
     .\
-       startup_ccs.obj        12     512       0      
-       Orientation_main.obj   2      0         0      
-    +--+----------------------+------+---------+---------+
-       Total:                 14     512       0      
-                                                      
+       startup_ccs.obj              12     512       0      
+       Orientation_main.obj         108    24        5      
+    +--+----------------------------+------+---------+---------+
+       Total:                       120    536       5      
+                                                            
+    .\src\
+       hardware.obj                 230    0         1024   
+       sccb.obj                     700    0         0      
+       ov7725.obj                   396    36        0      
+       RS_232.obj                   210    0         0      
+       controller.obj               164    0         7      
+       encoder.obj                  164    0         0      
+       pneumatic.obj                128    0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1992   36        1031   
+                                                            
+    C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj                   954    596       0      
+       gpio.obj                     588    144       0      
+       uart.obj                     128    0         0      
+       qei.obj                      96     0         0      
+       udma.obj                     72     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1838   740       0      
+                                                            
     C:\ti\ccs1031\ccs\tools\compiler\ti-cgt-arm_20.2.4.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
-       boot_cortex_m.c.obj    44     0         0      
-       exit.c.obj             4      0         0      
-       pre_init.c.obj         4      0         0      
-    +--+----------------------+------+---------+---------+
-       Total:                 52     0         0      
-                                                      
-       Stack:                 0      0         256    
-    +--+----------------------+------+---------+---------+
-       Grand Total:           66     512       256    
+       memcpy_t2.asm.obj            156    0         0      
+       memset_t2.asm.obj            122    0         0      
+       copy_decompress_lzss.c.obj   104    0         0      
+       autoinit.c.obj               68     0         0      
+       boot_cortex_m.c.obj          52     0         0      
+       copy_decompress_none.c.obj   14     0         0      
+       copy_zero_init.c.obj         12     0         0      
+       exit.c.obj                   4      0         0      
+       pre_init.c.obj               4      0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       536    0         0      
+                                                            
+       Stack:                       0      0         256    
+       Linker Generated:            0      44        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 4486   1356      1292   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000016c8 records: 2, size/record: 8, table size: 16
+	.bss: load addr=000016b8, load size=00000008 bytes, run addr=20000000, run size=00000405 bytes, compression=zero_init
+	.data: load addr=000016c0, load size=00000008 bytes, run addr=20000508, run size=00000007 bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000016a8 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                   
--------   ----                   
-00000237  C$$EXIT                
-0000022d  ResetISR               
-20000100  __STACK_END            
-00000100  __STACK_SIZE           
-20000100  __STACK_TOP            
-ffffffff  __TI_pprof_out_hndl    
-ffffffff  __TI_prof_data_size    
-ffffffff  __TI_prof_data_start   
-00000000  __TI_static_base__     
-ffffffff  __binit__              
-ffffffff  __c_args__             
-UNDEFED   __mpu_init             
-20000000  __stack                
-20000000  __start___llvm_prf_cnts
-20000000  __stop___llvm_prf_cnts 
-00000201  _c_int00_noinit_noargs 
-00000233  _system_pre_init       
-00000237  abort                  
-ffffffff  binit                  
-00000000  g_pfnVectors           
-00000241  main                   
+address   name                          
+-------   ----                          
+00001385  C$$EXIT                       
+00000ff9  Delay_us                      
+00001025  GPIODirModeSet                
+00000401  GPIOPadConfigSet              
+00000ca5  GPIOPinConfigure              
+0000135f  GPIOPinRead                   
+000011d9  GPIOPinTypeGPIOInput          
+0000115d  GPIOPinTypeGPIOOutput         
+000011ef  GPIOPinTypeQEI                
+00001205  GPIOPinTypeUART               
+00001365  GPIOPinWrite                  
+00000685  Init_QEI0                     
+20000400  L_orient                      
+000012e1  QEIConfigure                  
+0000132d  QEIDisable                    
+00001337  QEIEnable                     
+000012fd  QEIFilterConfigure            
+00001341  QEIFilterEnable               
+0000134b  QEIIntDisable                 
+0000137d  QEIPositionSet                
+00001241  QEIVelocityConfigure          
+00001355  QEIVelocityEnable             
+20000401  R_orient                      
+0000136b  ResetISR                      
+00000c05  SCCB0_Init                    
+00000cf1  SCCB0_No_Ack                  
+00000ba9  SCCB0_Read_Byte               
+00000d3d  SCCB0_Read_Reg                
+00000ea5  SCCB0_Start                   
+00000f25  SCCB0_Stop                    
+00000869  SCCB0_Write_Byte              
+00000ee5  SCCB0_Write_Reg               
+00000201  SysCtlClockFreqSet            
+0000056d  SysCtlClockGet                
+00001371  SysCtlDelay                   
+00000f61  SysCtlPeripheralEnable        
+00000ae5  UART0_init                    
+00000c55  UART2_init                    
+00001377  UARTClockSourceSet            
+00000e19  UARTConfigSetExpClk           
+000010a1  UARTDisable                   
+0000121b  UARTEnable                    
+00000b49  UARTStdioConfig               
+20000508  __STACK_END                   
+00000100  __STACK_SIZE                  
+20000508  __STACK_TOP                   
+000016c8  __TI_CINIT_Base               
+000016d8  __TI_CINIT_Limit              
+000016a8  __TI_Handler_Table_Base       
+000016b4  __TI_Handler_Table_Limit      
+00000e61  __TI_auto_init_nobinit_nopinit
+00000a7d  __TI_decompress_lzss          
+000012ef  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00001309  __TI_zero_init                
+00000989  __aeabi_memclr                
+00000989  __aeabi_memclr4               
+00000989  __aeabi_memclr8               
+000007cd  __aeabi_memcpy                
+000007cd  __aeabi_memcpy4               
+000007cd  __aeabi_memcpy8               
+0000098b  __aeabi_memset                
+0000098b  __aeabi_memset4               
+0000098b  __aeabi_memset8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000408  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+00000f95  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00001381  _system_pre_init              
+00001385  abort                         
+20000402  bad_chilli                    
+ffffffff  binit                         
+000008f9  cam_ov7725_init               
+00001251  channelizer_fwd               
+2000050e  channelizer_pos               
+00001261  channelizer_rev               
+2000050d  chilli_pod_detected           
+00001664  config                        
+00000729  controller                    
+20000403  entry_sensor                  
+00000000  g_pfnVectors                  
+20000404  good_chilli                   
+00000a05  hw_DMA_init                   
+00000c05  hw_I2C_init                   
+00001271  hw_clk_config                 
+00000fc9  hw_gpio_inout                 
+0000107d  hw_init                       
+00001315  main                          
+000007cd  memcpy                        
+00000991  memset                        
+00001179  ov7725_pwr_dn                 
+00001191  ov7725_reset                  
+00001281  pod_accept_off                
+00001291  pod_accept_on                 
+000012a1  pod_reject_off                
+000012b1  pod_reject_on                 
+000012c1  pod_tilter_down               
+000012d1  pod_tilter_up                 
+00001121  rs232_init                    
+00000dd1  uDMAChannelAttributeDisable   
+00001321  wait_up                       
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                   
--------   ----                   
-00000000  __TI_static_base__     
-00000000  g_pfnVectors           
-00000100  __STACK_SIZE           
-00000201  _c_int00_noinit_noargs 
-0000022d  ResetISR               
-00000233  _system_pre_init       
-00000237  C$$EXIT                
-00000237  abort                  
-00000241  main                   
-20000000  __stack                
-20000000  __start___llvm_prf_cnts
-20000000  __stop___llvm_prf_cnts 
-20000100  __STACK_END            
-20000100  __STACK_TOP            
-ffffffff  __TI_pprof_out_hndl    
-ffffffff  __TI_prof_data_size    
-ffffffff  __TI_prof_data_start   
-ffffffff  __binit__              
-ffffffff  __c_args__             
-ffffffff  binit                  
-UNDEFED   __mpu_init             
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000100  __STACK_SIZE                  
+00000201  SysCtlClockFreqSet            
+00000401  GPIOPadConfigSet              
+0000056d  SysCtlClockGet                
+00000685  Init_QEI0                     
+00000729  controller                    
+000007cd  __aeabi_memcpy                
+000007cd  __aeabi_memcpy4               
+000007cd  __aeabi_memcpy8               
+000007cd  memcpy                        
+00000869  SCCB0_Write_Byte              
+000008f9  cam_ov7725_init               
+00000989  __aeabi_memclr                
+00000989  __aeabi_memclr4               
+00000989  __aeabi_memclr8               
+0000098b  __aeabi_memset                
+0000098b  __aeabi_memset4               
+0000098b  __aeabi_memset8               
+00000991  memset                        
+00000a05  hw_DMA_init                   
+00000a7d  __TI_decompress_lzss          
+00000ae5  UART0_init                    
+00000b49  UARTStdioConfig               
+00000ba9  SCCB0_Read_Byte               
+00000c05  SCCB0_Init                    
+00000c05  hw_I2C_init                   
+00000c55  UART2_init                    
+00000ca5  GPIOPinConfigure              
+00000cf1  SCCB0_No_Ack                  
+00000d3d  SCCB0_Read_Reg                
+00000dd1  uDMAChannelAttributeDisable   
+00000e19  UARTConfigSetExpClk           
+00000e61  __TI_auto_init_nobinit_nopinit
+00000ea5  SCCB0_Start                   
+00000ee5  SCCB0_Write_Reg               
+00000f25  SCCB0_Stop                    
+00000f61  SysCtlPeripheralEnable        
+00000f95  _c_int00_noargs               
+00000fc9  hw_gpio_inout                 
+00000ff9  Delay_us                      
+00001025  GPIODirModeSet                
+0000107d  hw_init                       
+000010a1  UARTDisable                   
+00001121  rs232_init                    
+0000115d  GPIOPinTypeGPIOOutput         
+00001179  ov7725_pwr_dn                 
+00001191  ov7725_reset                  
+000011d9  GPIOPinTypeGPIOInput          
+000011ef  GPIOPinTypeQEI                
+00001205  GPIOPinTypeUART               
+0000121b  UARTEnable                    
+00001241  QEIVelocityConfigure          
+00001251  channelizer_fwd               
+00001261  channelizer_rev               
+00001271  hw_clk_config                 
+00001281  pod_accept_off                
+00001291  pod_accept_on                 
+000012a1  pod_reject_off                
+000012b1  pod_reject_on                 
+000012c1  pod_tilter_down               
+000012d1  pod_tilter_up                 
+000012e1  QEIConfigure                  
+000012ef  __TI_decompress_none          
+000012fd  QEIFilterConfigure            
+00001309  __TI_zero_init                
+00001315  main                          
+00001321  wait_up                       
+0000132d  QEIDisable                    
+00001337  QEIEnable                     
+00001341  QEIFilterEnable               
+0000134b  QEIIntDisable                 
+00001355  QEIVelocityEnable             
+0000135f  GPIOPinRead                   
+00001365  GPIOPinWrite                  
+0000136b  ResetISR                      
+00001371  SysCtlDelay                   
+00001377  UARTClockSourceSet            
+0000137d  QEIPositionSet                
+00001381  _system_pre_init              
+00001385  C$$EXIT                       
+00001385  abort                         
+00001664  config                        
+000016a8  __TI_Handler_Table_Base       
+000016b4  __TI_Handler_Table_Limit      
+000016c8  __TI_CINIT_Base               
+000016d8  __TI_CINIT_Limit              
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000400  L_orient                      
+20000401  R_orient                      
+20000402  bad_chilli                    
+20000403  entry_sensor                  
+20000404  good_chilli                   
+20000408  __stack                       
+20000508  __STACK_END                   
+20000508  __STACK_TOP                   
+2000050d  chilli_pod_detected           
+2000050e  channelizer_pos               
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
 
-[21 symbols]
+[108 symbols]

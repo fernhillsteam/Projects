@@ -19,6 +19,7 @@ src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_udma.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_ssi.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/debug.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h
+src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/qei.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/pin_map.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/rom.h
@@ -29,6 +30,7 @@ src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ssi.h
 src/hardware.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h
 src/hardware.obj: D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/hardware.h
 src/hardware.obj: D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/RS_232.h
+src/hardware.obj: D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/encoder.h
 src/hardware.obj: D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/sccb.h
 src/hardware.obj: D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/ov7725.h
 
@@ -70,6 +72,8 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/debug.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h:
 
+C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/qei.h:
+
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/pin_map.h:
@@ -89,6 +93,8 @@ C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h:
 D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/hardware.h:
 
 D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/RS_232.h:
+
+D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/encoder.h:
 
 D:/Imbrute_khaleel/Calyxtract_project/Calyxtract_Module_Workspace/Orientation_Module/inc/sccb.h:
 

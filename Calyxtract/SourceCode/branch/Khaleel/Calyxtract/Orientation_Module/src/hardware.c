@@ -14,6 +14,7 @@
 #include "inc/hw_ssi.h"
 #include "driverlib/debug.h"
 #include "driverlib/gpio.h"
+#include "driverlib/qei.h"
 #include "driverlib/interrupt.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/rom.h"
@@ -25,6 +26,7 @@
 
 #include "inc/hardware.h"
 #include "inc/RS_232.h"
+#include "inc/encoder.h"
 #include "inc/sccb.h"
 #include "inc/ov7725.h"
 
@@ -134,12 +136,16 @@ void hw_init()
 
     #endif
 
+    //encoder init
+     #ifdef encoder
+     Init_QEI0();
+     #endif
+
 }// EOF hw_init
 
 void hw_dma_set_img(uint8_t *p_img)
 {
-    MAP_uDMAChannelTransferSet(UDMA_CH12_GPIOK|UDMA_PRI_SELECT, UDMA_MODE_BASIC,
-                               &HWREG(GPIO_PORTM_BASE + (0x00U + (0xFFU << 2))),
+    MAP_uDMAChannelTransferSet(UDMA_CH12_GPIOK|UDMA_PRI_SELECT, UDMA_MODE_BASIC,&HWREG(GPIO_PORTM_BASE + (0x00U + (0xFFU << 2))),
                                p_img,
                                320*2);
 
@@ -151,4 +157,10 @@ void hw_dma_set_img(uint8_t *p_img)
 uint8_t hw_is_dma_img_complete(void)
 {
     return (MAP_uDMAChannelModeGet(UDMA_CH12_GPIOK) == UDMA_MODE_STOP);
+}
+
+void wait_up()
+{
+    //1 sec of processing delay
+    SysCtlDelay(8000000);
 }

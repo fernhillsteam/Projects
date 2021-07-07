@@ -52,5 +52,6 @@ void hw_I2C_init();
 void hw_init();
 void hw_dma_set_img(uint8_t *p_img);
 uint8_t hw_is_dma_img_complete(void);
+void wait_up();
 
 #endif /* INC_HARDWARE_H_ */
