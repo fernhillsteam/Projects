@@ -83,7 +83,7 @@
 							
                           </div>
                           <div class="col">
-                               <p class="text-right">Log In as Admin!<a href="admin.php">&nbsp;Login</a></p>
+                               <p class="text-right">Log In as Admin!<a href="../adminpage/loginadmin.php">&nbsp;Login</a></p>
                            </div>
                      </div>
 				   <div class="form-group d-md-flex">
@@ -155,13 +155,14 @@
                                         <input class="form-control"   id ="confirmPwd" placeholder="Confirm password" name="confirmpwd" type="password">
 									  <input type="checkbox" onclick="myFunction('confirmPwd', 'newPwd')" >Show Password
 		                            </div>
-                                    <input class="btn  btn-primary btn-block" id= "submit" value=" Reset Password" type="button" >
-									
+                                    <input type="reset" class="btn  btn-primary btn-block" id= "submit" value=" Reset Password" onclick="submit()" >
+								
 								 <div class="mb-3 text-center">
 								 <span id="error_message" class="text-danger "></span>  
                                  <span id="success_message" class="text-success "></span>  
+								 </div>
                 	          </form>
-					        </div>
+					        
                         </div>
                     
                 </div>
@@ -176,40 +177,44 @@
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
- <script>  
+ <script type="text/javascript">
 
  $(document).ready(function(){  
       $('#submit').click(function(){  
            var username = $('#user').val();  
            var newpwd = $('#newPwd').val();  
 		    var confirmpwd = $('#confirmPwd').val(); 
+			
 		   
            if(newpwd == '' || confirmpwd == '')  
            {  
-                $('#error_message').html("All Fields are required");  
+              // $('#error_message').html("All Fields are required");  
+				  alert("All Fields require.");
            }  
            else if(newpwd  != confirmpwd ) 
            {  
-                  $('#error_message').html("password do not match");                 
+               //  $('#error_message').html("password do not match");    
+                    
+                   alert("Passwords do not match.");					
            }
 		   else{
-			   $('#error_message').html('');  
+			  $('#error_message').html('');  
                 $.ajax({  
                      url:"forgotpwd.php",  
                      method:"POST",  
                      data:{username:username, newpwd:newpwd},  
                      success:function(data){  
 					 $('#success_message').html("success");   
-                          $("form").trigger("reset");  
-                          $('#success_message').fadeIn().html(data);  
-                          setTimeout(function(){  
-                               $('#success_message').fadeOut("Slow");  
+                       $("form").trigger("reset");  
+                        $('#success_message').fadeIn().html(data);  
+                       setTimeout(function(){  
+                             $('#success_message').fadeOut("Slow");  
                           }, 2000);  
                      }  
                 });  
            }  
       });  
- });  
+      });
  $(document).ready(function(){  
       $('#close').click(function(){
 		   $("form").trigger("reset");

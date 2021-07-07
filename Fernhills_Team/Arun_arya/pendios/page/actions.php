@@ -115,13 +115,13 @@ include('auth_session.php');
 			  require('db.php');
     
 			 //****************** to display user id and user name**************************
-			   $query ="SELECT * FROM `users` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
+			   $query ="SELECT * FROM `usersp` WHERE `mobilenumber`='".$_SESSION['mobilenumber']."'";
                $result = mysqli_query($con, $query) or die(mysql_error());
                
 			 while($row = mysqli_fetch_row($result)){
 	
 	// *************to display Time********************
-			               $query =    "SELECT `c_t` FROM `voltmeter` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
+			               $query =    "SELECT `c_t` FROM `voltmeterp` WHERE `user_id` = '".$row[0]."' order by `time_stamp` DESC limit 1 ";     
 			            // $query ="SELECT `voltage`,`current`,`power`,`time_stamp` FROM `users_details` WHERE `user_id`='".$row[0]."'";
                            $result = mysqli_query($con, $query) or die(mysql_error());
 			
@@ -206,7 +206,7 @@ include('auth_session.php');
       <!-- End Navbar -->
       <div class="content">
 	     
-        	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
+        	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
                <script>
 			   
 			   $(document).ready(function () {
