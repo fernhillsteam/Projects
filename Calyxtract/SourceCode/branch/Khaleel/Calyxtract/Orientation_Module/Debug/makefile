@@ -16,6 +16,7 @@ ORDERED_OBJS += \
 "./src/bicolor.obj" \
 "./src/controller.obj" \
 "./src/dbg.obj" \
+"./src/encoder.obj" \
 "./src/hardware.obj" \
 "./src/ov7725.obj" \
 "./src/pneumatic.obj" \
@@ -168,8 +169,8 @@ Orientation_Module.bin: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Orientation_main.obj" "startup_ccs.obj" "src\RS_232.obj" "src\bicolor.obj" "src\controller.obj" "src\dbg.obj" "src\hardware.obj" "src\ov7725.obj" "src\pneumatic.obj" "src\sccb.obj" 
-	-$(RM) "Orientation_main.d" "startup_ccs.d" "src\RS_232.d" "src\bicolor.d" "src\controller.d" "src\dbg.d" "src\hardware.d" "src\ov7725.d" "src\pneumatic.d" "src\sccb.d" 
+	-$(RM) "Orientation_main.obj" "startup_ccs.obj" "src\RS_232.obj" "src\bicolor.obj" "src\controller.obj" "src\dbg.obj" "src\encoder.obj" "src\hardware.obj" "src\ov7725.obj" "src\pneumatic.obj" "src\sccb.obj" 
+	-$(RM) "Orientation_main.d" "startup_ccs.d" "src\RS_232.d" "src\bicolor.d" "src\controller.d" "src\dbg.d" "src\encoder.d" "src\hardware.d" "src\ov7725.d" "src\pneumatic.d" "src\sccb.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

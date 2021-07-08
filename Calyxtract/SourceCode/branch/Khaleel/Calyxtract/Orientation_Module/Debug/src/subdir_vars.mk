@@ -10,6 +10,7 @@ C_SRCS += \
 ../src/bicolor.c \
 ../src/controller.c \
 ../src/dbg.c \
+../src/encoder.c \
 ../src/hardware.c \
 ../src/ov7725.c \
 ../src/pneumatic.c \
@@ -20,6 +21,7 @@ C_DEPS += \
 ./src/bicolor.d \
 ./src/controller.d \
 ./src/dbg.d \
+./src/encoder.d \
 ./src/hardware.d \
 ./src/ov7725.d \
 ./src/pneumatic.d \
@@ -30,6 +32,7 @@ OBJS += \
 ./src/bicolor.obj \
 ./src/controller.obj \
 ./src/dbg.obj \
+./src/encoder.obj \
 ./src/hardware.obj \
 ./src/ov7725.obj \
 ./src/pneumatic.obj \
@@ -40,6 +43,7 @@ OBJS__QUOTED += \
 "src\bicolor.obj" \
 "src\controller.obj" \
 "src\dbg.obj" \
+"src\encoder.obj" \
 "src\hardware.obj" \
 "src\ov7725.obj" \
 "src\pneumatic.obj" \
@@ -50,6 +54,7 @@ C_DEPS__QUOTED += \
 "src\bicolor.d" \
 "src\controller.d" \
 "src\dbg.d" \
+"src\encoder.d" \
 "src\hardware.d" \
 "src\ov7725.d" \
 "src\pneumatic.d" \
@@ -60,6 +65,7 @@ C_SRCS__QUOTED += \
 "../src/bicolor.c" \
 "../src/controller.c" \
 "../src/dbg.c" \
+"../src/encoder.c" \
 "../src/hardware.c" \
 "../src/ov7725.c" \
 "../src/pneumatic.c" \

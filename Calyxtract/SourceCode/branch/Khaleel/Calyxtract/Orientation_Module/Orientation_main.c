@@ -10,6 +10,7 @@
 #include "inc/hw_ssi.h"
 #include "driverlib/debug.h"
 #include "driverlib/gpio.h"
+#include "driverlib/qei.h"
 #include "driverlib/interrupt.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/rom.h"
@@ -24,6 +25,7 @@
 
 #include "inc/RS_232.h"
 #include "inc/dbg.h"
+#include "inc/controller.h"
 
 #define NUM_SSI_DATA            4
 
@@ -48,36 +50,15 @@ __error__(char *pcFilename, uint32_t ui32Line)
 }
 #endif
 
-void CE_Set(void)   //Chip Select Enable, PA3
-{
-    //GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_3);
-    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_3, GPIO_PIN_3);
-}
-
-void CE_Clear(void) //Chip Select Disable, PA3
-{
-    //GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_3);
-    GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_3, 0);
-}
 
 int
 main(void)
 {
-
-
-
-   //rs232_init(3);
-   //dbg_printf("Debug printf working UART0\n");
-    //
-    // Prompt for text to be entered.
-    //
-    //UARTprintf("**** HELLO WORLD UART2 ####\n");
-    //dbg_printf("Debug printf working UART2\n");
-
-
+    hw_init();
+    //Orientation process
     while(1)
     {
-        /*Code in a loop*/
+        controller();
     }
 
 }

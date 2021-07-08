@@ -17,6 +17,7 @@ Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_memmap.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_ssi.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/debug.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h
+Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/qei.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/pin_map.h
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/rom.h
@@ -35,6 +36,7 @@ Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.c
 Orientation_main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_uart.h
 Orientation_main.obj: ../inc/RS_232.h
 Orientation_main.obj: ../inc/dbg.h
+Orientation_main.obj: ../inc/controller.h
 
 ../Orientation_main.c:
 
@@ -69,6 +71,8 @@ C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_ssi.h:
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/debug.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/gpio.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/qei.h:
 
 C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/interrupt.h:
 
@@ -105,4 +109,6 @@ C:/ti/TivaWare_C_Series-2.2.0.295/inc/hw_uart.h:
 ../inc/RS_232.h:
 
 ../inc/dbg.h:
+
+../inc/controller.h:
 
