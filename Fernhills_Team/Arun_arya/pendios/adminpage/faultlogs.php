@@ -1,3 +1,4 @@
+
  <?php global $a;
 				  
       $current_date = date('Y-m-d');
@@ -7,45 +8,38 @@
 				  <div class="col-lg-12 col-md-12 col-sm-14">
 			     
 				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')">Export</button>
-                      <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
+                      <input type="submit" class="btn btn-primary btn-round" id="export" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')" value="Export">
+                      <input type="submit" class="btn btn-primary btn-round"  id = "print" onclick="PrintTable()" value="Print">
                   </div>
               </div>
 			  </div>
 	   <div class="row">	  
          <div class="col-lg-12 col-md-12 col-sm-14"> 
             <div class="card">
+			<div class="card-header">
+            <h3 class="card-title text-center">Fault Log</h3>
+              </div>
              <div class="card-body">
 			  <div class="table-responsive-md">
 			  <table class="table  table-hover " id="tableList" >
                     <thead class=" text-primary text-center">
                       <th>Sl_no</th>
-                      <th>AC Voltage</th>
-                      <th>AC Current</th>
-                      <th>AC Power</th>
-					  <th>DC Voltage</th>
-                      <th>DC Current</th>
-                      <th>DC Power</th>
-                      <th>Time Stamp</th>
+                      <th>Fault Logs</th>
+                      <th>Time</th>
                     </thead>
                     <tbody>
                         <?php
 				 
 						 
-                $query ="SELECT * FROM `voltmeterp` WHERE `user_id`='".$a."'";
+                $query ="SELECT * FROM `fault_logs` WHERE `user_id`='".$a."'";
                 $result = mysqli_query($con, $query) or die(mysql_error());
   				if(mysqli_num_rows($result) >0){
   					foreach($result as $row) {
   							?>
   							<tr>
-  								<td align="center"><?=$row['Sl_no']; ?></td>
-  								<td align="center"><?=$row['ac_v']; ?></td>
-  								<td align="center"><?=$row['ac_c']; ?></td>
-  								<td align="center"><?=$row['ac_p']; ?></td>
-  								<td align="center"><?=$row['dc_v']; ?></td>
-  								<td align="center"><?=$row['dc_c']; ?></td>
-  								<td align="center"><?=$row['dc_p']; ?></td>
-  								<td align="center"><?=$row['c_t']; ?></td>
+  								<td align="center"><?=$row['sl_no']; ?></td>
+  								<td align="center"><?=$row['fault_log']; ?></td>
+  								<td align="center"><?=$row['time']; ?></td>
   							</tr>
   							<?php
   					}
@@ -65,7 +59,6 @@
        
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
  
- <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script> 
   <script>
 
 

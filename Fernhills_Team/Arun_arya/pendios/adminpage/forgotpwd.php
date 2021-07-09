@@ -7,7 +7,7 @@
         $newpwd = stripslashes($_REQUEST['newpwd']);
         $newpwd = mysqli_real_escape_string($con, $newpwd);
 	
-	    $query  =	"update `usersp` set `password` = '" . md5($newpwd) . "'  where `username` = '$username'";
+	    $query  =	"update `admin` set `ad-pwd` = '" . md5($newpwd) . "'  where `ad-user` = '$username'";
 		$result   = mysqli_query($con, $query);
 		if($result>0){
 			

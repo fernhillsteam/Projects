@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
    <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/pendios.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Pendios Admin Dashboard
@@ -28,13 +29,13 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="./dashboard.html" class="simple-text logo-mini">
+        <a href="./dashboard.php" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
+            <img src="../assets/img/pendios.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="./dashboard.html" class="simple-text logo-normal">
+        <a href="./dashboard.php" class="simple-text logo-normal">
           Pendios
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -57,12 +58,12 @@
             </a>
           </li>
           </li>
-          <li>
-            <a href="#">
+           <!--   <li>
+        <a href="">
               <i class="nc-icon nc-settings"></i>
               <p>Configuration Page</p>
             </a>
-          </li>
+          </li>-->
           <li>
             <a href="./logout.php">
               <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -85,7 +86,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Dashboard&nbsp;/&nbsp;Home</a>
+            <a class="navbar-brand" href="javascript:;">User Creation</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -142,73 +143,86 @@
 
        <!-- general form elements -->
             <div class="content">
-			 <div class="card card-danger">
+			 <div class="card">
               <div class="card-header">
-                <h3 class="card-title">User Creation</h3>
+            <!--  <h3 class="card-title">User Creation</h3>-->
               </div>
               <div class="card-body">
-		<form	action="" method="post">
+
+		<form action="" method="POST">
                 <div class="row">
-                  <div class="col-4">
+				<!--<div class="col-6">
+				    <div class="form-group">
+					<label>Table Name</label>
+                    <input type="text" class="form-control" name="table_name" id="tablename" placeholder="Table Name" >
+					</div>
+                  </div>-->
+			
+                  <div class="col-6">
 				    <div class="form-group">
 					<label>User Name</label>
                     <input type="text" class="form-control" name="username" id="user" placeholder="User Name" >
 					</div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6">
                     <div class="form-group">
 					<label>Device_ID</label>
                     <input type="text" class="form-control" name="device_id" id="device" placeholder="Device_ID">
 					</div>
                   </div>
-                  <div class="col-4">
+				  </div>
+				  
+				  <div class="row">
+                  <div class="col-6">
                     <div class="form-group">
 					<label>Mobile Number</label>
                     <input type="text" class="form-control"  name="mobilenumber" id ="mobile" placeholder="Mobile Number">
 					</div>
                   </div>
-                </div>
-				 <div class="row">
-                  <div class="col-4">
+                
+                  <div class="col-6">
                     <div class="form-group">
 					<label>Email</label>
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
 					</div>
                   </div>
-                  <div class="col-4">
+				  </div>
+				  
+				  <div class="row">
+                  <div class="col-6">
                     <div class="form-group">
 					<label>Password</label>
                     <input type="text" class="form-control" name="password" id="pwd" placeholder="Password">
 					</div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-6">
                     <div class="form-group">
 					<label>Date</label>
-                  <input placeholder="Date & Time" type="text" name="date" id="example" id= "date"class="form-control">
+                  <input placeholder="Date & Time" type="date" name="date" id= "date"class="form-control">
 				  </div>
                 </div>
 				</div>
 				 <div class="row">
-				 <div class="col-4">
+				 <div class="col-6">
                     <div class="form-group">
-					  <input  type="reset" class="btn btn-primary"  name="submit" id="submit"   value="submit">
-                 
+                  <input class="btn  btn-primary" id= "submit" value="Submit" type="button" >			
 					</div>
                   </div>
 				  </div>
-				                 <span id="error_message" class="text-danger "></span>  
+				     <!-- <div class="mb-3 text-center">
+								
                                  <span id="success_message" class="text-success "></span>  
+								 <span id="error_message" class="text-danger"></span> 
+			           </div> -->
+                   					   
 				  </form>
               </div>
               <!-- /.card-body -->
             </div>
-			</div>
+		  <div  id="error_message" class="text-center"></div> 
+		  <div  id="success_message" class="text-center"></div>
 
-
-            </div>
-            </div>
-          </div>
-          </div>
+            
               <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -239,7 +253,8 @@
 
 <script>
   $(document).ready(function(){  
-      $('#submit').on('click',function(){  
+      $('#submit').on('click',function(){ 
+	       var tname = $('#tablename').val(); 
            var user = $('#user').val(); 
            var device=$('#device').val();		   
            var mobile= $('#mobile').val();
@@ -249,7 +264,7 @@
 		  
            if(user == '' || device == '' || mobile == '' || email == '' || pwd == '' || date == '')  
            {  
-               $('#error_message').html("All Fields are required");  
+               $('#error_message').append('<div class="alert alert-danger" role="alert">All fields are required</div>');  
 				  
            }  
          
@@ -258,14 +273,14 @@
                 $.ajax({  
                      url:"create.php",  
                      method:"POST",  
-                     data:{username:user, device_id:device, mobilenumber:mobile, email:email, password:pwd, date:date},  
+                     data:{table_name:tname ,user:user, device_id:device, mobile:mobile, email:email, pwd:pwd, date:date},  
                      success:function(data){  
 					 $('#success_message').html("success");   
                         $("form").trigger("reset");  
                          $('#success_message').fadeIn().html(data);  
                        setTimeout(function(){  
                            $('#success_message').fadeOut("Slow");  
-                          }, 2000000);  
+                          }, 2000);  
                      }  
                 });  
            }  

@@ -64,14 +64,14 @@ include('auth_session.php');
             </a>
           </li>
           <li>
-            <a href="./configuration.php">
+            <a href="#">
               <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
           </li>
 
           <li>
-            <a href="./faultlogs.php">
+            <a href="#">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>
@@ -522,7 +522,7 @@ include('auth_session.php');
              win.print();
         }
   </script>
-  <script src="../assets/js/core/jquery.min.js"></script>
+ <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>

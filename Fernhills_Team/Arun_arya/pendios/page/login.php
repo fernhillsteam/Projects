@@ -4,7 +4,7 @@
   	<title>Pendios</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" type="image/png" href="../assets/img/pendios.png">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -70,7 +70,8 @@
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Password</label>
-		              <input type="password" class="form-control" name="password" placeholder="Password" required>
+		              <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
+					   <input type="checkbox" onclick="myPwd('pwd')" >Show Password
 		            </div>
 		            <div class="form-group">
 		            	<button type="submit" value="Login" name="submit" class="form-control btn btn-primary rounded submit px-3">Log In</button>
@@ -236,6 +237,21 @@
 	 y.type = "password";
   }
 }
+</script>
+
+<script type="text/javascript">
+
+function myPwd(id){
+	var x = document.getElementById(id);
+	 if (x.type === "password") {
+    x.type = "text";
+	
+  } else {
+    x.type = "password";
+	
+  }
+}
+
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

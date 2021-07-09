@@ -2,8 +2,11 @@
    
  
    require('db.php');
-   global $a;  
- $query =    "SELECT * FROM `actions` WHERE `id` =  '".$a."'";
+  
+
+$q = $_GET["q"];
+
+ $query =    "SELECT * FROM `actions` WHERE `id` = '".$q."'";
 			        
                            $result = mysqli_query($con, $query) or die(mysql_error());
 
@@ -14,11 +17,11 @@
                             $btn4 = $row['button4'];							
 							   
 						 $value = [ $btn1,$btn2,$btn3,$btn4];
+					
 			             $valueJSON=json_encode($value);   
 						echo  $valueJSON;
-		
-						 
-						   }
+		   
+					  }
 						   	
 	
 			 ?>

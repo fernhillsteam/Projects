@@ -1,3 +1,4 @@
+   
  <?php global $a;
 				  
       $current_date = date('Y-m-d');
@@ -7,14 +8,17 @@
 				  <div class="col-lg-12 col-md-12 col-sm-14">
 			     
 				  <div class="text-right">
-                      <button type="submit" class="btn btn-primary btn-round" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')">Export</button>
-                      <button type="submit" class="btn btn-primary btn-round"  onclick="PrintTable()">Print</button>
+                      <input type="submit" class="btn btn-primary btn-round" id="export" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')" value="Export">
+                      <input type="submit" class="btn btn-primary btn-round"  id = "print" onclick="PrintTable()" value="Print">
                   </div>
               </div>
 			  </div>
 	   <div class="row">	  
          <div class="col-lg-12 col-md-12 col-sm-14"> 
             <div class="card">
+			<div class="card-header">
+            <h3 class="card-title text-center">History</h3>
+              </div>
              <div class="card-body">
 			  <div class="table-responsive-md">
 			  <table class="table  table-hover " id="tableList" >
@@ -62,12 +66,8 @@
       </div>
     
    <!--   Core JS Files   -->
-       
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- 
- <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script> 
-  <script>
 
+<script>
 
     function downloadCSV(csv, filename) {
     var csvFile;
@@ -114,7 +114,10 @@ function exportTableToCSV(filename) {
 
 
      </script>
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
  
+
+
  <script>
     $(document).ready(function(){
     $('#tableList').DataTable();

@@ -8,6 +8,10 @@
             font-family: Helvetica;
      		font-size: 16px;
      		border-radius: 12px;
+		    width:80%;
+			height:75%;
+			margin:5px;
+
 		}
 
      button.foo { 
@@ -19,7 +23,7 @@
 
 
       <!-- End Navbar -->
-      <div class="content">
+   
 	     <?php global $a;
 		
 		?>
@@ -47,28 +51,72 @@
                   });
 				  
 			</script>
-          <div class="col-md-12">
-            <div class="card ">
-             
-			  
-              <div class="card-body">
-		 <div class="btn-class">
-		  
-                      <button  id="btn1" >Send SMS On Demand</button>
-                      <button  id="btn2" >Update Server On Demand</button>
-					  <button  id="btn3" >Authorize Access</button>
-                      <button  id="btn4" >ShutDown</button>
-			</div>
-          
-				  </div> 
+			<div class="row">
+	 <div class="col-md-12">
+	  <div class="card">
+              <div class="card-header">
+               <!-- <h4 class="card-title">Device Status</h4>-->
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-     
+              <div class="card-body">
+                <div class="row">			   
+				 <div class="col-lg-6 col-md-6 col-sm-6 text-center">
+				<button  id="btn1" >Send SMS On Demand</button> 
+				 <p class="card-category text-center"></p>
+                </div>
+				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
+		        <button  id="btn2" >Update Server On Demand</button>
+				<p class="card-category text-center"></p>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
+		        <button  id="btn2" >Authorize Access</button>
+				<p class="card-category text-center"></p>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
+		       <button  id="btn4" >ShutDown</button>
+				<p class="card-category text-center"></p>
+		        </div>
+				</div>
+
+                  </div>    
+            
+	   </div>
+	              </div>    
+            
+	   </div>
+	 <!--  </div>
+	  <div class="card">
+  <div class="card-body">
+		<!--<div class="row">
+		    <div class="col-lg col-md-5 col-6 col-sm-6 ml-auto ">
+
+                      <button  id="btn1" >Send SMS On Demand</button>  
+				</div>	  
+				<div class="col-lg col-md-5 col-sm-6 col-6 ml-auto">
+                      <button  id="btn2" >Update Server On Demand</button>
+				</div>	
+                <div class="col-lg col-md-5 col-sm-6 col-6 ml-auto">				
+					  <button  id="btn3" >Authorize Access</button>
+			    </div>
+				 <div class="col-lg col-md-5  col-sm-6 col-6 ml-auto">
+                      <button  id="btn4" >ShutDown</button>
+				 </div>	  
+		          </div> 
+				  
+					<div class="row">
+	 <div class="col-md-12">	  
+				     <div class="row">
+      <div class="col-sm" > <button  id="btn1" >Send SMS On Demand</button>  </div>
+      <div class="col-sm" ><button  id="btn2" >Update Server On Demand</button></div>
+      <div class="col-sm" ><button  id="btn3" >Authorize Access</button></div>
+      <div class="col-sm" ><button  id="btn4" >ShutDown</button></div>
     </div>
-  </div>
+   
+           </div> 
+				</div> 
+              </div>
+            </div>-->
+          
+      
   <!--   Core JS Files   -->
   		
 			 <script>
@@ -112,33 +160,33 @@ case 3:
  </script>
 
  <script>
-  disp();
+ 
   
- function disp(){
+ function disp(x){
 	
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onload = function() {
 	 
   if (this.readyState == 4 && this.status == 200) {
 	
-	   
+	     
     var myObj = JSON.parse(this.responseText);
-
+	
    setcolor(1,myObj[0]);
    setcolor(2,myObj[1]);
    setcolor(3,myObj[2]);
    setcolor(4,myObj[3]);
 
   }
+
 };
 
-xmlhttp.open("GET", "actionvalue.php", true);
+xmlhttp.open("GET", "actionvalue.php?q=" + x,true);
 xmlhttp.send();
 
 }
-
-
-
+var x = <?php echo $a; ?>;
+ disp(x);
 
  </script>
 

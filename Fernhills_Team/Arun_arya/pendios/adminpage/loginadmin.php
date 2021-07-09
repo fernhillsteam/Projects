@@ -4,7 +4,7 @@
   	<title>Pendios</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" type="image/png" href="../assets/img/pendios.png">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +39,7 @@
 			      	</div>
 			      	<?php
    
-    session_start();
+     session_start();
 	 require('db.php');
     // When form submitted, check and create user session.
     if (isset($_POST['submit'])) {
@@ -48,11 +48,11 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
-        $query    = "SELECT * FROM `usersp` WHERE username ='$username' AND password='" . md5($password) . "'";
+        $query    = "SELECT * FROM `admin` WHERE `ad-user` ='$username' AND `ad-pwd`='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
-          $_SESSION['mobilenumber'] = $mobilenumber;
+          $_SESSION['username'] = $username;
           //Redirect to user dashboard page
             header("Location: dashboard.php");
         } else {
@@ -70,7 +70,8 @@
 			      		</div>
 		            <div class="form-group mb-3">
 		            	<label class="label" for="password">Password</label>
-		              <input type="password" class="form-control" name="password" placeholder="Password" required>
+		              <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
+					  <input type="checkbox" onclick="myPwd('pwd')" >Show Password
 		            </div>
 		            <div class="form-group">
 		            	<button type="submit" value="Login" name="submit" class="form-control btn btn-primary rounded submit px-3">Log In</button>
@@ -230,6 +231,21 @@
   } else {
     x.type = "password";
 	 y.type = "password";
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+
+function myPwd(id){
+	var x = document.getElementById(id);
+	 if (x.type === "password") {
+    x.type = "text";
+	
+  } else {
+    x.type = "password";
+	
   }
 }
 </script>

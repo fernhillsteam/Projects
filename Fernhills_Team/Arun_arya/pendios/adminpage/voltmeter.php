@@ -24,8 +24,8 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Voltage</p>
-                      <p class="card-title"><?=$row["ac_v"]?>V<p>
-                      <p class="card-title"><?=$row["dc_v"]?>V<p>  
+                      <p class="card-title"><?=$row["ac_v"]?>V <small>AC</small><p>
+                      <p class="card-title"><?=$row["dc_v"]?>V <small>DC</small><p>  
                     </div>
                   </div>
                 </div>

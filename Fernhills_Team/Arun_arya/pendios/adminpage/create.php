@@ -1,41 +1,54 @@
 <?php
- require('db.php');
+require "db.php";
+
+//if(isset($_POST['table_name'])){
+    
+
+//$table_name=mysqli_real_escape_string($con,$_POST['table_name']);
+
+//$result = mysqli_query($con,"SHOW TABLES LIKE '".$table_name."'");
+//if($result->num_rows == 1) {
+
+  //      echo '<script language="javascript">';
+    //    echo 'alert("Table exists, Please try again")';
+      //  echo '</script>';
+//}
+//else {
   
-   
-    // When form submitted, insert values into the database.
-    if (isset($_POST['username'])) {
-        // removes backslashes
-        $username = stripslashes($_REQUEST['username']);
-        //escapes special characters in a string
-        $username = mysqli_real_escape_string($con, $username);
-		
-	    $device_id    = stripslashes($_REQUEST['device_id']);
-        $device_id   = mysqli_real_escape_string($con, $device_id);
+  //  $table5 = "CREATE TABLE $table_name ( id INT(250) UNSIGNED AUTO_INCREMENT PRIMARY KEY,device_id VARCHAR(200),username VARCHAR(200), mobilenumber VARCHAR(200),email VARCHAR(200) ,password VARCHAR(200) ,date datetime)";
 
-		$mobilenumber    = stripslashes($_REQUEST['mobilenumber']);
-        $mobilenumber    = mysqli_real_escape_string($con, $mobilenumber);
+    //*$query = "INSERT INTO $table_name (`id`, `emp_name`, `salary`, `status`, `date`) VALUES ('$id','$emp_name','$salary','$status','$date')";*/
 
-        $email    = stripslashes($_REQUEST['email']);
-        $email    = mysqli_real_escape_string($con, $email);
-		
-        $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($con, $password);
-		
-        $create_datetime =$_REQUEST['date'];
-        $query    = "INSERT into `usersp` ( username, device_id , mobilenumber, email, password, create_datetime)
-                     VALUES ('$username', '$device_id','$mobilenumber' ,'$email', '" . md5($password) . "', '$create_datetime')";
-        $result   = mysqli_query($con, $query);
+    //$res5=mysqli_query($con,$table5);
 
-        if ($result) {
-            echo  "your password has been rest successfully";  
-        } else {
+ //       echo '<script language="javascript">';
+   //     echo 'alert("Table Successfully Created")';
+     //   echo '</script>';
+
+
+//}
+//}
+if (isset($_POST['device_id'])) {
+    $device_id=$_POST['device_id'];
+    $username=$_POST['user'];
+	$mobile=$_POST['mobile'];
+	$email=$_POST['email'];
+    $password=$_POST['pwd'];
+    $date=$_POST['date'];
+$query = "INSERT INTO `usersp` ( `username`,`device_id`, `mobilenumber`,`email`,`password`, `create_datetime`) VALUES ('$username','$device_id','$mobile','$email','" . md5($password) . "','$date')";
+$result=mysqli_query($con,$query);
+	if($result>0){
 			
-            echo "try again ";
-        }
-    }
+			echo "<div class='alert alert-success' role='alert'>successfully Created</div>";  
+		}else{
+			
+			echo "Try Again";
+		}
+		
+		// Close connection
+		mysqli_close($con);
+
+ } 
+
+
 ?>
-
-Warning: Undefined array key "device_id" in C:\xampp\htdocs\pendios\adminpage\create.php on line 12
-
-Fatal error: Uncaught Error: Undefined constant "date" in C:\xampp\htdocs\pendios\adminpage\create.php:24 Stack trace: #0 {main} thrown in C:\xampp\htdocs\pendios\adminpage\create.php on line 24
-© 

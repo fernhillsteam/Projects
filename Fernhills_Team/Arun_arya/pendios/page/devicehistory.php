@@ -17,7 +17,7 @@ include('auth_session.php');
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/pendios.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
   <title>
@@ -63,14 +63,14 @@ include('auth_session.php');
             </a>
           </li>
           <li>
-            <a href="./configuration.php">
+            <a href="#">
               <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
           </li>
         
           <li>
-            <a href="./faultlogs.php">
+            <a href="#">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>

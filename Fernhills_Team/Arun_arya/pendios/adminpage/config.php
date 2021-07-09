@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/pendios.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Pendios Admin Dashboard
@@ -27,13 +29,13 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
+            <img src="../assets/img/pendios.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
           Pendios
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -42,7 +44,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li >
+          <li>
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Home</p>
@@ -54,7 +56,7 @@
               <p>User creation</p>
             </a>
           </li>
-          <li class="active">
+          <li class="active ">
             <a href="">
               <i class="nc-icon nc-settings"></i>
               <p>Configuration Page</p>
@@ -82,7 +84,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Dashboard&nbsp;/&nbsp;Home</a>
+            <a class="navbar-brand" href="javascript:;">Configuration</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -136,160 +138,153 @@
         </div>
       </nav>
       <!-- End Navbar -->
-	  <div class="content">
-          <div class="col-md-9">
+
+      <?php
+	
+	     require('db.php');
+	
+		$id = $_GET['edit'];
+		
+        $query ="SELECT * FROM `configuration` WHERE `user_id`='".$id."'";
+       $result = mysqli_query($con, $query) or die(mysql_error());
+	   $result = mysqli_query($con, $query);  
+      while($row = mysqli_fetch_array($result))  
+      { 
+  
+  ?>
+
+          <div class="content">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Settings 1</a></li>
+                  <!--<li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Settings</a></li>
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Settings 2</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings 3</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings 3</a></li>-->
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                       
-                       
+                  <form class="form-horizontal" action="" method="POST">
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Device Id:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name= "device" class="form-control" id="device" placeholder="Device Id" value="<?=$row['device_id']?>">
+                        </div>
                       </div>
-                      <!-- /.user-block -->
-                     
-
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Mobile No:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile No" value="<?=$row['mobile_number']?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">auth code:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="auth" class="form-control" id="auth" placeholder="auth code" value="<?=$row['auth_code']?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">server link:</label>
+                        <div class="col-sm-10">
+                           <input type="text" name="server" class="form-control" id="server" placeholder="server link" value="<?=$row['server_link']?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">APN:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="apn" class="form-control" id="apn" placeholder="APN" value="<?=$row['apn']?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">User Name:</label>
+                        <div class="col-sm-10">
+                          <input type="text"  name="user" class="form-control" id="user" placeholder="User Name" value="<?=$row['username']?>">
+                        </div>
+                      </div>
+					  <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Password:</label>
+                        <div class="col-sm-10">
+                          <input type="text"  name="pwd" class="form-control" id="pwd" placeholder="Password" value="<?=$row['password']?>">
+                        </div>
+                      </div>
+					   <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Location:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="location" class="form-control" id="location" placeholder="Location" value="<?=$row['location']?>">
+                        </div>
+                      </div>
+					   <div class="form-group row">
+                        <label for="inputSkills"  class="col-sm-2 col-form-label">Address:</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?=$row['address']?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm">
+		
+						  <input class="btn  btn-primary " id= "submit" value="Submit" type="reset" >
+                        </div>
+                      </div>
+					  				 
+                    </form>
                
-
-                      
-                    </div>
-                    <!-- /.post -->
-
-                    <!-- Post -->
-                    <div class="post clearfix">
-                      <div class="user-block">
-                      
-                     
-                        
-                      </div>
-                      <!-- /.user-block -->
-                   
-
-                      <form class="form-horizontal">
-                        <div class="input-group input-group-sm mb-0">
-                         
-                        </div>
-                      </form>
-                    </div>
-                    <!-- /.post -->
-
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                      
-                        <span class="username">
-              
-                      </div>
-                      <!-- /.user-block -->
-                      <div class="row mb-3">
-                        <div class="col-sm-6">
-                         
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                          <div class="row">
-                            <div class="col-sm-6">
-                             
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-6">
-                              
-                            </div>
-                            <!-- /.col -->
-                          </div>
-                          <!-- /.row -->
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <p>
-                        
-                        <span class="float-right">
-                         
-                        </span>
-                      </p>
-
-                    </div>
-                    <!-- /.post -->
                   </div>
+				  
+	<?php
+
+	  }
+?>	  
                   <!-- /.tab-pane -->
-                  <div class="tab-pane" id="timeline">
-                    <!-- The timeline -->
-                    <div class="timeline timeline-inverse">
-                      <!-- timeline time label -->
-                      <div class="time-label">
-                        <span class="bg-danger">
-                        
-                        </span>
+                  <!-- <div class="tab-pane" id="timeline">
+                    <form class="form-horizontal">
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">hello</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputName" placeholder="Name">
+                        </div>
                       </div>
-                      <!-- /.timeline-label -->
-                      <!-- timeline item -->
-                      <div>
-                      
-
-                        <div class="timeline-item">
-                         
-                          <div class="timeline-footer">
-                          
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                            </label>
                           </div>
                         </div>
                       </div>
-                      <!-- END timeline item -->
-                      <!-- timeline item -->
-                      <div>
-                  
-                        <div class="timeline-item">
-                   
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger">Submit</button>
                         </div>
                       </div>
-                      <!-- END timeline item -->
-                      <!-- timeline item -->
-                      <div>
-                
-                        <div class="timeline-item">
-                       
-
-                          <div class="timeline-body">
-                           
-                          </div>
-                          <div class="timeline-footer">
-                          
-                          </div>
-                        </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <!-- timeline time label -->
-                      <div class="time-label">
-                        
-                      </div>
-                      <!-- /.timeline-label -->
-                      <!-- timeline item -->
-                      <div>
-                        
-
-                        <div class="timeline-item">
-                       
-
-                     
-                        </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <div>
-                        
-                      </div>
-                    </div>
+                    </form>
                   </div>
-                  <!-- /.tab-pane -->
 
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal">
@@ -338,15 +333,20 @@
                         </div>
                       </div>
                     </form>
-                  </div>
+                  </div>-->
                   <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
+			<div  id="error_message" class="text-center"></div> 
+		      <div  id="success_message" class="text-center"></div>
           </div>
+		   
 		 </div> 
+             
+  
 
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -371,6 +371,60 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+ <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ <script>  
+
+$(document).ready(function() {
+      $('#submit').click(function(){ 
+           var user_id = '<?php echo $id ;?>';	  
+           var device = $('#device').val();  
+           var mobile = $('#mobile').val();  
+		   var auth = $('#auth').val(); 
+		   var server = $('#server').val();  
+		   var apn = $('#apn').val();  
+		   var username = $('#user').val();  
+	       var pwd= $('#pwd').val();  
+       	   var location = $('#location').val();  
+		   var address = $('#address').val();  
+		   
+           if(device == '' || mobile == '' || auth == ''||server == ''|| apn == ''|| username == ''|| pwd == ''|| location == ''|| address == '')  
+           {  
+             $('#error_message').append('<div class="alert alert-danger" role="alert">All fields are required</div>');
+                //alert("All Fields require.");				
+           }  
+          
+		   else{
+			   $('#error_message').html('');  
+                $.ajax({  
+                     url:"insert_config.php",  
+                     method:"POST",  
+                     data:{user_id:user_id, device:device ,mobile:mobile, auth:auth, server:server, apn:apn, user:username, pwd:pwd, location:location, address:address},  
+                     success:function(data){  
+					 $('#success_message').html("success");   
+                          $("form").trigger("reset");  
+                          $('#success_message').fadeIn().html(data);  
+                          setTimeout(function(){  
+						 
+                               $('#success_message').fadeOut("Slow");  
+							   
+                          }, 2000); 
+                         
+                     }
+				 
+                });
+         		//window.location.reload();			
+                 
+        
+    
+		
+           }  
+		    	
+      });  
+ });  
+ 
+ </script> 
+
   <script src="../assets/js/core/jquery-3.6.0.min.js"></script>
   <script src="../assets/js/core/include-html.min.js"></script>
   <script src="../assets/js/core/jquery.min.js"></script>
