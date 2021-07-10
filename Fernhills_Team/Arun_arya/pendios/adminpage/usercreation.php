@@ -205,7 +205,7 @@
 				 <div class="row">
 				 <div class="col-6">
                     <div class="form-group">
-                  <input class="btn  btn-primary" id= "submit" value="Submit" type="button" >			
+                  <input class="btn  btn-primary" id= "submit" value="submit" type="reset" >			
 					</div>
                   </div>
 				  </div>
@@ -251,10 +251,12 @@
   <!--   Core JS Files   -->
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
 <script>
   $(document).ready(function(){  
       $('#submit').on('click',function(){ 
-	       var tname = $('#tablename').val(); 
+	       /*var tname = $('#tablename').val();*/ 
            var user = $('#user').val(); 
            var device=$('#device').val();		   
            var mobile= $('#mobile').val();
@@ -273,7 +275,7 @@
                 $.ajax({  
                      url:"create.php",  
                      method:"POST",  
-                     data:{table_name:tname ,user:user, device_id:device, mobile:mobile, email:email, pwd:pwd, date:date},  
+                     data:{user:user, device_id:device, mobile:mobile, email:email, pwd:pwd, date:date},  
                      success:function(data){  
 					 $('#success_message').html("success");   
                         $("form").trigger("reset");  
