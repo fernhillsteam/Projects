@@ -26,15 +26,16 @@
 		$query = "UPDATE `configuration` SET  `device_id`= '".$device."',`mobile_number`='".$mobile."',`auth_code`= '".$auth."',`server_link`='".$link."',
 		`apn`='".$apn."',`username`='".$username."',`password`='".$password."',`location`='".$location."',`address`='".$address."' WHERE `user_id`='".$user_id."'";
 			//"update `actions` set `button1` = 0 where `id` = '".$id."'";
+		
 	    $result   = mysqli_query($con, $query);
 		if($result>0){
-			
-			echo "<div class='alert alert-success' role='alert'>successfully Updated</div>";  
+					
+			echo "<div class='alert alert-success' role='alert'> <strong>successfully Updated</strong><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 		}else{
 			
 			echo "Try Again";
 		}
-		
+
 		// Close connection
 		mysqli_close($con);
 	

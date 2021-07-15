@@ -5,9 +5,10 @@
             background-color: #c80e13;
      		color: white;
 			border:none;
+			outline: none !important;
             font-family: Helvetica;
      		font-size: 16px;
-     		border-radius: 12px;
+     		border-radius: 10px;
 		    width:80%;
 			height:75%;
 			margin:5px;
@@ -16,6 +17,7 @@
 
      button.foo { 
             background-color: #1c9517; 
+			
         }
 
 
@@ -68,7 +70,7 @@
 				<p class="card-category text-center"></p>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
-		        <button  id="btn2" >Authorize Access</button>
+		        <button  id="btn3" >Authorize Access</button>
 				<p class="card-category text-center"></p>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
@@ -160,8 +162,8 @@ case 3:
  </script>
 
  <script>
- 
-  
+
+
  function disp(x){
 	
 var xmlhttp = new XMLHttpRequest();
@@ -185,8 +187,13 @@ xmlhttp.open("GET", "actionvalue.php?q=" + x,true);
 xmlhttp.send();
 
 }
+
+
 var x = <?php echo $a; ?>;
+
+
  disp(x);
+ 
 
  </script>
 

@@ -35,14 +35,19 @@ if (isset($_POST['device_id'])) {
 	$email=$_POST['email'];
     $password=$_POST['pwd'];
     $date=$_POST['date'];
-$query = "INSERT INTO `usersp` ( `username`,`device_id`, `mobilenumber`,`email`,`password`, `create_datetime`) VALUES ('$username','$device_id','$mobile','$email','" . md5($password) . "','$date')";
-$result=mysqli_query($con,$query);
-	if($result>0){
+	$query =    "SELECT * FROM `usersp` WHERE `mobilenumber` = '".$mobile."' " ;     
+	    $result= mysqli_query($con, $query);
+	  	if(mysqli_num_rows($result)>0){
 			
-			echo "<div class='alert alert-success' role='alert'>successfully Created</div>";  
+             		echo "<div class='alert alert-primary' role='alert'><strong>Already user exists </strong><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 		}else{
 			
-			echo "Try Again";
+			$query = "INSERT INTO `usersp` ( `username`,`device_id`, `mobilenumber`,`email`,`password`, `create_datetime`) VALUES ('$username','$device_id','$mobile','$email','" . md5($password) . "','$date')";
+            $result=mysqli_query($con,$query);
+
+			
+			echo "<div class='alert alert-success' role='alert'> <strong>successfully Created</strong><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";  
+	
 		}
 		
 		// Close connection

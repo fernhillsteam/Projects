@@ -24,18 +24,35 @@
 
   
 </head>
+<style>
+.form-field input:focus {
+    outline: none;
+}
 
+.form-field.error input {
+    border-color: #dc3545;
+}
+
+.form-field.success input {
+    border-color: #28a745;
+}
+
+
+.form-field small {
+    color: #dc3545;
+}
+</style>
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="" class="simple-text logo-mini">
+        <a href="./dashboard.php" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../assets/img/pendios.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="" class="simple-text logo-normal">
+        <a href="./dashboard.php" class="simple-text logo-normal">
           Pendios
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -146,6 +163,7 @@
 		$id = $_GET['edit'];
 		
         $query ="SELECT * FROM `configuration` WHERE `user_id`='".$id."'";
+	
        $result = mysqli_query($con, $query) or die(mysql_error());
 	   $result = mysqli_query($con, $query);  
       while($row = mysqli_fetch_array($result))  
@@ -170,61 +188,90 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Device Id:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name= "device" class="form-control" id="device" placeholder="Device Id" value="<?=$row['device_id']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
                       <div class="form-group row">
+					 
                         <label for="inputEmail" class="col-sm-2 col-form-label">Mobile No:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile No" value="<?=$row['mobile_number']?>">
+						  <small></small>
+				            </div>
                         </div>
+						
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">auth code:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name="auth" class="form-control" id="auth" placeholder="auth code" value="<?=$row['auth_code']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">server link:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                            <input type="text" name="server" class="form-control" id="server" placeholder="server link" value="<?=$row['server_link']?>">
+						   <small></small>
+				            </div>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">APN:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name="apn" class="form-control" id="apn" placeholder="APN" value="<?=$row['apn']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">User Name:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text"  name="user" class="form-control" id="user" placeholder="User Name" value="<?=$row['username']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
 					  <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Password:</label>
                         <div class="col-sm-10">
+						  <div class="form-field">
                           <input type="text"  name="pwd" class="form-control" id="pwd" placeholder="Password" value="<?=$row['password']?>">
+						   <small></small>
+				            </div>
                         </div>
                       </div>
 					   <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Location:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name="location" class="form-control" id="location" placeholder="Location" value="<?=$row['location']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
 					   <div class="form-group row">
                         <label for="inputSkills"  class="col-sm-2 col-form-label">Address:</label>
                         <div class="col-sm-10">
+						<div class="form-field">
                           <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?=$row['address']?>">
+						  <small></small>
+				            </div>
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm">
 		
-						  <input class="btn  btn-primary " id= "submit" value="Submit" type="reset" >
+						   <input class="btn  btn-primary" id ="submit" value="Submit" type="button" >		
                         </div>
                       </div>
 					  				 
@@ -235,6 +282,7 @@
 	<?php
 
 	  }
+	  
 ?>	  
                   <!-- /.tab-pane -->
                   <!-- <div class="tab-pane" id="timeline">
@@ -340,8 +388,8 @@
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
-			<div  id="error_message" class="text-center"></div> 
-		      <div  id="success_message" class="text-center"></div>
+			<span  id="error_message" class="text-center"></span> 
+		    <span  id="success_message" class="text-center"></span>
           </div>
 		   
 		 </div> 
@@ -371,9 +419,238 @@
     </div>
   </div>
   <!--   Core JS Files   -->
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
- <script>  
+ <script>
+const usernameEl = document.querySelector('#user');
+const deviceidEl = document.querySelector('#device');
+const mobilenoEl = document.querySelector('#mobile');
+const passwordEl = document.querySelector('#pwd');
+
+
+const form = document.querySelector('#submit');
+
+
+const checkUsername = () => {
+    let valid = false;
+
+    const min = 3,
+        max = 25;
+
+    const username = usernameEl.value.trim();
+
+    if (!isRequired(username)) {
+        showError(usernameEl, 'Username cannot be blank.');
+    } else if (!isBetween(username.length, min, max)) {
+        showError(usernameEl, `Username must be between ${min} and ${max} characters.`);
+    } else {
+        showSuccess(usernameEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkDeviceid = () => {
+    let valid = false;
+
+
+    const deviceid = deviceidEl.value.trim();
+
+    if (!isRequired(deviceid)) {
+        showError(deviceidEl, 'Device ID  cannot be blank.');
+    }  else {
+        showSuccess(deviceidEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkMobileno = () => {
+    let valid = false;
+
+
+    const mobileno = mobilenoEl.value.trim();
+
+    if (!isRequired(mobileno)) {
+        showError(mobilenoEl, 'mobile number cannot be blank.');
+    } else if (!isMobilenoValid(mobileno)) {
+        showError(mobilenoEl, 'please enter valid mobile number.');
+    } else {
+        showSuccess(mobilenoEl);
+        valid = true;
+    }
+    return valid;
+};
+
+
+
+const checkPassword = () => {
+    let valid = false;
+
+
+    const password = passwordEl.value.trim();
+
+    if (!isRequired(password)) {
+        showError(passwordEl, 'Password cannot be blank.');
+    } else if (!isPasswordSecure(password)) {
+        showError(passwordEl, 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)');
+    } else {
+        showSuccess(passwordEl);
+        valid = true;
+    }
+
+    return valid;
+};
+
+
+
+
+const isPasswordSecure = (password) => {
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    return re.test(password);
+};
+
+const isMobilenoValid = (mobileno) => {
+    const re = new RegExp("^[0-9]{10}$");
+    return re.test(mobileno);
+};
+
+const isDateTime = (mobileno) => {
+   const re = new RegExp("^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])");
+    return re.test(datetime);
+};
+
+const isRequired = value => value === '' ? false : true;
+
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+
+const showError = (input, message) => {
+    // get the form-field element
+    const formField = input.parentElement;
+
+    // add the error class
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+    // show the error message
+    const error = formField.querySelector('small');
+    error.textContent = message;
+};
+
+const showSuccess = (input) => {
+    // get the form-field element
+    const formField = input.parentElement;
+
+    // remove the error class
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    // hide the error message
+    const error = formField.querySelector('small');
+    error.textContent = '';
+}
+
+
+form.addEventListener('click', function (e) {
+    // prevent the form from submitting
+    e.preventDefault();
+
+    // validate fields
+    let isUsernameValid = checkUsername(),
+	    isDeviceidValid = checkDeviceid(),
+        isPasswordValid = checkPassword(),
+		 ismobilenoValid = checkMobileno();
+         
+    let isFormValid = isUsernameValid &&
+                      isDeviceidValid &&
+                      isPasswordValid &&
+                       ismobilenoValid;
+    // submit to the server if the form is valid
+    if (isFormValid) {
+	
+        
+           var user_id = '<?php echo $id ;?>';	  
+           var device = $('#device').val();  
+           var mobile = $('#mobile').val();  
+		   var auth = $('#auth').val(); 
+		   var server = $('#server').val();  
+		   var apn = $('#apn').val();  
+		   var username = $('#user').val();  
+	       var pwd= $('#pwd').val();  
+       	   var location = $('#location').val();  
+		   var address = $('#address').val();  
+		   
+           if(device == '' || mobile == '' || auth == ''||server == ''|| apn == ''|| username == ''|| pwd == ''|| location == ''|| address == '')  
+           {  
+             $('#error_message').html('<div class="alert alert-danger" role="alert"><strong>All fields are required</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); 
+			 
+        
+           }  
+          
+		      else{
+				  $.ajax({  
+                     url:"insert_config.php",  
+                     method:"POST",  
+                     data:{user_id:user_id, device:device ,mobile:mobile, auth:auth, server:server, apn:apn, user:username, pwd:pwd, location:location, address:address},  
+                     success:function(data){  
+	
+                          $('#success_message').html(data);  
+                    		
+                         
+                     }
+				 
+                });  	
+		
+            }   
+			   window.setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(this).remove(); 
+                             });
+                         }, 2000);
+           
+    }
+});
+
+
+const debounce = (fn, delay = 500) => {
+    let timeoutId;
+    return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
+
+form.addEventListener('input', debounce(function (e) {
+    switch (e.target.id) {
+        case 'user':
+            checkUsername();
+            break;
+		case 'device':
+            checkDeviceid();
+            break;	
+		case 'mobile':
+            checkMobileno();
+            break;	
+        case 'email':
+            checkEmail();
+            break;
+        case 'pwd':
+            checkPassword();
+            break;
+         case 'date':
+            checkDAteTime();
+            break;
+    }
+}));
+</script>
+<!-- <script>  
 
 $(document).ready(function() {
       $('#submit').click(function(){ 
@@ -390,40 +667,34 @@ $(document).ready(function() {
 		   
            if(device == '' || mobile == '' || auth == ''||server == ''|| apn == ''|| username == ''|| pwd == ''|| location == ''|| address == '')  
            {  
-             $('#error_message').append('<div class="alert alert-danger" role="alert">All fields are required</div>');
-                //alert("All Fields require.");				
+             $('#error_message').html('<div class="alert alert-danger" role="alert"><strong>All fields are required</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); 
+			 
+        
            }  
           
-		   else{
-			   $('#error_message').html('');  
-                $.ajax({  
+		      else{
+				  $.ajax({  
                      url:"insert_config.php",  
                      method:"POST",  
                      data:{user_id:user_id, device:device ,mobile:mobile, auth:auth, server:server, apn:apn, user:username, pwd:pwd, location:location, address:address},  
                      success:function(data){  
-					 $('#success_message').html("success");   
-                          $("form").trigger("reset");  
-                          $('#success_message').fadeIn().html(data);  
-                          setTimeout(function(){  
-						 
-                               $('#success_message').fadeOut("Slow");  
-							   
-                          }, 2000); 
+	
+                          $('#success_message').html(data);  
+                    		
                          
                      }
 				 
-                });
-         		//window.location.reload();			
-                 
-        
-    
+                });  	
 		
-           }  
-		    	
-      });  
- });  
- 
- </script> 
+            }   
+			   window.setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(this).remove(); 
+                             });
+                         }, 2000);
+           });  
+      });
+ </script> -->
 
   <script src="../assets/js/core/jquery-3.6.0.min.js"></script>
   <script src="../assets/js/core/include-html.min.js"></script>
@@ -440,12 +711,7 @@ $(document).ready(function() {
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-  </script>
+
 </body>
 
 </html>

@@ -158,16 +158,16 @@
 		                            </div>
                                     <input type="reset" class="btn  btn-primary btn-block" id= "submit" value=" Reset Password" onclick="submit()" >
 								
-								 <div class="mb-3 text-center">
-								 <span id="error_message" class="text-danger "></span>  
-                                 <span id="success_message" class="text-success "></span>  
-								 </div>
+						
                 	          </form>
 					        
                         </div>
-                    
+                                  
                 </div>
+				                 
             </div>
+			                    <br><span id="error_message" class="text-center "></span>  
+                                 <span id="success_message" class="text-center "></span> 
       </div>
 
   </div>
@@ -187,16 +187,18 @@
 		    var confirmpwd = $('#confirmPwd').val(); 
 			
 		   
-           if(newpwd == '' || confirmpwd == '')  
+           if(username == '' || newpwd == '' || confirmpwd == '')  
            {  
               // $('#error_message').html("All Fields are required");  
-				  alert("All Fields require.");
+				 // alert("All Fields require.");
+				 $('#error_message').html('<div class="alert alert-danger" role="alert"><strong>All fields are required</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
            }  
            else if(newpwd  != confirmpwd ) 
            {  
                //  $('#error_message').html("password do not match");    
                     
-                   alert("Passwords do not match.");					
+                 //  alert("Passwords do not match.");
+$('#error_message').html('<div class="alert alert-danger" role="alert"><strong>Passwords do not match</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); 				 
            }
 		   else{
 			  $('#error_message').html('');  
@@ -205,21 +207,27 @@
                      method:"POST",  
                      data:{username:username, newpwd:newpwd},  
                      success:function(data){  
-					 $('#success_message').html("success");   
+					// $('#success_message').html("success");   
                        $("form").trigger("reset");  
-                        $('#success_message').fadeIn().html(data);  
-                       setTimeout(function(){  
-                             $('#success_message').fadeOut("Slow");  
-                          }, 2000);  
+					   $('#success_message').html(data); 
+                     //   $('#success_message').fadeIn().html(data);  
+                      // setTimeout(function(){  
+                        //     $('#success_message').fadeOut("Slow");  
+                       //   }, 2000);  
                      }  
                 });  
            }  
-      });  
+		    window.setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(this).remove(); 
+                             });
+                         }, 2000);
+          });  
       });
  $(document).ready(function(){  
       $('#close').click(function(){
 		   $("form").trigger("reset");
-		   $('#error_message').html('');  
+		
 		  });
 		});  
  </script> 

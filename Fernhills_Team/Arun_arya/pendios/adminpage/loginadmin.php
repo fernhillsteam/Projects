@@ -7,10 +7,27 @@
     <link rel="icon" type="image/png" href="../assets/img/pendios.png">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	
 	<link rel="stylesheet" href="css/style.css">
+<style>
+.form-field input:focus {
+    outline: none;
+}
 
+.form-field.error input {
+    border-color: #dc3545;
+}
+
+.form-field.success input {
+    border-color: #28a745;
+}
+
+
+.form-field small {
+    color: #dc3545;
+}
+</style>
 	</head>
 	<body>
 	<section class="ftco-section">
@@ -65,12 +82,18 @@
 ?>
 							<form  method="post" name="login" class="signin-form">
 			      		<div class="form-group mb-3">
+						<div class="form-field">
 			      			<label class="label" for="name">User Name</label>
-			      			<input type="text" class="form-control" name="username" placeholder="User Name" autofocus="true" required>
+			      			<input type="text" class="form-control" name="username" placeholder="User Name" autofocus="true" required autocomplete="off">
+							  <small></small>
+					          </div>
 			      		</div>
 		            <div class="form-group mb-3">
+					<div class="form-field">
 		            	<label class="label" for="password">Password</label>
-		              <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
+		              <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required autocomplete="off">
+					  <small></small>
+					          </div>
 					  <input type="checkbox" onclick="myPwd('pwd')" >Show Password
 		            </div>
 		            <div class="form-group">
@@ -158,13 +181,14 @@
 		                            </div>
                                     <input class="btn  btn-primary btn-block" id= "submit" value=" Reset Password" type="button" >
 									
-								 <div class="mb-3 text-center">
-								 <span id="error_message" class="text-danger "></span>  
-                                 <span id="success_message" class="text-success "></span>  
+								
                 	          </form>
-					        </div>
+							  
+					   
                         </div>
-                    
+						
+                             <br><span id="error_message" class="text-center "></span>  
+                                 <span id="success_message" class="text-center "></span>  
                 </div>
             </div>
       </div>
@@ -177,6 +201,9 @@
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ 
+ 
+ 
  <script>  
 
 
@@ -185,15 +212,17 @@
            var newpwd = $('#newPwd').val();  
 		    var confirmpwd = $('#confirmPwd').val(); 
 		   
-           if(newpwd == '' || confirmpwd == '')  
+           if(username == '' || newpwd == '' || confirmpwd == '')  
            {  
                // $('#error_message').html("All Fields are required");
-                alert("All Fields require.");				
+              // alert("All Fields require.");
+$('#error_message').html('<div class="alert alert-danger" role="alert"><strong>All fields are required</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); 			  
            }  
            else if(newpwd  != confirmpwd ) 
            {  
                   //$('#error_message').html("password do not match");    
-				  alert("Passwords do not match.");			
+				  //alert("Passwords do not match.");
+$('#error_message').html('<div class="alert alert-danger" role="alert"><strong>Passwords does not match</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); 				  
            }
 		   else{
 			   $('#error_message').html('');  
@@ -202,20 +231,26 @@
                      method:"POST",  
                      data:{username:username, newpwd:newpwd},  
                      success:function(data){  
-					 $('#success_message').html("success");   
+					// $('#success_message').html("success");   
                           $("form").trigger("reset");  
-                          $('#success_message').fadeIn().html(data);  
-                          setTimeout(function(){  
-                               $('#success_message').fadeOut("Slow");  
-                          }, 2000);  
+						  $('#success_message').html(data); 
+                      //    $('#success_message').fadeIn().html(data);  
+                        //  setTimeout(function(){  
+                          //     $('#success_message').fadeOut("Slow");  
+                          //}, 2000);  
                      }  
                 });  
            }  
+		      window.setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(this).remove(); 
+                             });
+                         }, 2000);
       });  
 
       $('#close').click(function(){
 		   $("form").trigger("reset");
-		   $('#error_message').html('');  
+		  
 		  });
 		
  </script> 

@@ -20,9 +20,26 @@
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.form-field input:focus {
+    outline: none;
+}
+
+.form-field.error input {
+    border-color: #dc3545;
+}
+
+.form-field.success input {
+    border-color: #28a745;
+}
+
+
+.form-field small {
+    color: #dc3545;
+}
+</style>
 </head>
 
 <body class="">
@@ -149,7 +166,7 @@
               </div>
               <div class="card-body">
 
-		<form action="" method="POST">
+		<form action="" method="POST" >
                 <div class="row">
 				<!--<div class="col-6">
 				    <div class="form-group">
@@ -159,53 +176,65 @@
                   </div>-->
 			
                   <div class="col-6">
-				    <div class="form-group">
+				
+					   <div class="form-field">
 					<label>User Name</label>
-                    <input type="text" class="form-control" name="username" id="user" placeholder="User Name" >
+                    <input type="text" class="form-control" name="username" id="user" placeholder="User Name" autocomplete="off">
+					    <small></small>
 					</div>
+					
                   </div>
                   <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-field">
 					<label>Device_ID</label>
-                    <input type="text" class="form-control" name="device_id" id="device" placeholder="Device_ID">
+                    <input type="text" class="form-control" name="device_id" id="device" placeholder="Device_ID" autocomplete="off">
+					<small></small>
 					</div>
+				
                   </div>
 				  </div>
 				  
 				  <div class="row">
                   <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-field">
 					<label>Mobile Number</label>
-                    <input type="text" class="form-control"  name="mobilenumber" id ="mobile" placeholder="Mobile Number">
+                    <input type="text" class="form-control"  name="mobilenumber" id ="mobile" placeholder="Mobile Number" autocomplete="off">
+					    <small></small>
 					</div>
                   </div>
                 
                   <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-field">
 					<label>Email</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
+					    <small></small>
 					</div>
+					
                   </div>
 				  </div>
 				  
 				  <div class="row">
                   <div class="col-6">
-                    <div class="form-group">
+				    
+                    <div class="form-field">
 					<label>Password</label>
-                    <input type="text" class="form-control" name="password" id="pwd" placeholder="Password">
+                    <input type="text" class="form-control" name="password" id="pwd" placeholder="Password" autocomplete="off">
+					<small></small>
 					</div>
+				
                   </div>
                   <div class="col-6">
-                    <div class="form-group">
+                    <div class="form-field">
 					<label>Date</label>
-                  <input placeholder="Date & Time" type="date" name="date" id= "date"class="form-control">
+                  <input placeholder="" type="date" name="date" id= "date"class="form-control">
+				  <small></small>
 				  </div>
                 </div>
 				</div>
 				 <div class="row">
 				 <div class="col-6">
-                    <div class="form-group">
-                  <input class="btn  btn-primary" id= "submit" value="submit" type="reset" >			
+                    <div class="form-field">
+                  <input class="btn  btn-primary" id= "submit" value="submit" type="button" >			
 					</div>
                   </div>
 				  </div>
@@ -219,8 +248,8 @@
               </div>
               <!-- /.card-body -->
             </div>
-		  <div  id="error_message" class="text-center"></div> 
-		  <div  id="success_message" class="text-center"></div>
+		  <span  id="error_message" class="text-center"></span> 
+		  <span  id="success_message" class="text-center"></span>
 
             
               <footer class="footer footer-black  footer-white ">
@@ -250,46 +279,303 @@
       
   <!--   Core JS Files   -->
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 <script>
-  $(document).ready(function(){  
-      $('#submit').on('click',function(){ 
-	       /*var tname = $('#tablename').val();*/ 
+const usernameEl = document.querySelector('#user');
+const deviceidEl = document.querySelector('#device');
+const mobilenoEl = document.querySelector('#mobile');
+const emailEl = document.querySelector('#email');
+const passwordEl = document.querySelector('#pwd');
+const datetimeEl = document.querySelector('#date');
+
+const form = document.querySelector('#submit');
+
+
+const checkUsername = () => {
+    let valid = false;
+
+    const min = 3,
+        max = 25;
+
+    const username = usernameEl.value.trim();
+
+    if (!isRequired(username)) {
+        showError(usernameEl, 'Username cannot be blank.');
+    } else if (!isBetween(username.length, min, max)) {
+        showError(usernameEl, `Username must be between ${min} and ${max} characters.`);
+    } else {
+        showSuccess(usernameEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkDeviceid = () => {
+    let valid = false;
+
+
+    const deviceid = deviceidEl.value.trim();
+
+    if (!isRequired(deviceid)) {
+        showError(deviceidEl, 'Device ID  cannot be blank.');
+    }else if (!isDeviceidValid(deviceid)) {
+        showError(deviceidEl, 'please enter valid device ID.');
+    }  else {
+        showSuccess(deviceidEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkMobileno = () => {
+    let valid = false;
+
+
+    const mobileno = mobilenoEl.value.trim();
+
+    if (!isRequired(mobileno)) {
+        showError(mobilenoEl, 'mobile number cannot be blank.');
+    } else if (!isMobilenoValid(mobileno)) {
+        showError(mobilenoEl, 'please enter valid mobile number.');
+    } else {
+        showSuccess(mobilenoEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkEmail = () => {
+    let valid = false;
+    const email = emailEl.value.trim();
+    if (!isRequired(email)) {
+        showError(emailEl, 'Email cannot be blank.');
+    } else if (!isEmailValid(email)) {
+        showError(emailEl, 'Email is not valid.')
+    } else {
+        showSuccess(emailEl);
+        valid = true;
+    }
+    return valid;
+};
+
+const checkPassword = () => {
+    let valid = false;
+
+
+    const password = passwordEl.value.trim();
+
+    if (!isRequired(password)) {
+        showError(passwordEl, 'Password cannot be blank.');
+    } else if (!isPasswordSecure(password)) {
+        showError(passwordEl, 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)');
+    } else {
+        showSuccess(passwordEl);
+        valid = true;
+    }
+
+    return valid;
+};
+
+const checkDateTime = () => {
+    let valid = false;
+
+
+    const datetime = datetimeEl.value.trim();
+
+    if (!isRequired(datetime)) {
+        showError(datetimeEl, 'Date and Time cannot be blank.');
+    }  else { 
+		showSuccess(datetimeEl);
+        valid = true;
+    }
+
+    return valid;
+};
+
+
+const isEmailValid = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
+
+const isPasswordSecure = (password) => {
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    return re.test(password);
+};
+
+const isMobilenoValid = (mobileno) => {
+    const re = new RegExp("^[0-9]{10}$");
+    return re.test(mobileno);
+};
+
+//const isDateTime = (mobileno) => {
+  //  const re = new RegExp("^\d\d\d\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])");
+    //return re.test(datetime);
+//};
+const isDeviceidValid = (deviceid) => {
+    const re = new RegExp("^[0-9a-zA-Z]+$");
+    return re.test(deviceid);
+};
+
+const isRequired = value => value === '' ? false : true;
+
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+
+const showError = (input, message) => {
+    // get the form-field element
+    const formField = input.parentElement;
+
+    // add the error class
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+    // show the error message
+    const error = formField.querySelector('small');
+    error.textContent = message;
+};
+
+const showSuccess = (input) => {
+    // get the form-field element
+    const formField = input.parentElement;
+
+    // remove the error class
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    // hide the error message
+    const error = formField.querySelector('small');
+    error.textContent = '';
+}
+
+
+form.addEventListener('click', function (e) {
+    // prevent the form from submitting
+    e.preventDefault();
+
+    // validate fields
+    let isUsernameValid = checkUsername(),
+	    isDeviceidValid = checkDeviceid(),
+        isEmailValid = checkEmail(),
+        isPasswordValid = checkPassword(),
+		 ismobilenoValid = checkMobileno(),
+         isDateTimeValid = checkDateTime();
+		 
+    let isFormValid = isUsernameValid &&
+        isDeviceidValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        ismobilenoValid &&
+		isDateTimeValid;
+
+    // submit to the server if the form is valid
+    if (isFormValid) {
+	
            var user = $('#user').val(); 
            var device=$('#device').val();		   
            var mobile= $('#mobile').val();
             var email=$('#email').val();
             var pwd =$('#pwd').val();			
 		    var date=$('#date').val();	
-		  
-           if(user == '' || device == '' || mobile == '' || email == '' || pwd == '' || date == '')  
-           {  
-               $('#error_message').append('<div class="alert alert-danger" role="alert">All fields are required</div>');  
-				  
-           }  
-         
-		   else{
-			   $('#error_message').html('');  
-                $.ajax({  
+               $.ajax({  
                      url:"create.php",  
                      method:"POST",  
                      data:{user:user, device_id:device, mobile:mobile, email:email, pwd:pwd, date:date},  
                      success:function(data){  
-					 $('#success_message').html("success");   
+					
                         $("form").trigger("reset");  
-                         $('#success_message').fadeIn().html(data);  
-                       setTimeout(function(){  
-                           $('#success_message').fadeOut("Slow");  
-                          }, 2000);  
+                         $('#success_message').html(data);  
+                          setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                     $(this).remove(); 
+                            });
+                       }, 2000);
+                     }  
+					 
+					 
+                }); 
+    }
+});
+
+
+const debounce = (fn, delay = 500) => {
+    let timeoutId;
+    return (...args) => {
+        // cancel the previous timer
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        // setup a new timer
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
+
+form.addEventListener('input', debounce(function (e) {
+    switch (e.target.id) {
+        case 'user':
+            checkUsername();
+            break;
+		case 'device':
+            checkDeviceid();
+            break;	
+		case 'mobile':
+            checkMobileno();
+            break;	
+        case 'email':
+            checkEmail();
+            break;
+        case 'pwd':
+            checkPassword();
+            break;
+         case 'date':
+            checkDAteTime();
+            break;
+    }
+}));
+</script>
+<!--<script>
+
+  $(document).ready(function(){  
+      $('#submit').on('click',function(){ 
+	       var tname = $('#tablename').val(); 
+           var user = $('#user').val(); 
+           var device=$('#device').val();		   
+           var mobile= $('#mobile').val();
+            var email=$('#email').val();
+            var pwd =$('#pwd').val();			
+		    var date=$('#date').val();	
+
+		  
+           if(user == '' || device == '' || mobile == '' || email == '' || pwd == '' || date == '')  
+           {  
+               $('#error_message').html('<div class="alert alert-danger" role="alert"> <strong>All fields are required</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');  
+		
+           }  		   
+         
+		   else{
+			   
+                $.ajax({  
+                     url:"create.php",  
+                     method:"POST",  
+                     data:{table_name:tname ,user:user, device_id:device, mobile:mobile, email:email, pwd:pwd, date:date},  
+                     success:function(data){  
+					
+                        $("form").trigger("reset");  
+                         $('#success_message').html(data);  
+           
                      }  
                 });  
            }  
-      });  
+		   window.setTimeout(function() {
+                $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(this).remove(); 
+                             });
+                         }, 2000);
+             });  
       });
 	  
-  </script>
+  </script>-->
   <script src="../assets/js/core/jquery-3.6.0.min.js"></script>
   <script src="../assets/js/core/include-html.min.js"></script>
   <script src="../assets/js/core/jquery.min.js"></script>

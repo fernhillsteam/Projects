@@ -3,13 +3,14 @@
 				  
       $current_date = date('Y-m-d');
 	  ?>
-
+ 
+      
 	 <div class="row">
 				  <div class="col-lg-12 col-md-12 col-sm-14">
 			     
 				  <div class="text-right">
-                      <input type="submit" class="btn btn-primary btn-round" id="export" onclick="exportTableToCSV( '<?php echo $current_date; ?>.csv')" value="Export">
-                      <input type="submit" class="btn btn-primary btn-round"  id = "print" onclick="PrintTable()" value="Print">
+                      <input type="submit" class="btn btn-primary btn-round" id="exportF" onclick="exportTableF_ToCSV( 'Fault logs <?php echo $current_date; ?>.csv')" value="Export">
+                      <input type="submit" class="btn btn-primary btn-round"  id = "printF" onclick="PrintTableF()" value="Print">
                   </div>
               </div>
 			  </div>
@@ -21,8 +22,8 @@
               </div>
              <div class="card-body">
 			  <div class="table-responsive-md">
-			  <table class="table  table-hover " id="tableList" >
-                    <thead class=" text-primary text-center">
+			  <table class="table  table-hover " id="tableF" >
+                    <thead class=" text-primary text-center" >
                       <th>Sl_no</th>
                       <th>Fault Logs</th>
                       <th>Time</th>
@@ -58,7 +59,9 @@
    <!--   Core JS Files   -->
        
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js" ></script> 
+
   <script>
 
 
@@ -88,9 +91,9 @@
     downloadLink.click();
   }
   
-function exportTableToCSV(filename) {
+function exportTableF_ToCSV(filename) {
     var csv = [];
-    var rows = document.querySelectorAll("table tr");
+    var rows = document.querySelectorAll("#tableF tr");
     
     for (var i = 0; i < rows.length; i++) {
         var row = [], cols = rows[i].querySelectorAll("td, th");
@@ -107,14 +110,16 @@ function exportTableToCSV(filename) {
 
 
      </script>
- 
+   
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  
  <script>
     $(document).ready(function(){
-    $('#tableList').DataTable();
+    $('#tableF').DataTable();
 
          });
-	function PrintTable() {
-       var tab = document.getElementById('tableList');
+	function PrintTableF() {
+       var tab = document.getElementById('tableF');
 	   console.log(tab)
        var style = "<style>";
                 style = style + "table {width: 100%;font: 17px Calibri;}";

@@ -63,15 +63,15 @@ include('auth_session.php');
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+      <!--    <li>
             <a href="#">
               <i class="fas fa-cogs"></i>
               <p>Configuration</p>
             </a>
-          </li>
+          </li>-->
 
           <li>
-            <a href="#">
+            <a href="faultlogs.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Fault-Logs</p>
             </a>

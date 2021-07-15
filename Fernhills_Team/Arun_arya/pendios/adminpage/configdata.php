@@ -8,6 +8,8 @@
                   </div>
               </div>
 			  </div>-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 	   <div class="row">	  
          <div class="col-lg-12 col-md-12 col-sm-14"> 
             <div class="card">
@@ -16,7 +18,7 @@
               </div>
              <div class="card-body">
 			  <div class="table-responsive-md">
-			  <table class="table  table-hover " id="tableList" >
+			  <table class="table  table-hover " id="tableC" >
                     <thead class=" text-primary text-center">
                       <th>Device_ID</th>
                       <th>Mobile Number</th>
