@@ -176,65 +176,74 @@
                   </div>-->
 			
                   <div class="col-6">
-				
+				       <div class="form-group">
 					   <div class="form-field">
 					<label>User Name</label>
                     <input type="text" class="form-control" name="username" id="user" placeholder="User Name" autocomplete="off">
 					    <small></small>
 					</div>
-					
+					</div>
                   </div>
                   <div class="col-6">
+				   <div class="form-group">
                     <div class="form-field">
 					<label>Device_ID</label>
                     <input type="text" class="form-control" name="device_id" id="device" placeholder="Device_ID" autocomplete="off">
 					<small></small>
 					</div>
-				
+				   </div>
                   </div>
 				  </div>
 				  
 				  <div class="row">
                   <div class="col-6">
+				   <div class="form-group">
                     <div class="form-field">
 					<label>Mobile Number</label>
                     <input type="text" class="form-control"  name="mobilenumber" id ="mobile" placeholder="Mobile Number" autocomplete="off">
 					    <small></small>
 					</div>
-                  </div>
+					</div>
+					</div>
+                  
                 
                   <div class="col-6">
+				  <div class="form-group">
                     <div class="form-field">
 					<label>Email</label>
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
 					    <small></small>
 					</div>
-					
+					</div>
                   </div>
 				  </div>
 				  
 				  <div class="row">
                   <div class="col-6">
-				    
+				    <div class="form-group">
                     <div class="form-field">
 					<label>Password</label>
                     <input type="text" class="form-control" name="password" id="pwd" placeholder="Password" autocomplete="off">
 					<small></small>
 					</div>
-				
+					</div>
                   </div>
                   <div class="col-6">
+				  <div class="form-group">
                     <div class="form-field">
-					<label>Date</label>
-                  <input placeholder="" type="date" name="date" id= "date"class="form-control">
+					<label>Date & Time</label>
+                  <input placeholder="Date & Time" type="" name="date" id= "date"class="form-control" value="<?php date_default_timezone_set('Asia/Kolkata'); echo date('d-m-Y H:i:s A'); ?>" autocomplete="off">
 				  <small></small>
+				  </div>
 				  </div>
                 </div>
 				</div>
 				 <div class="row">
 				 <div class="col-6">
+				 <div class="form-group">
                     <div class="form-field">
                   <input class="btn  btn-primary" id= "submit" value="submit" type="button" >			
+					</div>
 					</div>
                   </div>
 				  </div>
