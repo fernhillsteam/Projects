@@ -10,17 +10,20 @@
 import serial
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-def start_click():
-    ser = serial.Serial("COM1", 9600)
-    command = b'\x73\x74\x30\x31'
-    ser.write(command)
 
-def stop_click():
-    ser = serial.Serial("COM1", 9600)
-    command = b'\x73\x78\x30\x31'
-    ser.write(command)
 
 class Ui_MainWindow(object):
+
+    def start_click(self):
+        ser = serial.Serial("COM1", 9600)
+        command = b'\x73\x74\x30\x31'
+        ser.write(command)
+
+    def stop_click(self):
+        ser = serial.Serial("COM1", 9600)
+        command = b'\x73\x78\x30\x31'
+        ser.write(command)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 800)
@@ -86,7 +89,7 @@ class Ui_MainWindow(object):
         self.start.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.start.setObjectName("start")
     # start system
-        self.start.clicked.connect(start_click)
+        self.start.clicked.connect(self.start_click)
         self.horizontalLayout.addWidget(self.start)
         self.stop = QtWidgets.QPushButton(self.layoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -101,7 +104,7 @@ class Ui_MainWindow(object):
         self.stop.setStyleSheet("background:rgb(255, 0, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.stop.setObjectName("stop")
      # start system
-        self.stop.clicked.connect(stop_click)
+        self.stop.clicked.connect(self.stop_click)
         self.horizontalLayout.addWidget(self.stop)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.tabWidget.addTab(self.initialization, "")
