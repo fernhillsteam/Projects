@@ -14,6 +14,7 @@ from PyQt5.QtSerialPort import QSerialPortInfo, QSerialPort
 
 class Ui_MainWindow(object):
     serialSendSignal = QtCore.pyqtSignal(str)
+    
     def __init__(self):
         self.port = QSerialPort()
 
@@ -46,6 +47,7 @@ class Ui_MainWindow(object):
         self.textEdit = QtWidgets.QTextEdit(self.com_test)
         self.textEdit.setGeometry(QtCore.QRect(180, 90, 801, 171))
         self.textEdit.setObjectName("textEdit")
+        self.port.readyRead.connect(self.readFromPort)
         self.textEdit_2 = QtWidgets.QTextEdit(self.com_test)
         self.textEdit_2.setGeometry(QtCore.QRect(180, 280, 801, 151))
         self.textEdit_2.setObjectName("textEdit_2")
@@ -475,13 +477,14 @@ class Ui_MainWindow(object):
     def flowControl(self):
         return self._flowControl.currentIndex()
 
+    def readFromPort(self):
+        data = self.port.readAll()
+        self.textEdit_2.setPlainText(QtCore.QTextStream(data))
+
     def sendButtonClicked(self):
-        self.text = self.sendData
+        text = self.sendData.toPlainText()
         self.port.write(text.encode())
         self.sendData.clear()
-
-    def sendFromPort(self, text):
-        self.port.write(text.encode())
 
 if __name__ == "__main__":
     import sys
