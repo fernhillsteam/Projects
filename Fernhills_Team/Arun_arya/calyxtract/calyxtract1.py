@@ -47,10 +47,11 @@ class Ui_MainWindow(object):
         self.textEdit = QtWidgets.QTextEdit(self.com_test)
         self.textEdit.setGeometry(QtCore.QRect(180, 90, 801, 171))
         self.textEdit.setObjectName("textEdit")
-        self.port.readyRead.connect(self.readFromPort)
-        self.textEdit_2 = QtWidgets.QTextEdit(self.com_test)
-        self.textEdit_2.setGeometry(QtCore.QRect(180, 280, 801, 151))
-        self.textEdit_2.setObjectName("textEdit_2")
+        self.textEdit.setReadOnly(True)
+        self.readData = QtWidgets.QTextEdit(self.com_test)
+        self.readData.setGeometry(QtCore.QRect(180, 280, 801, 151))
+        self.readData.setObjectName("readData")
+        self.readData.setReadOnly(True)
         self.sendData = QtWidgets.QTextEdit(self.com_test)
         self.sendData.setGeometry(QtCore.QRect(180, 450, 801, 151))
         self.sendData.setObjectName("textEdit_3")
@@ -432,12 +433,13 @@ class Ui_MainWindow(object):
 
     def portOpen(self, flag):
         if flag:
-            self.port.setBaudRate(self.baudRate())
             self.port.setPortName(self.portName())
+            self.port.setBaudRate(self.baudRate())
             self.port.setDataBits(self.dataBit())
             self.port.setParity(self.parity())
             self.port.setStopBits(self.stopBit())
             self.port.setFlowControl(self.flowControl())
+            self.port.readyRead.connect(self.readFromPort)
             r = self.port.open(QtCore.QIODevice.ReadWrite)
             if not r:
                 self.textEdit.setPlainText('Port open error')
@@ -479,7 +481,16 @@ class Ui_MainWindow(object):
 
     def readFromPort(self):
         data = self.port.readAll()
-        self.textEdit_2.setPlainText(QtCore.QTextStream(data))
+        if len(data) > 0:
+            self.appendSerialText(QtCore.QTextStream(data).readAll(), QtGui.QColor(255, 0, 0))
+
+    def appendSerialText(self, appendText, color):
+        self.readData.moveCursor(QtGui.QTextCursor.End)
+        self.readData.setFontFamily('Courier New')
+        self.readData.setTextColor(color)
+        self.readData.insertPlainText(appendText)
+        self.readData.moveCursor(QtGui.QTextCursor.End)
+
 
     def sendButtonClicked(self):
         text = self.sendData.toPlainText()
