@@ -1,0 +1,22 @@
+11:44:35 **** Incremental Build of configuration Debug for project Led_blink ****
+make -j4 all 
+arm-none-eabi-gcc -o "Led_blink.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\Led_blink\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Led_blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Led_blink.elf
+ 
+arm-none-eabi-size   Led_blink.elf 
+arm-none-eabi-objdump -h -S  Led_blink.elf  > "Led_blink.list"
+arm-none-eabi-objcopy  -O ihex  Led_blink.elf  "Led_blink.hex"
+arm-none-eabi-objcopy  -O binary  Led_blink.elf  "Led_blink.bin"
+   text	   data	    bss	    dec	    hex	filename
+    948	     12	   1572	   2532	    9e4	Led_blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: Led_blink.hex
+Finished building: Led_blink.list
+Finished building: Led_blink.bin
+ 
+ 
+ 
+
+11:44:36 Build Finished. 0 errors, 0 warnings. (took 870ms)
+

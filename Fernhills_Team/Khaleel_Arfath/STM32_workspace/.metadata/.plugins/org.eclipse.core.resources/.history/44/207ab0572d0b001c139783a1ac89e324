@@ -1,0 +1,112 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
+  ******************************************************************************/
+//#include "stm32f4xx.h"
+//
+//char *temp;
+//
+//void Clock_Config(){						//HSI CLOCK 16MHz
+//	RCC->CR		|=	RCC_CR_HSION;			// Enable HSI
+//	while(!(RCC->CR & RCC_CR_HSIRDY));		// Wait till HSI READY
+//}
+//
+// void USART_6(){
+//	RCC->AHB1ENR 	|= 	RCC_AHB1ENR_GPIOCEN; 			// Enable clock for GPIOC
+//	RCC->APB2ENR	|= 	RCC_APB2ENR_USART6EN;   		// Enable clock for USART6
+//	GPIOC->AFR[0]	 =	0x88000000;  					// enable USART6_TX to PC6 and USART6_RX to PC7
+//	GPIOC->MODER	|=	GPIO_MODER_MODER6_1;			// configuring the USART6 ALTERNATE function PC6
+//	GPIOC->MODER	|=	GPIO_MODER_MODER7_1;				// configuring the USART6 ALTERNATE function PC7
+//	USART6->BRR		 =	0x682;    						// 9600 Baud
+//	USART6->CR1		|=	USART_CR1_UE |USART_CR1_TE|USART_CR1_RE|USART_CR1_RXNEIE; 	// USART6 enable(c=[TE: Transmitter enable %RE:Receiver enable]2=[RXNEIE:RXNE interrupt enable]2=[UE: USART enable] )
+//}
+//
+// void SendChar(char Tx){
+//    while(!(USART6->SR & USART_SR_TXE));  			// wait TXBUFF=1
+//    USART6->DR=Tx;
+// }
+//
+// void SendTxt(char *Adr)
+// {
+//   while(*Adr){
+//     SendChar(*Adr);
+//     Adr++;
+//   }
+// }
+// char receive(){
+// 	if((USART6->SR & USART_SR_RXNE)!=0){
+// 		char data = USART6->DR;
+//
+// 		return data;
+// 	}
+// }
+//
+// int main(void){
+// 	Clock_Config();
+// 	USART_6();
+// 	SendTxt("WELCOME:\n");
+// 	while(1)
+// 	{
+// 		temp = receive();
+// 		SendTxt(temp);
+// 	}
+// }
+
+#include "stm32F4xx.h"
+
+void USART6_init(void);
+void USART6_write(int c);
+void delayMs(int);
+char USART6_read(void);
+
+int main (void) {
+    char c;
+    USART6_init();
+
+    while (1) {
+        c = USART6_read();
+        USART6_write(c);
+    }
+}
+
+/* initialize USART6 to transmit at 9600 Baud */
+void USART6_init (void) {
+		RCC->AHB1ENR 	|= 	RCC_AHB1ENR_GPIOCEN; 			// Enable clock for GPIOC
+		RCC->APB2ENR	|= 	RCC_APB2ENR_USART6EN;   		// Enable clock for USART6
+
+    	RCC->AHB1ENR 	|= 	RCC_AHB1ENR_GPIOCEN; 			// Enable clock for GPIOC
+    	RCC->APB2ENR	|= 	RCC_APB2ENR_USART6EN;   		// Enable clock for USART6
+    	GPIOC->AFR[0]	 =	0x88000000;  					// enable USART6_TX to PC6 and USART6_RX to PC7
+    	GPIOC->MODER	|=	GPIO_MODER_MODER6_1;			// configuring the USART6 ALTERNATE function PC6
+    	GPIOC->MODER	|=	GPIO_MODER_MODER7_1;				// configuring the USART6 ALTERNATE function PC7
+
+    	USART6->BRR		 =	0x682;    						// 9600 Baud
+    	USART6->CR1		|=	USART_CR1_UE |USART_CR1_TE|USART_CR1_RE|USART_CR1_RXNEIE; 	// USART6 enable(c=[TE: Transmitter enable %RE:Receiver enable]2=[RXNEIE:RXNE interrupt enable]2=[UE: USART enable] )
+
+}
+
+/* Write a character to USART6 */
+void USART6_write (int ch) {
+	    while(!(USART6->SR & USART_SR_TXE));  			// wait TXBUFF=1
+	    USART6->DR=Tx;
+}
+
+/* Read a character from USART6 */
+char USART6_read(void) {
+    while (!(USART6->SR & 0x0020)) {}   // wait until char arrives
+    return USART6->DR;
+}
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

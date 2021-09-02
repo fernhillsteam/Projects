@@ -1,0 +1,22 @@
+14:32:40 **** Build of configuration Debug for project UART_tx_rx ****
+make -j4 all 
+arm-none-eabi-gcc -o "UART_tx_rx.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\UART_tx_rx\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_tx_rx.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: UART_tx_rx.elf
+ 
+arm-none-eabi-size   UART_tx_rx.elf 
+arm-none-eabi-objdump -h -S  UART_tx_rx.elf  > "UART_tx_rx.list"
+arm-none-eabi-objcopy  -O ihex  UART_tx_rx.elf  "UART_tx_rx.hex"
+arm-none-eabi-objcopy  -O binary  UART_tx_rx.elf  "UART_tx_rx.bin"
+   text	   data	    bss	    dec	    hex	filename
+   1048	     12	   1572	   2632	    a48	UART_tx_rx.elf
+Finished building: default.size.stdout
+ 
+Finished building: UART_tx_rx.hex
+Finished building: UART_tx_rx.list
+Finished building: UART_tx_rx.bin
+ 
+ 
+ 
+
+14:32:40 Build Finished. 0 errors, 0 warnings. (took 795ms)
+

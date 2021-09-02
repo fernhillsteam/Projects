@@ -1,0 +1,23 @@
+11:57:04 **** Build of configuration Debug for project Led_blink_Timer_delay ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Led_blink_Timer_delay.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\Led_blink_Timer_delay\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Led_blink_Timer_delay.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Led_blink_Timer_delay.elf
+ 
+arm-none-eabi-size   Led_blink_Timer_delay.elf 
+arm-none-eabi-objdump -h -S  Led_blink_Timer_delay.elf  > "Led_blink_Timer_delay.list"
+arm-none-eabi-objcopy  -O ihex  Led_blink_Timer_delay.elf  "Led_blink_Timer_delay.hex"
+arm-none-eabi-objcopy  -O binary  Led_blink_Timer_delay.elf  "Led_blink_Timer_delay.bin"
+   text	   data	    bss	    dec	    hex	filename
+    952	     12	   1572	   2536	    9e8	Led_blink_Timer_delay.elf
+Finished building: default.size.stdout
+ 
+Finished building: Led_blink_Timer_delay.list
+Finished building: Led_blink_Timer_delay.hex
+Finished building: Led_blink_Timer_delay.bin
+ 
+ 
+ 
+
+11:57:06 Build Finished. 0 errors, 0 warnings. (took 1s.401ms)
+

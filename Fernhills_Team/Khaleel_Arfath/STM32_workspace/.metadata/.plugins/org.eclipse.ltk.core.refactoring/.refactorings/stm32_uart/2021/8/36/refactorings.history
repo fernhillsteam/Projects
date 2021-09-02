@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;stm32_uart/Core/Inc/stm32f10x_typr.h&apos; to &apos;stm32f10x_type.h&apos;" description="Rename resource &apos;stm32f10x_typr.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/stm32f10x_typr.h" name="stm32f10x_type.h" stamp="1630333994152" updateReferences="true"/>
+</session>
