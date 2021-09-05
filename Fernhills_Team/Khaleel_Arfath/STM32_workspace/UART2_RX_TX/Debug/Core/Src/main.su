@@ -1,0 +1,5 @@
+main.c:83:6:USART2_Init	4	static
+main.c:97:6:USART2_WriteChar	16	static
+main.c:103:6:USART2_WriteString	16	static
+main.c:112:6:USART2_IRQHandler	16	static
+main.c:124:6:main	16	static
