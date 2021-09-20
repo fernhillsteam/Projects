@@ -1,0 +1,22 @@
+12:19:38 **** Incremental Build of configuration Debug for project timer ****
+make -j4 all 
+arm-none-eabi-gcc -o "timer.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\timer\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: timer.elf
+ 
+arm-none-eabi-size   timer.elf 
+arm-none-eabi-objdump -h -S  timer.elf  > "timer.list"
+arm-none-eabi-objcopy  -O ihex  timer.elf  "timer.hex"
+arm-none-eabi-objcopy  -O binary  timer.elf  "timer.bin"
+   text	   data	    bss	    dec	    hex	filename
+    892	     12	   1572	   2476	    9ac	timer.elf
+Finished building: default.size.stdout
+ 
+Finished building: timer.hex
+Finished building: timer.bin
+Finished building: timer.list
+ 
+ 
+ 
+
+12:19:41 Build Finished. 0 errors, 0 warnings. (took 2s.513ms)
+

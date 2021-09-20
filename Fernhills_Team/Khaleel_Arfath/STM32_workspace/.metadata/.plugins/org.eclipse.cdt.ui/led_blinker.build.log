@@ -1,0 +1,21 @@
+15:14:42 **** Incremental Build of configuration Debug for project led_blinker ****
+make -j4 all 
+arm-none-eabi-gcc -o "led_blinker.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\led_blinker\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="led_blinker.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: led_blinker.elf
+ 
+arm-none-eabi-size   led_blinker.elf 
+arm-none-eabi-objdump -h -S  led_blinker.elf  > "led_blinker.list"
+arm-none-eabi-objcopy  -O binary  led_blinker.elf  "led_blinker.bin"
+   text	   data	    bss	    dec	    hex	filename
+    960	     12	   1572	   2544	    9f0	led_blinker.elf
+Finished building: default.size.stdout
+ 
+Finished building: led_blinker.list
+Finished building: led_blinker.bin
+ 
+ 
+arm-none-eabi-objcopy -O ihex led_blinker.elf led_blinker.hex
+ 
+
+15:14:45 Build Finished. 0 errors, 0 warnings. (took 2s.106ms)
+

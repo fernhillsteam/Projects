@@ -1,0 +1,24 @@
+18:43:11 **** Build of configuration Debug for project SPI_GLCD2 ****
+make -j4 all 
+arm-none-eabi-gcc -o "SPI_GLCD2.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\SPI_GLCD2\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_GLCD2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SPI_GLCD2.elf
+ 
+arm-none-eabi-size   SPI_GLCD2.elf 
+arm-none-eabi-objdump -h -S  SPI_GLCD2.elf  > "SPI_GLCD2.list"
+arm-none-eabi-objcopy  -O ihex  SPI_GLCD2.elf  "SPI_GLCD2.hex"
+arm-none-eabi-objcopy  -O binary  SPI_GLCD2.elf  "SPI_GLCD2.bin"
+   text	   data	    bss	    dec	    hex	filename
+   1468	     12	   1572	   3052	    bec	SPI_GLCD2.elf
+Finished building: default.size.stdout
+ 
+Finished building: SPI_GLCD2.hex
+Finished building: SPI_GLCD2.bin
+Finished building: SPI_GLCD2.list
+ 
+ 
+ 
+arm-none-eabi-objcopy -O ihex SPI_GLCD2.elf SPI_GLCD2.hex
+ 
+
+18:43:13 Build Finished. 0 errors, 0 warnings. (took 1s.270ms)
+

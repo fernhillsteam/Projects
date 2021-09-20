@@ -1,0 +1,23 @@
+00:22:21 **** Incremental Build of configuration Debug for project LED_interrupt ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+arm-none-eabi-gcc -o "LED_interrupt.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Imbrute_khaleel\STM32_workspace\LED_interrupt\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_interrupt.elf
+ 
+arm-none-eabi-size   LED_interrupt.elf 
+arm-none-eabi-objdump -h -S  LED_interrupt.elf  > "LED_interrupt.list"
+arm-none-eabi-objcopy  -O ihex  LED_interrupt.elf  "LED_interrupt.hex"
+arm-none-eabi-objcopy  -O binary  LED_interrupt.elf  "LED_interrupt.bin"
+   text	   data	    bss	    dec	    hex	filename
+   4740	     20	   1572	   6332	   18bc	LED_interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_interrupt.hex
+Finished building: LED_interrupt.bin
+ 
+Finished building: LED_interrupt.list
+ 
+ 
+
+00:22:23 Build Finished. 0 errors, 0 warnings. (took 2s.46ms)
+

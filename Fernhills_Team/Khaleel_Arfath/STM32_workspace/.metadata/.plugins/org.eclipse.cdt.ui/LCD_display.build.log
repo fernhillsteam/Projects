@@ -1,0 +1,23 @@
+16:29:48 **** Incremental Build of configuration Debug for project LCD_display ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LCD_display.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\LCD_display\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_display.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LCD_display.elf
+ 
+arm-none-eabi-size   LCD_display.elf 
+arm-none-eabi-objdump -h -S  LCD_display.elf  > "LCD_display.list"
+arm-none-eabi-objcopy  -O ihex  LCD_display.elf  "LCD_display.hex"
+arm-none-eabi-objcopy  -O binary  LCD_display.elf  "LCD_display.bin"
+   text	   data	    bss	    dec	    hex	filename
+   1272	     12	   1572	   2856	    b28	LCD_display.elf
+Finished building: default.size.stdout
+Finished building: LCD_display.bin
+Finished building: LCD_display.list
+ 
+Finished building: LCD_display.hex
+ 
+ 
+ 
+
+16:29:49 Build Finished. 0 errors, 0 warnings. (took 1s.851ms)
+

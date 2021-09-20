@@ -1,0 +1,23 @@
+18:28:52 **** Incremental Build of configuration Debug for project 7_segment ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "7_segment.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\7_segment\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="7_segment.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 7_segment.elf
+ 
+arm-none-eabi-size   7_segment.elf 
+arm-none-eabi-objdump -h -S  7_segment.elf  > "7_segment.list"
+arm-none-eabi-objcopy  -O ihex  7_segment.elf  "7_segment.hex"
+arm-none-eabi-objcopy  -O binary  7_segment.elf  "7_segment.bin"
+   text	   data	    bss	    dec	    hex	filename
+   1016	     12	   1572	   2600	    a28	7_segment.elf
+Finished building: default.size.stdout
+ 
+Finished building: 7_segment.hex
+Finished building: 7_segment.list
+Finished building: 7_segment.bin
+ 
+ 
+ 
+
+18:28:54 Build Finished. 0 errors, 0 warnings. (took 2s.366ms)
+

@@ -1,0 +1,35 @@
+20:09:34 **** Incremental Build of configuration Debug for project stm32_uart ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/STM32_Init.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/STM32_Init.d" -MT"Core/Src/STM32_Init.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/STM32_Init.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Inc/stm32f10x_lib.h:32,
+                 from ../Core/Src/STM32_Init.c:31:
+../Core/Inc/stm32f10x_map.h:28:10: fatal error: cortexm3_macro.h: No such file or directory
+   28 | #include "cortexm3_macro.h"
+      |          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:37: Core/Src/STM32_Init.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/main.c: In function 'USART1_IRQHandler':
+../Core/Src/main.c:68:11: error: 'USART1' undeclared (first use in this function)
+   68 |     IIR = USART1->SR;
+      |           ^~~~~~
+../Core/Src/main.c:68:11: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:69:15: error: 'USART_FLAG_RXNE' undeclared (first use in this function)
+   69 |     if (IIR & USART_FLAG_RXNE) {                  // read interrupt
+      |               ^~~~~~~~~~~~~~~
+../Core/Src/main.c:80:15: error: 'USART_FLAG_TXE' undeclared (first use in this function)
+   80 |     if (IIR & USART_FLAG_TXE) {
+      |               ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'SendChar':
+../Core/Src/main.c:128:2: error: 'USART1' undeclared (first use in this function)
+  128 |  USART1->CR1 |= USART_FLAG_TXE;            // enable TX interrupt
+      |  ^~~~~~
+../Core/Src/main.c:128:17: error: 'USART_FLAG_TXE' undeclared (first use in this function)
+  128 |  USART1->CR1 |= USART_FLAG_TXE;            // enable TX interrupt
+      |                 ^~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+20:09:35 Build Failed. 9 errors, 0 warnings. (took 502ms)
+

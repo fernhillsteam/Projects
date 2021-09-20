@@ -1,0 +1,23 @@
+19:39:50 **** Build of configuration Debug for project Systick_timer_Led_toggle ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Systick_timer_Led_toggle.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Imbrute_khaleel\STM32_workspace\Systick_timer_Led_toggle\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Systick_timer_Led_toggle.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Systick_timer_Led_toggle.elf
+ 
+arm-none-eabi-size   Systick_timer_Led_toggle.elf 
+arm-none-eabi-objdump -h -S  Systick_timer_Led_toggle.elf  > "Systick_timer_Led_toggle.list"
+arm-none-eabi-objcopy  -O ihex  Systick_timer_Led_toggle.elf  "Systick_timer_Led_toggle.hex"
+arm-none-eabi-objcopy  -O binary  Systick_timer_Led_toggle.elf  "Systick_timer_Led_toggle.bin"
+   text	   data	    bss	    dec	    hex	filename
+    964	     12	   1572	   2548	    9f4	Systick_timer_Led_toggle.elf
+Finished building: default.size.stdout
+ 
+Finished building: Systick_timer_Led_toggle.list
+Finished building: Systick_timer_Led_toggle.hex
+Finished building: Systick_timer_Led_toggle.bin
+ 
+ 
+ 
+
+19:39:52 Build Finished. 0 errors, 0 warnings. (took 1s.348ms)
+
