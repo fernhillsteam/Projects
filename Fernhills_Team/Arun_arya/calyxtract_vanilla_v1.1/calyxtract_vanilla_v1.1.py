@@ -14,43 +14,6 @@ global ser
 ser = serial.Serial("COM1", 9600)
 
 class Ui_MainWindow(object):
-
-    def system_start(self):
-        command = 'st01'
-        ser.write(command.encode())
-
-    def system_stop(self):
-        command = 'sx01'
-        ser.write(command.encode())
-
-    def accept_click(self):
-        command = 'accept'
-        ser.write(command.encode())
-
-    def reject_click(self):
-        command = 'reject'
-        ser.write(command.encode())
-
-    def cw_click(self):
-        command = 'cw'
-        ser.write(command.encode())
-
-    def ccw_click(self):
-        command = 'ccw'
-        ser.write(command.encode())
-
-    def button_1_click(self):
-        command = 'ch1'
-        ser.write(command.encode())
-
-    def button_2_click(self):
-        command = 'ch2'
-        ser.write(command.encode())
-
-    def button_3_click(self):
-        command = 'ch3'
-        ser.write(command.encode())
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 800)
@@ -60,14 +23,14 @@ class Ui_MainWindow(object):
         self.centralwidget.setMaximumSize(QtCore.QSize(1280, 800))
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1280, 700))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1280, 781))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
-        self.tabWidget.setMinimumSize(QtCore.QSize(1280, 700))
-        self.tabWidget.setMaximumSize(QtCore.QSize(1280, 700))
+        self.tabWidget.setMinimumSize(QtCore.QSize(1280, 781))
+        self.tabWidget.setMaximumSize(QtCore.QSize(1280, 781))
         font = QtGui.QFont()
         font.setPointSize(22)
         self.tabWidget.setFont(font)
@@ -87,16 +50,16 @@ class Ui_MainWindow(object):
         self.logo.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
-        self.system1 = QtWidgets.QLabel(self.system)
-        self.system1.setEnabled(True)
-        self.system1.setGeometry(QtCore.QRect(100, 150, 250, 60))
+        self.systemlabel = QtWidgets.QLabel(self.system)
+        self.systemlabel.setEnabled(True)
+        self.systemlabel.setGeometry(QtCore.QRect(100, 150, 250, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
         font.setBold(False)
         font.setWeight(50)
-        self.system1.setFont(font)
-        self.system1.setAlignment(QtCore.Qt.AlignCenter)
-        self.system1.setObjectName("system1")
+        self.systemlabel.setFont(font)
+        self.systemlabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.systemlabel.setObjectName("systemlabel")
         self.layoutWidget = QtWidgets.QWidget(self.system)
         self.layoutWidget.setGeometry(QtCore.QRect(160, 340, 451, 91))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -165,8 +128,13 @@ class Ui_MainWindow(object):
         self.coveryorSpeed_input.setSizePolicy(sizePolicy)
         self.coveryorSpeed_input.setMaximumSize(QtCore.QSize(60, 60))
         self.coveryorSpeed_input.setObjectName("coveryorSpeed_input")
-        self.coveryorSpeed_input.setReadOnly(True)
         self.horizontalLayout.addWidget(self.coveryorSpeed_input)
+        self.version = QtWidgets.QLabel(self.system)
+        self.version.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version.setFont(font)
+        self.version.setObjectName("version")
         self.tabWidget.addTab(self.system, "")
         self.loader = QtWidgets.QWidget()
         self.loader.setObjectName("loader")
@@ -250,12 +218,18 @@ class Ui_MainWindow(object):
         self.device3.setFont(font)
         self.device3.setObjectName("device3")
         self.verticalLayout_6.addWidget(self.device3)
-        self.label_18 = QtWidgets.QLabel(self.loader)
-        self.label_18.setGeometry(QtCore.QRect(100, 150, 251, 60))
+        self.loader_label = QtWidgets.QLabel(self.loader)
+        self.loader_label.setGeometry(QtCore.QRect(100, 150, 251, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.label_18.setFont(font)
-        self.label_18.setObjectName("label_18")
+        self.loader_label.setFont(font)
+        self.loader_label.setObjectName("loader_label")
+        self.version_1 = QtWidgets.QLabel(self.loader)
+        self.version_1.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_1.setFont(font)
+        self.version_1.setObjectName("version_1")
         self.tabWidget.addTab(self.loader, "")
         self.orentation = QtWidgets.QWidget()
         self.orentation.setObjectName("orentation")
@@ -271,12 +245,12 @@ class Ui_MainWindow(object):
         self.logo_3.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo_3.setScaledContents(True)
         self.logo_3.setObjectName("logo_3")
-        self.orientation = QtWidgets.QLabel(self.orentation)
-        self.orientation.setGeometry(QtCore.QRect(100, 150, 461, 60))
+        self.orientation_label = QtWidgets.QLabel(self.orentation)
+        self.orientation_label.setGeometry(QtCore.QRect(100, 150, 461, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.orientation.setFont(font)
-        self.orientation.setObjectName("orientation")
+        self.orientation_label.setFont(font)
+        self.orientation_label.setObjectName("orientation_label")
         self.layoutWidget3 = QtWidgets.QWidget(self.orentation)
         self.layoutWidget3.setGeometry(QtCore.QRect(910, 210, 247, 42))
         self.layoutWidget3.setObjectName("layoutWidget3")
@@ -423,6 +397,12 @@ class Ui_MainWindow(object):
         self.button_3.clicked.connect(self.button_3_click)                 # button 3
         self.horizontalLayout_4.addWidget(self.button_3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+        self.version_2 = QtWidgets.QLabel(self.orentation)
+        self.version_2.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_2.setFont(font)
+        self.version_2.setObjectName("version_2")
         self.tabWidget.addTab(self.orentation, "")
         self.detection = QtWidgets.QWidget()
         self.detection.setObjectName("detection")
@@ -434,12 +414,12 @@ class Ui_MainWindow(object):
         self.logo_4.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo_4.setScaledContents(True)
         self.logo_4.setObjectName("logo_4")
-        self.detection_2 = QtWidgets.QLabel(self.detection)
-        self.detection_2.setGeometry(QtCore.QRect(100, 150, 356, 60))
+        self.detection_label = QtWidgets.QLabel(self.detection)
+        self.detection_label.setGeometry(QtCore.QRect(100, 150, 356, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.detection_2.setFont(font)
-        self.detection_2.setObjectName("detection_2")
+        self.detection_label.setFont(font)
+        self.detection_label.setObjectName("detection_label")
         self.image = QtWidgets.QLabel(self.detection)
         self.image.setGeometry(QtCore.QRect(60, 330, 711, 361))
         self.image.setText("")
@@ -489,6 +469,12 @@ class Ui_MainWindow(object):
         self.detectionSlaveID_input.setMaximumSize(QtCore.QSize(100, 16777215))
         self.detectionSlaveID_input.setObjectName("detectionSlaveID_input")
         self.horizontalLayout_11.addWidget(self.detectionSlaveID_input)
+        self.version_3 = QtWidgets.QLabel(self.detection)
+        self.version_3.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_3.setFont(font)
+        self.version_3.setObjectName("version_3")
         self.tabWidget.addTab(self.detection, "")
         self.sorting_2 = QtWidgets.QWidget()
         self.sorting_2.setObjectName("sorting_2")
@@ -500,12 +486,12 @@ class Ui_MainWindow(object):
         self.logo_5.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo_5.setScaledContents(True)
         self.logo_5.setObjectName("logo_5")
-        self.sorting = QtWidgets.QLabel(self.sorting_2)
-        self.sorting.setGeometry(QtCore.QRect(100, 150, 301, 60))
+        self.sorting_label = QtWidgets.QLabel(self.sorting_2)
+        self.sorting_label.setGeometry(QtCore.QRect(100, 150, 301, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.sorting.setFont(font)
-        self.sorting.setObjectName("sorting")
+        self.sorting_label.setFont(font)
+        self.sorting_label.setObjectName("sorting_label")
         self.layoutWidget8 = QtWidgets.QWidget(self.sorting_2)
         self.layoutWidget8.setGeometry(QtCore.QRect(880, 250, 256, 43))
         self.layoutWidget8.setObjectName("layoutWidget8")
@@ -553,6 +539,12 @@ class Ui_MainWindow(object):
         self.badBinStartButton.setStyleSheet("background:rgb(255, 0, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.badBinStartButton.setObjectName("badBinStartButton")
         self.horizontalLayout_14.addWidget(self.badBinStartButton)
+        self.version_4 = QtWidgets.QLabel(self.sorting_2)
+        self.version_4.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_4.setFont(font)
+        self.version_4.setObjectName("version_4")
         self.tabWidget.addTab(self.sorting_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -565,13 +557,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.system1.setText(_translate("MainWindow", "SYSTEM"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "calyxtract"))
+        self.systemlabel.setText(_translate("MainWindow", "SYSTEM"))
         self.systemStart.setText(_translate("MainWindow", "SYSTEM START"))
         self.start.setText(_translate("MainWindow", "Start"))
         self.systemStop.setText(_translate("MainWindow", "SYSTEM STOP"))
         self.stop.setText(_translate("MainWindow", "Stop"))
         self.converyor.setText(_translate("MainWindow", "CONVEYOR SPEED :"))
+        self.version.setText(_translate("MainWindow", "version 1.1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.system), _translate("MainWindow", "SYSTEM"))
         self.submit.setText(_translate("MainWindow", "Submit"))
         self.duration.setText(_translate("MainWindow", "Duration"))
@@ -579,9 +572,10 @@ class Ui_MainWindow(object):
         self.device1.setText(_translate("MainWindow", "Device 1"))
         self.device2.setText(_translate("MainWindow", "Device 2"))
         self.device3.setText(_translate("MainWindow", "Device 3"))
-        self.label_18.setText(_translate("MainWindow", "LOADER"))
+        self.loader_label.setText(_translate("MainWindow", "LOADER"))
+        self.version_1.setText(_translate("MainWindow", "version 1.1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.loader), _translate("MainWindow", "LOADER"))
-        self.orientation.setText(_translate("MainWindow", "ORIENTATION"))
+        self.orientation_label.setText(_translate("MainWindow", "ORIENTATION"))
         self.orentationSlaveID.setText(_translate("MainWindow", "SLAVE ID :"))
         self.podStatus.setText(_translate("MainWindow", "POD STATUS"))
         self.acceptButton.setText(_translate("MainWindow", "ACCEPT "))
@@ -593,21 +587,60 @@ class Ui_MainWindow(object):
         self.button_1.setText(_translate("MainWindow", "1"))
         self.button_2.setText(_translate("MainWindow", "2"))
         self.button_3.setText(_translate("MainWindow", "3"))
+        self.version_2.setText(_translate("MainWindow", "version 1.1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.orentation), _translate("MainWindow", "ORIENTATION"))
-        self.detection_2.setText(_translate("MainWindow", "DETECTION"))
+        self.detection_label.setText(_translate("MainWindow", "DETECTION"))
         self.imageDetection.setText(_translate("MainWindow", "IMAGE DETECTION"))
         self.viewImage.setText(_translate("MainWindow", "VIEW IMAGE"))
         self.cuttingTest.setText(_translate("MainWindow", "CUTTING TEST"))
         self.bladeONButton.setText(_translate("MainWindow", "BLADE ON"))
         self.detectionSlaveID.setText(_translate("MainWindow", "SLAVE ID :"))
+        self.version_3.setText(_translate("MainWindow", "version 1.1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.detection), _translate("MainWindow", "DETECTION"))
-        self.sorting.setText(_translate("MainWindow", "SORTING"))
+        self.sorting_label.setText(_translate("MainWindow", "SORTING"))
         self.sortingSlaveID.setText(_translate("MainWindow", " SLAVE ID :"))
         self.goodBin.setText(_translate("MainWindow", "GOOD BIN"))
         self.goodBinStartButton.setText(_translate("MainWindow", "START"))
         self.badBin.setText(_translate("MainWindow", "BAD BIN"))
         self.badBinStartButton.setText(_translate("MainWindow", "START"))
+        self.version_4.setText(_translate("MainWindow", "version 1.1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.sorting_2), _translate("MainWindow", "SORTING"))
+
+    def system_start(self):
+        command = 'st01'
+        ser.write(command.encode())
+
+    def system_stop(self):
+        command = 'sx01'
+        ser.write(command.encode())
+
+    def accept_click(self):
+        command = 'accept'
+        ser.write(command.encode())
+
+    def reject_click(self):
+        command = 'reject'
+        ser.write(command.encode())
+
+    def cw_click(self):
+        command = 'cw'
+        ser.write(command.encode())
+
+    def ccw_click(self):
+        command = 'ccw'
+        ser.write(command.encode())
+
+    def button_1_click(self):
+        command = 'ch1'
+        ser.write(command.encode())
+
+    def button_2_click(self):
+        command = 'ch2'
+        ser.write(command.encode())
+
+    def button_3_click(self):
+        command = 'ch3'
+        ser.write(command.encode())
 
 if __name__ == "__main__":
     import sys

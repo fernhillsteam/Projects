@@ -15,61 +15,8 @@ import serial
 GUIOBJECT = 0 # Global variable for the GUI
 SPEEDSERIAL = 0 # Global variable for the data from the serial port
 ser = serial.Serial(port="COM1", baudrate=9600, bytesize=8, timeout=1, stopbits=serial.STOPBITS_ONE)  # open serial port
-class Ui_MainWindow(object):
 
-    def system_start(self):
-        command = 'st01'
-        ser.write(command.encode())
-
-    def system_stop(self):
-        command = 'sx01'
-        ser.write(command.encode())
-
-    def accept_click(self, s_id):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'accept'
-        ser.write(command.encode())
-
-    def reject_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'reject'
-        ser.write(command.encode())
-
-    def cw_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'cw'
-        ser.write(command.encode())
-
-    def ccw_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'ccw'
-        ser.write(command.encode())
-
-    def button_1_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'ch1'
-        ser.write(command.encode())
-
-    def button_2_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'ch2'
-        ser.write(command.encode())
-
-    def button_3_click(self):
-        s_id = self.orentationSlaveID_input.text()
-        command = s_id +'ch3'
-        ser.write(command.encode())
-
-    def goodbin_click(self):
-        s_id = self.SortingSlaveID_input.text()
-        command = s_id +'gdbin'
-        ser.write(command.encode())
-
-    def badbin_click(self):
-        s_id = self.SortingSlaveID_input.text()
-        command = s_id +'bdbin'
-        ser.write(command.encode())
-
+class Ui_MainWindow(object):  
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 800)
@@ -79,14 +26,14 @@ class Ui_MainWindow(object):
         self.centralwidget.setMaximumSize(QtCore.QSize(1280, 800))
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1280, 700))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1280, 781))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
-        self.tabWidget.setMinimumSize(QtCore.QSize(1280, 700))
-        self.tabWidget.setMaximumSize(QtCore.QSize(1280, 700))
+        self.tabWidget.setMinimumSize(QtCore.QSize(1280, 781))
+        self.tabWidget.setMaximumSize(QtCore.QSize(1280, 781))
         font = QtGui.QFont()
         font.setPointSize(22)
         self.tabWidget.setFont(font)
@@ -106,16 +53,16 @@ class Ui_MainWindow(object):
         self.logo.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
-        self.system1 = QtWidgets.QLabel(self.system)
-        self.system1.setEnabled(True)
-        self.system1.setGeometry(QtCore.QRect(100, 150, 250, 60))
+        self.system_label = QtWidgets.QLabel(self.system)
+        self.system_label.setEnabled(True)
+        self.system_label.setGeometry(QtCore.QRect(100, 150, 250, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
         font.setBold(False)
         font.setWeight(50)
-        self.system1.setFont(font)
-        self.system1.setAlignment(QtCore.Qt.AlignCenter)
-        self.system1.setObjectName("system1")
+        self.system_label.setFont(font)
+        self.system_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.system_label.setObjectName("system_label")
         self.layoutWidget = QtWidgets.QWidget(self.system)
         self.layoutWidget.setGeometry(QtCore.QRect(160, 340, 451, 91))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -139,7 +86,7 @@ class Ui_MainWindow(object):
         self.start.setCheckable(False)
         self.start.setChecked(False)
         self.start.setObjectName("start")
-        self.start.clicked.connect(self.system_start)#System start
+        self.start.clicked.connect(self.system_start)       #System start
         self.horizontalLayout_7.addWidget(self.start)
         self.layoutWidget1 = QtWidgets.QWidget(self.system)
         self.layoutWidget1.setGeometry(QtCore.QRect(160, 500, 451, 101))
@@ -164,18 +111,18 @@ class Ui_MainWindow(object):
         self.stop.setFont(font)
         self.stop.setStyleSheet("background:rgb(255, 0, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.stop.setObjectName("stop")
-        self.stop.clicked.connect(self.system_stop)#System stop
+        self.stop.clicked.connect(self.system_stop)           #System stop
         self.horizontalLayout_8.addWidget(self.stop)
-        self.widget = QtWidgets.QWidget(self.system)
-        self.widget.setGeometry(QtCore.QRect(780, 230, 361, 51))
-        self.widget.setObjectName("widget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.layoutWidget2 = QtWidgets.QWidget(self.system)
+        self.layoutWidget2.setGeometry(QtCore.QRect(780, 230, 361, 51))
+        self.layoutWidget2.setObjectName("layoutWidget2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget2)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.converyor = QtWidgets.QLabel(self.widget)
+        self.converyor = QtWidgets.QLabel(self.layoutWidget2)
         self.converyor.setObjectName("converyor")
         self.horizontalLayout.addWidget(self.converyor)
-        self.lcdNumber = QtWidgets.QLCDNumber(self.widget)
+        self.lcdNumber = QtWidgets.QLCDNumber(self.layoutWidget2)
         self.lcdNumber.setMaximumSize(QtCore.QSize(100, 50))
         font = QtGui.QFont()
         font.setPointSize(22)
@@ -193,6 +140,12 @@ class Ui_MainWindow(object):
         self.lcdNumber.setProperty("intValue", 12)
         self.lcdNumber.setObjectName("lcdNumber")
         self.horizontalLayout.addWidget(self.lcdNumber)
+        self.version = QtWidgets.QLabel(self.system)
+        self.version.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version.setFont(font)
+        self.version.setObjectName("version")
         self.tabWidget.addTab(self.system, "")
         self.loader = QtWidgets.QWidget()
         self.loader.setObjectName("loader")
@@ -276,12 +229,18 @@ class Ui_MainWindow(object):
         self.device3.setFont(font)
         self.device3.setObjectName("device3")
         self.verticalLayout_6.addWidget(self.device3)
-        self.label_18 = QtWidgets.QLabel(self.loader)
-        self.label_18.setGeometry(QtCore.QRect(100, 150, 251, 60))
+        self.loader_label = QtWidgets.QLabel(self.loader)
+        self.loader_label.setGeometry(QtCore.QRect(100, 150, 251, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.label_18.setFont(font)
-        self.label_18.setObjectName("label_18")
+        self.loader_label.setFont(font)
+        self.loader_label.setObjectName("loader_label")
+        self.version_1 = QtWidgets.QLabel(self.loader)
+        self.version_1.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_1.setFont(font)
+        self.version_1.setObjectName("version_1")
         self.tabWidget.addTab(self.loader, "")
         self.orentation = QtWidgets.QWidget()
         self.orentation.setObjectName("orentation")
@@ -297,23 +256,23 @@ class Ui_MainWindow(object):
         self.logo_3.setPixmap(QtGui.QPixmap("calyxtract.jpeg"))
         self.logo_3.setScaledContents(True)
         self.logo_3.setObjectName("logo_3")
-        self.orientation = QtWidgets.QLabel(self.orentation)
-        self.orientation.setGeometry(QtCore.QRect(100, 150, 461, 60))
+        self.orientation_label = QtWidgets.QLabel(self.orentation)
+        self.orientation_label.setGeometry(QtCore.QRect(100, 150, 461, 60))
         font = QtGui.QFont()
         font.setPointSize(50)
-        self.orientation.setFont(font)
-        self.orientation.setObjectName("orientation")
-        self.layoutWidget2 = QtWidgets.QWidget(self.orentation)
-        self.layoutWidget2.setGeometry(QtCore.QRect(910, 210, 247, 42))
-        self.layoutWidget2.setObjectName("layoutWidget2")
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.layoutWidget2)
+        self.orientation_label.setFont(font)
+        self.orientation_label.setObjectName("orientation_label")
+        self.layoutWidget3 = QtWidgets.QWidget(self.orentation)
+        self.layoutWidget3.setGeometry(QtCore.QRect(910, 210, 247, 42))
+        self.layoutWidget3.setObjectName("layoutWidget3")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.layoutWidget3)
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.orentationSlaveID = QtWidgets.QLabel(self.layoutWidget2)
+        self.orentationSlaveID = QtWidgets.QLabel(self.layoutWidget3)
         self.orentationSlaveID.setMaximumSize(QtCore.QSize(150, 16777215))
         self.orentationSlaveID.setObjectName("orentationSlaveID")
         self.horizontalLayout_9.addWidget(self.orentationSlaveID)
-        self.orentationSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget2)
+        self.orentationSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(20)
         sizePolicy.setVerticalStretch(20)
@@ -322,19 +281,19 @@ class Ui_MainWindow(object):
         self.orentationSlaveID_input.setMaximumSize(QtCore.QSize(100, 40))
         self.orentationSlaveID_input.setObjectName("orentationSlaveID_input")
         self.horizontalLayout_9.addWidget(self.orentationSlaveID_input)
-        self.layoutWidget3 = QtWidgets.QWidget(self.orentation)
-        self.layoutWidget3.setGeometry(QtCore.QRect(50, 260, 1111, 421))
-        self.layoutWidget3.setObjectName("layoutWidget3")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget3)
+        self.layoutWidget4 = QtWidgets.QWidget(self.orentation)
+        self.layoutWidget4.setGeometry(QtCore.QRect(50, 260, 1111, 421))
+        self.layoutWidget4.setObjectName("layoutWidget4")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget4)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.podStatus = QtWidgets.QLabel(self.layoutWidget3)
+        self.podStatus = QtWidgets.QLabel(self.layoutWidget4)
         self.podStatus.setMaximumSize(QtCore.QSize(300, 50))
         self.podStatus.setObjectName("podStatus")
         self.horizontalLayout_2.addWidget(self.podStatus)
-        self.acceptButton = QtWidgets.QPushButton(self.layoutWidget3)
+        self.acceptButton = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -346,9 +305,9 @@ class Ui_MainWindow(object):
         self.acceptButton.setFont(font)
         self.acceptButton.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.acceptButton.setObjectName("acceptButton")
-        self.acceptButton.clicked.connect(self.accept_click) #accept button click
+        self.acceptButton.clicked.connect(self.accept_click)       #accept button click
         self.horizontalLayout_2.addWidget(self.acceptButton)
-        self.rejectButton = QtWidgets.QPushButton(self.layoutWidget3)
+        self.rejectButton = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -360,16 +319,16 @@ class Ui_MainWindow(object):
         self.rejectButton.setFont(font)
         self.rejectButton.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.rejectButton.setObjectName("rejectButton")
-        self.rejectButton.clicked.connect(self.reject_click) #reject button click
+        self.rejectButton.clicked.connect(self.reject_click)           #reject button click
         self.horizontalLayout_2.addWidget(self.rejectButton)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.RotationStatus = QtWidgets.QLabel(self.layoutWidget3)
+        self.RotationStatus = QtWidgets.QLabel(self.layoutWidget4)
         self.RotationStatus.setMaximumSize(QtCore.QSize(300, 50))
         self.RotationStatus.setObjectName("RotationStatus")
         self.horizontalLayout_3.addWidget(self.RotationStatus)
-        self.cwButton = QtWidgets.QPushButton(self.layoutWidget3)
+        self.cwButton = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -381,9 +340,9 @@ class Ui_MainWindow(object):
         self.cwButton.setFont(font)
         self.cwButton.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.cwButton.setObjectName("cwButton")
-        self.cwButton.clicked.connect(self.cw_click) # clockwise button click
+        self.cwButton.clicked.connect(self.cw_click)            # clockwise button click
         self.horizontalLayout_3.addWidget(self.cwButton)
-        self.ccwButton = QtWidgets.QPushButton(self.layoutWidget3)
+        self.ccwButton = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -395,18 +354,18 @@ class Ui_MainWindow(object):
         self.ccwButton.setFont(font)
         self.ccwButton.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.ccwButton.setObjectName("ccwButton")
-        self.ccwButton.clicked.connect(self.ccw_click) # counterclockwise button click
+        self.ccwButton.clicked.connect(self.ccw_click)         # counterclockwise button click
         self.horizontalLayout_3.addWidget(self.ccwButton)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         spacerItem = QtWidgets.QSpacerItem(70, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
-        self.channelSelection = QtWidgets.QLabel(self.layoutWidget3)
+        self.channelSelection = QtWidgets.QLabel(self.layoutWidget4)
         self.channelSelection.setMaximumSize(QtCore.QSize(300, 50))
         self.channelSelection.setObjectName("channelSelection")
         self.horizontalLayout_4.addWidget(self.channelSelection)
-        self.button_1 = QtWidgets.QPushButton(self.layoutWidget3)
+        self.button_1 = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -418,9 +377,9 @@ class Ui_MainWindow(object):
         self.button_1.setFont(font)
         self.button_1.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.button_1.setObjectName("button_1")
-        self.button_1.clicked.connect(self.button_1_click) # button 1 click
+        self.button_1.clicked.connect(self.button_1_click)        # button 1 click
         self.horizontalLayout_4.addWidget(self.button_1)
-        self.button_2 = QtWidgets.QPushButton(self.layoutWidget3)
+        self.button_2 = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -432,9 +391,9 @@ class Ui_MainWindow(object):
         self.button_2.setFont(font)
         self.button_2.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.button_2.setObjectName("button_2")
-        self.button_2.clicked.connect(self.button_2_click)  # button 2 click
+        self.button_2.clicked.connect(self.button_2_click)         # button 2 click
         self.horizontalLayout_4.addWidget(self.button_2)
-        self.button_3 = QtWidgets.QPushButton(self.layoutWidget3)
+        self.button_3 = QtWidgets.QPushButton(self.layoutWidget4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -446,9 +405,15 @@ class Ui_MainWindow(object):
         self.button_3.setFont(font)
         self.button_3.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.button_3.setObjectName("button_3")
-        self.button_3.clicked.connect(self.button_3_click)  # button 3 click
+        self.button_3.clicked.connect(self.button_3_click)         # button 3 click
         self.horizontalLayout_4.addWidget(self.button_3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+        self.version_2 = QtWidgets.QLabel(self.orentation)
+        self.version_2.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_2.setFont(font)
+        self.version_2.setObjectName("version_2")
         self.tabWidget.addTab(self.orentation, "")
         self.detection = QtWidgets.QWidget()
         self.detection.setObjectName("detection")
@@ -470,16 +435,16 @@ class Ui_MainWindow(object):
         self.image.setGeometry(QtCore.QRect(60, 330, 711, 361))
         self.image.setText("")
         self.image.setObjectName("image")
-        self.layoutWidget4 = QtWidgets.QWidget(self.detection)
-        self.layoutWidget4.setGeometry(QtCore.QRect(190, 240, 491, 61))
-        self.layoutWidget4.setObjectName("layoutWidget4")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.layoutWidget4)
+        self.layoutWidget5 = QtWidgets.QWidget(self.detection)
+        self.layoutWidget5.setGeometry(QtCore.QRect(190, 240, 491, 61))
+        self.layoutWidget5.setObjectName("layoutWidget5")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.layoutWidget5)
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.imageDetection = QtWidgets.QLabel(self.layoutWidget4)
+        self.imageDetection = QtWidgets.QLabel(self.layoutWidget5)
         self.imageDetection.setObjectName("imageDetection")
         self.horizontalLayout_10.addWidget(self.imageDetection)
-        self.viewImage = QtWidgets.QPushButton(self.layoutWidget4)
+        self.viewImage = QtWidgets.QPushButton(self.layoutWidget5)
         self.viewImage.setMaximumSize(QtCore.QSize(200, 50))
         font = QtGui.QFont()
         font.setPointSize(19)
@@ -487,34 +452,40 @@ class Ui_MainWindow(object):
         self.viewImage.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.viewImage.setObjectName("viewImage")
         self.horizontalLayout_10.addWidget(self.viewImage)
-        self.layoutWidget5 = QtWidgets.QWidget(self.detection)
-        self.layoutWidget5.setGeometry(QtCore.QRect(930, 420, 201, 121))
-        self.layoutWidget5.setObjectName("layoutWidget5")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.layoutWidget5)
+        self.layoutWidget6 = QtWidgets.QWidget(self.detection)
+        self.layoutWidget6.setGeometry(QtCore.QRect(930, 420, 201, 121))
+        self.layoutWidget6.setObjectName("layoutWidget6")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.layoutWidget6)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.cuttingTest = QtWidgets.QLabel(self.layoutWidget5)
+        self.cuttingTest = QtWidgets.QLabel(self.layoutWidget6)
         self.cuttingTest.setObjectName("cuttingTest")
         self.verticalLayout_4.addWidget(self.cuttingTest)
-        self.bladeONButton = QtWidgets.QPushButton(self.layoutWidget5)
+        self.bladeONButton = QtWidgets.QPushButton(self.layoutWidget6)
         self.bladeONButton.setMaximumSize(QtCore.QSize(200, 50))
         self.bladeONButton.setStyleSheet("background:rgb(255, 0, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.bladeONButton.setObjectName("bladeONButton")
         self.verticalLayout_4.addWidget(self.bladeONButton)
-        self.layoutWidget6 = QtWidgets.QWidget(self.detection)
-        self.layoutWidget6.setGeometry(QtCore.QRect(900, 250, 247, 43))
-        self.layoutWidget6.setObjectName("layoutWidget6")
-        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.layoutWidget6)
+        self.layoutWidget7 = QtWidgets.QWidget(self.detection)
+        self.layoutWidget7.setGeometry(QtCore.QRect(900, 250, 247, 43))
+        self.layoutWidget7.setObjectName("layoutWidget7")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.layoutWidget7)
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.detectionSlaveID = QtWidgets.QLabel(self.layoutWidget6)
+        self.detectionSlaveID = QtWidgets.QLabel(self.layoutWidget7)
         self.detectionSlaveID.setMaximumSize(QtCore.QSize(150, 16777215))
         self.detectionSlaveID.setObjectName("detectionSlaveID")
         self.horizontalLayout_11.addWidget(self.detectionSlaveID)
-        self.detectionSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget6)
+        self.detectionSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget7)
         self.detectionSlaveID_input.setMaximumSize(QtCore.QSize(100, 16777215))
         self.detectionSlaveID_input.setObjectName("detectionSlaveID_input")
         self.horizontalLayout_11.addWidget(self.detectionSlaveID_input)
+        self.version_3 = QtWidgets.QLabel(self.detection)
+        self.version_3.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_3.setFont(font)
+        self.version_3.setObjectName("version_3")
         self.tabWidget.addTab(self.detection, "")
         self.sorting_2 = QtWidgets.QWidget()
         self.sorting_2.setObjectName("sorting_2")
@@ -532,55 +503,61 @@ class Ui_MainWindow(object):
         font.setPointSize(50)
         self.sorting.setFont(font)
         self.sorting.setObjectName("sorting")
-        self.layoutWidget7 = QtWidgets.QWidget(self.sorting_2)
-        self.layoutWidget7.setGeometry(QtCore.QRect(880, 250, 256, 43))
-        self.layoutWidget7.setObjectName("layoutWidget7")
-        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.layoutWidget7)
+        self.layoutWidget8 = QtWidgets.QWidget(self.sorting_2)
+        self.layoutWidget8.setGeometry(QtCore.QRect(880, 250, 256, 43))
+        self.layoutWidget8.setObjectName("layoutWidget8")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.layoutWidget8)
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        self.sortingSlaveID = QtWidgets.QLabel(self.layoutWidget7)
+        self.sortingSlaveID = QtWidgets.QLabel(self.layoutWidget8)
         self.sortingSlaveID.setObjectName("sortingSlaveID")
         self.horizontalLayout_12.addWidget(self.sortingSlaveID)
-        self.SortingSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget7)
+        self.SortingSlaveID_input = QtWidgets.QLineEdit(self.layoutWidget8)
         self.SortingSlaveID_input.setMaximumSize(QtCore.QSize(100, 16777215))
         self.SortingSlaveID_input.setObjectName("SortingSlaveID_input")
         self.horizontalLayout_12.addWidget(self.SortingSlaveID_input)
-        self.layoutWidget8 = QtWidgets.QWidget(self.sorting_2)
-        self.layoutWidget8.setGeometry(QtCore.QRect(140, 340, 381, 71))
-        self.layoutWidget8.setObjectName("layoutWidget8")
-        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.layoutWidget8)
+        self.layoutWidget9 = QtWidgets.QWidget(self.sorting_2)
+        self.layoutWidget9.setGeometry(QtCore.QRect(140, 340, 381, 71))
+        self.layoutWidget9.setObjectName("layoutWidget9")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.layoutWidget9)
         self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        self.goodBin = QtWidgets.QLabel(self.layoutWidget8)
+        self.goodBin = QtWidgets.QLabel(self.layoutWidget9)
         self.goodBin.setObjectName("goodBin")
         self.horizontalLayout_13.addWidget(self.goodBin)
-        self.goodBinStartButton = QtWidgets.QPushButton(self.layoutWidget8)
+        self.goodBinStartButton = QtWidgets.QPushButton(self.layoutWidget9)
         self.goodBinStartButton.setMaximumSize(QtCore.QSize(200, 50))
         font = QtGui.QFont()
         font.setPointSize(19)
         self.goodBinStartButton.setFont(font)
         self.goodBinStartButton.setStyleSheet("background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.goodBinStartButton.setObjectName("goodBinStartButton")
-        self.goodBinStartButton.clicked.connect(self.goodbin_click) #good bin startbutton click
+        self.goodBinStartButton.clicked.connect(self.goodbin_click)            #good bin startbutton click
         self.horizontalLayout_13.addWidget(self.goodBinStartButton)
-        self.layoutWidget9 = QtWidgets.QWidget(self.sorting_2)
-        self.layoutWidget9.setGeometry(QtCore.QRect(140, 520, 381, 61))
-        self.layoutWidget9.setObjectName("layoutWidget9")
-        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.layoutWidget9)
+        self.layoutWidget10 = QtWidgets.QWidget(self.sorting_2)
+        self.layoutWidget10.setGeometry(QtCore.QRect(140, 520, 381, 61))
+        self.layoutWidget10.setObjectName("layoutWidget10")
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.layoutWidget10)
         self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.badBin = QtWidgets.QLabel(self.layoutWidget9)
+        self.badBin = QtWidgets.QLabel(self.layoutWidget10)
         self.badBin.setObjectName("badBin")
         self.horizontalLayout_14.addWidget(self.badBin)
-        self.badBinStartButton = QtWidgets.QPushButton(self.layoutWidget9)
+        self.badBinStartButton = QtWidgets.QPushButton(self.layoutWidget10)
         self.badBinStartButton.setMaximumSize(QtCore.QSize(200, 50))
         font = QtGui.QFont()
         font.setPointSize(19)
         self.badBinStartButton.setFont(font)
         self.badBinStartButton.setStyleSheet("background:rgb(255, 0, 0);color:rgb(255, 255, 255);border-radius:5px;")
         self.badBinStartButton.setObjectName("badBinStartButton")
-        self.badBinStartButton.clicked.connect(self.badbin_click) #bad bin startbutton click
+        self.badBinStartButton.clicked.connect(self.badbin_click)           #bad bin startbutton click
         self.horizontalLayout_14.addWidget(self.badBinStartButton)
+        self.version_4 = QtWidgets.QLabel(self.sorting_2)
+        self.version_4.setGeometry(QtCore.QRect(1150, 690, 121, 41))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.version_4.setFont(font)
+        self.version_4.setObjectName("version_4")
         self.tabWidget.addTab(self.sorting_2, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -593,13 +570,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.system1.setText(_translate("MainWindow", "SYSTEM"))
+        MainWindow.setWindowTitle(_translate("calyxtract", "calyxtract"))
+        self.system_label.setText(_translate("MainWindow", "SYSTEM"))
         self.systemStart.setText(_translate("MainWindow", "SYSTEM START"))
         self.start.setText(_translate("MainWindow", "Start"))
         self.systemStop.setText(_translate("MainWindow", "SYSTEM STOP"))
         self.stop.setText(_translate("MainWindow", "Stop"))
         self.converyor.setText(_translate("MainWindow", "CONVEYOR SPEED :"))
+        self.version.setText(_translate("MainWindow", "version 1.2"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.system), _translate("MainWindow", "SYSTEM"))
         self.submit.setText(_translate("MainWindow", "Submit"))
         self.duration.setText(_translate("MainWindow", "Duration"))
@@ -607,9 +585,10 @@ class Ui_MainWindow(object):
         self.device1.setText(_translate("MainWindow", "Device 1"))
         self.device2.setText(_translate("MainWindow", "Device 2"))
         self.device3.setText(_translate("MainWindow", "Device 3"))
-        self.label_18.setText(_translate("MainWindow", "LOADER"))
+        self.loader_label.setText(_translate("MainWindow", "LOADER"))
+        self.version_1.setText(_translate("MainWindow", "version 1.2"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.loader), _translate("MainWindow", "LOADER"))
-        self.orientation.setText(_translate("MainWindow", "ORIENTATION"))
+        self.orientation_label.setText(_translate("MainWindow", "ORIENTATION"))
         self.orentationSlaveID.setText(_translate("MainWindow", "SLAVE ID :"))
         self.podStatus.setText(_translate("MainWindow", "POD STATUS"))
         self.acceptButton.setText(_translate("MainWindow", "ACCEPT "))
@@ -621,6 +600,7 @@ class Ui_MainWindow(object):
         self.button_1.setText(_translate("MainWindow", "1"))
         self.button_2.setText(_translate("MainWindow", "2"))
         self.button_3.setText(_translate("MainWindow", "3"))
+        self.version_2.setText(_translate("MainWindow", "version 1.2"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.orentation), _translate("MainWindow", "ORIENTATION"))
         self.detection_2.setText(_translate("MainWindow", "DETECTION"))
         self.imageDetection.setText(_translate("MainWindow", "IMAGE DETECTION"))
@@ -628,6 +608,7 @@ class Ui_MainWindow(object):
         self.cuttingTest.setText(_translate("MainWindow", "CUTTING TEST"))
         self.bladeONButton.setText(_translate("MainWindow", "BLADE ON"))
         self.detectionSlaveID.setText(_translate("MainWindow", "SLAVE ID :"))
+        self.version_3.setText(_translate("MainWindow", "version 1.2"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.detection), _translate("MainWindow", "DETECTION"))
         self.sorting.setText(_translate("MainWindow", "SORTING"))
         self.sortingSlaveID.setText(_translate("MainWindow", " SLAVE ID :"))
@@ -635,8 +616,62 @@ class Ui_MainWindow(object):
         self.goodBinStartButton.setText(_translate("MainWindow", "START"))
         self.badBin.setText(_translate("MainWindow", "BAD BIN"))
         self.badBinStartButton.setText(_translate("MainWindow", "START"))
+        self.version_4.setText(_translate("MainWindow", "version 1.2"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.sorting_2), _translate("MainWindow", "SORTING"))
+    
+    def system_start(self):
+        command = 'st01'
+        ser.write(command.encode())
 
+    def system_stop(self):
+        command = 'sx01'
+        ser.write(command.encode())
+
+    def accept_click(self, s_id):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'accept'
+        ser.write(command.encode())
+
+    def reject_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'reject'
+        ser.write(command.encode())
+
+    def cw_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'cw'
+        ser.write(command.encode())
+
+    def ccw_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'ccw'
+        ser.write(command.encode())
+
+    def button_1_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'ch1'
+        ser.write(command.encode())
+
+    def button_2_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'ch2'
+        ser.write(command.encode())
+
+    def button_3_click(self):
+        s_id = self.orentationSlaveID_input.text()
+        command = s_id +'ch3'
+        ser.write(command.encode())
+
+    def goodbin_click(self):
+        s_id = self.SortingSlaveID_input.text()
+        command = s_id +'gdbin'
+        ser.write(command.encode())
+
+    def badbin_click(self):
+        s_id = self.SortingSlaveID_input.text()
+        command = s_id +'bdbin'
+        ser.write(command.encode())
+        
 class MainGUI_thread(Thread):
 
     def __init__(self):
@@ -674,9 +709,10 @@ class Update_thread(Thread):
             Speed = str(line)# Convert the string in float number
             GUIOBJECT.lcdNumber.display(Speed)
             print(Speed)
-
+            
 if __name__ == "__main__":
 
     import sys
     mainThread = MainGUI_thread()  # Create the main thred for the GUI
     mainThread.start()  # Start the thread for the GUI
+

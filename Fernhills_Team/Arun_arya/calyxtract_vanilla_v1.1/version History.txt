@@ -1,0 +1,58 @@
+version v1.0
+       Tab > COM Test
+                    > port open button 
+                    > select ports from dropdown
+                    > recevice command display
+                    > send button
+                     
+           > Initialization
+                    > system start and stop button
+           
+           > loader
+                        > select device and input duration and iteration with submit button 
+           > orentation
+                        > input slave id 
+                        > podstatus > Accept and Reject Button
+                        > roration status > clock wise and counterclock wise Button
+                        > channel selection > channel 1 2 and 3 Button
+	   > detection
+           > sorting
+
+version v1.1   (slave id is not displaying in terminal when click on buttons) and (Conveyer speed is not displaying)
+             
+       Tab > system 
+                        > system start, stop button and Conveyer speed with normal text display
+           > loader
+                        > select device and input duration and iteration with submit button 
+           > orentation
+                        > input slave id 
+                        > podstatus > Accept and Reject Button
+                        > roration status > clock wise and counterclock wise Button
+                        > channel selection > channel 1 2 and 3 Button
+	   > detection 
+                       > input slave id 
+                       > image view button
+                       > cutting test button
+            > sorting  
+                       > input slave id
+                       > good Bin > start button
+                       > Bad Bin > start button
+
+version v1.2  (slave id is displaying in terminal when click on buttons) and (Conveyer speed is displaying)
+       Tab > system 
+                        > system start, stop button and Conveyer speed with lcd display
+           > loader
+                        > select device and input duration and iteration with submit button 
+           > orentation
+                        > input slave id 
+                        > podstatus > Accept and Reject Button
+                        > roration status > clock wise and counterclock wise Button
+                        > channel selection > channel 1 2 and 3 Button
+	   > detection 
+                       > input slave id 
+                       > image view button
+                       > cutting test button
+            > sorting  
+                       > input slave id
+                       > good Bin > start button
+                       > Bad Bin > start button
