@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from calyxtract_serial import *
+from calyxtract_chocolate_GUI import *
 from serialfun import serialFun
 
 
@@ -17,7 +17,7 @@ class MiApp(QMainWindow):
         self.ui.baudrateList.setCurrentText('9600')
         self.update_ports()
 
-        #Events
+        # Events
         self.ui.connect.clicked.connect(self.connect_serial)
         self.ui.sendBtn.clicked.connect(self.send_data)
         self.ui.clearBtn.clicked.connect(self.clear_terminal)
@@ -35,72 +35,74 @@ class MiApp(QMainWindow):
         self.serial.update_ports()
         self.ui.portList.clear()
         self.ui.portList.addItems(self.serial.portList)
-        
+
     def connect_serial(self):
         if self.ui.connect.isChecked():
             port = self.ui.portList.currentText()
             baud = self.ui.baudrateList.currentText()
             self.serial.serialPort.port = port
             self.serial.serialPort.baudrate = baud
-            self.serial.serialPort.bytesize=8 
-            self.serial.serialPort.parity='N'
-            self.serial.serialPort.stopbits=1
+            self.serial.serialPort.bytesize = 8
+            self.serial.serialPort.parity = 'N'
+            self.serial.serialPort.stopbits = 1
             self.serial.connect_serial()
-            #Si se logra conectar
+            # Si se logra conectar
             if self.serial.serialPort.is_open:
-               self.ui.connect.setText('Disconnect')
-                #print("Me conecté")
+                self.ui.connect.setText('Disconnect')
+                # print("Me conecté")
 
-            #No se logró conectar
+            # No se logró conectar
             else:
-                #print("No me conecte")
+                # print("No me conecte")
                 self.ui.connect.setChecked(False)
 
         else:
-            #print("Desconectarme")
+            # print("Desconectarme")
             self.serial.disconnect_serial()
             self.ui.connect.setText('Connect')
-            
+
     def send_data(self):
         data = self.ui.sendData.toPlainText()
         self.serial.send_data(data)
-    
-    def update_terminal(self,data):
+
+    def update_terminal(self, data):
         self.ui.readData.append(data)
-        
+
     def clear_terminal(self):
         self.ui.readData.clear()
-        
+
     def start_sys(self):
         data = "st01"
         self.serial.send_data(data)
-        
+
     def stop_sys(self):
         data = "sx01"
         self.serial.send_data(data)
-        
+
     def pod_accept(self):
         data = "P_accept"
         self.serial.send_data(data)
-        
+
     def pod_reject(self):
         data = "P_reject"
         self.serial.send_data(data)
-     
+
     def rotate_cw(self):
         data = "R_cw"
         self.serial.send_data(data)
-        
+
     def rotate_ccw(self):
         data = "R_ccw"
         self.serial.send_data(data)
-        
+
     def ch_shiftin(self):
         data = "ch_shift"
         self.serial.send_data(data)
-        
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = MiApp()
     w.show()
     sys.exit(app.exec_())
+
