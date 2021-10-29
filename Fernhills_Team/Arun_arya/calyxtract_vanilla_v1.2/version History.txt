@@ -1,58 +1,62 @@
 version v1.0
        Tab > COM Test
-                    > port open button 
-                    > select ports from dropdown
-                    > recevice command display
+                    >  
+                    > ports List dropdown
+                    > Baudrate list dropdown
+                    > connect port button
+                    > update button
                     > send button
+                    > clear button
+                    > output layout 
+                    > input layout 
                      
            > Initialization
-                    > system start and stop button
+                        > system start and stop button 
            
            > loader
-                        > select device and input duration and iteration with submit button 
+                        > select device and input duration and iteration with submit button (function need to implement)
            > orentation
-                        > input slave id 
-                        > podstatus > Accept and Reject Button
+                        > podstatus > Accept and Reject Button 
                         > roration status > clock wise and counterclock wise Button
-                        > channel selection > channel 1 2 and 3 Button
+                        > channel > Shift in Button
 	   > detection
            > sorting
 
-version v1.1   (slave id is not displaying in terminal when click on buttons) and (Conveyer speed is not displaying)
+version v1.1  
              
        Tab > system 
-                        > system start, stop button and Conveyer speed with normal text display
+                        > system start, stop button and Conveyer speed with normal text display (function need to implement)
            > loader
-                        > select device and input duration and iteration with submit button 
+                        > select device and input duration and iteration with submit button (function need to implement)
            > orentation
-                        > input slave id 
+                        > input slave id (function need to implement)
                         > podstatus > Accept and Reject Button
                         > roration status > clock wise and counterclock wise Button
                         > channel selection > channel 1 2 and 3 Button
 	   > detection 
-                       > input slave id 
+                       > input slave id (function need to implement)
                        > image view button
                        > cutting test button
             > sorting  
-                       > input slave id
+                       > input slave id (function need to implement)
                        > good Bin > start button
                        > Bad Bin > start button
 
-version v1.2  (slave id is displaying in terminal when click on buttons) and (Conveyer speed is displaying)
+version v1.2 
        Tab > system 
-                        > system start, stop button and Conveyer speed with lcd display
+                        > system start, stop button and Conveyer speed with lcd display (function implemented)
            > loader
                         > select device and input duration and iteration with submit button 
            > orentation
-                        > input slave id 
+                        > input slave id (function  implemented)
                         > podstatus > Accept and Reject Button
                         > roration status > clock wise and counterclock wise Button
                         > channel selection > channel 1 2 and 3 Button
 	   > detection 
-                       > input slave id 
+                       > input slave id (function need to  implement)
                        > image view button
                        > cutting test button
             > sorting  
-                       > input slave id
+                       > input slave id (function  implemented)
                        > good Bin > start button
                        > Bad Bin > start button
