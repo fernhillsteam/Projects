@@ -1,5 +1,5 @@
 version v1.0
-       Tab > COM Test
+       Tab > COM Test (function  implemented)
                     >  
                     > ports List dropdown
                     > Baudrate list dropdown
@@ -10,12 +10,12 @@ version v1.0
                     > output layout 
                     > input layout 
                      
-           > Initialization
+           > Initialization (function  implemented)
                         > system start and stop button 
            
            > loader
                         > select device and input duration and iteration with submit button (function need to implement)
-           > orentation
+           > orentation (function  implemented)
                         > podstatus > Accept and Reject Button 
                         > roration status > clock wise and counterclock wise Button
                         > channel > Shift in Button
