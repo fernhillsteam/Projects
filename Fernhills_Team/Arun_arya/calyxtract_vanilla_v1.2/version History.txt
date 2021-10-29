@@ -1,6 +1,6 @@
 version v1.0
        Tab > COM Test (function  implemented)
-                    >  
+                    > LED indicator
                     > ports List dropdown
                     > Baudrate list dropdown
                     > connect port button

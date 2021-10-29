@@ -49,6 +49,9 @@ class MiApp(QMainWindow):
             # Si se logra conectar
             if self.serial.serialPort.is_open:
                 self.ui.connect.setText('Disconnect')
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("Green LED.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.ui.led.setIcon(icon)
                 # print("Me conecté")
 
             # No se logró conectar
@@ -60,6 +63,9 @@ class MiApp(QMainWindow):
             # print("Desconectarme")
             self.serial.disconnect_serial()
             self.ui.connect.setText('Connect')
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("Red LED.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.led.setIcon(icon)
 
     def send_data(self):
         data = self.ui.sendData.toPlainText()

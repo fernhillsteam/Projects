@@ -116,9 +116,9 @@
      <widget class="QLabel" name="version">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -128,7 +128,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
      <widget class="QPushButton" name="connect">
@@ -177,7 +177,7 @@
        <string>Update</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="port">
       <property name="geometry">
        <rect>
         <x>860</x>
@@ -190,7 +190,7 @@
        <string>Port :</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="baudRate">
       <property name="geometry">
        <rect>
         <x>860</x>
@@ -212,8 +212,39 @@
         <height>50</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>22</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="led">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>30</y>
+        <width>70</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius:35px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>Red LED.png</normaloff>Red LED.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -255,9 +286,9 @@
      <widget class="QLabel" name="version_1">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -267,7 +298,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
@@ -404,9 +435,9 @@
      <widget class="QLabel" name="version_5">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -416,7 +447,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
@@ -610,9 +641,9 @@
      <widget class="QLabel" name="version_6">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -622,7 +653,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
@@ -689,7 +720,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QPushButton" name="shifin">
+          <widget class="QPushButton" name="shiftin">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -874,7 +905,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="anticolckwise">
+          <widget class="QPushButton" name="countercolckwise">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -883,7 +914,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>150</width>
+             <width>170</width>
              <height>50</height>
             </size>
            </property>
@@ -896,7 +927,7 @@
             <string notr="true">background:rgb(0, 170, 0);color:rgb(255, 255, 255);border-radius:6px;</string>
            </property>
            <property name="text">
-            <string>AntiClockWise</string>
+            <string>CounterClockWise</string>
            </property>
           </widget>
          </item>
@@ -907,9 +938,9 @@
      <widget class="QLabel" name="version_4">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -919,7 +950,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
@@ -930,8 +961,8 @@
      <widget class="QLabel" name="logo_4">
       <property name="geometry">
        <rect>
-        <x>-1</x>
-        <y>0</y>
+        <x>20</x>
+        <y>20</y>
         <width>270</width>
         <height>80</height>
        </rect>
@@ -961,9 +992,9 @@
      <widget class="QLabel" name="version_7">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -973,7 +1004,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
@@ -984,8 +1015,8 @@
      <widget class="QLabel" name="logo_5">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
+        <x>20</x>
+        <y>20</y>
         <width>270</width>
         <height>80</height>
        </rect>
@@ -1015,9 +1046,9 @@
      <widget class="QLabel" name="version_2">
       <property name="geometry">
        <rect>
-        <x>1150</x>
+        <x>1180</x>
         <y>690</y>
-        <width>121</width>
+        <width>51</width>
         <height>41</height>
        </rect>
       </property>
@@ -1027,7 +1058,7 @@
        </font>
       </property>
       <property name="text">
-       <string>version 1.0</string>
+       <string>v1.0</string>
       </property>
      </widget>
     </widget>
