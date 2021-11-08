@@ -1,10 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication
+import bcrypt
+from PyQt5.QtWidgets import *
 from calyxtract_App import *
 from serialfun import serialFun
-from login import *
-
-
 
 class MiApp(QMainWindow):
     def __init__(self):
@@ -38,6 +36,7 @@ class MiApp(QMainWindow):
         self.ui.signupBtn.clicked.connect(self.open_signuppage)
         self.ui.submitBtnS.clicked.connect(self.signupAccess)
         self.ui.forgotBtn.clicked.connect(self.open_forgotpage)
+        self.ui.submitBtnF.clicked.connect(self.forgot_pwd)
         self.ui.connectBtn.clicked.connect(self.connect_serial)
         self.ui.sendBtn.clicked.connect(self.send_data)
         self.ui.clearBtn.clicked.connect(self.clear_terminal)
@@ -152,7 +151,7 @@ class MiApp(QMainWindow):
 
         else:
             print("Please attempt login again")
-            gainAccess()
+            self.loginAccess
 
     def signupAccess(self):
         Username = self.ui.userInputS.text()
@@ -170,10 +169,10 @@ class MiApp(QMainWindow):
             if not Username == None:
                 if len(Username) < 1:
                     print("Please provide a username")
-                    register()
+                    self.signupAccess
                 elif Username in d:
                     print("Username exists")
-                    register()
+                    self.signupAccess
                 else:
                     if Password1 == Password2:
                         Password1 = Password1.encode('utf-8')
@@ -188,10 +187,53 @@ class MiApp(QMainWindow):
                     # print(texts)
                     else:
                         print("Passwords do not match")
-                        register()
+                        self.signupAccess
         else:
             print("Password too short")
 
+    def forgot_pwd(self):
+        Username = self.ui.userInputF.text()
+        Password1 = self.ui.pwdInputF.text()
+        Password2 = self.ui.confirmpwdInputF.text()
+        db = open("database.txt", "r")
+        d = []
+        for i in db:
+            a, b = i.split(",")
+            b = b.strip()
+            c = a, b
+            d.append(a)
+        print(d)
+        if not len(Password1) <= 8:
+            db = open("database.txt", "r")
+            if not Username == None:
+                if len(Username) < 1:
+                    print("Please provide a username")
+                    self.forgot_pwd
+                elif Username in d:
+                    print(Username)
+                    print("Username exists")
+                    user = Username
+                    for number, line in enumerate(db):
+                        if user in line:
+                            line_number = number
+                            print(line_number)
+                            if Password1 == Password2:
+                                Password1 = Password1.encode('utf-8')
+                                Password1 = bcrypt.hashpw(Password1, bcrypt.gensalt())
+
+                                db = open("database.txt", "r")
+                                list_of_line = db.readlines()
+                                list_of_line[line_number] = Username + ", " + str(Password1) + "\n"
+                                db = open("database.txt", "w")
+                                db.writelines(list_of_line)
+                                print("User created successfully!")
+                                print("Please login to proceed:")
+                            # print(texts)
+                            else:
+                                print("Passwords do not match")
+                                self.forgot_pwd
+        else:
+            print("Password too short")
 
     def update_ports(self):
         self.serial.update_ports()
