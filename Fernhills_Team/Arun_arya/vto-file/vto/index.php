@@ -234,7 +234,7 @@
                 <!--<span>Who we are</span>-->
                 <h2>Vokkaligara Trade Organisation<em></em></h2>
                 <p>Vokkaliga Trade Organisation(VTO)aspires to become a World Class organization of all Vokkaliga Businessmen and professionals by promoting each other's business every second and by adding value to every single enterprise amongst us thereby benefitting one and all.</p>
-                <a href="about.html" class="filled-button">Read More</a>
+                <a href="about.php" class="filled-button">Read More</a>
               </div>
             </div>
           </div>

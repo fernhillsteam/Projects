@@ -53,6 +53,66 @@ if (isset($_GET['id'])) {
 .form-field small {
     color: #dc3545;
 }
+
+
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: "FontAwesome";
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #f8f8f8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 </style>
 </head>
 
@@ -190,15 +250,30 @@ if (isset($username)) {
 		<?php
 	      if($getUinfo->profile==null){
 			  ?>
-		  <div id="preview" ><img src="../profile/icons8-dashboard-layout-96.png" width="200" height="auto"/></div>
+		  <div class="container">
+    <div class="avatar-upload">
+        <div class="avatar-preview">
+            <div id="logoPreview" style="background-image: url('../profile/icons8-dashboard-layout-96.png');">
+		
+            </div>
+        </div>
+    </div>
+</div>
 		  <?php
 		  }else{		  
 		     ?>
-		  <div id="preview" ><img src="../profile/<?php echo $getUinfo->profile; ?>" width="200" height="auto"/></div>
-		  
+		  <div class="container">
+    <div class="avatar-upload">
+        <div class="avatar-preview">
+            <div id="logoPreview" style="background-image: url('../profile/<?php echo $getUinfo->profile; ?>');">
+		
+            </div>
+        </div>
+    </div>
+</div>
 		  <?php }
 		  ?>
-		  <br>
+		
           <h6>Profile Pic</h6>
         </div>
       </div>
@@ -241,8 +316,6 @@ if (isset($username)) {
                   </div>
                   <hr>
                   <div class="row">
-                    
-					<?php if (Session::get("roleid") == '1') { ?>
 
 			  <?php
 
@@ -273,8 +346,42 @@ if (isset($username)) {
 
                 <?php } 
 				   
-					}?>
+					?>
 		     <?php } ?>
+		   </div>
+		        <hr>
+                  <div class="row">
+
+			  <?php
+
+                if($getUinfo->designation == '1'){?>
+				    <div class="col-sm-3">
+                      <h6 class="mb-0">Designation</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Prime
+                    </div>
+                
+                <?php }elseif($getUinfo->designation == '2'){?>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Role</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Mentor
+                    </div>
+                  
+                <?php }elseif($getUinfo->designation == '3'){?>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Role</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Vice President
+                    </div>
+
+
+                <?php } 
+				   
+					?>
 		   </div>
                   
                   <!--<hr>
@@ -306,15 +413,30 @@ if (isset($username)) {
 		<?php
 	      if($getBinfo->logo == null){
 			  ?>
-		  <div id="preview" ><img src="../business/icons8-dashboard-layout-96.png" width="200" height="auto"/></div>
+		  <div class="container">
+    <div class="avatar-upload">
+        <div class="avatar-preview">
+            <div id="logoPreview" style="background-image: url('../business/icons8-dashboard-layout-96.png');">
+		
+            </div>
+        </div>
+    </div>
+</div>
 		  <?php
 		  }else{		  
 		     ?>
-		  <div id="preview" ><img src="../business/<?php echo $getBinfo->logo; ?>" width="200" height="auto"/></div>
+			 <div class="container">
+    <div class="avatar-upload">
+        <div class="avatar-preview">
+            <div id="logoPreview" style="background-image: url('../business/<?php echo $getBinfo->logo; ?>');">
+		
+            </div>
+        </div>
+    </div>
+</div>
 		  
 		  <?php }
 		  ?>
-		  <br>
           <h6>Business Logo</h6>
         </div>
 		
@@ -359,9 +481,8 @@ if (isset($username)) {
     <div class="row">
 				<?php
 				
-				      $allImg = $users->selectAllBizImg();
+				      $allImg = $users->selectAllBizImg($userid);
                           if ($allImg) {
-                        $i = 0;
                         foreach ($allImg as  $value) {				
 				?>
 				<div class='col-md-3'>
@@ -371,6 +492,13 @@ if (isset($username)) {
                   <?php
 				  
 						}
+						  }else{?>
+						  
+					<div class="col-sm-9 text-secondary">
+                      Not uploaded
+                    </div>
+							  
+					<?php		  
 						  }?>		
 
     </div> <!-- row / end -->

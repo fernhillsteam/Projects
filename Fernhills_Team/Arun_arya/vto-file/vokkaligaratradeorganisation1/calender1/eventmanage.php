@@ -12,7 +12,10 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
-
+<?php
+include '../inc/header.php';
+Session::CheckSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,19 +80,19 @@ Coded by www.creative-tim.com
             </a>
           </li>
 		  <li class="active ">
-            <a href="./dashboard.php">
+            <a href="./eventmanage.php">
               <i> <img src="../assets/icons/events.png"></i>
               <p><strong>Manage Events</strong></p>
             </a>
           </li>
           <li>
-            <a href="./usercreation.php">
+            <a href="#">
               <i> <img src="../assets/icons/analytics.png"></i>
               <p><strong>Analytics</strong></p>
             </a>
           </li>
 		  <li>
-            <a href="./usercreation.php">
+            <a href="#">
               <i> <img src="../assets/icons/contacts.png"></i>
               <p><strong>Contact</strong></p>
             </a>
@@ -101,7 +104,7 @@ Coded by www.creative-tim.com
             </a>
           </li>-->
           <li>
-            <a href="?action=adminlogout">
+            <a href="#">
               <i> <img src="../assets/icons/logout.png"></i>
               <p><strong>Log Out</strong></p>
             </a>
@@ -147,10 +150,16 @@ Coded by www.creative-tim.com
               
 			  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><strong></strong></span>
+				  <span class="d-sm-inline d-none"><strong>
+				<?php
+$username = Session::get('username');
+if (isset($username)) {
+  echo $username;
+}
+ ?></strong></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="?action=adminlogout">Logout</a>
+                  <a class="dropdown-item" href="#">Logout</a>
 
                 </div>
             </li>
@@ -211,9 +220,9 @@ Coded by www.creative-tim.com
 			</div>
 			<div class="col-md-4">
 						<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Create an Event
-</button>
+</button>-->
 			</div>
 
 					</div>
@@ -307,8 +316,8 @@ Coded by www.creative-tim.com
             </div>
           </div>
 		  <!-- create event Modal -->
-<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!--<div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Create an Event</h5>
@@ -383,11 +392,7 @@ Coded by www.creative-tim.com
     </div>
   </div>
   
-</div>-->
-        </div>
-	   
-        
-		</div>
+</div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">

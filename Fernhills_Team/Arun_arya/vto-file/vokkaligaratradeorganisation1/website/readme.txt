@@ -1,1 +1,0 @@
-Vokkaligara Trade Organisation

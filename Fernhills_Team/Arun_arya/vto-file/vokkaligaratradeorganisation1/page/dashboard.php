@@ -1,4 +1,17 @@
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
 
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <?php
 include '../inc/header.php';
 Session::CheckSession();
@@ -6,7 +19,7 @@ Session::CheckSession();
 <?php
 $userid = Session::get('id');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload_pic'])) {
   $updateImage = $users->updateImgByUser($userid);
 
 }
@@ -15,16 +28,15 @@ if (isset($updateImage)) {
   echo $updateImage;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload_biz'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['biz_image'])) {
   $updateBizImage = $users->updateBizImgByUser($userid, $_POST);
 
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['bizimage'])) {
-  $updateImg = $users->updateUserBizImgByAdmin($userid, $_POST);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['biz_detail'])) {
+  $updateBizDetail = $users->updateUserBizByUser($userid, $_POST);
 
 }
-
 
 if (isset($_GET['removeimg'])) {
 	
@@ -32,6 +44,7 @@ if (isset($_GET['removeimg'])) {
   
   $removeImg = $users->deleteUserImgByUser($removeimg);
 }
+
 
  ?>
 
@@ -173,12 +186,12 @@ if (isset($_GET['removeimg'])) {
           <li>
             <a href="#">
 			  <i> <img src="../assets/icons/meeting.png"></i>
-              <p><strong>Business Meetings</strong></p>
+              <p><strong>Manage Meetings</strong></p>
             </a>
           </li>
 
           <li>
-            <a href="faultlogs.php">
+            <a href="#">
 			  <i> <img src="../assets/icons/businessman.png"></i>
               <p><strong>Business Referrals</strong></p>
             </a>
@@ -247,7 +260,7 @@ if (isset($username)) {
 <div class="content">
   <div class="row">
     <div class="col-md-12">
-      <p class="category"><b>edit profile tabs</b></p>
+      <!--<p class="category"><b>edit profile tabs</b></p>-->
       <!-- Nav tabs -->
       <div class="card">
         <div class="card-header">
@@ -266,7 +279,7 @@ if (isset($username)) {
         </div>
         <div class="card-body">
           <!-- Tab panes -->
-          <div class="tab-content text-center">
+          <div class="tab-content">
             <div class="tab-pane active" id="home" role="tabpanel">
 			<div class="row">
       <!-- left column -->
@@ -277,17 +290,35 @@ if (isset($username)) {
      ?>		  
       <div class="col-md-3">
        <div class="container">
+	   <form action="" method="POST"  enctype="multipart/form-data"> 
     <div class="avatar-upload">
         <div class="avatar-edit">
-		<form action="" method="POST"  enctype="multipart/form-data"> 
             <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
             <label for="imageUpload"></label>
         </div>
+		<?php
+	      if($getUinfo->profile == null){
+			  ?>
         <div class="avatar-preview">
             <div id="imagePreview" style="background-image: url('../assets/images/profile.png');">
             </div>
         </div>
+		<?php
+		  }else{		  
+		     ?>
+			 <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url('../profile/<?php echo $getUinfo->profile; ?>');">
+            </div>
+        </div>
+		<?php }
+		  ?>
+		 <br>
+			<h6 class="text-center">Profile Pic</h6> 
+           <button name="upload_pic" type="submit" class="btn btn-primary" style="margin-left:50px;">Upload</button>	  
+	 			
+		
     </div>
+	</form>
 </div>
       </div>
       
@@ -331,7 +362,7 @@ if (isset($username)) {
                   <hr>
                   <div class="row">
                     
-					<?php if (Session::get("roleid") == '1') { ?>
+	
 
 			  <?php
 
@@ -362,9 +393,45 @@ if (isset($username)) {
 
                 <?php } 
 				   
-					}
 					
-	}?>
+				?>
+		   
+		   </div>
+		   <hr>
+                  <div class="row">
+                    
+	
+
+			  <?php
+
+                if($getUinfo->designation == '1'){?>
+				    <div class="col-sm-3">
+                      <h6 class="mb-0">Designation</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Prime
+                    </div>
+                
+                <?php }elseif($getUinfo->designation == '2'){?>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Designation</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Mentor
+                    </div>
+                  
+                <?php }elseif($getUinfo->designation == '3'){?>
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Designation</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Vice President
+                    </div>
+
+
+                <?php } 
+				   
+	}	?>
 		   
 		   </div>
                   
@@ -388,12 +455,7 @@ if (isset($username)) {
               </div>-->
               <div class="card-body">
                 <div class="row">
-		<?php
-    $getBinfo = $users->getBizInfoById($userid);
-    if ($getBinfo) {
-
-     ?>			
-				
+		
                   <div class="col-md-3">
                     <div class="card card-plain">
                       <div class="card-header">
@@ -401,16 +463,35 @@ if (isset($username)) {
                       </div>
                       <div class="card-body">
                         <div class="container">
+			<?php
+    $getBinfo = $users->getBizInfoById($userid);
+    if ($getBinfo) {
+
+     ?>					
     <div class="avatar-upload">
         <div class="avatar-edit">
+		<form action="" method="POST"  enctype="multipart/form-data"> 
             <input type='file' id="logoUpload" name="logo" accept=".png, .jpg, .jpeg" />
             <label for="logoUpload"></label>
         </div>
+		<?php
+	      if($getBinfo->logo == null){
+			  ?>
         <div class="avatar-preview">
-            <div id="logoPreview" style="background-image: url('../assets/images/logo.png');">
-		
+            <div id="logoPreview" style="background-image: url('../assets/images/profile.png');">
             </div>
         </div>
+		<?php
+		  }else{		  
+		     ?>
+			 <div class="avatar-preview">
+            <div id="logoPreview" style="background-image: url('../profile/<?php echo $getBinfo->logo; ?>');">
+            </div>
+        </div>
+		<?php }
+		  ?>
+		 <br>
+			<h6 class="text-center">Logo</h6> 
     </div>
 </div>
                       </div>
@@ -437,33 +518,38 @@ if (isset($username)) {
       <label for="inputPassword4">Business description</label>
       <textarea type="email" class="form-control" id="inputPassword4" name="description" placeholder="Business description"><?php echo $getBinfo->description; ?></textarea>
     </div>
-	<form action="" method="POST"  enctype="multipart/form-data">
-	<div class="col-md-4">
+   </div>
+   <button name="biz_detail" type="submit" class="btn btn-primary">Submit</button>
+</form>
+<?php 
+	
+	} ?> 
+    <form action="" method="POST"  enctype="multipart/form-data">
+	<div class="form-row">
+	
+	   <div class="col-md-4">
       <label for="inputPassword4">Business Images</label>
 	  <input type="file" name="image[]" class="form-control"  multiple/>
 	</div>  
 	<div class=" form-group col-md-2">
 	
-	   <button name="bizimage" type="submit" class="btn btn-success" style="margin-top:24px;margin-left:20px">Add</button>
+	   <button name="biz_image" type="submit" class="btn btn-success" style="margin-top:24px;margin-left:20px">Add</button>
      </div>
-	</form> 
-    </div>
-   </div>
-
-
-<div class="container">
+	
+	</div>
+	 </form>
+	 <div class="container">
     <div class="row">
 				<?php
 				
-				      $allImg = $users->selectAllBizImg();
+				      $allImg = $users->selectAllBizImg($userid);
                           if ($allImg) {
-                        $i = 0;
+                       
                         foreach ($allImg as  $value) {				
 				?>
 				<div class='col-md-3'>
                         <img class="img-responsive" alt="" src="../business/<?php echo $value->image; ?>" />
                     <form action="/imageDelete.php" method="POST">
-                    <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
 					<a href="?removeimg=<?php echo $value->sl_no;?>" >delete</a>
                     </form>
                 </div> <!-- col-6 / end -->
@@ -475,16 +561,11 @@ if (isset($username)) {
 
     </div> <!-- row / end -->
 </div> <!-- container / end -->
-   </div>
-
-    <button name="register" type="submit" class="btn btn-primary">Submit</button>
-</form>
 </div>
        
    </div>
 					  
-					               </div>
-	<?php }?>							   
+					               </div>						   
 								   
                   </div>
                 </div>
@@ -500,9 +581,6 @@ if (isset($username)) {
     </div>
   </div>
 
-
-
-		  					  
 					
 				
 			  
@@ -591,10 +669,6 @@ $("#imageUpload").change(function() {
 $("#logoUpload").change(function() {
     readlogoURL(this);
 });
-
- $(".remove").click(function(){
-            parent(".img-thumb-wrapper").remove();
-          }
 	</script>
 	
 	<script>

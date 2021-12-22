@@ -356,7 +356,7 @@ class Users{
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>';
-        return $msg;
+         $msg;
     }elseif (strlen($username) < 3) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -415,7 +415,7 @@ class Users{
 		    // Upload directory
            $upload_profile = "../profile/";
 		   // Upload directory
-          $upload_location = "../business/";
+          $upload_logo = "../business/";
 		   
 		   // Get extension
            $ext1 = strtolower(pathinfo($profile_name, PATHINFO_EXTENSION));
@@ -429,8 +429,11 @@ class Users{
 					   
 					   // File path
                    $path = $upload_profile.$profile_name;
+				   $path1 = $upload_logo.$logo_name;
                    // Upload file
 				   if(move_uploaded_file($profile_tmp,$path)){
+					   
+					   if(move_uploaded_file($logo_tmp,$path1)){
 					   
 					   $sql = "INSERT INTO tbl_users(name, username,designation,profile,business,email, password, mobile, roleid) VALUES(:name, :username,:designation, :profile ,:business,:email, :password, :mobile, :roleid)";
                        $stmt = $this->db->pdo->prepare($sql);
@@ -447,70 +450,39 @@ class Users{
 					   
 					   $id = $this->db->pdo->lastInsertId();
 					   
-					   // Count total files
-          $countfiles = count($_FILES['files']['name']);
-                // Upload directory
-          $upload_location = "../business/";
-               // To store uploaded files path
-          $files_arr = array();
-              // Loop all files
-         for($index = 0;$index < $countfiles;$index++){
-
-                if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
-                      // File name
-                      $filename = $_FILES['files']['name'][$index];
-                      $bizimage = $filename;
-                         // Get extension
-                      $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-                        // Valid image extension
-                        $valid_ext = array("png","jpeg","jpg");
-                                  // Check extension
-                                 if(in_array($ext, $valid_ext)){
-                                         // File path
-                                          $path = $upload_location.$filename;
-                                             // Upload file
-                                          if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
-                                                              $files_arr[] = $path;
-															  
-															  $sql = "INSERT INTO business(user_id,logo,business,biztype,bizimage,description) VALUES( :id,:logo,:business,:biztype,:bizimage, :description)";
-                                                              $stmt = $this->db->pdo->prepare($sql);
-															  $stmt->bindValue(':id', $id);
-															  $stmt->bindValue(':logo', $logo);
-															  $stmt->bindValue(':business', $business);
-                                                              $stmt->bindValue(':bizimage', $bizimage);
-															  $stmt->bindValue(':biztype', $biztype);
-                                                              $stmt->bindValue(':description', $bizdesp);
-                                                              $stmt->execute();
-	  
-      
-															  
-                                                                   }
-                                           }
-                                      }
-                             }
-					   
-				   
-			   }else{
-				   echo "image not upload";
-			   }
-					   
-				   }else{
-					    
-						echo"not a valid logo";
-				   }
-				   
-
+	                   $sql1 = "INSERT INTO business(user_id,logo,business,biztype,description) VALUES( :id,:logo,:business,:biztype,:description)";
+                       $stmt1 = $this->db->pdo->prepare($sql1);
+	                   $stmt1->bindValue(':id', $id);
+					   $stmt1->bindValue(':logo', $logo);
+					   $stmt1->bindValue(':business', $business);
+			           $stmt1->bindValue(':biztype', $biztype);
+                       $stmt1->bindValue(':description', $bizdesp);
+                       $stmt1->execute();
+	 				   
+                       }else{
+						   
+						   echo "logo not uploaded";
+					   }
         }else{
 			
-			echo "not a valid profile pic";
+			echo "profile pic not uploaded";
 		}
   
 
   
-	}
-  }
+	}else{
+			
+			echo "not a valid logo";
+		}
+  }else{
+			
+			echo "not a valid profile pic";
+		}
  
-
+	}
+	
+  }	
+	
   // Select All User Method
   public function selectAllUserData(){
     $sql = "SELECT * FROM tbl_users ORDER BY id DESC";
@@ -931,8 +903,17 @@ class Users{
 		             $stmt->bindValue(':logo', $logo);
                      $stmt->bindValue(':id', $userid);
                      $result = $stmt->execute();
+					 
+					 $sql1 = "UPDATE tbl_users SET 
+                     business = :business
+                     WHERE user_id = :id";
+                     $stmt1= $this->db->pdo->prepare($sql1);
+                     $stmt1->bindValue(':business', $business);
+                     $stmt1->bindValue(':id', $userid);
+                     $result1 = $stmt1->execute();
+					 
 
-        if ($result) {
+        if ($result1) {
 		  echo "<script>location.href='./members.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -970,8 +951,16 @@ class Users{
 		  $stmt->bindValue(':description', $bizdesp);
           $stmt->bindValue(':id', $userid);
           $result = $stmt->execute();
+		  
+		  $sql1 = "UPDATE tbl_users SET 
+                     business = :business
+                     WHERE id = :id";
+                     $stmt1= $this->db->pdo->prepare($sql1);
+                     $stmt1->bindValue(':business', $business);
+                     $stmt1->bindValue(':id', $userid);
+                     $result1 = $stmt1->execute();
 
-        if ($result) {
+        if ($result1) {
 		  echo "<script>location.href='./members.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -993,6 +982,114 @@ class Users{
 
       }
 
+
+//   Get Single User Information By Id Method
+    public function updateUserBizByUser($userid, $data){
+     	$business = $data['business'];
+	    $biztype = $data['biztype'];
+	    $bizdesp = $data['description'];
+		
+		
+		if(!empty($_FILES['logo']['name'])) {//new image uploaded
+		  
+		  //code for profile uploading
+	       $logo_name = $_FILES['logo']['name'];
+           $logo_size =$_FILES['logo']['size'];
+           $logo_tmp =$_FILES['logo']['tmp_name'];
+           $logo_type=$_FILES['logo']['type'];
+		   $tmp_logo = explode('.', $logo_name);
+           $logo_ext = strtolower(end($tmp_logo));
+		   $logo=$logo_name;
+		       // Upload directory
+           $upload_logo = "../business/";
+		   
+		   // Get extension
+           $ext = strtolower(pathinfo($logo_name, PATHINFO_EXTENSION));
+		   // Valid image extension
+		   $valid_ext= array("jpeg","jpg","png");
+		   
+		   if(in_array($ext, $valid_ext)){
+			   if($logo_size < 2097152){
+				   move_uploaded_file($logo_tmp,$upload_logo.$logo_name);
+				   
+				     $sql = "UPDATE business SET 
+                     business = :business,
+                     biztype = :biztype,
+		             description = :description,
+                     logo = :logo
+                     WHERE user_id = :id";
+                     $stmt= $this->db->pdo->prepare($sql);
+                     $stmt->bindValue(':business', $business);
+                     $stmt->bindValue(':biztype', $biztype);
+		             $stmt->bindValue(':description', $bizdesp);
+		             $stmt->bindValue(':logo', $logo);
+                     $stmt->bindValue(':id', $userid);
+                     $result = $stmt->execute();
+
+        if ($result) {
+		  echo "<script>location.href='./dashboard.php';</script>";
+          Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success !</strong> Wow, Your Information updated Successfully !</div>');
+
+
+
+        }else{
+          echo "<script>location.href='./dashboard.php';</script>";
+          Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error !</strong> Data not inserted !</div>');
+
+
+        }
+				   
+				   
+				   
+			   }else{
+				   
+			   }
+		   }else{
+			   
+		   }
+	
+}else{
+	$sql = "UPDATE business SET 
+          business = :business,
+          biztype = :biztype,
+		  description = :description
+          WHERE user_id = :id";
+          $stmt= $this->db->pdo->prepare($sql);
+          $stmt->bindValue(':business', $business);
+          $stmt->bindValue(':biztype', $biztype);
+		  $stmt->bindValue(':description', $bizdesp);
+          $stmt->bindValue(':id', $userid);
+          $result = $stmt->execute();
+
+        if ($result) {
+		  echo "<script>location.href='./dashboard.php';</script>";
+          Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success !</strong> Wow, Your Information updated Successfully !</div>');
+
+
+
+        }else{
+          echo "<script>location.href='./dashboard.php';</script>";
+          Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error !</strong> Data not inserted !</div>');
+
+
+
+       }
+  }
+
+   
+  
+	  
+     
+
+      }
 
 //   Get Single User Information By Id Method
     public function updateUserBizImgByAdmin($userid){
@@ -1060,7 +1157,7 @@ class Users{
            $file_type=$_FILES['profile']['type'];
 		   $tmp = explode('.', $file_name);
            $file_ext = strtolower(end($tmp));
-		   $image=$file_name;
+		   $profile=$file_name;
          
 		 
       $extensions= array("jpeg","jpg","png");
@@ -1075,10 +1172,10 @@ class Users{
                 if(move_uploaded_file($file_tmp,"../profile/".$file_name)){
         // Insert record
         $sql = "UPDATE tbl_users SET
-          image = :image
+          profile = :profile
           WHERE id = :id";
           $stmt= $this->db->pdo->prepare($sql);
-          $stmt->bindValue(':image', $image);
+          $stmt->bindValue(':profile', $profile);
           $stmt->bindValue(':id', $userid);
           $result =   $stmt->execute();
 		  
@@ -1113,11 +1210,10 @@ class Users{
 //upload image by User  By Id Method
     public function updateBizImgByUser($userid, $data){
 		
-		 $description = $data['description'];
 		
-		if($_FILES['files']['name']){
+		if($_FILES['image']['name']){
                  // Count total files
-          $countfiles = count($_FILES['files']['name']);
+          $countfiles = count($_FILES['image']['name']);
                 // Upload directory
           $upload_location = "../business/";
                // To store uploaded files path
@@ -1125,9 +1221,9 @@ class Users{
               // Loop all files
          for($index = 0;$index < $countfiles;$index++){
 
-                if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                if(isset($_FILES['image']['name'][$index]) && $_FILES['image']['name'][$index] != ''){
                       // File name
-                      $filename = $_FILES['files']['name'][$index];
+                      $filename = $_FILES['image']['name'][$index];
                       $image = $filename;
                          // Get extension
                       $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -1138,14 +1234,13 @@ class Users{
                                          // File path
                                           $path = $upload_location.$filename;
                                              // Upload file
-                                          if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                          if(move_uploaded_file($_FILES['image']['tmp_name'][$index],$path)){
                                                               $files_arr[] = $path;
 															  
-															  $sql = "INSERT INTO business(user_id,image,description) VALUES(:id, :image, :description)";
+															  $sql = "INSERT INTO biz_images(user_id,image) VALUES(:id, :image)";
                                                               $stmt = $this->db->pdo->prepare($sql);
 															  $stmt->bindValue(':id', $userid);
                                                               $stmt->bindValue(':image', $image);
-                                                              $stmt->bindValue(':description', $description);
                                                               $stmt->execute();
 	  
       
@@ -1260,9 +1355,10 @@ class Users{
 	  
 	  
 	    // Select All User Method
-  public function selectAllBizImg(){
-    $sql = "SELECT * FROM biz_images ORDER BY sl_no DESC";
+  public function selectAllBizImg($userid){
+    $sql = "SELECT * FROM biz_images WHERE user_id = :user_id ORDER BY sl_no DESC";
     $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindValue(':user_id', $userid);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
   }

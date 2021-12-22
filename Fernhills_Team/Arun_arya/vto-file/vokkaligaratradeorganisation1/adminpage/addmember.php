@@ -508,53 +508,6 @@ if (isset($username)) {
       <textarea type="email" class="form-control" id="inputPassword4" name="description" placeholder="Business description"></textarea>
     </div>
 	<div class="col-md-6" >
-      <label for="inputPassword4">Business description</label>
- 
-      
-          
-  <!--<input type="file" id="files" name="files[]" multiple class="form-control"/>-->
-   <div class="row">
-     <div class="image-input">
-            <label for="file-ip-1">
-              <img id="file-ip-1-preview" src="https://i.ibb.co/ZVFsg37/default.png">
-              <button type="button" class="imgRemove" onclick="myImgRemove(1)"></button>
-            </label>
-            <input type="file" name="img_1" id="file-ip-1" accept="image/*" onchange="showPreview(event, 1);">
-          </div>
-	<div class="image-input">
-            <label for="file-ip-2">
-              <img id="file-ip-2-preview" src="https://i.ibb.co/ZVFsg37/default.png">
-              <button type="button" class="imgRemove" onclick="myImgRemove(2)"></button>
-            </label>
-            <input type="file" name="img_2" id="file-ip-2" accept="image/*" onchange="showPreview(event, 2);">
-          </div>
-
-    <div class="image-input">
-            <label for="file-ip-3">
-              <img id="file-ip-3-preview" src="https://i.ibb.co/ZVFsg37/default.png">
-              <button type="button" class="imgRemove" onclick="myImgRemove(3)"></button>
-            </label>
-            <input type="file" name="img_3" id="file-ip-3" accept="image/*" onchange="showPreview(event, 3);">
-          </div>
-
-
-<div class="image-input">
-            <label for="file-ip-4">
-              <img id="file-ip-4-preview" src="https://i.ibb.co/ZVFsg37/default.png">
-              <button type="button" class="imgRemove" onclick="myImgRemove(4)"></button>
-            </label>
-            <input type="file" name="img_4" id="file-ip-4" accept="image/*" onchange="showPreview(event, 4);">
-          </div>
-
-<div class="image-input">
-            <label for="file-ip-5">
-              <img id="file-ip-5-preview" src="https://i.ibb.co/ZVFsg37/default.png">
-              <button type="button" class="imgRemove" onclick="myImgRemove(5)"></button>
-            </label>
-            <input type="file" name="img_5" id="file-ip-5" accept="image/*" onchange="showPreview(event, 5);">
-          </div>	
-  
-  </div>
        
     </div>
    </div>

@@ -30,7 +30,7 @@ if (isset($logout)) {
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="../assets/css/login-style.css">
 
     <style>
 .form-field input:focus {
@@ -53,7 +53,7 @@ small {
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">
-						<div class="img"  style="background-image: url(images/vto-logo.png);">
+						<div class="img"  style="background-image: url(../assets/images/vto-logo.png);">
 					
 			      </div>
 						<div class="login-wrap p-4 p-md-5">
@@ -90,7 +90,7 @@ small {
 				    <div class="row">
                           <div class="col">
 						  
-                             <a href="#"  data-target="#pwdModal" data-toggle="modal" >Forgot password ?</a>
+                             <a href="#"  data-target="#pwdModal" data-toggle="modal" >Forgot password ?</a><br>
 							
                           </div>
                           <div class="col">
@@ -109,7 +109,7 @@ small {
 									</div> -->
 		            </div>
 		          </form>
-		
+		              <a href="../../vto/index.php" target="__blank">Go back to Home<i><img src="../assets/icons/home-link.png"></i></a>
 		        </div>
 		      </div>
 				</div>
