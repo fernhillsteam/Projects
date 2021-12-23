@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2021 at 04:59 PM
+-- Generation Time: Dec 20, 2021 at 04:53 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -64,13 +64,10 @@ CREATE TABLE `biz_images` (
 --
 
 INSERT INTO `biz_images` (`sl_no`, `user_id`, `image`) VALUES
+(83, 57, 'Screenshot (2) - Copy.png'),
 (84, 57, 'Screenshot (2).png'),
 (85, 57, 'Screenshot (3) - Copy.png'),
-(86, 57, 'Screenshot (3).png'),
-(91, 53, 'Screenshot (5) - Copy.png'),
-(92, 53, 'Screenshot (1).png'),
-(93, 53, 'Screenshot (4).png'),
-(94, 53, 'Screenshot (4).png');
+(86, 57, 'Screenshot (3).png');
 
 -- --------------------------------------------------------
 
@@ -83,6 +80,12 @@ CREATE TABLE `business` (
   `user_id` int(11) NOT NULL,
   `business` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL,
+  `image1` varchar(255) NOT NULL,
+  `image2` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
+  `image4` varchar(255) NOT NULL,
+  `image5` varchar(255) NOT NULL,
+  `bizimage` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
   `biztype` varchar(255) NOT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91,20 +94,8 @@ CREATE TABLE `business` (
 -- Dumping data for table `business`
 --
 
-INSERT INTO `business` (`sl_no`, `user_id`, `business`, `logo`, `biztype`, `description`) VALUES
-(1, 53, 'Legal Services', 'Screenshot (4).png', 'Services', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(9, 71, 'Food Stall', 'WhatsApp Image 2021-12-21 at 2.27.02 PM.jpeg', 'mobile', 'new business details'),
-(10, 42, 'Home-based catering', 'Screenshot (6).png', 'catering', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(11, 43, 'Virtual Event Planning', 'Screenshot (6).png', 'Event Planning', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(12, 44, 'Home-based Bakery', 'Screenshot (6).png', 'Bakery', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(13, 45, 'Organic Farming', 'Screenshot (6).png', 'Farm', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(14, 46, 'Travel Agency', 'Screenshot (6).png', 'Agency', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(15, 47, 'Wedding Planning', 'Screenshot (6).png', 'Event Planning', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(16, 48, 'Food Trucks', 'Screenshot (6).png', 'catering', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(17, 49, 'Repairing Services (Plumbing, Automobiles, Phone)', 'Screenshot (6).png', 'Service', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(18, 51, 'Personal Training or Coaching', 'Screenshot (6).png', 'Training', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(19, 52, 'Sell Custom Printed Products (T-shirts, Mugs)	', 'Screenshot (6).png', 'Printed Products', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.'),
-(20, 50, 'Medical Delivery Services', 'Screenshot (6).png', 'Services', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.');
+INSERT INTO `business` (`sl_no`, `user_id`, `business`, `logo`, `image1`, `image2`, `image3`, `image4`, `image5`, `bizimage`, `biztype`, `description`) VALUES
+(1, 57, 'Legal Services', 'icons8-view-48.png', 'robot details.jpeg', 'Architecture Design.jpg', 'BoardStatic_preview.jpg', '7269044.png', 'Product Architecture.jpg', 'Architecture Design.jpg', 'Services', 'Legal Services Authorities are statutory bodies constituted in the states of India by the Legal Services Authorities Act 1987, as enshrined by article 39-A of the Constitution of India, for providing free legal services for the citizens.');
 
 -- --------------------------------------------------------
 
@@ -201,8 +192,7 @@ INSERT INTO `events1` (`id`, `title`, `description`, `start_date`, `end_date`, `
 (24, 'checking 6', 'details on event mangement', '2021-12-19', '2021-12-19', '0000-00-00', '19:55', '21:55:00', '500', 1),
 (25, 'checking 7', 'details on event mangement', '2021-12-20', '2021-12-20', '0000-00-00', '17:04', '20:02:00', '500', 1),
 (26, 'checking 8', 'details on event mangement', '2021-12-21', '2021-12-21', '0000-00-00', '17:10', '21:05:00', '500', 1),
-(27, 'checking 9', 'details on event mangement', '2021-12-24', '2021-12-24', '0000-00-00', '17:07', '19:07:00', '500', 1),
-(28, 'program ', 'details on event mangement', '2021-12-25', '2021-12-25', '0000-00-00', '09:43', '00:43:00', '500', 1);
+(27, 'checking 9', 'details on event mangement', '2021-12-24', '2021-12-24', '0000-00-00', '17:07', '19:07:00', '500', 1);
 
 -- --------------------------------------------------------
 
@@ -252,18 +242,19 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `name`, `username`, `designation`, `profile`, `business`, `email`, `password`, `mobile`, `roleid`, `isActive`, `created_at`, `updated_at`) VALUES
-(42, 'Aryan', 'Arya', '1', 'Screenshot (4).png', 'Medical Delivery Services', 'arya@gmail.com', '07c90324691eb8e35202f53d951b0f3383e25129', '9448734591', 2, 0, '2021-12-02', '0000-00-00'),
-(43, 'Arun', 'Arun', '1', 'Screenshot (4).png', 'Sell Custom Printed Products (T-shirts, Mugs)', 'arun@gmail.com', '78999612756394ae7f9b46549bb69fe83f5316c3', '9565235262', 3, 0, '2021-12-02', '2021-12-02'),
-(44, 'Darsh', 'Darsh', '2', 'Screenshot (4).png', 'Home-based Bakery', 'darsh@gmail.com', '0a426559073560226d767d05ed579e244e074a93', '9856232658', 2, 1, '2021-12-02', '2021-12-02'),
-(45, 'Darpan', 'Darpan', '1', 'Screenshot (4).png', 'Organic Farming', 'darpan@gmail.com', 'f74e254b037941942b102a65c51f21cf69704b65', '9856236251', 3, 1, '2021-12-02', '2021-12-02'),
-(46, 'Tejas', 'Tejas', '2', 'Screenshot (4).png', 'Travel Agency', 'tejas@gmail.com', 'b1932719262ca4afe3638577530378142d8cd1cf', '9325265326', 3, 0, '2021-12-02', '2021-12-02'),
-(47, 'Yash', 'Yash', '1', 'Screenshot (4).png', 'Wedding Planning', 'yash@gmail.com', 'cb124dd92de4e4b6bc24898396162315c8f18ec0', '9555414251', 3, 0, '2021-12-02', '2021-12-02'),
-(48, 'Pranit', 'Pranit', '2', '', 'Food Trucks', 'pranit@gmail.com', '6e62ca7acce82dd5a6b9773937fcff4915ee0c53', '974584586', 3, 1, '2021-12-02', '2021-12-02'),
-(49, 'Mayan', 'Mayan', '2', 'Screenshot (4).png', 'Repairing Services (Plumbing, Automobiles, Phone)', 'mayan@gmail.com', 'f92d549d342fa169c9f5a2d4f7005faaf093554b', '9784584587', 2, 0, '2021-12-02', '2021-12-02'),
-(50, 'Aarav', 'Aarav', '2', 'Screenshot (4).png', 'Medical Delivery Services', 'aarav@gmail.com', '5b44a8103d01abd568fdd1c5fc8780a4a624549f', '9562562547', 2, 0, '2021-12-02', '2021-12-02'),
-(51, 'Vedant', 'Vedant', '1', 'Screenshot (4).png', 'Personal Training or Coaching', 'vedant@gmail.com', '549b26216ea48011eef3700dc026096895271f0e', '958545745', 3, 0, '2021-12-02', '2021-12-02'),
-(52, 'Ishaan', 'Ishaan', '1', 'Screenshot (4).png', 'Sell Custom Printed Products (T-shirts, Mugs)	', 'ishaan@gmail.com', 'e0489d72986a3bc50df077fa1b547c708d6f91fb', '956852652', 1, 0, '2021-12-02', '2021-12-02'),
-(53, 'Ayush', 'Ayush', '1', 'Screenshot (4).png', 'Legal Services', '19arunarya@gmail.com', '45c001b4d509ee9926c584389fbe762cff0aaf14', '9448734591', 2, 0, '2021-12-02', '2021-12-02');
+(42, 'Aryan', 'Arya', '1', '', 'Medical Delivery Services', 'arya@gmail.com', '07c90324691eb8e35202f53d951b0f3383e25129', '9448734591', 2, 0, '2021-12-02', '0000-00-00'),
+(43, 'Arun', 'Arun', '1', '', 'Sell Custom Printed Products (T-shirts, Mugs)', 'arun@gmail.com', '78999612756394ae7f9b46549bb69fe83f5316c3', '9565235262', 3, 0, '2021-12-02', '2021-12-02'),
+(44, 'Darsh', 'Darsh', '2', '', 'Personal Training or Coaching', 'darsh@gmail.com', '0a426559073560226d767d05ed579e244e074a93', '9856232658', 2, 1, '2021-12-02', '2021-12-02'),
+(45, 'Darpan', 'Darpan', '1', '', 'Repairing Services (Plumbing, Automobiles, Phone)', 'darpan@gmail.com', 'f74e254b037941942b102a65c51f21cf69704b65', '9856236251', 3, 1, '2021-12-02', '2021-12-02'),
+(46, 'Tejas', 'Tejas', '2', '', 'Food Trucks', 'tejas@gmail.com', 'b1932719262ca4afe3638577530378142d8cd1cf', '9325265326', 3, 0, '2021-12-02', '2021-12-02'),
+(47, 'Yash', 'Yash', '1', '', 'Wedding Planning', 'yash@gmail.com', 'cb124dd92de4e4b6bc24898396162315c8f18ec0', '9555414251', 3, 0, '2021-12-02', '2021-12-02'),
+(48, 'Pranit', 'Pranit', '2', '', 'Travel Agency', 'pranit@gmail.com', '6e62ca7acce82dd5a6b9773937fcff4915ee0c53', '974584586', 3, 1, '2021-12-02', '2021-12-02'),
+(49, 'Mayan', 'Mayan', '2', '', 'Organic Farming', 'mayan@gmail.com', 'f92d549d342fa169c9f5a2d4f7005faaf093554b', '9784584587', 2, 0, '2021-12-02', '2021-12-02'),
+(50, 'Aarav', 'Aarav', '2', '', 'Home-based Bakery', 'aarav@gmail.com', '5b44a8103d01abd568fdd1c5fc8780a4a624549f', '9562562547', 2, 0, '2021-12-02', '2021-12-02'),
+(51, 'Vedant', 'Vedant', '1', '', 'Virtual Event Planning', 'vedant@gmail.com', '549b26216ea48011eef3700dc026096895271f0e', '958545745', 3, 0, '2021-12-02', '2021-12-02'),
+(52, 'Ishaan', 'Ishaan', '1', '', 'Home-based catering', 'ishaan@gmail.com', 'e0489d72986a3bc50df077fa1b547c708d6f91fb', '956852652', 3, 0, '2021-12-02', '2021-12-02'),
+(53, 'Ayush', 'Ayush', '1', '', 'Food Stall', '19arunarya@gmail.com', '45c001b4d509ee9926c584389fbe762cff0aaf14', '9448734591', 2, 0, '2021-12-02', '2021-12-02'),
+(57, 'Arvind', 'Arvind', '1', 'icons8-view-30 (1).png', 'Legal Services', 'aravind@gmail.com', '3c529fcd37879da75a15601dc2d3878553081d93', '95868865455', 1, 0, '2021-12-08', '2021-12-08');
 
 --
 -- Indexes for dumped tables
@@ -319,19 +310,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `biz_images`
 --
 ALTER TABLE `biz_images`
-  MODIFY `sl_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `sl_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `business`
 --
 ALTER TABLE `business`
-  MODIFY `sl_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `sl_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `events1`
 --
 ALTER TABLE `events1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -343,7 +334,7 @@ ALTER TABLE `tbl_roles`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
