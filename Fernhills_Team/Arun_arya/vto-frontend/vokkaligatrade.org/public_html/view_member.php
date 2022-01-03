@@ -166,7 +166,7 @@ $result = $mysqli->query($sql);
 
 	                        <div class="thumnail">
 
-	                            <img src="assets/images/team/member-2.jpg" alt="" class="cause-img">
+	                            <img src="login/profile/<?php echo $rows['profile'];?>" alt="" class="cause-img">
 	                            
 	                        </div>
 
