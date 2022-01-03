@@ -154,7 +154,7 @@ if (isset($_GET['id'])) {
             </a>
           </li>
 		  <li>
-            <a href="../calender1/eventmanage.php">
+            <a href="./eventmanage.php">
               <i> <img src="../assets/icons/events.png"></i>
               <p><strong>Manage Events</strong></p>
             </a>
