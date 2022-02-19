@@ -1,0 +1,103 @@
+
+		    .inner_main_menu {margin: 0 auto; width: 1170px;}    
+            .inner_main_menu ul{    margin-left: 200px; margin-right: 85px; padding: 9px 0px; list-style: none;text-align: right;}    
+            .inner_main_menu ul li{float: none; display: inline-block;position: relative}    
+            .inner_main_menu ul li:nth-child(1){float: left;}    
+            .inner_main_menu ul li:nth-child(2){float: left;}    
+            .inner_main_menu ul li:nth-child(3){float: left;}    
+            .inner_main_menu ul li a{color: #262626; font-size: 18px; font-weight: bold; text-transform: uppercase;text-decoration: none; display: block;padding: 10px 20px;}    
+            .inner_main_menu ul li a:hover{color: #6FDA44}  
+            .inner_main_menu ul li ul{position: absolute; top: 40px; left: -9999999px; width: 200px;background: #262626; padding: 0;}  
+            .inner_main_menu ul li:hover ul{left: 0px;}   
+            .inner_main_menu ul li ul li{float: left;width: 100%;text-align: left;}  
+            .inner_main_menu ul li ul li a{color: #fff;text-transform: capitalize; font-size: 15px;}  
+            .inner_main_menu ul li ul li a:hover{background: #ddd; color: #262626;}  
+            .inner_main_menu ul li ul li ul{top: 0; left: -999999px;}  
+            .inner_main_menu ul li:hover ul li ul{top: 0; left: -999999px;}  
+            .inner_main_menu ul li ul li:hover ul{top: 0; left: 200px;}  
+            .inner_main_menu ul li:hover a{color: #6FDA44}  
+            .inner_main_menu ul li:hover ul li a{color: #ffffff}  
+            .inner_main_menu ul li ul li a:hover{color: #262626}  
+            .inner_main_menu ul li ul li:hover a{background: #ddd; color: #262626;}  
+            .inner_main_menu ul li ul li:hover ul li a{background: #262626; color: #fff;}  
+            .inner_main_menu ul li ul li ul li a:hover{background: #ddd; color: #262626;}  
+            .slicknav_menu {
+              background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+              font-size: 16px;
+              padding: 5px;
+              display: none;    
+              position: fixed;
+              right: 0;
+              width: 100%;
+              z-index: 99999;
+            }
+            ul.slicknav_nav {
+              background: #262626 none repeat scroll 0 0;
+              left: 0;
+              position: absolute;
+              top: 0;
+              width: 80%;
+            }
+            .slicknav_btn {top: 35px;}
+            #main_menu{width: 100%; position: relative;background: #fffcfc; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);}
+            .logo_area{width: 150px; height: 150px; position: absolute; left: 45%; top: 0; content: ""; text-align: center; }
+			.logo{ width:100px;height:100px; margin-top: 3px; background: white;border-radius: 70px;}
+            @media only screen and (min-width: 200px) and (max-width: 767px) { 
+                .slicknav_menu{display: block;}
+                .inner_main_menu{display: none;}
+                .logo_area {height: auto;left: 0;margin-left: 0;position: relative;top: 0;width: 130px;}
+                .logo_area img{height: auto;width: 60%;}
+
+            }
+			
+			
+			/*footer*/
+			
+.footer {
+    padding: 2% 7%;
+    color: white;
+    background-color: #09743b;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+ul>li {
+    padding: 4px
+}
+
+ul>li:hover {
+    color: #0fe529;
+    cursor: pointer
+}
+
+hr {
+    border-width: 3px
+}
+
+.social>i {
+    padding: 2%;
+    font-size: 25px;
+}
+
+.social>i:hover {
+    color: #0fe529;
+    cursor: pointer
+}
+
+.policy>div {
+    padding: 4px
+}
+
+.heading{
+	font-size: 18px;
+	font-weight: 800;
+}
+
+.divider {
+	margin-top: 10px;
+    border-top: 2px solid rgba(189, 196, 203, 0.5);
+}
