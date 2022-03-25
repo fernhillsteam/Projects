@@ -1,0 +1,2168 @@
+fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery;
+
+fbuilderjQuery(function(){
+    (function($) {
+        $.extend({
+            
+            stringifyXX  : function stringifyXX(obj) {
+                var enc  = function(param) {
+                    var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+                        meta = {
+                            '\b' : '\\b',
+                            '\t' : '\\t',
+                            '\n' : '\\n',
+                            '\f' : '\\f',
+                            '\r' : '\\r',
+                            '"' : '\\"',
+                            '\\' : '\\\\'
+                        };
+                                        
+                    escapable.lastIndex = 0;
+                    return escapable.test(param) ? param.replace(escapable, function (a) {
+                        var c = meta[a];
+                        return typeof c === 'string' ? c : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+                    }) : param;
+                };
+                
+                var t = typeof (obj);
+                if (t != "object" || obj === null) {
+                    // simple data type
+                    if (t == "string") obj = '"' + obj + '"';
+                    return String(obj);
+                } else {
+                    // recurse array or object
+                    var n, v, json = [], arr = (obj && obj.constructor == Array);
+
+                    for (n in obj) {
+                        v = obj[n];
+                        t = typeof(v);
+                        if (t!="function")
+                        {
+                            if (t == "string") v = '"' + enc(v) + '"'; else if (t == "object" && v !== null) v = $.stringifyXX(v);
+                            json.push((arr ? "" : '"' + n + '":') + String(v));
+                        }
+                    }
+                    return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+                }
+            }
+        });
+    })(fbuilderjQuery);
+});fbuilderjQuery="undefined"!=typeof fbuilderjQuery?fbuilderjQuery:jQuery,fbuilderjQuery(function(){var t;(t=fbuilderjQuery).extend(t.fn,{validate:function(e){if(this.length){var i=t.data(this[0],"validator");return i||(this.attr("novalidate","novalidate"),i=new t.validator(e,this[0]),t.data(this[0],"validator",i),i.settings.onsubmit&&(this.validateDelegate(":submit","click",function(e){i.settings.submitHandler&&(i.submitButton=e.target),t(e.target).hasClass("cancel")&&(i.cancelSubmit=!0)}),this.submit(function(e){function s(){var s;return!i.settings.submitHandler||(i.submitButton&&(s=t("<input type='hidden'/>").attr("name",i.submitButton.name).val(i.submitButton.value).appendTo(i.currentForm)),i.settings.submitHandler.call(i,i.currentForm,e),i.submitButton&&s.remove(),!1)}return i.settings.debug&&e.preventDefault(),i.cancelSubmit?(i.cancelSubmit=!1,s()):i.form()?i.pendingRequest?(i.formSubmitted=!0,!1):s():(i.focusInvalid(),!1)})),i)}e&&e.debug&&window.console&&console.warn("nothing selected, can't validate, returning nothing")},valid:function(){if(t(this[0]).is("form"))return this.validate().form();var e=!0,i=t(this[0].form).validate();return this.each(function(){e&=i.element(this)}),e},removeAttrs:function(e){var i={},s=this;return t.each(e.split(/\s/),function(t,e){i[e]=s.attr(e),s.removeAttr(e)}),i},rules:function(e,i){var s=this[0];if(e){var n=t.data(s.form,"validator").settings,r=n.rules,a=t.validator.staticRules(s);switch(e){case"add":t.extend(a,t.validator.normalizeRule(i)),r[s.name]=a,i.messages&&(n.messages[s.name]=t.extend(n.messages[s.name],i.messages));break;case"remove":if(!i)return delete r[s.name],a;var u={};return t.each(i.split(/\s/),function(t,e){u[e]=a[e],delete a[e]}),u}}var o=t.validator.normalizeRules(t.extend({},t.validator.metadataRules(s),t.validator.classRules(s),t.validator.attributeRules(s),t.validator.staticRules(s)),s);if(o.required){var l=o.required;delete o.required,o=t.extend({required:l},o)}return o}}),t.extend(t.expr[":"],{blank:function(e){return!t.trim(""+e.value)},filled:function(e){return!!t.trim(""+e.value)},unchecked:function(t){return!t.checked}}),t.validator=function(e,i){this.settings=t.extend(!0,{},t.validator.defaults,e),this.currentForm=i,this.init()},t.validator.format=function(e,i){return 1===arguments.length?function(){var i=t.makeArray(arguments);return i.unshift(e),t.validator.format.apply(this,i)}:(arguments.length>2&&i.constructor!==Array&&(i=t.makeArray(arguments).slice(1)),i.constructor!==Array&&(i=[i]),t.each(i,function(t,i){e=e.replace(new RegExp("\\{"+t+"\\}","g"),i)}),e)},t.extend(t.validator,{defaults:{messages:{},groups:{},rules:{},errorClass:"cpefb_error",validClass:"valid",errorElement:"label",focusInvalid:!0,errorContainer:t([]),errorLabelContainer:t([]),onsubmit:!0,ignore:":hidden",ignoreTitle:!1,onfocusin:function(t,e){this.lastActive=t,this.settings.focusCleanup&&!this.blockFocusCleanup&&(this.settings.unhighlight&&this.settings.unhighlight.call(this,t,this.settings.errorClass,this.settings.validClass),this.addWrapper(this.errorsFor(t)).hide())},onfocusout:function(t,e){this.checkable(t)||!(t.name in this.submitted)&&this.optional(t)||this.element(t)},onkeyup:function(t,e){(t.name in this.submitted||t===this.lastElement)&&this.element(t)},onclick:function(t,e){t.name in this.submitted?this.element(t):t.parentNode.name in this.submitted&&this.element(t.parentNode)},highlight:function(e,i,s){"radio"===e.type?this.findByName(e.name).addClass(i).removeClass(s):t(e).addClass(i).removeClass(s)},unhighlight:function(e,i,s){"radio"===e.type?this.findByName(e.name).removeClass(i).addClass(s):t(e).removeClass(i).addClass(s)}},setDefaults:function(e){t.extend(t.validator.defaults,e)},messages:{required:"This field is required.",remote:"Please fix this field.",email:"Please enter a valid email address.",url:"Please enter a valid URL.",date:"Please enter a valid date.",dateISO:"Please enter a valid date (ISO).",number:"Please enter a valid number.",digits:"Please enter only digits.",creditcard:"Please enter a valid credit card number.",equalTo:"Please enter the same value again.",accept:"Please enter a value with a valid extension.",upload_size:t.validator.format("The file you've chosen is too big, maximum is {0} kB."),maxlength:t.validator.format("Please enter no more than {0} characters."),minlength:t.validator.format("Please enter at least {0} characters."),rangelength:t.validator.format("Please enter a value between {0} and {1} characters long."),range:t.validator.format("Please enter a value between {0} and {1}."),max:t.validator.format("Please enter a value less than or equal to {0}."),min:t.validator.format("Please enter a value greater than or equal to {0}.")},autoCreateRanges:!1,prototype:{init:function(){this.labelContainer=t(this.settings.errorLabelContainer),this.errorContext=this.labelContainer.length&&this.labelContainer||t(this.currentForm),this.containers=t(this.settings.errorContainer).add(this.settings.errorLabelContainer),this.submitted={},this.valueCache={},this.pendingRequest=0,this.pending={},this.invalid={},this.reset();var e=this.groups={};t.each(this.settings.groups,function(i,s){t.each(s.split(/\s/),function(t,s){e[s]=i})});var i=this.settings.rules;function s(e){var i=t.data(this[0].form,"validator"),s="on"+e.type.replace(/^validate/,"");i.settings[s]&&i.settings[s].call(i,this[0],e)}t.each(i,function(e,s){i[e]=t.validator.normalizeRule(s)}),t(this.currentForm).validateDelegate("[type='text'], [type='password'], [type='file'], select, textarea, [type='number'], [type='search'] ,[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], [type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'] ","focusin focusout keyup",s).validateDelegate("[type='radio'], [type='checkbox'], select, option","click",s),this.settings.invalidHandler&&t(this.currentForm).bind("invalid-form.validate",this.settings.invalidHandler)},form:function(){return this.checkForm(),t.extend(this.submitted,this.errorMap),this.invalid=t.extend({},this.errorMap),this.valid()||t(this.currentForm).triggerHandler("invalid-form",[this]),this.showErrors(),this.valid()},checkForm:function(){this.prepareForm();for(var t=0,e=this.currentElements=this.elements();e[t];t++)this.check(e[t]);return this.valid()},element:function(e){e=this.validationTargetFor(this.clean(e)),this.lastElement=e,this.prepareElement(e),this.currentElements=t(e);var i=!1!==this.check(e);return i?delete this.invalid[e.name]:this.invalid[e.name]=!0,this.numberOfInvalids()||(this.toHide=this.toHide.add(this.containers)),this.showErrors(),i},showErrors:function(e){if(e){for(var i in t.extend(this.errorMap,e),this.errorList=[],e)this.errorList.push({message:e[i],element:this.findByName(i)[0]});this.successList=t.grep(this.successList,function(t){return!(t.name in e)})}this.settings.showErrors?this.settings.showErrors.call(this,this.errorMap,this.errorList):this.defaultShowErrors()},resetForm:function(){t.fn.resetForm&&t(this.currentForm).resetForm(),this.submitted={},this.lastElement=null,this.prepareForm(),this.hideErrors(),this.elements().removeClass(this.settings.errorClass)},numberOfInvalids:function(){return this.objectLength(this.invalid)},objectLength:function(t){var e=0;for(var i in t)e++;return e},hideErrors:function(){this.addWrapper(this.toHide).hide()},valid:function(){return 0===this.size()},size:function(){return this.errorList.length},focusInvalid:function(){if(this.settings.focusInvalid)try{t(this.findLastActive()||this.errorList.length&&this.errorList[0].element||[]).filter(":visible").focus().trigger("focusin")}catch(t){}},findLastActive:function(){var e=this.lastActive;return e&&1===t.grep(this.errorList,function(t){return t.element.name===e.name}).length&&e},elements:function(){var e=this,i={};return t(this.currentForm).find("input, select, textarea").not(":submit, :reset, :image, [disabled]").not(this.settings.ignore).filter(function(){return!this.name&&e.settings.debug&&window.console&&console.error("%o has no name assigned",this),!(this.name in i||!e.objectLength(t(this).rules())||(i[this.name]=!0,0))})},clean:function(e){return t(e)[0]},errors:function(){var e=this.settings.errorClass.replace(" ",".");return t(this.settings.errorElement+"."+e,this.errorContext)},reset:function(){this.successList=[],this.errorList=[],this.errorMap={},this.toShow=t([]),this.toHide=t([]),this.currentElements=t([])},prepareForm:function(){this.reset(),this.toHide=this.errors().add(this.containers)},prepareElement:function(t){this.reset(),this.toHide=this.errorsFor(t)},elementValue:function(e){var i=t(e).val();return"string"==typeof i?i.replace(/\r/g,""):i},check:function(e){e=this.validationTargetFor(this.clean(e));var i,s=t(e).rules(),n=!1,r=this.elementValue(e);for(var a in s){var u={method:a,parameters:s[a]};try{if("dependency-mismatch"===(i=t.validator.methods[a].call(this,r,e,u.parameters))){n=!0;continue}if(n=!1,"pending"===i)return void(this.toHide=this.toHide.not(this.errorsFor(e)));if(!i)return this.formatAndAdd(e,u),!1}catch(t){throw this.settings.debug&&window.console&&console.log("exception occurred when checking element "+e.id+", check the '"+u.method+"' method",t),t}}if(!n)return this.objectLength(s)&&this.successList.push(e),!0},customMetaMessage:function(e,i){if(t.metadata){var s=this.settings.meta?t(e).metadata()[this.settings.meta]:t(e).metadata();return s&&s.messages&&s.messages[i]}},customMessage:function(t,e){var i=this.settings.messages[t];return i&&(i.constructor===String?i:i[e])},findDefined:function(){for(var t=0;t<arguments.length;t++)if(void 0!==arguments[t])return arguments[t]},defaultMessage:function(e,i){return this.findDefined(this.customMessage(e.name,i),this.customMetaMessage(e,i),!this.settings.ignoreTitle&&e.title||void 0,t.validator.messages[i],"<strong>Warning: No message defined for "+e.name+"</strong>")},formatAndAdd:function(e,i){var s=this.defaultMessage(e,i.method),n=/\$?\{(\d+)\}/g;"function"==typeof s?s=s.call(this,i.parameters,e):n.test(s)&&(s=t.validator.format(s.replace(n,"{$1}"),i.parameters)),this.errorList.push({message:s,element:e}),this.errorMap[e.name]=s,this.submitted[e.name]=s},addWrapper:function(t){return this.settings.wrapper&&(t=t.add(t.parent(this.settings.wrapper))),t},defaultShowErrors:function(){var t,e;for(t=0;this.errorList[t];t++){var i=this.errorList[t];this.settings.highlight&&this.settings.highlight.call(this,i.element,this.settings.errorClass,this.settings.validClass),this.showLabel(i.element,i.message)}if(this.errorList.length&&(this.toShow=this.toShow.add(this.containers)),this.settings.success)for(t=0;this.successList[t];t++)this.showLabel(this.successList[t]);if(this.settings.unhighlight)for(t=0,e=this.validElements();e[t];t++)this.settings.unhighlight.call(this,e[t],this.settings.errorClass,this.settings.validClass);this.toHide=this.toHide.not(this.toShow),this.hideErrors(),this.addWrapper(this.toShow).show()},validElements:function(){return this.currentElements.not(this.invalidElements())},invalidElements:function(){return t(this.errorList).map(function(){return this.element})},showLabel:function(e,i){var s=this.errorsFor(e);s.length?(s.removeClass(this.settings.validClass).addClass(this.settings.errorClass),s.attr("generated")&&s.html(i)):(s=t("<"+this.settings.errorElement+"/>").attr({for:this.idOrName(e),generated:!0}).addClass(this.settings.errorClass).html(i||""),this.settings.wrapper&&(s=s.hide().show().wrap("<"+this.settings.wrapper+"/>").parent()),this.labelContainer.append(s).length||(this.settings.errorPlacement?this.settings.errorPlacement(s,t(e)):s.insertAfter(e))),!i&&this.settings.success&&(s.text(""),"string"==typeof this.settings.success?s.addClass(this.settings.success):this.settings.success(s)),this.toShow=this.toShow.add(s)},errorsFor:function(e){var i=this.idOrName(e);return this.errors().filter(function(){return t(this).attr("for")===i})},idOrName:function(t){return this.groups[t.name]||(this.checkable(t)?t.name:t.id||t.name)},validationTargetFor:function(t){return this.checkable(t)&&(t=this.findByName(t.name).not(this.settings.ignore)[0]),t},checkable:function(t){return/radio|checkbox/i.test(t.type)},findByName:function(e){var i=this.currentForm;return t(document.getElementsByName(e)).map(function(t,s){return s.form===i&&s.name===e&&s||null})},getLength:function(e,i){switch(i.nodeName.toLowerCase()){case"select":return t("option:selected",i).length;case"input":if(this.checkable(i))return this.findByName(i.name).filter(":checked").length}return e.length},depend:function(t,e){return!this.dependTypes[typeof t]||this.dependTypes[typeof t](t,e)},dependTypes:{boolean:function(t,e){return t},string:function(e,i){return!!t(e,i.form).length},function:function(t,e){return t(e)}},optional:function(e){var i=this.elementValue(e);return!t.validator.methods.required.call(this,i,e)&&"dependency-mismatch"},startRequest:function(t){this.pending[t.name]||(this.pendingRequest++,this.pending[t.name]=!0)},stopRequest:function(e,i){this.pendingRequest--,this.pendingRequest<0&&(this.pendingRequest=0),delete this.pending[e.name],i&&0===this.pendingRequest&&this.formSubmitted&&this.form()?(t(this.currentForm).submit(),this.formSubmitted=!1):!i&&0===this.pendingRequest&&this.formSubmitted&&(t(this.currentForm).triggerHandler("invalid-form",[this]),this.formSubmitted=!1)},previousValue:function(e){return t.data(e,"previousValue")||t.data(e,"previousValue",{old:null,valid:!0,message:this.defaultMessage(e,"remote")})}},classRuleSettings:{required:{required:!0},email:{email:!0},url:{url:!0},date:{date:!0},dateISO:{dateISO:!0},number:{number:!0},digits:{digits:!0},creditcard:{creditcard:!0}},addClassRules:function(e,i){e.constructor===String?this.classRuleSettings[e]=i:t.extend(this.classRuleSettings,e)},classRules:function(e){var i={},s=t(e).attr("class");return s&&t.each(s.split(" "),function(){this in t.validator.classRuleSettings&&t.extend(i,t.validator.classRuleSettings[this])}),i},attributeRules:function(e){var i={},s=t(e);for(var n in t.validator.methods){var r;"required"===n?(""===(r=s.get(0).getAttribute(n))?r=!0:"false"===r&&(r=!1),r=!!r):r=s.attr(n),r?i[n]=r:s[0].getAttribute("type")===n&&(i[n]=!0)}return i.maxlength&&/-1|2147483647|524288/.test(i.maxlength)&&delete i.maxlength,i},metadataRules:function(e){if(!t.metadata)return{};var i=t.data(e.form,"validator").settings.meta;return i?t(e).metadata()[i]:t(e).metadata()},staticRules:function(e){var i={},s=t.data(e.form,"validator");return s.settings.rules&&(i=t.validator.normalizeRule(s.settings.rules[e.name])||{}),i},normalizeRules:function(e,i){return t.each(e,function(s,n){if(!1!==n){if(n.param||n.depends){var r=!0;switch(typeof n.depends){case"string":r=!!t(n.depends,i.form).length;break;case"function":r=n.depends.call(i,i)}r?e[s]=void 0===n.param||n.param:delete e[s]}}else delete e[s]}),t.each(e,function(s,n){e[s]=t.isFunction(n)?n(i):n}),t.each(["minlength","maxlength","min","max"],function(){e[this]&&(e[this]=Number(e[this]))}),t.each(["rangelength","range"],function(){e[this]&&(e[this]=[Number(e[this][0]),Number(e[this][1])])}),t.validator.autoCreateRanges&&(e.min&&e.max&&(e.range=[e.min,e.max],delete e.min,delete e.max),e.minlength&&e.maxlength&&(e.rangelength=[e.minlength,e.maxlength],delete e.minlength,delete e.maxlength)),e.messages&&delete e.messages,e},normalizeRule:function(e){if("string"==typeof e){var i={};t.each(e.split(/\s/),function(){i[this]=!0}),e=i}return e},addMethod:function(e,i,s){t.validator.methods[e]=i,t.validator.messages[e]=void 0!==s?s:t.validator.messages[e],i.length<3&&t.validator.addClassRules(e,t.validator.normalizeRule(e))},methods:{required:function(e,i,s){if(!this.depend(s,i))return"dependency-mismatch";if("select"===i.nodeName.toLowerCase()){var n=t(i).val();return n&&n.length>0}return this.checkable(i)?this.getLength(e,i)>0:t.trim(e).length>0},remote:function(e,i,s){if(this.optional(i))return"dependency-mismatch";var n=this.previousValue(i);if(this.settings.messages[i.name]||(this.settings.messages[i.name]={}),n.originalMessage=this.settings.messages[i.name].remote,this.settings.messages[i.name].remote=n.message,s="string"==typeof s&&{url:s}||s,this.pending[i.name])return"pending";if(n.old===e)return n.valid;n.old=e;var r=this;this.startRequest(i);var a={};return a[i.name]=e,t.ajax(t.extend(!0,{url:s,mode:"abort",port:"validate"+i.name,dataType:"json",data:a,success:function(s){r.settings.messages[i.name].remote=n.originalMessage;var a=!0===s;if(a){var u=r.formSubmitted;r.prepareElement(i),r.formSubmitted=u,r.successList.push(i),r.showErrors()}else{var o={},l=s||r.defaultMessage(i,"remote");o[i.name]=n.message=t.isFunction(l)?l(e):l,r.showErrors(o)}n.valid=a,r.stopRequest(i,a)}},s)),"pending"},minlength:function(e,i,s){var n=t.isArray(e)?e.length:this.getLength(t.trim(e),i);return this.optional(i)||n>=s},maxlength:function(e,i,s){var n=t.isArray(e)?e.length:this.getLength(t.trim(e),i);return this.optional(i)||n<=s},rangelength:function(e,i,s){var n=t.isArray(e)?e.length:this.getLength(t.trim(e),i);return this.optional(i)||n>=s[0]&&n<=s[1]},min:function(t,e,i){return this.optional(e)||t>=i},max:function(t,e,i){return this.optional(e)||t<=i},range:function(t,e,i){return this.optional(e)||t>=i[0]&&t<=i[1]},email:function(t,e){return this.optional(e)||/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(t)},url:function(t,e){return this.optional(e)||/^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(t)},date:function(t,e){return this.optional(e)||!/Invalid|NaN/.test(new Date(t))},dateISO:function(t,e){return this.optional(e)||/^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/.test(t)},number:function(t,e){return this.optional(e)||/^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(t)},digits:function(t,e){return this.optional(e)||/^\d+$/.test(t)},creditcard:function(t,e){if(this.optional(e))return"dependency-mismatch";if(/[^0-9 \-]+/.test(t))return!1;for(var i=0,s=0,n=!1,r=(t=t.replace(/\D/g,"")).length-1;r>=0;r--){var a=t.charAt(r);s=parseInt(a,10),n&&(s*=2)>9&&(s-=9),i+=s,n=!n}return i%10==0},accept:function(t,e,i){return i="string"==typeof i?i.replace(/,/g,"|"):"png|jpe?g|gif",this.optional(e)||t.match(new RegExp(".("+i+")$","i"))},equalTo:function(e,i,s){return e===t(s).unbind(".validate-equalTo").bind("blur.validate-equalTo",function(){t(i).valid()}).val()}}}),t.format=t.validator.format,function(t){var e={};if(t.ajaxPrefilter)t.ajaxPrefilter(function(t,i,s){var n=t.port;"abort"===t.mode&&(e[n]&&e[n].abort(),e[n]=s)});else{var i=t.ajax;t.ajax=function(s){var n=("mode"in s?s:t.ajaxSettings).mode,r=("port"in s?s:t.ajaxSettings).port;return"abort"===n?(e[r]&&e[r].abort(),e[r]=i.apply(this,arguments)):i.apply(this,arguments)}}}(fbuilderjQuery),function(t){fbuilderjQuery.event.special.focusin||fbuilderjQuery.event.special.focusout||!document.addEventListener||t.each({focus:"focusin",blur:"focusout"},function(e,i){function s(e){return(e=t.event.fix(e)).type=i,t.event.dispatch.call(this,e)}t.event.special[i]={setup:function(){this.addEventListener(e,s,!0)},teardown:function(){this.removeEventListener(e,s,!0)},handler:function(e){var s=arguments;return s[0]=t.event.fix(e),s[0].type=i,t.event.dispatch.apply(this,s)}}}),t.extend(t.fn,{validateDelegate:function(e,i,s){return this.bind(i,function(i){var n=t(i.target);if(n.is(e))return s.apply(n,arguments)})}})}(fbuilderjQuery)});fbuilderjQuery = (typeof fbuilderjQuery != 'undefined' ) ? fbuilderjQuery : jQuery;
+fbuilderjQuery(function(){
+(function($) {
+	// Namespace of fbuilder
+	$.fbuilder = $.fbuilder || {};
+	$.fbuilder[ 'objName' ] = 'fbuilderjQuery';	
+	
+	$.fbuilder[ 'controls' ] = ( typeof $.fbuilder[ 'controls' ] != 'undefined' ) ? $.fbuilder[ 'controls' ]: {};
+	$.fbuilder[ 'forms' ] = ( typeof $.fbuilder[ 'forms' ] != 'undefined' ) ? $.fbuilder[ 'forms' ]: {};
+	
+	$.fbuilder[ 'htmlEncode' ] = function(value)
+	{
+		value = $('<div/>').text(value).html()
+		value = value.replace( /&/g, '&amp;').replace(/"/g, "&quot;");
+		return value;
+	};
+	$.fbuilder[ 'configValidate' ] = function(elem)
+	{
+		elem.validate({
+                    ignore:".ignore,.ignorepb",
+			        errorElement: "div",
+			        errorClass:"cpefb_error",
+			        errorPlacement: function(e, element) 
+	    	        {
+	    	        	if (element.parents(".dfield").find(".cpefb_error.message").not("[style]").length>0)
+	    	        	   return;
+	    	        	e.insertAfter(element.parents(".dfield").children().last());
+	    	        	e.addClass("message");
+	    	        }
+     		    });
+	};
+
+    $.fbuilder['htmlDecode']=function(value)
+    {
+    	if(/&(?:#x[a-f0-9]+|#[0-9]+|[a-z0-9]+);?/ig.test(value))value=$('<div/>').html(value).text();return value;
+    };
+
+	$.fbuilder[ 'escape_symbol' ] = function( value ) // Escape the symbols used in regulars expressions
+	{
+		return value.replace(/([\^\$\-\.\,\[\]\(\)\/\\\*\?\+\!\{\}])/g, "\\$1");
+	};
+	
+	$.fbuilder[ 'parseValStr' ] = function( value )
+	{
+		return '"' + value.replace(/'/g, "\\'").replace( /\$/g, '') + '"';
+	};
+	
+	$.fbuilder[ 'parseVal' ] = function( value, thousandSeparator, decimalSymbol )
+	{
+		if( value == '' ) return 0;
+		value += '';
+		
+		thousandSeparator = new RegExp( $.fbuilder.escape_symbol( ( typeof thousandSeparator == 'undefined' ) ? ',' : thousandSeparator ), 'g' );
+		decimalSymbol = new RegExp( $.fbuilder.escape_symbol( ( typeof decimalSymbol == 'undefined' ) ? '.' : decimalSymbol ), 'g' );
+		
+		var t = value.replace( thousandSeparator, '' ).replace( decimalSymbol, '.' ).replace( /\s/g, '' ),
+			p = /[+-]?((\d+(\.\d+)?)|(\.\d+))/.exec( t );
+			
+		return ( p ) ? p[0]*1 : $.fbuilder[ 'parseValStr' ]( value );
+	};
+				
+	
+	$.fn.fbuilder = function(options){
+		var opt = $.extend({},
+					{
+						pub:false,
+						identifier:"",
+						title:""
+					},options, true);
+				
+		opt.messages = $.extend({
+					previous: "Previous",
+					next: "Next",
+					pageof: "Page {0} of {0}",
+					required: "This field is required.",
+					email: "Please enter a valid email address.",
+					datemmddyyyy: "Please enter a valid date with this format(mm/dd/yyyy)",
+					dateddmmyyyy: "Please enter a valid date with this format(dd/mm/yyyy)",
+					number: "Please enter a valid number.",
+					digits: "Please enter only digits.",
+					maxlength: $.validator.format("Please enter no more than {0} characters"),
+                    minlength: $.validator.format("Please enter at least {0} characters."),
+                    equalTo: "Please enter the same value again.",
+					max: $.validator.format("Please enter a value less than or equal to {0}."),
+					min: $.validator.format("Please enter a value greater than or equal to {0}.")
+			},opt.messages);
+			
+		opt.messages.max = $.validator.format(opt.messages.max);
+		opt.messages.min = $.validator.format(opt.messages.min);
+		
+		$.extend($.validator.messages, opt.messages);
+		
+		var items = [];
+		var reloadItemsPublic = function() 
+			{
+				$("#fieldlist"+opt.identifier).closest( 'form' ).addClass( theForm.formtemplate );
+                $("#fieldlist"+opt.identifier).html("").addClass(theForm.formlayout);
+				$("#formheader"+opt.identifier).html(theForm.show());
+
+				var page = 0;
+				$("#fieldlist"+opt.identifier).append('<div class="pb'+page+' pbreak" page="'+page+'"></div>');
+				for (var i=0;i<items.length;i++)
+				{
+					items[i].index = i;
+					if (items[i].ftype=="fPageBreak")
+					{
+						page++;
+						$("#fieldlist"+opt.identifier).append('<div class="pb'+page+' pbreak" page="'+page+'"></div>');
+					}
+					else
+					{
+						$("#fieldlist"+opt.identifier+" .pb"+page).append(items[i].show());
+						if (items[i].predefinedClick)
+						{
+                            $("#fieldlist"+opt.identifier+" .pb"+page).find("#"+items[i].name).attr("placeholder",items[i].predefined);
+                            $("#fieldlist"+opt.identifier+" .pb"+page).find("#"+items[i].name).attr("value","");
+                        }
+						if (items[i].userhelpTooltip)
+						{
+							var uh = $("#fieldlist"+opt.identifier+" .pb"+page).find("#"+items[i].name).closest(".fields");
+							uh.find(".uh").css("display","none");
+							if (uh.find(".uh").text()!="")
+							{
+								uh.attr("uh",uh.find(".uh").text());
+							}	
+						}
+					}
+				}
+                
+				if (page>0)
+				{
+                
+					$("#fieldlist"+opt.identifier+" .pb"+page).addClass("pbEnd");
+					$("#fieldlist"+opt.identifier+" .pbreak").each(function(index) {
+						var code = $(this).html();
+						var bSubmit = '';
+						
+						if (index == page)
+						{
+
+							if ( $( "#cpcaptchalayer"+opt.identifier ).length && !/^\s*$/.test( $( "#cpcaptchalayer"+opt.identifier ).html() ) )
+							{
+								code += '<div class="captcha">'+$("#cpcaptchalayer"+opt.identifier).html()+'</div><div class="clearer"></div>';
+								$("#cpcaptchalayer"+opt.identifier).html("");
+							}
+							if ($("#cp_subbtn"+opt.identifier).html())
+							{
+								bSubmit = '<button type="button" class="pbSubmit">'+$("#cp_subbtn"+opt.identifier).html()+'</button>';
+							}	
+						}
+						$(this).html('<fieldset><legend>'+opt.messages.pageof.replace( /\{\s*\d+\s*\}/, (index+1) ).replace( /\{\s*\d+\s*\}/, (page+1) )+'</legend>'+code+'<div class="pbPrevious">'+opt.messages.previous+'</div><div class="pbNext">'+opt.messages.next+'</div>'+bSubmit+'<div class="clearer"></div></fieldset>');
+					});
+					$( '#fieldlist'+opt.identifier).find(".pbPrevious,.pbNext").bind("click", { 'identifier' : opt.identifier }, function( evt ) {
+					    var identifier = evt.data.identifier;
+					    function focusTop(){try {$('html, body').animate({scrollTop: $("#fieldlist"+identifier+" .pb"+page).find("fieldset").offset().top}, 100);}catch(e){}}
+						if (  ($(this).hasClass("pbPrevious")) || (($(this).hasClass("pbNext")) && $(this).parents("form").valid())  )
+						{
+							var page = parseInt($(this).parents(".pbreak").attr("page"));
+							
+							(($(this).hasClass("pbPrevious"))?page--:page++);
+							$("#fieldlist"+identifier+" .pbreak").css("display","none");
+							$("#fieldlist"+identifier+" .pbreak").find(".field").addClass("ignorepb");
+
+							$("#fieldlist"+identifier+" .pb"+page).css("display","block");
+							$("#fieldlist"+identifier+" .pb"+page).find(".field").removeClass("ignorepb");
+							if ($("#fieldlist"+identifier+" .pb"+page).find(".field").length>0)
+							{
+								try 
+								{
+								    if ($("#fieldlist"+identifier+" .pb"+page).find(".field").is(":visible"))
+									    $("#fieldlist"+identifier+" .pb"+page).find(".field")[0].focus();
+									else
+									    focusTop();    
+									
+								} 
+								catch(e){focusTop()}
+							}
+							else
+							    focusTop();	
+						}
+						else
+						{
+							$(this).parents("form").validate().focusInvalid();
+						}	
+						return false;
+					});
+                }
+				else
+				{
+					if ( $( "#cpcaptchalayer"+opt.identifier ).length && !/^\s*$/.test( $( "#cpcaptchalayer"+opt.identifier ).html() ) )
+					{
+						$("#fieldlist"+opt.identifier+" .pb"+page).append('<div class="captcha">'+$("#cpcaptchalayer"+opt.identifier).html()+'</div>');
+						$("#cpcaptchalayer"+opt.identifier).html("");
+					}
+					if ($("#cp_subbtn"+opt.identifier).html())
+					{
+						$("#fieldlist"+opt.identifier+" .pb"+page).append('<button type="button" class="pbSubmit">'+$("#cp_subbtn"+opt.identifier).html()+'</button>');
+					}	
+				}
+							
+                // Set Captcha Event
+				$( document ).on( 'click', '#fbuilder .captcha img', function(){ var e = $( this ); e.attr( 'src', e.attr( 'src' ).replace( /&\d+$/, '' ) + '&' + Math.floor( Math.random()*1000 ) ); } );
+                
+				$( document ).on("click","#fieldlist"+opt.identifier+" .pbSubmit", function( evt ) 
+				{
+				    $("#fieldlist"+opt.identifier+" .pbSubmit").closest("form").submit();
+				});
+
+				if (i>0)
+				{
+                    theForm.after_show( opt.identifier );
+					for (var i=0;i<items.length;i++)
+					{
+						items[i].after_show();
+					}	
+					
+					$.fbuilder.showHideDep(
+						{
+							'formIdentifier' : opt.identifier, 
+							'throwEvent'	 : true
+						}	
+					);
+					
+					$( '#fieldlist'+opt.identifier).find(".depItemSel,.depItem").bind("change", { 'identifier' : opt.identifier }, function( evt ) 
+						{
+							$.fbuilder.showHideDep(
+								{
+									'formIdentifier' : evt.data.identifier, 
+									'throwEvent'	 : true
+								}	
+							);
+						});
+					try 
+					{
+						$( "#fbuilder"+opt.identifier ).tooltip({show: false,hide:false,tooltipClass:"uh-tooltip",position: { my: "left top", at: "left bottom+5", collision: "none"  },items: "[uh]",content: function (){return $(this).attr("uh");} });
+					} catch(e){}
+                }
+                $("#fieldlist"+opt.identifier+" .pbreak:not(.pb0)").find(".field").addClass("ignorepb");
+                if ( theForm.autofocus)
+                {
+                    var ff  = $("#fieldlist"+opt.identifier+" .pbreak.pb0").find(":focusable:first");
+				    if( ff &&
+				    	ff.attr('type') != 'radio' &&
+				    	ff.attr('type') != 'checkbox' &&
+				    	ff.closest('[uh]').length == 0 /* FIXES AUTO-OPEN TOOLTIPS */
+				    ) ff.focus();
+			    }
+            };
+			
+		var fform=function(){};
+		$.extend(fform.prototype,
+			{
+				title:"Untitled Form",
+				description:"This is my form. Please fill it out. It's awesome!",
+				formlayout:"top_aligned",
+				formtemplate:"",
+                evalequations:1,
+                autocomplete:1,
+                autofocus:false,
+				show:function(){
+                     return '<div class="fform" id="field">'+(this.title!=''?'<h1>'+this.title+'</h1>':'')+(this.description!=''?'<span>'+this.description+'</span>':'')+'</div>';
+				},
+                after_show:function( id ){
+                    $( '#cp_calculatedfieldsf_pform'+id ).attr( 'data-evalequations', this.evalequations ).attr( 'autocomplete', ( ( this.autocomplete ) ? 'on' : 'off' ) );
+                }
+			});
+		
+		//var theForm = new fform(),
+		var theForm,
+			ffunct = {
+				getItem: function( name )
+					{
+						for( var i in items )
+						{
+							if( items[ i ].name == name )
+							{
+								return items[ i ];
+							}
+						}
+						return false;
+					},
+				getItems: function() 
+					{
+					   return items;
+					},
+				loadData:function(f)
+					{
+						var d,
+							e = $("#"+f);
+						
+						this.formId = e.parents( 'form' ).attr( 'id' );
+						if ( d = $.parseJSON( e.val() ))
+						{
+						   if (d.length==2)
+						   {
+							   items = [];
+							   for (var i=0;i<d[0].length;i++)
+							   {
+								   var obj = eval("new $.fbuilder.controls['"+d[0][i].ftype+"']();");
+								   obj = $.extend(true, {}, obj,d[0][i]);
+								   obj.name = obj.name+opt.identifier;
+								   obj.form_identifier = opt.identifier;
+								   obj.init();
+								   items[items.length] = obj;
+							   }
+							   theForm = new fform();
+							   theForm = $.extend(theForm,d[1][0]);
+							   reloadItemsPublic();
+						   }
+						}
+
+						if( typeof window[ 'cpcff_load_defaults' ] != 'undefined' )
+                        {
+                            window[ 'cpcff_load_defaults' ]();
+                        }
+					}
+			};
+
+		$.fbuilder[ 'forms' ][ opt.identifier ] = ffunct;
+	    this.fBuild = ffunct;
+	    return this;
+	}; 
+
+	$.fbuilder[ 'showSettings' ] = {
+		formlayoutList : [{id:"top_aligned",name:"Top Aligned"},{id:"left_aligned",name:"Left Aligned"},{id:"right_aligned",name:"Right Aligned"},{id:"center_aligned",name:"Center Aligned"}]
+	};
+	
+	$.fbuilder.controls[ 'ffields' ] = function(){};
+	$.extend($.fbuilder.controls[ 'ffields' ].prototype, 
+		{
+				form_identifier:"",
+				name:"",
+				shortlabel:"",
+				index:-1,
+				ftype:"",
+				userhelp:"",
+				userhelpTooltip:false,
+				csslayout:"",
+				init:function(){},
+				show:function()
+					{
+						return 'Not available yet';
+					},
+				after_show:function(){},
+				val:function(){
+					var e = $( "[id='" + this.name + "']:not(.ignore)" );
+					if( e.length )
+					{
+                        return $.fbuilder.parseVal( $.trim( e.val() ) );
+					}
+					return 0;
+				}
+		});
+	
+	$.fbuilder[ 'showHideDep' ] = function( configObj )
+		{
+			if( typeof configObj[ 'formIdentifier' ] !== 'undefined' )
+			{
+				var identifier = configObj[ 'formIdentifier' ];
+				
+				if( typeof  $.fbuilder[ 'forms' ][ identifier ] != 'undefined' )
+				{
+					var toShow = [],
+						toHide = [],
+						items = $.fbuilder[ 'forms' ][ identifier ].getItems();
+						
+					for( var i = 0, h = items.length; i < h; i++ )
+					{
+						if( typeof items[ i ][ 'showHideDep' ] != 'undefined' )
+						{
+							items[ i ][ 'showHideDep' ]( toShow, toHide );
+						}
+					}
+					
+					if( typeof configObj[ 'throwEvent' ] == 'undefined' || configObj[ 'throwEvent' ] )
+					{
+						$( document ).trigger( 'showHideDepEvent', $.fbuilder[ 'forms' ][ identifier ][ 'formId' ] );
+					}	
+				}
+			}	
+		};
+			$.fbuilder.controls[ 'ftext' ]=function(){};
+	$.extend(
+		$.fbuilder.controls[ 'ftext' ].prototype,
+		$.fbuilder.controls[ 'ffields' ].prototype,
+		{
+			title:"Untitled",
+			ftype:"ftext",
+			predefined:"",
+			predefinedClick:false,
+			required:false,
+			size:"medium",
+			minlength:"",
+			maxlength:"",
+			equalTo:"",
+			show:function()
+				{
+					return '<div class="fields '+this.csslayout+'" id="field'+this.form_identifier+'-'+this.index+'"><label for="'+this.name+'">'+this.title+''+((this.required)?"<span class='r'>*</span>":"")+'</label><div class="dfield"><input id="'+this.name+'" name="'+this.name+'" minlength="'+(this.minlength)+'" maxlength="'+$.fbuilder.htmlEncode(this.maxlength)+'" '+((this.equalTo!="")?"equalTo=\"#"+$.fbuilder.htmlEncode(this.equalTo+this.form_identifier)+"\"":"" )+' class="field '+this.size+((this.required)?" required":"")+'" type="text" value="'+$.fbuilder.htmlEncode(this.predefined)+'"/><span class="uh">'+this.userhelp+'</span></div><div class="clearer"></div></div>';
+				}
+		}	
+	);	$.fbuilder.controls[ 'femail' ] = function(){};
+	$.extend( 
+		$.fbuilder.controls[ 'femail' ].prototype, 
+		$.fbuilder.controls[ 'ffields' ].prototype,
+		{
+			title:"Email",
+			ftype:"femail",
+			predefined:"",
+			predefinedClick:false,
+			required:false,
+			size:"medium",
+			equalTo:"",
+			show:function()
+				{
+					return '<div class="fields '+this.csslayout+'" id="field'+this.form_identifier+'-'+this.index+'"><label for="'+this.name+'">'+this.title+''+((this.required)?"<span class='r'>*</span>":"")+'</label><div class="dfield"><input id="'+this.name+'" name="'+this.name+'" '+((this.equalTo!="")?"equalTo=\"#"+$.fbuilder.htmlEncode(this.equalTo+this.form_identifier)+"\"":"" )+' class="field email '+this.size+((this.required)?" required":"")+'" type="text" value="'+$.fbuilder.htmlEncode(this.predefined)+'"/><span class="uh">'+this.userhelp+'</span></div><div class="clearer"></div></div>';
+				},
+			val:function()
+				{
+					var e = $( '[id="' + this.name + '"]:not(.ignore)' );
+					if( e.length ) return $.fbuilder.parseValStr( e.val() );
+					return '';
+				}	
+		}
+	);$.fbuilder.controls[ 'fapp' ] = function(){};
+$.extend( 
+	$.fbuilder.controls[ 'fapp' ].prototype, 
+	$.fbuilder.controls[ 'ffields' ].prototype,
+	{
+		title:"Number",
+		ftype:"fapp",			
+		services:new Array({name:"Service 1",price:1,capacity:1,duration:60,pb:0,pa:0,ohindex:0}),
+		/*openhours:new Array({type:"all",d:"",h1:8,m1:0,h2:17,m2:0}),new Array({name:"Default",openhours:new Array({type:"all",d:"",h1:8,m1:0,h2:17,m2:0})})*/
+		openhours:new Array(),
+		allOH:new Array({name:"Default",openhours:new Array({type:"all",d:"",h1:8,m1:0,h2:17,m2:0})}),
+		usedSlots:new Array(),
+		dateFormat:"mm/dd/yy",
+		showDropdown:false,
+		showTotalCost:false,
+		showTotalCostFormat:"$ {0}",
+		showEndTime:false,
+		usedSlotsCheckbox:false,		
+		avoidOverlaping:true,
+		emptySelectCheckbox:false,
+		emptySelect:"-- Please select service --",
+		dropdownRange:"-10:+10",
+		working_dates:[true,true,true,true,true,true,true],
+		numberOfMonths:1,
+		maxNumberOfApp:0,
+		showAllServices:false,		
+		allowDifferentQuantities:false,
+		firstDay:0,
+		minDate:"0",
+		maxDate:"",
+		defaultDate:"",
+		invalidDates:"",
+		required:true,			
+		bSlotsCheckbox: true,
+		bSlots:30,
+		militaryTime:1,
+		cacheArr:new Array(),
+		getD:new Date(),
+		formId:0,
+		getMinDate:"",
+		getMaxDate:"",
+		arr:new Array(),
+		allUsedSlots:new Array(),
+		service_selected:0,
+		quantity_selected:1,
+		tz:0,
+		loadOK:false,
+		ignoreUsedSlots:false,
+		initialapp:"",
+		initialID:0,
+		pctByDay:new Array(),
+		htmlUsedSlots:new Array(),
+		extras:0,
+		sub_cost:0,
+		percent:0,
+		notShowBookedDate:true,
+		showWeek:false,
+		autonum:0,		
+		slotsDate:[],
+		getSplittedSlots:function(d,s)
+		{	
+		    function splitSlots (a,serviceindex) {
+                var dots = new Array();
+                for (var i=0;i<a.length;i++)
+                {
+                    dots[dots.length] = a[i].t1;
+                    dots[dots.length] = a[i].t2;
+                }
+                dots.sort(function(a, b){return a - b});    
+                var processed_dots = new Array();
+                for (var i=0;i<dots.length;i++)
+                    if (i==0 || dots[i] != dots[i-1])
+                        processed_dots[processed_dots.length] = dots[i];
+                var aoutput = new Array();
+                for (var i=0;i<processed_dots.length-1;i++)
+                {
+                    var s = processed_dots[i];
+                    var e = processed_dots[i+1];
+                    var m1 = s%60;
+                    var m2 = e%60;
+                    var segment = {t1:s, t2:e, quantity:0,serviceindex:serviceindex,h1:(s-m1)/60,m1:m1,h2:(e-m2)/60,m2:m2};
+                    for (var j=0;j<a.length;j++)
+                        if ( 
+                             (s>a[j].t1 && s<a[j].t2) || 
+                             (e>a[j].t1 && e<a[j].t2) ||
+                             (s==a[j].t1 && e==a[j].t2)
+                           )
+                            segment.quantity += a[j].quantity;
+                    if (segment.quantity)    
+                        aoutput[aoutput.length] = segment;          
+                }
+                return aoutput;
+            }
+		    var data = new Array();
+		    d.sort(function(a, b){
+		  	    if ((typeof a.serviceindex !== 'undefined') && (typeof b.serviceindex !== 'undefined'))
+		  	        return a.serviceindex - b.serviceindex;
+		  	    else if (typeof a.serviceindex === 'undefined')
+		  	        return -1  - b.serviceindex;
+		  	    else 
+		  	        return a.serviceindex - (-1);        
+		  	});
+		  	var sid = -2;
+		  	var dtmp = [];
+		    for (var i=0;i<d.length;i++)
+		    {   
+		        if (typeof d[i].serviceindex !== 'undefined')
+		        {
+		            if (d[i].serviceindex!=sid)
+		            {
+		                if (i!=0)
+		                    data = data.concat(splitSlots(dtmp,sid));
+		                dtmp = [];
+		                sid = d[i].serviceindex;		                    
+		            }
+		            dtmp[dtmp.length] = jQuery.extend({}, d[i]);     
+		        }    
+		        else
+		            data[data.length] = jQuery.extend({}, d[i]);		        
+		    }
+		    if (dtmp.length!=0)
+		        data = data.concat(splitSlots(dtmp,sid));
+			return data;
+		},
+		getCompatSlots:function(d)
+		{
+		    
+		    var data = new Array();
+		    var find = false;
+		    for (var i=0;i<d.length;i++)
+			{
+			    if (!d[i].quantity)
+			        d[i].quantity = 1000;
+			    var s = -1;    
+			    if (typeof d[i].serviceindex !== 'undefined')
+			        s = d[i].serviceindex;
+			    d[i].service = new Array();
+			    d[i].service[0] = s;    
+			                                  
+			    find = false; 
+			    for (var j=0;j<data.length && !find;j++)
+			        if (d[i].t1==data[j].t1 && d[i].t2==data[j].t2 && (d[i].serviceindex == data[j].serviceindex))
+			        {
+			            data[j].quantity += d[i].quantity;
+			            data[j].currentSelection = data[j].currentSelection || d[j].currentSelection || false;
+			            if (!$.inArray(d[i].service[0],data[j].service))
+			                data[j].service[data[j].service.length] = d[i].service[0]; 
+			            find = true;
+			        }
+			    if (!find)
+			        data[data.length] = jQuery.extend({}, d[i]);             
+			}
+			return data;
+		},
+        normalizeSelectIndex:function(ind)
+        {
+            if (this.emptySelectCheckbox && ind > 0)
+                ind--;
+            return ind;
+        },
+		show:function()
+		{
+		    return '<div class="fields '+this.csslayout+'" id="field'+this.form_identifier+'-'+this.index+'"><label for="'+this.name+'">'+this.title+''+((this.required)?"<span class='r'>*</span>":"")+'</label><div class="dfield fapp"><input class="field avoid_overlapping_before '+((this.required)?" required":"")+'" id="'+this.name+'" name="'+this.name+'" type="hidden" value="" summary="usedSlots"/><input id="'+this.name+'_services" name="'+this.name+'_services" type="hidden" value="0"/><input id="'+this.name+'_capacity" name="'+this.name+'_capacity" type="hidden" value="0"/><input class="" id="tcost'+this.name+'" name="tcost'+this.name+'" type="hidden" value=""/><div class="fieldCalendarService fieldCalendarService'+this.name+'"></div><div class="fieldCalendar fieldCalendar'+this.name+'"></div><div class="slotsCalendar slotsCalendar'+this.name+'"></div><div class="usedSlots usedSlots'+this.name+'"></div><span class="uh">'+this.userhelp+'</span></div><div class="clearer"></div></div>';
+		},
+		getSpecialDays:function()
+		{
+		    var me  = this;
+		    var a = new Array();
+		  	if (!me.emptySelectCheckbox || (me.emptySelectCheckbox && $(".fieldCalendarService"+me.name+" select option:selected").index() > 0 ))
+		  	{
+		  	    var ohindex = me.services[me.normalizeSelectIndex($(".fieldCalendarService"+me.name+" select option:selected").index())].ohindex;
+			    for (var i=0;i<me.allOH[ohindex].openhours.length;i++)
+			        if (me.allOH[ohindex].openhours[i].type=="special")
+			            a[a.length] = me.allOH[ohindex].openhours[i].d;
+			}
+			return a;
+	    },
+	    getServiceInd:function(sid)
+		{
+		    var me  = this;
+		    if (typeof me.getServiceIndArr === 'undefined')
+		    {
+		        me.getServiceIndArr = [];
+		        for (var i=0; i< me.services.length;i++)
+		            me.getServiceIndArr["idx"+me.services[i].idx] = i;
+			}
+			if (typeof me.getServiceIndArr["idx"+sid] !== 'undefined')
+			    return me.getServiceIndArr["idx"+sid];
+			else    
+			    return -1;
+	    },
+	    normalizeRanges:function(a)
+	    {
+	        for (var i=0;i<a.length;i++)
+	        {
+                    a[i].t1 = a[i].h1 * 60 + a[i].m1*1;
+			    	a[i].t2 = a[i].h2 * 60 + a[i].m2*1;
+			    	if (a[i].t1 >= a[i].t2)
+			    	    a[i].t2 += 24 * 60;
+            }
+	    },
+	    initcacheOpenHours: function()
+        {
+            var me  = this;
+            for (j=0;j<me.allOH.length;j++)
+                me.normalizeRanges(me.allOH[j].openhours);
+            me.cacheOpenHours = [];
+            for (j=0;j<me.services.length;j++)
+            {
+                var ohindex = me.services[j].ohindex;
+                var arr = [];
+		  	    for (var i=0;i<me.allOH[ohindex].openhours.length;i++)
+		  	    {
+		  	        if (me.allOH[ohindex].openhours[i].type=="special")
+		  	        {
+		  	        	arr[me.allOH[ohindex].openhours[i].d] = arr[me.allOH[ohindex].openhours[i].d] || [];
+		  	        	arr[me.allOH[ohindex].openhours[i].d][arr[me.allOH[ohindex].openhours[i].d].length] = jQuery.extend({capacity:me.services[j].capacity}, me.allOH[ohindex].openhours[i]);
+		  	        }
+		  	        else
+		  	        {
+		  	            arr[me.allOH[ohindex].openhours[i].type] = arr[me.allOH[ohindex].openhours[i].type] || [];
+		  	            arr[me.allOH[ohindex].openhours[i].type][arr[me.allOH[ohindex].openhours[i].type].length] = jQuery.extend({capacity:me.services[j].capacity}, me.allOH[ohindex].openhours[i]);
+		  	        }
+		  	    }
+		  	    me.cacheOpenHours[j] = arr;
+		    }
+        },
+        getAvailablePartialSlots: function(d, part,s) 
+        {   
+            var me  = this;
+            /*verify if not special_days and (not working_dates or not invalidDates )*/
+            if (($.inArray(d, me.special_days) == -1))
+            {
+                var d2 = $.datepicker.parseDate("yy-mm-dd",d);
+                if (me.working_dates[d2.getDay()]==0)
+                    return new Array(); 
+                for( var i = 0, l = me.invalidDates.length; i < l; i++ )
+                {
+                	if (d2.getTime() === me.invalidDates[i].getTime())
+                	    return new Array(); 
+                }       
+            }
+            var capacity_service = me.services[s].capacity;
+            var a = [];
+            if (me.cacheOpenHours[s][d])
+			    a = me.cacheOpenHours[s][d].slice(0);
+			else if (me.cacheOpenHours[s]["d"+$.datepicker.parseDate("yy-mm-dd", d).getDay()])
+				a = me.cacheOpenHours[s]["d"+$.datepicker.parseDate("yy-mm-dd", d).getDay()].slice(0);
+			else if (me.cacheOpenHours[s]["all"])
+				a = me.cacheOpenHours[s]["all"].slice(0);
+            me.arr[d]	= a;
+            if (!me.duration)
+            {
+                var arr = new Array();
+                return arr;
+            }   
+            var data1 = me.cacheArr[d];            
+            if (!data1) data1 = new Array();
+            var duration = parseFloat(me.services[s].duration);
+            me.duration = duration;
+		  	me.bduration = me.duration;
+		  	if (!me.bSlotsCheckbox)
+		  	    me.bduration = me.bSlots*1;
+			var arr = new Array();
+			for (var i=0;i<me.arr[d].length;i++)
+			    arr[i] = jQuery.extend({}, me.arr[d][i]);			  		 	      
+            for (var i=0;i<arr.length;i++)
+			{
+				arr[i].t1 = arr[i].h1 * 60 + arr[i].m1*1;
+				arr[i].t2 = arr[i].h2 * 60 + arr[i].m2*1;
+				if (arr[i].t1>=arr[i].t2)
+				    arr[i].t2 += 24 * 60;
+			}		
+			if (me.ignoreUsedSlots)
+			    var data2 = $.merge(data1.slice(0),[]);
+			else
+			{    
+			    me.usedSlots[d] = me.usedSlots[d] || [];
+			    var data2 = $.merge(data1.slice(0),me.usedSlots[d]);
+			    var t = $.datepicker.parseDate("yy-mm-dd", d);
+		        t.setDate(t.getDate() - 1);
+				var bd = $.datepicker.formatDate("yy-mm-dd", t);
+				me.usedSlots[bd] = me.usedSlots[bd] || [];
+				for (var i=0;i<me.usedSlots[bd].length;i++)
+		  		{
+		  		    if ((me.usedSlots[bd][i].h1 > me.usedSlots[bd][i].h2 && me.usedSlots[bd][i].h2!=0) || me.usedSlots[bd][i].h2>24)
+		  		    {
+		  		        if (me.usedSlots[bd][i].h1>me.usedSlots[bd][i].h2)
+		  		            me.usedSlots[bd][i].h2 += 24;    
+		  		        var obj = jQuery.extend({}, me.usedSlots[bd][i]);
+				        obj.h2 = me.usedSlots[bd][i].h2 - 24;
+				        obj.h1 = 0;obj.m1 = 0;
+				        obj.d = d;				        
+				        data2[data2.length] = obj;
+		  		    }				    
+		  		}
+			}
+			for (var i=0;i<data2.length;i++)
+			{
+			    data2[i].t1 = data2[i].h1 * 60 + data2[i].m1*1;// - me.pb;
+			    data2[i].t2 = data2[i].h2 * 60 + data2[i].m2*1;// + me.pa;
+			    if (typeof data2[i].serviceindex !== 'undefined' && typeof data2[i].nopadding === 'undefined' )
+			    {
+			        try{
+			        if (data2[i].t1==data2[i].t2)  data2[i].t2 += 24 * 60;    
+			        data2[i].t1 -= me.services[data2[i].serviceindex].pb;
+			        data2[i].t2 += me.services[data2[i].serviceindex].pa;
+			        } catch (e) {}
+			    }    			    
+			}
+			var data = $.merge(data2,part);
+			for (var i=0;i<data.length;i++)
+			{
+			    data[i].t1 = data[i].t1 || (data[i].h1 * 60 + data[i].m1*1);
+			    data[i].t2 = data[i].t2 || (data[i].h2 * 60 + data[i].m2*1);
+				if (data[i].t1>data[i].t2)
+				    data[i].t2 += 24 * 60;
+			}	    
+			if (typeof cp_hourbk_cmpublic !== 'undefined')
+			    data = me.getSplittedSlots(data,s);
+			data = me.getCompatSlots(data);
+			for (var i=0;i<data.length;i++)
+			{		
+			    
+			    if (me.avoidOverlaping && (data[i].quantity+me.quantity_selected>capacity_service || (data[i].service.length==0 || (data[i].service.length && data[i].service[0]!=s)))
+			  //|| (!me.avoidOverlaping && (data[i].quantity+me.quantity_selected>capacity_service && (typeof data[i].serviceindex === 'undefined' || data[i].serviceindex==s)) ))
+			    || (!me.avoidOverlaping && ((data[i].quantity+me.quantity_selected>capacity_service && data[i].serviceindex==s) || typeof data[i].serviceindex === 'undefined') )) 
+			    {
+			        for (var j=0;j<arr.length;j++)
+			        {
+			            if ((data[i].t1 > arr[j].t1) && (data[i].t1 < arr[j].t2)   &&  (data[i].t2 > arr[j].t1) && (data[i].t2 < arr[j].t2))
+			            {
+			            	var v1 = {t1:arr[j].t1,  t2:data[i].t1,   h1:arr[j].h1,  h2:data[i].h1,   m1:arr[j].m1,  m2:data[i].m1};
+			            	var v2 = {t1:data[i].t2, t2:arr[j].t2,    h1:data[i].h2, h2:arr[j].h2,    m1:data[i].m2, m2:arr[j].m2};
+			                arr.splice(j, 1, v1, v2);
+			            	j--;
+			            }
+			            else if ((data[i].t1 > arr[j].t1) && (data[i].t1 < arr[j].t2))
+			            {
+			            	arr[j].t2 = data[i].t1;
+			            	arr[j].h2 = data[i].h1;
+			            	arr[j].m2 = data[i].m1;
+			            } 
+			            else if ((data[i].t2 > arr[j].t1) && (data[i].t2 < arr[j].t2))
+			            {
+			            	arr[j].t1 = data[i].t2;
+			            	arr[j].h1 = data[i].h2;
+			            	arr[j].m1 = data[i].m2;
+			            }
+			            else if ((data[i].t1 <= arr[j].t1) && (data[i].t2 >= arr[j].t2))
+			            {
+			            	arr.splice(j, 1);
+			            	j--;
+			            }
+			        }
+			    }
+			}
+			for (var i=0;i<arr.length;i++)
+                arr[i].day = d;
+            if (me.minDate!=="" && me.getMinDate!="")
+            {
+		        var current = me.getMinDate;
+		    	var currenttime = current.getTime()-me.tz*60*60*1000;
+			    for (var i=arr.length-1;i>=0;i--)
+			    {
+			        if ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime()+arr[i].t2*60*1000 <= currenttime)
+			            arr.splice(i, 1 );
+			        else if ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime()+arr[i].t1*60*1000 <= currenttime)
+			        {
+			            var st = arr[i].t1;//var st = arr[i].t1 + duration + me.pb + me.pa;
+			            while ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime() + st*60*1000 <= currenttime)
+			            {
+			                if (!me.bSlotsCheckbox)
+		  	  	                st += me.bduration;
+		  	  	            else    
+		  	  	                st += duration + me.pb + me.pa;
+		  	  	            //st += duration + me.pb + me.pa;    
+			            }
+			            var m1 = st % 60;
+			            var h1 = (st - m1)/60;
+			            arr[i].t1 = st;
+			           	arr[i].h1 = h1;
+			            arr[i].m1 = m1;
+			        }			                
+			    }        
+            }
+            if (me.maxDate!=="" && me.getMaxDate!="")
+            {
+		        var current = me.getMaxDate;
+		    	var currenttime = current.getTime()+me.tz*60*60*1000;
+			    for (var i=arr.length-1;i>=0;i--)
+			    {
+			        if ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime()+arr[i].t1*60*1000 >= currenttime)
+			            arr.splice(i, 1 );
+			        else if ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime()+arr[i].t2*60*1000 >= currenttime)
+			        {    
+			            var et = arr[i].t1;
+			            while ($.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime() + (et + duration)*60*1000 <= currenttime)
+			                et += duration; 
+			            var m2 = et % 60;
+			            var h2 = (et - m2)/60;
+			            arr[i].t2 = et;
+			           	arr[i].h2 = h2;
+			            arr[i].m2 = m2;
+			        }			                
+			    }        
+            }  
+            for (var i=arr.length-1;i>=0;i--)
+			    if (arr[i].t1+duration > arr[i].t2 || arr[i].t1 > 24*60)
+                    arr.splice(i, 1 );
+			
+			return arr;		  
+			  		       
+        },    	
+		formattime: function(t,mt)/*mt=2 for database 09:00*/
+		{
+		    if (t<0) t+=(24*60);
+		    t = t % (24*60);
+		    var h = Math.floor(t/60);
+			var m = t%60;
+			var suffix = "";
+			if (mt==0)
+			{
+			    if (h>12)
+			    {
+			        h = h-12;
+			        suffix = " PM";
+			    }
+			    else if (h==12)
+			        suffix = " PM";
+			    else
+		        {   
+		            if (h==0 && mt!=2) h=12;
+		            suffix = " AM";  
+		        }    
+			}
+			return (((h<10)?((mt==2)?"0":"0"):"")+h+":"+(m<10?"0":"")+m)+suffix;									
+		},
+        formatString: function(obj,showdate,tz)
+		{
+            var me = this;
+		    tz = tz * 60;
+		    if (typeof obj.st === 'undefined')
+		        obj.st = obj.h1*60+obj.m1*1;
+		    if (typeof obj.et === 'undefined')
+		        obj.et = obj.h2*60+obj.m2*1;    
+		    var str = "";
+		    if (showdate)
+		    {
+		        var d = $.datepicker.parseDate("yy-mm-dd", obj.d);
+		        if (tz!=0)
+		        {
+		            if (obj.st+tz<0)
+		                d.setDate(d.getDate() - 1);
+		            else if (obj.st+tz>24*60)    
+		                d.setDate(d.getDate() + 1);
+		        }   
+		        str += "<span class=\"d\">"+$.datepicker.formatDate(me.dateFormat, d)+"</span> ";
+		    }
+		    str += (showdate?"<span class=\"t\">":"");
+		    str += me.formattime(obj.st+tz,me.militaryTime)+(me.showEndTime?("-"+me.formattime(obj.et+tz,me.militaryTime)):"");
+		    str += (showdate?"</span>":"");    
+		    return str;      
+		},
+        getCurrentSlots: function(arr,d,s)
+        {
+            var me = this;
+            var duration = parseFloat(me.services[s].duration);
+            var html = "";
+            var htmlSlots = new Array();
+		    var pb = 0;
+		    var pa = 0;
+		    var v = false;
+		    var capacity_service = me.services[s].capacity;
+            if (true)
+		    		{ 
+		    		    var compactUsedSlots = me.getCompatSlots(me.htmlUsedSlots[d])             
+		    	        for (var i=0;i<compactUsedSlots.length;i++)
+		    	        { 
+		    	            //if (compactUsedSlots[i].quantity>=capacity_service && compactUsedSlots[i].serviceindex==s)
+		    	            if (compactUsedSlots[i].serviceindex==s)
+		    	            {
+		    	                compactUsedSlots[i].st = compactUsedSlots[i].h1 * 60 + compactUsedSlots[i].m1;
+		    	                compactUsedSlots[i].t = $.datepicker.parseDate("yy-mm-dd",compactUsedSlots[i].d).getTime()+compactUsedSlots[i].st*60*1000;
+		    	                compactUsedSlots[i].html = "";		    	                
+		                        var v = false;
+		    	                if (me.minDate!=="" && me.getMinDate!="") //check with the min date
+                                {
+		                            var current = me.getMinDate;
+		                        	var currenttime = current.getTime()-me.tz*60*60*1000;			                        
+			                        if (compactUsedSlots[i].t > currenttime)
+			                        {   
+		    	                        v = true;
+		    	                    }
+		    	                }
+		    	                else
+		    	                    v = true;
+		    	                if (v)
+		    	                {
+		    	                    if (compactUsedSlots[i].quantity>=capacity_service || compactUsedSlots[i].currentSelection)
+		    	                        compactUsedSlots[i].html = '<div s="'+s+'" h1="'+compactUsedSlots[i].h1+'" m1="'+compactUsedSlots[i].m1+'" h2="'+compactUsedSlots[i].h2+'" m2="'+compactUsedSlots[i].m2+'" style="'+(!me.usedSlotsCheckbox?"display:none":"")+'" class="htmlUsed  '+((typeof compactUsedSlots[i].s !== 'undefined')?compactUsedSlots[i].s.replace(/ /g,"").toLowerCase()+" old":" choosen")+'"><a '+((typeof compactUsedSlots[i].e !== 'undefined')?"title=\""+compactUsedSlots[i].e+"\"":"")+'>'+me.formatString(compactUsedSlots[i],false,me.tz)+'</a>'+((typeof compactUsedSlots[i].e !== 'undefined')?"<div class=\"ahbmoreinfo\">"+compactUsedSlots[i].e+"</div>":"")+'</div>';
+		    	                    compactUsedSlots[i].availableslot = false;
+		    	                    htmlSlots[htmlSlots.length] = compactUsedSlots[i];
+		    	                }       
+		    	            }
+		    	        }
+		    		}
+            
+		    if ((typeof specialPadding === 'undefined'))
+		    {
+		        pb = me.pb;
+		        pa = me.pa;
+		    }
+		  	for (var i=0;i<arr.length;i++)
+		  	{
+		  	  	st = arr[i].t1 || (arr[i].h1 * 60+arr[i].m1*1);
+		  	  	et = arr[i].t2 || (arr[i].h2 * 60+arr[i].m2*1);
+		  	  	if (st >= et)
+		  	        et += 24 * 60;  
+		  	  	st += me.pb;
+		  	  	while (st + duration + me.pa <=et  && st < 24 * 60)
+		  	  	{ 
+		  	  	    html = "<div class=\"availableslot\"><a  s=\""+s+"\"  href=\"\" d=\""+arr[i].day+"\" h1=\""+Math.floor((st)/60)+"\" m1=\""+((st)%60)+"\" h2=\""+Math.floor((st+duration)/60)+"\" m2=\""+((st+duration)%60)+"\">"+me.formatString({st:st,et:st+duration},false,me.tz)+((typeof cp_hourbk_cmpublic !== 'undefined')?"<span class=\"ahb_slot_availability\"><span class=\"p\">ahbslotavailabilityP</span><span class=\"t\">ahbslotavailabilityT</span></span>":"")+"</a></div>";
+		  	  	    htmlSlots[htmlSlots.length] = {availableslot:true,st:st,serviceindex:s,h1:Math.floor((st)/60),m1:((st)%60),h2:Math.floor((st+duration)/60),m2:((st+duration)%60),html:html,t:$.datepicker.parseDate("yy-mm-dd",arr[i].day).getTime()+st*60*1000};
+		  	  	    if (!me.bSlotsCheckbox)
+		  	  	        st += me.bduration;
+		  	  	    else    
+		  	  	        st += me.bduration + pa + pb;
+		  	  	}
+		  	}
+		  	htmlSlots.sort(function(a, b){
+		  	    if ((typeof cp_hourbk_cmpublic !== 'undefined') && (a.t == b.t))
+		  	    {
+		  	        if ((typeof a.quantity !== 'undefined') && (typeof b.quantity === 'undefined'))
+		  	        {
+		  	            b.html = b.html.replace("ahbslotavailabilityP",(capacity_service - a.quantity));
+		  	            b.quantity = a.quantity;
+		  	        }    
+		  	        else if ((typeof b.quantity !== 'undefined') && (typeof a.quantity === 'undefined'))
+		  	        {
+		  	            a.html = a.html.replace("ahbslotavailabilityP",(capacity_service - b.quantity));
+		  	            a.quantity = b.quantity;
+		  	        }    
+		  	    }
+		  	    return a.t - b.t
+		  	});
+		  	//remove duplicates
+		  	htmlSlots = htmlSlots.reduce(function(field, e1){  
+                	var matches = field.filter(function(e2){return e1.html== e2.html}); 
+                	if (matches.length == 0){ 
+                		field.push(e1);  
+                	}return field;
+                }, []);
+		  	htmlSlots = htmlSlots.reduce(function(field, e1){  
+                	var matches = field.filter(function(e2){return e1.t== e2.t}); 
+                	if (matches.length == 0){ 
+                		field.push(e1);  
+                	}
+                	else
+                	{
+                	    for (var i=0;i<field.length;i++)
+                	        if (field[i].t==e1.t && !field[i].availableslot && e1.availableslot)
+                	        {
+                	             field[i]= e1;
+                	             break;        
+                	        }
+                	}
+                	return field;
+                }, []);
+            me.usedSlots[d] = me.usedSlots[d] || [];	
+		  	if (me.usedSlots[d].length>0 && htmlSlots.length>0)
+		  	    for (var i=0;i<me.usedSlots[d].length;i++)
+		  	        for (var j=0;j<htmlSlots.length;j++)
+		  	            if (htmlSlots[j].serviceindex==me.usedSlots[d][i].serviceindex && htmlSlots[j].h1==me.usedSlots[d][i].h1 && htmlSlots[j].m1==me.usedSlots[d][i].m1 && htmlSlots[j].h2==me.usedSlots[d][i].h2 && htmlSlots[j].m2==me.usedSlots[d][i].m2 )
+		  	            {
+		  	                if (htmlSlots[j].html.indexOf("currentSelection")==-1) htmlSlots[j].html = htmlSlots[j].html.replace("htmlUsed","htmlUsed currentSelection");
+		  	                if (htmlSlots[j].html.indexOf("currentSelection")==-1) htmlSlots[j].html = htmlSlots[j].html.replace("availableslot","availableslot currentSelection");
+		  	            }
+		  	return htmlSlots;    
+        },
+        getAvailableSlotsByService: function(d,s)
+        {
+            var me = this;
+            var c = "s"+s+"q"+me.quantity_selected+"d"+d;
+            if (typeof me.slotsDate[c]!== 'undefined')
+                return me.slotsDate[c];		    
+		    function setHtmlUsedSlots(d,st,et)
+		    {
+		        st = st * 60;
+		        et = et * 60;
+		        var htmlSlots = new Array();
+		    	//if (me.bSlotsCheckbox && me.usedSlotsCheckbox)
+		    	if (true)//if (me.usedSlotsCheckbox)
+		    	{
+		    	    me.cacheArr[d] = me.cacheArr[d] || [];
+		    	    for (var i=0;i<me.cacheArr[d].length;i++)
+		    	    {    
+		    	        me.cacheArr[d][i].t1 = me.cacheArr[d][i].t1 || me.cacheArr[d][i].h1*60+me.cacheArr[d][i].m1*1;
+		    	        me.cacheArr[d][i].t2 = me.cacheArr[d][i].t2 || me.cacheArr[d][i].h2*60+me.cacheArr[d][i].m2*1;
+		    	        if (me.cacheArr[d][i].t1>=me.cacheArr[d][i].t2)
+				             me.cacheArr[d][i].t2 += 24 * 60;
+		    	        if (st<=me.cacheArr[d][i].t1 && et>=me.cacheArr[d][i].t1) 
+		    	            htmlSlots[htmlSlots.length] = jQuery.extend({}, me.cacheArr[d][i]);
+		    	    }
+		    	    for (var i=0;me.usedSlots[d] && i<me.usedSlots[d].length;i++) 
+		    	    {
+		    	        me.usedSlots[d][i].t1 = me.usedSlots[d][i].t1 || me.usedSlots[d][i].h1*60+me.usedSlots[d][i].m1*1;
+		    	        me.usedSlots[d][i].t2 = me.usedSlots[d][i].t2 || me.usedSlots[d][i].h2*60+me.usedSlots[d][i].m2*1;
+		    	        if (me.usedSlots[d][i].t1>=me.usedSlots[d][i].t2)
+				             me.usedSlots[d][i].t2 += 24 * 60;
+		    	        if (st<=me.usedSlots[d][i].t1 && et>=me.usedSlots[d][i].t1)
+		    	            htmlSlots[htmlSlots.length] = jQuery.extend({}, me.usedSlots[d][i]);
+		    	    }
+		    	}
+		    	return htmlSlots;		        
+		    }
+		    var day = $.datepicker.parseDate("yy-mm-dd", d);
+		    if (this.tz==0)
+		    {
+		        me.htmlUsedSlots[d] = setHtmlUsedSlots(d,0,24);
+		        var arr = this.getAvailablePartialSlots(d,[{h1:0,m1:0,h2:0,m2:0}],s);
+		    }    
+		    else if (this.tz > 0)
+		    {
+		        day.setDate(day.getDate() - 1);
+		        var d1 = $.datepicker.formatDate("yy-mm-dd",day);
+		        var arr = $.merge(this.getAvailablePartialSlots(d1,[{h1:0,m1:0,h2:24-this.tz,m2:0}],s),this.getAvailablePartialSlots(d,[{h1:24-this.tz,m1:0,h2:24,m2:0}],s));
+		    	me.htmlUsedSlots[d] = $.merge(setHtmlUsedSlots(d1,24-this.tz,24), setHtmlUsedSlots(d,0,24-this.tz));
+		        
+		    }  
+		    else
+		    {
+		        day.setDate(day.getDate() + 1);
+		        var d1 = $.datepicker.formatDate("yy-mm-dd",day);
+		        var arr = $.merge(this.getAvailablePartialSlots(d,[{h1:0,m1:0,h2:this.tz*-1,m2:0}],s),this.getAvailablePartialSlots(d1,[{h1:this.tz*-1,m1:0,h2:24,m2:0}],s));
+		        me.htmlUsedSlots[d] = $.merge(setHtmlUsedSlots(d,this.tz*-1,24), setHtmlUsedSlots(d1,0,this.tz*-1));
+		        	        
+		    }
+		    me.slotsDate[c] = arr;
+		    return arr;
+        },
+		getAvailableSlots: function(d)
+		{     
+		    var me = this;
+            var c = "s"+(me.showAllServices?"":me.service_selected)+"q"+me.quantity_selected+"d"+d;
+            if (typeof me.slotsDate[c]!== 'undefined')
+                return me.slotsDate[c];
+		    var a_max = [];
+			if (!me.showAllServices)
+			    a_max = this.getAvailableSlotsByService(d,me.service_selected);
+			else
+			{
+			    me.availableSlotsByService = [];
+			    for (var i=0; i< me.services.length;i++)
+			    {
+			        me.availableSlotsByService[i] = this.getAvailableSlotsByService(d,i);
+			        if (me.availableSlotsByService[i].length > a_max.length)
+			            a_max = me.availableSlotsByService[i].slice(0);			                
+			    }
+			}
+		    me.slotsDate[c] = a_max;
+		    return a_max;    
+			    
+		},
+		rC: function(d) 
+		{      
+		    var me = this;
+		    var day = $.datepicker.formatDate('yy-mm-dd', d);
+            var c =  new Array(day,"d"+day);
+            if (me.working_dates[d.getDay()]==0  && ($.inArray(day, me.special_days) == -1))
+                c.push("nonworking","ui-datepicker-unselectable","ui-state-disabled");
+            for( var i = 0, l = me.invalidDates.length; i < l; i++ )
+            {
+            	if (d.getTime() === me.invalidDates[i].getTime()   && ($.inArray(day, me.special_days) == -1))
+            	    c.push("nonworking","ui-datepicker-unselectable","ui-state-disabled","invalidDate");
+            }
+            if (me.minDate!=="" && me.getMinDate!="" && day < $.datepicker.formatDate('yy-mm-dd', me.getMinDate))
+                c.push("nonworking","ui-datepicker-unselectable","ui-state-disabled","beforemindate");
+            if (me.maxDate!=="" && me.getMaxDate!="" && day > $.datepicker.formatDate('yy-mm-dd', me.getMaxDate))
+                c.push("nonworking","ui-datepicker-unselectable","ui-state-disabled","aftermaxdate");    
+            if (($.inArray("ui-datepicker-unselectable",c)==-1) &&  !me.emptySelectCheckbox || (me.emptySelectCheckbox && $(".fieldCalendarService"+me.name+" select option:selected").index() > 0 ))
+            {
+                var arr = me.getAvailableSlots(day);
+                if (arr.length==0 && me.notShowBookedDate)
+                    c.push("nonworking","ui-datepicker-unselectable","ui-state-disabled","notavailslot");
+                if (typeof cp_hourbk_cmpublic !== 'undefined')
+                {   
+                    var used = 0; 
+                    var cclass = c.join(" ");
+                    var q = 0;
+                    var total = 0;
+                    if (!me.showAllServices) 
+                    {      
+                        var htmlSlots = me.getCurrentSlots(arr,day,me.service_selected);
+		                for (var i=0;i<htmlSlots.length;i++)
+                            if (htmlSlots[i].html!="")
+                            {
+                                q++;
+                                used += ((typeof htmlSlots[i].quantity !== 'undefined')?htmlSlots[i].quantity:0) ;
+                            }
+                        total += me.services[me.service_selected].capacity*q;    
+                    }        
+		            else
+		            {
+		                for (var ii=0; ii< me.services.length;ii++)
+		                {    
+		                    q = 0;
+		                    var htmlSlots = me.getCurrentSlots(arr,day,ii);
+		                    for (var i=0;i<htmlSlots.length;i++)
+                                if (htmlSlots[i].html!="")
+                                {
+                                    q++;
+                                    used += ((typeof htmlSlots[i].quantity !== 'undefined')?htmlSlots[i].quantity:0) ;
+                                }
+                            total += me.services[ii].capacity*q;        
+		                }    
+		            }                        
+                    if (cclass.indexOf("nonworking")==-1)
+                        cclass +=" ahb_booked"+Math.floor(10*used/total);
+                }    
+                    
+            } 
+            if (typeof cclass === 'undefined') 
+                var cclass = c.join(" ");          
+            return [(cclass.indexOf("nonworking")==-1),cclass];		        
+		},		
+		after_show:function()
+		{
+		    function closeOtherDatepicker(){
+		        $('#ui-datepicker-div').css("display","none");
+		    }
+		    setTimeout(closeOtherDatepicker,100);
+		    try {$.fn.datepicker.noConflict();} catch (e) {}
+		    if (typeof cp_hourbk_timezone !== 'undefined') 
+		    {
+		        var gmt = (parseFloat(cp_hourbk_timezone));
+		        var local = (new Date().getTimezoneOffset()  * -1)/60;			 
+                this.tz = local - gmt;
+		    }		    		    
+		  	var me  = this,
+		  	    e   = $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ),
+		  	    d   = $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendarService'+me.name ),
+		  	    str = "",
+		  	    op = "";
+		  	var capacity = "";
+		    for (var i=0; i< me.services.length;i++)
+		        capacity += ((i!=0)?";":"")+me.services[i].capacity;
+		    $('#field' + me.form_identifier + '-' + me.index + ' #'+me.name+'_capacity').val(capacity);
+		  	$('#field' + me.form_identifier + '-' + me.index).parents("form").bind('invalid-form.validate', function () {
+		  	    setTimeout(function(){
+		  	        if ($('#field' + me.form_identifier + '-' + me.index + ' #'+me.name).hasClass("cpefb_error") && $('#field' + me.form_identifier + '-' + me.index).parents("form").find(".field.cpefb_error").attr("id")==$('#field' + me.form_identifier + '-' + me.index + ' #'+me.name).attr("id"))
+		  	        {
+		  	            $("html, body").animate({ 
+                            scrollTop: $('#field' + me.form_identifier + '-' + me.index + ' #'+me.name).parents(".dfield").find(".ahbfield_service").offset().top 
+                        }, 100); 
+		  	        }
+		  	    },100);
+            });  
+		  	e.addClass("notranslate")
+		  	if (me.openhours.length>0)/*compatible with old version*/
+			{
+			    if (!me.openhours[0].name)
+			    {
+			        var obj = {name:"Default",openhours:me.openhours.slice(0)};
+			        me.openhours = new Array();			     
+			        me.openhours[0] = obj;			     
+			    }
+			    me.allOH = new Array();
+			    me.allOH = me.openhours.slice(0);
+			    me.openhours = new Array();
+			}
+			var dd = "";
+			if (me.initialapp!="")
+			{   
+			    try{
+			    var s = me.initialapp.split(";");
+			    var s2 = "";
+			    var ind = 0;
+			    for (var i=0;i<s.length;i++)
+			    {
+			        if (s[i]!="")
+			        {
+			            s2 = s[i].split(" ");
+			            var tt = s2[1].split("/");
+			            var t1 = tt[0].split(":");
+			            var t2 = tt[1].split(":");
+			            var ind = s2[2]*1;
+			            var q = s2[3]*1; 
+			            dd = s2[0];
+			            me.usedSlots[dd] = me.usedSlots[dd] || [];
+			            obj = {h1:t1[0]*1,m1:t1[1]*1,h2:t2[0]*1,m2:t2[1]*1,d:dd,serviceindex:ind,price:parseFloat(me.services[ind].price)*parseFloat(q),quantity:q};	            	
+		  			    me.usedSlots[dd][me.usedSlots[dd].length] = obj; 
+		  			    me.allUsedSlots[me.allUsedSlots.length] = obj;
+		  			}
+			    } 
+			    me.initialServiceInd = ind;  
+			    } catch (e) {}
+			}
+			for (var i=0; i< me.services.length;i++)
+			    me.services[i].ohindex = me.services[i].ohindex || 0;
+			if (me.autonum==0)
+			    for (var i=0; i< me.services.length;i++)
+			    {   
+			        me.autonum++; 
+			        me.services[i].idx = me.autonum; 
+			    }
+			me.initcacheOpenHours();           
+		    function onChangeDateOrService(d)
+		    {
+		        if (!(!me.emptySelectCheckbox || (me.emptySelectCheckbox && $(".fieldCalendarService"+me.name+" select option:selected").index() > 0 )))
+		        {
+		            $( '#field' + me.form_identifier + '-' + me.index + ' .slotsCalendar'+me.name ).html("");
+		  	        return;
+		  	    }   
+		  	    function getSlots(d)
+		  		{		
+		            var data1 = me.cacheArr[d];
+		  			var duration = me.duration;
+		  			me.bduration = me.duration;
+		  		    if (!me.bSlotsCheckbox)
+		  		        me.bduration = me.bSlots*1;	
+		  			var arr = me.getAvailableSlots(d);
+		  			var nextdateAvailable = $.datepicker.parseDate("yy-mm-dd", d);
+		  			var c = "s"+(me.showAllServices?"":me.service_selected)+"q"+me.quantity_selected;
+		  			var s = $( '#field' + me.form_identifier + '-' + me.index + ' .slotsCalendar'+me.name );
+		  			var i =0;
+		  			if (me.notShowBookedDate && (me.maxNumberOfApp==0 || me.allUsedSlots.length<me.maxNumberOfApp) && arr.length==0 && (!me.usedSlots[d] || me.usedSlots[d].length==0 || me.service_change))
+		    		{
+		    		    me.service_change = false;
+                        while ((!DisableSpecificDates(nextdateAvailable) || (arr.length==0)) && i<400)
+                        {
+                            i++;
+                            nextdateAvailable.setDate(nextdateAvailable.getDate() + 1);
+                            arr = me.getAvailableSlots($.datepicker.formatDate("yy-mm-dd",nextdateAvailable));
+                        }  
+                        if (arr.length>0 )  
+                        {
+                            e.datepicker("setDate", nextdateAvailable);
+                            me.getD = nextdateAvailable;
+		                    onChangeDateOrService($.datepicker.formatDate("yy-mm-dd", nextdateAvailable));  
+                        }
+                        else
+                        {
+                            e.datepicker("setDate", me.getMinDate);
+                            s.html("<div class=\"slots\">"+cp_hourbk_nomore_label+"</div>");                           
+                        }
+                        return;
+		    		}
+		    		me.service_change = false;
+		    		function getStrSlots(arr,d,s)
+		    		{	     
+		  			    var str = "";				
+		    		    var htmlSlots = me.getCurrentSlots(arr,d,s);
+		    		    var capacity_service = me.services[s].capacity;
+		  			    
+		  			    for (var i=0;i<htmlSlots.length;i++)
+		  			    {
+		  			        if (typeof cp_hourbk_cmpublic !== 'undefined')
+		  			        {
+		  			            htmlSlots[i].html = htmlSlots[i].html.replace("ahbslotavailabilityP",capacity_service);
+		  			            htmlSlots[i].html = htmlSlots[i].html.replace("ahbslotavailabilityT",capacity_service);
+		  			        }
+		  			        str += htmlSlots[i].html;          
+		  			    }
+		  			    return str;
+		    	    }
+		    	    var str = "";
+		    	    if (!me.showAllServices)
+			            str = getStrSlots(arr,d,me.service_selected)
+			        else
+			        {
+			            for (var i=0; i< me.services.length;i++)
+			            {    
+			                str_s = getStrSlots(me.availableSlotsByService[i],d,i);
+			                if (str_s!="")
+			                    str += '<div class="service service'+i+'"><div class="service_title">'+me.services[i].name+'</div>'+str_s+'</div>';
+			            }    
+			        } 
+		  			if (str=="") str = cp_hourbk_nomore_label;
+		  			var before = "";
+		  			if (s.find(".slots").length>0)
+		  			{
+		  			    before = s.find(".slots").attr("d");
+		  			}  
+		  			s.html("<div class=\"slots\" d=\""+d+"\"><span>"+$.datepicker.formatDate(me.dateFormat, $.datepicker.parseDate("yy-mm-dd", d))+"</span><br />"+str+"</div>");
+		  			if (before!="" && before!=d)
+		  			{
+		  			    s.find(".slots span:first").hide().show(200);
+		  			}
+		  			var str1="",str2="";
+		  			me.allUsedSlots = me.allUsedSlots || [];
+		  			me.allUsedSlots.sort(function(a, b){ return ($.datepicker.parseDate("yy-mm-dd", a.d).getTime()+(a.h1*60+a.m1)*60*1000) - ($.datepicker.parseDate("yy-mm-dd", b.d).getTime()+(b.h1*60+b.m1)*60*1000)});
+		  			j = 0;
+		  			var total = 0;
+		  			for (var i=0;i<me.allUsedSlots.length;i++)
+		  			{
+		  			    total += me.allUsedSlots[i].price;		  			    
+		  			    str1 += "<div class=\"ahb_list\" d=\""+me.allUsedSlots[i].d+"\" quantity=\""+me.allUsedSlots[i].quantity+"\" s=\""+me.allUsedSlots[i].serviceindex+"\" h1=\""+me.allUsedSlots[i].h1+"\" m1=\""+me.allUsedSlots[i].m1+"\" h2=\""+me.allUsedSlots[i].h2+"\" m2=\""+me.allUsedSlots[i].m2+"\" ><span class=\"ahb_list_time\">"+me.formatString(me.allUsedSlots[i],true,me.tz)+"</span><span class=\"ahb_list_service\">"+me.services[me.allUsedSlots[i].serviceindex].name+"</span><span class=\"ahb_list_quantity ahb_list_quantity"+me.allUsedSlots[i].quantity+"\">("+me.allUsedSlots[i].quantity+")</span><a href=\"\" class=\"cancel\" d=\""+d+"\" i=\""+j+"\" iall=\""+i+"\">["+(cp_hourbk_cancel_label?cp_hourbk_cancel_label:'cancel')+"]</a>"+(((typeof cp_hourbk_repeat !== 'undefined'))?showrepeat(me,i):"")+"</div>";
+		  			    str2 += ((str2=="")?"":";")+me.allUsedSlots[i].d+" "+me.formattime(me.allUsedSlots[i].h1*60+me.allUsedSlots[i].m1*1,2)+"/"+me.formattime(me.allUsedSlots[i].h2*60+me.allUsedSlots[i].m2*1,2)+" "+me.allUsedSlots[i].serviceindex+" "+me.allUsedSlots[i].quantity;
+		  			    if (me.allUsedSlots[i].d==d)
+		  			      j++;
+		  			}
+		  			me.sub_cost = total;
+		  			total = me.sub_cost + me.extras;
+		  			total = total*(1+me.percent/100);
+				    total = total.toFixed(2);
+		  			if (me.showTotalCost && (str1!=""))
+		  			    str1 += '<div class="totalCost"><span>'+cp_hourbk_cost_label+'</span><span class="n"> '+me.showTotalCostFormat.replace("{0}", total)+'</span></div>';
+		  			$( '.usedSlots'+me.name ).html(str1);	
+		  			$( '#field' + me.form_identifier + '-' + me.index + ' #'+me.name ).val(str2);		  		    
+		  			$( '#field' + me.form_identifier + '-' + me.index + ' #tcost'+me.name ).val(total);
+		  		    $( '#field' + me.form_identifier + '-' + me.index + ' #'+me.name ).change();
+		  			try {
+		  			    $( "#fbuilder .slots div a" ).tooltip({
+                          position: {
+                            my: "left top+10"
+                          },
+                          open: function (event, ui) {
+                              $(this).tooltip( "option", "content", $(this).parent().find(".ahbmoreinfo").html() );
+                          },
+                          
+                          tooltipClass: "ahbtooltip"
+                        });
+                    } catch (e) {}
+		  			$( '.slotsCalendar' + me.name + ' .slots a').off("click").on("click", function() 
+		  			{
+		  			    var q = parseFloat($(".fieldCalendarService"+me.name+" select.ahbfield_quantity option:selected").val());
+		  			    if ((me.maxNumberOfApp==1 && me.allUsedSlots.length==me.maxNumberOfApp) || (me.allUsedSlots.length>0 && me.allUsedSlots[0].quantity!=q && !me.allowDifferentQuantities)) //cancel previous slot
+		  			    {
+		  			        for (var i = 0; (i<me.allUsedSlots.length); i++)
+		  			        {
+		  			            var c = "s"+me.allUsedSlots[i].serviceindex+"q"+me.allUsedSlots[i].quantity+"d"+me.allUsedSlots[i].d;
+		  			            var c1 = "sq"+me.allUsedSlots[i].quantity+"d"+me.allUsedSlots[i].d;
+		  			            delete me.slotsDate[c];
+		  			            delete me.slotsDate[c1];
+		  			            me.usedSlots[me.allUsedSlots[i].d] = [];		  			            
+		  			        }
+		  			        me.allUsedSlots = [];
+		  			    }
+		  			    if ($(this).parents("fieldset").hasClass("ahbgutenberg_editor"))
+		  			        return false;
+		  			    $( "#field" + me.form_identifier + "-" + me.index + " div.cpefb_error").remove();	
+		  			    if ($(this).parent().hasClass("htmlUsed"))
+		  			        return false;
+		  			    if ($(this).parent().hasClass("currentSelection"))
+			                return false;    
+		  				me.allUsedSlots = me.allUsedSlots || [];
+		  				if (me.maxNumberOfApp==0 || me.allUsedSlots.length<me.maxNumberOfApp)
+		  				{	
+		  				    var d = $(this).attr("d");
+		  				    me.usedSlots[d] = me.usedSlots[d] || [];	
+		  				    var ind = $(this).attr("s")*1;  				    
+		  				    obj = {currentSelection:true,h1:$(this).attr("h1")*1,m1:$(this).attr("m1")*1,h2:$(this).attr("h2")*1,m2:$(this).attr("m2")*1,d:d,serviceindex:ind,price:parseFloat(me.services[ind].price)*q,quantity:q};	            	
+		  				    me.usedSlots[d][me.usedSlots[d].length] = obj; 
+		  				    me.allUsedSlots[me.allUsedSlots.length] = obj;
+		  				    $(document).trigger("beforeClickSlot",{name:me.name, d:d});
+		  				    var c = "s"+ind+"q"+q+"d"+d;
+		  			        var c1 = "sq"+q+"d"+d;
+		  			        delete me.slotsDate[c];
+		  			        delete me.slotsDate[c1];
+		  				    onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		  			    }
+		  			    else
+		  			        alert($.validator.messages.maxapp.replace("{0}",me.maxNumberOfApp));
+		  				return false;
+		  			});		  			
+		  			$( '.usedSlots'+me.name+ ' a.cancel').off("click").on("click", function() 
+		  			{
+		  			    var d = $(this).parents(".ahb_list").attr("d");
+		  				var h1 = $(this).parents(".ahb_list").attr("h1");
+		  				var m1 = $(this).parents(".ahb_list").attr("m1");
+		  				var h2 = $(this).parents(".ahb_list").attr("h2");
+		  				var m2 = $(this).parents(".ahb_list").attr("m2");
+		  				var s = $(this).parents(".ahb_list").attr("s");
+		  				me.usedSlots[d] = me.usedSlots[d] || [];
+		  				var find = false;
+		  		        for (var i = 0; (i<me.usedSlots[d].length && !find); i++)
+		  		            if (me.usedSlots[d][i].d==d && me.usedSlots[d][i].h1==h1 && me.usedSlots[d][i].m1==m1 && me.usedSlots[d][i].h2==h2 && me.usedSlots[d][i].m2==m2 && me.usedSlots[d][i].serviceindex==s)
+		  		            {
+		  		                find = true;
+		  		                me.usedSlots[d].splice(i, 1);    
+		  		            }	
+		  		        var find = false;
+		  		        for (var i = 0; (i<me.allUsedSlots.length && !find); i++)
+		  		            if (me.allUsedSlots[i].d==d && me.allUsedSlots[i].h1==h1 && me.allUsedSlots[i].m1==m1 && me.allUsedSlots[i].h2==h2 && me.allUsedSlots[i].m2==m2 && me.allUsedSlots[i].serviceindex==s)
+		  		            {
+		  		                find = true;
+		  		                me.allUsedSlots.splice(i, 1);    
+		  		            }
+		  			    var c = "s"+s+"q"+me.quantity_selected+"d"+d;
+		  			    var c1 = "sq"+me.quantity_selected+"d"+d;
+		  			    delete me.slotsDate[c];
+		  			    delete me.slotsDate[c1];
+		  			    e.datepicker("setDate", me.getD);
+		  			    onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		  			    return false;
+		  			});
+		  		}		  					
+		  		getSlots(d);	  
+		  		$(document).trigger("afterOnChange",{name:me.name, me:me});			
+		    }		  	
+		  	if (typeof cpapphourbk_in_admin !== 'undefined')
+	  	  	{	  	  	      
+	  	        me.minDate = "";
+	  	        me.maxDate = "";
+                me.maxNumberOfApp = 0;
+	  	  	}
+	  	  	if (!me.loadOK)
+		  	{  	
+		  	    me.formId = $(".fieldCalendarService"+me.name).parents("form").find('input[type="hidden"][name$="cp_appbooking_id"]').val();
+		  	    $.ajax(
+		  	    {
+		  		    dataType : 'json',
+		  		    type: "POST",
+		  		    url : document.location.href,
+		  		    cache : true,
+		  		    data :  { cp_app_action: 'get_slots',
+		  			    formid: me.formId,
+		  			    initialID: me.initialID,
+		  			    formfield: me.name.replace(me.form_identifier, "")   
+		  			},
+		  		    success : function( data ){
+		  		    
+		  		        for (var i=0;i<data.length;i++)
+		  		        {
+		  		            var dd = data[i].d;
+		  		            if (typeof data[i].sid !== 'undefined')
+		  		                data[i].serviceindex = me.getServiceInd(data[i].sid);
+		  		            if (data[i].serviceindex==-1)
+                                delete data[i].serviceindex;
+		  		            me.cacheArr[dd] = me.cacheArr[dd] || [];
+		  		            me.cacheArr[dd][me.cacheArr[dd].length] = data[i];
+		  		            if ((data[i].h1>data[i].h2 && data[i].h2!=0) || data[i].h2>24)
+		  		            {
+		  		                if (data[i].h1>data[i].h2)
+		  		                    data[i].h2 += 24;    
+		  		                var obj = jQuery.extend({}, data[i]);
+				                obj.h2 = data[i].h2 - 24;
+				                obj.h1 = 0;obj.m1 = 0;				                
+				                var d = $.datepicker.parseDate("yy-mm-dd", dd);
+		                        d.setDate(d.getDate() + 1);
+				                obj.d = $.datepicker.formatDate("yy-mm-dd", d);				                
+				                data[i].h2 = 24;
+				                me.cacheArr[obj.d] = me.cacheArr[obj.d] || [];
+				                me.cacheArr[obj.d][me.cacheArr[obj.d].length] = obj;    
+		  		            }				    
+		  		        }
+		  		        me.slotsDate = [];
+		  			    me.loadOK = true;				      			
+		  		    }
+		  	    });	
+		  	}
+		  	this.invalidDates = this.invalidDates.replace( /\s+/g, '' );
+		  	try{
+		  	var df = "mm/dd/yy";
+		  	if (this.invalidDates.indexOf(".")!=-1)
+		  	    df = me.dateFormat;
+		  	    
+		  	if( !/^\s*$/.test( this.invalidDates ) )
+		  	{
+		  	    var counter = 0, dates = this.invalidDates.split( ',' );
+		  	    this.invalidDates = [];
+		  	    for( var i = 0, h = dates.length; i < h; i++ )
+		  	    {
+		  	        var range = dates[ i ].split( '-' );                    
+		  	        if( range.length == 2 )
+		  	        {
+		  	            var fromD = $.datepicker.parseDate(df,range[ 0 ]),
+		  	                toD = $.datepicker.parseDate(df,range[ 1 ]);
+		  	            while( fromD <= toD )
+		  	            {
+		  	                if (fromD !== null)
+		  	                {
+		  	            	    this.invalidDates[ counter ] = fromD;
+		  	            	    var tmp = new Date( fromD.valueOf() );
+		  	            	    tmp.setDate( tmp.getDate() + 1 );
+		  	            	    fromD = tmp;
+		  	            	    counter++;  
+		  	            	}
+		  	            }
+		  	        }
+		  	        else
+		  	        {
+		  	            for( var j = 0, k = range.length; j < k; j++ )
+		  	            {
+		  	                if ($.datepicker.parseDate(df,range[ j ]) !== null)
+		  	                {
+		  	                    this.invalidDates[ counter ] = $.datepicker.parseDate(df,range[ j ]);
+		  	                    counter++;
+		  	                }
+		  	            }
+		  	        }
+		  	    }
+		  	}
+		  	} catch (e) {}
+		  	if ($.validator.messages.date_format && $.validator.messages.date_format!="")	
+		  	    me.dateFormat = $.validator.messages.date_format;
+		  	var capacity = 1;    
+		  	for (var i=0;i<me.services.length;i++)
+		  	{    
+		  	    str += '<option value="'+me.services[i].duration+'">'+me.services[i].name+'</option>';
+		  	    me.services[i].capacity = (parseFloat(me.services[i].capacity)>0)?me.services[i].capacity:1;
+		  	    if (capacity<me.services[i].capacity)
+		  	        capacity = me.services[i].capacity;
+		  	}
+		  	if (me.emptySelectCheckbox) 
+			    str = '<option value="">'+ me.emptySelect +'</option>'+ str ;
+		  	var str2 = "";    
+		  	for (var i=1;i<=me.services[0].capacity;i++)
+		  	    str2 += '<option value="'+i+'">'+i+'</option>';
+		  	d.html('<select class="ahbfield_service">'+str+'</select><div class="ahbfield_quantity_div" '+((!me.showQuantity)?"style='display:none'":"")+'><label class="ahbfield_quantity_label">'+((typeof cp_hourbk_quantity_label !== 'undefined')?cp_hourbk_quantity_label:'Quantity')+'</label><br /><select class="ahbfield_quantity" autocomplete="off">'+str2+'</select></div>');
+		  	me.service_selected = me.normalizeSelectIndex($(".fieldCalendarService"+me.name+" select.ahbfield_service option:selected").index());
+		  	me.quantity_selected = parseFloat($(".fieldCalendarService"+me.name+" select.ahbfield_quantity option:selected").val());
+		  	me.duration = parseFloat(me.services[me.service_selected].duration);		  	
+		  	me.pa = me.services[me.service_selected].pa * 1 || 0;		  			  	
+		  	me.pb = me.services[me.service_selected].pb * 1 || 0;
+		  	$(".fieldCalendarService"+me.name+" select.ahbfield_service").bind("change", function() 
+		  	{
+		  	     me.service_change = true;
+		  	     me.service_selected = me.normalizeSelectIndex($(".fieldCalendarService"+me.name+" select.ahbfield_service option:selected").index());	
+		  	     me.duration = parseFloat(me.services[me.service_selected].duration);	
+		  	     me.pa = me.services[me.service_selected].pa * 1 || 0;		  			  	
+		  	     me.pb = me.services[me.service_selected].pb * 1 || 0;
+		  	     //me.cacheOpenHours = new Array();
+		  	     me.special_days = me.getSpecialDays();
+		  	     var str2 = "";    
+		  	     for (var i=1;i<=me.services[me.service_selected].capacity;i++)
+		  	         str2 += '<option value="'+i+'">'+i+'</option>';
+		  	     $(".fieldCalendarService"+me.name+" select.ahbfield_quantity").html(str2);
+		  	     me.quantity_selected = parseFloat($(".fieldCalendarService"+me.name+" select.ahbfield_quantity option:selected").val());
+		  	     if (typeof me.getDMin!='undefined') me.getD = me.getDMin;
+		  	     $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ).datepicker( "option", "beforeShowDay", function(d){return me.rC(d)} );
+		  		 onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		  	});
+		  	$(".fieldCalendarService"+me.name+" select.ahbfield_quantity").bind("change", function() 
+		  	{
+		  	     if (!me.allowDifferentQuantities)
+		  	     {
+		  	         me.quantity_selected = parseFloat($(".fieldCalendarService"+me.name+" select.ahbfield_quantity option:selected").val());
+		  	         me.allUsedSlots = me.allUsedSlots || [];
+		  	         for (var i=0;i<me.allUsedSlots.length;i++)
+		  	         {
+		  	             var find = false;
+		  	             var s = me.allUsedSlots[i];
+		  	             var arr = me.getAvailableSlotsByService(s.d,s.serviceindex);
+		  	             for (j=0;j<arr.length && !find;j++)
+		  	             {
+		  	                 if (s.h1*60+s.m1*1>=arr[j].t1 && s.h2*60+s.m2*1<=arr[j].t2)
+		  	                    find = true;
+		  	             }		  	         
+		  	             me.usedSlots[s.d] = me.usedSlots[s.d] || [];
+		  	             f = false;
+		  	             for (var j=0;j<me.usedSlots[s.d].length && !f;j++)
+		  	             {   
+		  	                if (me.usedSlots[s.d][j].h1==s.h1 && me.usedSlots[s.d][j].m1==s.m1 && me.usedSlots[s.d][j].h2==s.h2 && me.usedSlots[s.d][j].m2==s.m2 && me.usedSlots[s.d][j].serviceindex==s.serviceindex)
+		  		            {
+		  		                f = true;
+		  		                if (find)// change the quantity or remove if not available
+		  		                {
+		  		                    me.allUsedSlots[i].quantity = me.quantity_selected;
+		  		                    me.usedSlots[s.d][j].quantity = me.quantity_selected;
+		  		                    me.allUsedSlots[i].price = parseFloat(me.services[s.serviceindex].price)*me.quantity_selected;
+		  		                    me.usedSlots[s.d][j].price = me.allUsedSlots[i].price;
+		  		                }
+		  		                else
+		  		                {
+		  		                    me.usedSlots[s.d].splice(j, 1);
+		  		                    me.allUsedSlots.splice(i, 1);
+			                	    i--;
+		  		                }    
+		  		            }
+		  	             }
+		  	         }
+		  	     }
+		  	     $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ).datepicker( "option", "beforeShowDay", function(d){return me.rC(d)} );
+		  	     onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		  	});
+		  	$("#"+me.name).bind("change", function() 
+		  	{
+		  	     if ($(this).attr("reload")=="reload")
+		  	     {              
+		  	         $(this).attr("reload","");
+		  	         onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		  	         $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ).datepicker( "option", "beforeShowDay", function(d){return me.rC(d)} );
+		  	     }
+		  	});
+		  	try{
+		  	me.special_days = me.getSpecialDays();
+		  	} catch (e) {} 
+		  	var hrs = 0;
+		  	var mindatetime = "";
+		  	me.getMinDate = "";
+		  	if (me.minDate!=="")
+		    {	
+		        
+		        if (me.minDate.indexOf("@")!= -1)
+		        {
+		            var a = me.minDate.split("@")
+		            me.minDate = a[0];
+		            mindatetime = a[1];   
+		        }
+		        if ((me.minDate.length < 6) && me.minDate.indexOf("h")!= -1)
+		        {		            
+		            if (me.minDate.indexOf(" ")!= -1)
+		            {
+		                var a = me.minDate.split(" ");
+		                var find = false;
+		                for (var i=0;(i<a.length && !find);i++)
+		                {
+		                    if (a[i].indexOf("h")!= -1)
+		                    {
+		                        find = true;
+		                        hrs = parseFloat(a[i].replace("h",""));
+		                        me.minDate = me.minDate.replace(a[i],"");
+		                    }
+		                }
+		            }
+		            else
+		            {
+		                hrs = parseFloat(me.minDate.replace("h",""));
+		                me.minDate = 0;
+		            }
+		        }
+		    }
+		    if (me.maxDate!=="")
+		    {	
+		        
+		        if ((me.maxDate.length < 6) && me.maxDate.indexOf("h")!= -1)
+		        {		            
+		            if (me.maxDate.indexOf(" ")!= -1)
+		            {
+		                var a = me.maxDate.split(" ");
+		                var find = false;
+		                for (var i=0;(i<a.length && !find);i++)
+		                {
+		                    if (a[i].indexOf("h")!= -1)
+		                    {
+		                        find = true;
+		                        var hrsMax = parseFloat(a[i].replace("h",""));
+		                        me.maxDate = me.maxDate.replace(a[i],"");
+		                    }
+		                }
+		            }
+		            else
+		            {
+		                var hrsMax = parseFloat(me.maxDate.replace("h",""));
+		                var htmp = hrsMax % 24;
+		                me.maxDate = (hrsMax-htmp)/24; 
+		                hrsMax = htmp;
+		            }
+		        }
+		    }       
+		  	e.datepicker({numberOfMonths:parseFloat(me.numberOfMonths),
+		  		//firstDay:parseFloat(me.firstDay),
+		  		//minDate:me.minDate,
+		  		//maxDate:me.maxDate,
+		  		showWeek: me.showWeek,
+		  		dateFormat:me.dateFormat,
+		  		changeMonth: me.showDropdown, 
+		  		changeYear: me.showDropdown,
+		  		yearRange: ((me.showDropdown)?me.dropdownRange:""),
+		  		onSelect: function(d,inst) {
+		  			me.getD = e.datepicker("getDate");
+		  			onChangeDateOrService($.datepicker.formatDate("yy-mm-dd", me.getD));
+		  			$( "#field" + me.form_identifier + "-" + me.index + " div.cpefb_error").remove();
+		  			
+           	    },
+		  		//beforeShowDay: function(d){return me.rC(d)}
+		    });
+		    
+		    e.datepicker("option", $.datepicker.regional[$.validator.messages.language]);
+		    $.datepicker.setDefaults($.datepicker.regional[$.validator.messages.language]);
+		    e.datepicker("option", "firstDay", me.firstDay );
+		    e.datepicker("option", "dateFormat", me.dateFormat );
+		    e.datepicker("option", "minDate", me.minDate );
+		    e.datepicker("option", "maxDate", me.maxDate );
+		    if (me.minDate!=="")
+		    {	
+		        me.getMinDate = e.datepicker("getDate");
+		        var t = new Date();
+		        var isRelativeDate = 1;
+		        try{
+		          $.datepicker.parseDate(me.dateFormat,me.minDate);
+		          isRelativeDate = 0;
+		        } catch (e) {}		            
+		        me.getMinDate = new Date((me.getMinDate.getTime() + isRelativeDate * t.getHours() * 60 * 60 * 1000 + isRelativeDate * t.getMinutes() * 60 * 1000 + hrs * 60 * 60 * 1000) );
+		        if (mindatetime!="")
+		        {
+		            var a = mindatetime.split(":")
+		            if (parseFloat(a[0])>=0 && parseFloat(a[0]) < 24 && parseFloat(a[1])>=0 && parseFloat(a[1]) < 60 )
+		                me.getMinDate = new Date(me.getMinDate.getFullYear(),me.getMinDate.getMonth(),me.getMinDate.getDate(),parseFloat(a[0]),parseFloat(a[1]));
+		        }       
+		        e.datepicker("option", "minDate", me.getMinDate );
+		        e.datepicker("setDate", me.getMinDate);
+		    } 
+		    if (me.maxDate!=="")
+		        try{me.getMaxDate = $.datepicker._getMinMaxDate( e.data('datepicker'), 'max' ); me.getMaxDate.setHours(23, 59, 59, 999);} catch (e) {} 
+		        if (typeof hrsMax !== 'undefined')
+		        {
+		            var t = new Date();
+		            me.getMaxDate.setHours(t.getHours(), t.getMinutes(), t.getSeconds());
+		            me.getMaxDate = new Date((me.getMaxDate.getTime() + hrsMax * 60 * 60 * 1000) );
+		        }		    
+		    try{
+		    if (me.defaultDate!=="")
+		        e.datepicker("setDate", me.defaultDate);
+		    } catch (e) {}
+		    e.datepicker("option", "maxDate", me.maxDate );
+		    if (me.getMaxDate!="" && me.tz!=0) 	e.datepicker("option", "maxDate", new Date(me.getMaxDate.getTime()+me.tz*60*60*1000) );
+		    me.tmpinvalidDatestime = new Array();
+            try {
+                  for (var i=0;i<me.tmpinvalidDates.length;i++)
+                      me.tmpinvalidDatestime[i]=me.invalidDates[i].getTime();              
+            } catch (e) {}
+            function DisableSpecificDates(date) {                
+                var ohindex = me.services[me.normalizeSelectIndex($(".fieldCalendarService"+me.name+" select option:selected").index())].ohindex;
+			  	for (var i=0;i<me.allOH[ohindex].openhours.length;i++)
+			  	    if (me.allOH[ohindex].openhours[i].type=="special" && me.allOH[ohindex].openhours[i].d==$.datepicker.formatDate("yy-mm-dd",date))
+			  	        return true; 
+                var currentdate = date.getTime();
+                if ($.inArray(currentdate, me.tmpinvalidDatestime) > -1 ) 
+                    return false;
+                if (me.working_dates[date.getDay()]==0)
+                    return false;
+                return true;
+            }
+            var sum = 0;
+            for (var i=0;i<me.working_dates.length;i++)
+                sum += me.working_dates[i];
+            for (var key in me.cacheOpenHours[me.service_selected])
+                sum ++;
+            if (sum>0)
+            {       
+		       var nextdateAvailable = e.datepicker("getDate");
+               while (!DisableSpecificDates(nextdateAvailable))
+                   nextdateAvailable.setDate(nextdateAvailable.getDate() + 1);
+               e.datepicker("setDate", nextdateAvailable);  
+               me.getD = nextdateAvailable;
+               function ifLoadOk()
+               {
+                   if (!me.loadOK)
+		               setTimeout(ifLoadOk,100);
+		           else
+		           { 
+		               $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ).datepicker( "option", "beforeShowDay", function(d){return me.rC(d)} );
+		               onChangeDateOrService($.datepicker.formatDate('yy-mm-dd', me.getD));
+		               $( '#field' + me.form_identifier + '-' + me.index + ' .fieldCalendar'+me.name ).datepicker( "option", "beforeShowDay", function(d){return me.rC(d)} );
+		           }    
+               } 
+               ifLoadOk();
+		    }
+		    preselect_service = function(v)
+		    {
+		        $(".fieldCalendarService"+me.name+" select.ahbfield_service").children().removeAttr("selected");
+		        if (me.emptySelectCheckbox)		            
+                    $(".fieldCalendarService"+me.name+" select.ahbfield_service").children().eq(v+1).prop('selected', 'selected').change();
+		        else
+		            $(".fieldCalendarService"+me.name+" select.ahbfield_service").children().eq(v).prop('selected', 'selected').change();
+		    }
+		    if (typeof cp_hourbk_preselect !== 'undefined' && cp_hourbk_preselect!="")
+		        preselect_service(cp_hourbk_preselect*1);
+		    else
+		    if (me.initialapp!="" && dd!="")
+		    {   
+		        try{
+		        me.getD = $.datepicker.parseDate("yy-mm-dd",dd);
+		        e.datepicker("setDate", me.getD);
+		        preselect_service(me.initialServiceInd);
+		        onChangeDateOrService(dd);
+		        } catch (e) {}
+		    }
+		    getExtrasVisible = function(f)
+		    {
+		        try{
+		            var p = f.attr("id").split( '_' );
+		            var items = $.fbuilder[ 'forms' ]["_"+p[p.length-1]].getItems();
+		            for (var i=0;i<items.length;i++)
+		                if (items[i].ftype=="fapp" && ($("#"+items[i].name).parent().is(":visible") || $("#"+items[i].name).parents(".fields").hasClass("cp_active") ))
+		                    getExtras(items[i],f)
+		        } catch (e) {}        
+		    }    
+		    getExtras=function(me,f)
+		    {
+		        var v = 0;
+		        var find = false;
+		        var e = f.find(".ahb_service").find(':checked:not(.ignore)');
+		        if( e.length)
+				{
+				    find = true;
+					e.each( function(){
+					    if (($(this).parents(".fields").hasClass("cp_active") || $(this).is(":visible") || ($(this).prop("tagName")=="OPTION" && $(this).parent().is(":visible"))) &&  $.isNumeric(this.value))
+						    v += this.value*1;
+					});
+				}
+				me.percent = 0;
+				var e = f.find(".ahb_service_percent").find(':checked:not(.ignore)');
+		        if( e.length)
+				{
+				    find = true;
+					e.each( function(){
+					    if (($(this).parents(".fields").hasClass("cp_active") || $(this).is(":visible") || ($(this).prop("tagName")=="OPTION" && $(this).parent().is(":visible"))) &&  $.isNumeric(this.value))
+						    me.percent += this.value*1;
+					});
+				}
+				e = f.find(".ahb_service_per_slot").find(':checked:not(.ignore)');
+				me.allUsedSlots = me.allUsedSlots || [];
+				var s = me.allUsedSlots.length;
+		        if( e.length)
+				{
+				    find = true;
+					e.each( function(){
+						if (($(this).parents(".fields").hasClass("cp_active") || $(this).is(":visible") || ($(this).prop("tagName")=="OPTION" && $(this).parent().is(":visible"))) &&  $.isNumeric(this.value))
+						    v += this.value * s;
+					} );
+				}
+				e = f.find(".ahb_service_per_quantity_selection").find(':checked:not(.ignore)');
+				var q = f.find(".ahbfield_quantity").val();
+                if (!parseFloat(q))
+                    q = 1;
+		        if( e.length)
+				{
+				    find = true;
+					e.each( function(){
+						if (($(this).parents(".fields").hasClass("cp_active") || $(this).is(":visible") || ($(this).prop("tagName")=="OPTION" && $(this).parent().is(":visible"))) &&  $.isNumeric(this.value))
+						    v += this.value * q;
+					} );
+				}
+				f.find('#'+me.name+'_services').val(v);
+				//if (find)
+				{
+				    me.extras = v;
+				    var total = me.sub_cost + me.extras;
+				    total = total*(1+me.percent/100);
+				    total = total.toFixed(2);
+				    $( '#field' + me.form_identifier + '-' + me.index ).find(".totalCost .n").html(" " +me.showTotalCostFormat.replace("{0}",total));
+				    $( '#field' + me.form_identifier + '-' + me.index + ' #tcost'+me.name ).val(total);
+				    me.changeAutomatic = true;
+				    $( '#field' + me.form_identifier + '-' + me.index + ' #'+me.name ).change();
+				}
+		    }    
+		    $( '#field' + me.form_identifier + '-' + me.index ).parents( "form" ).find(".ahb_service,.ahb_service_percent,.ahb_service_per_slot,.ahb_service_per_quantity_selection").on("click", function(){
+		        getExtrasVisible($(this).parents( "form" ));
+		    });
+		    $( '#field' + me.form_identifier + '-' + me.index ).parents( "form" ).find(".ahb_service,.ahb_service_percent,.ahb_service_per_slot,.ahb_service_per_quantity_selection").on("change", function(){
+		        getExtrasVisible($(this).parents( "form" ));
+		    });
+		    
+		    $( '#field' + me.form_identifier + '-' + me.index + ' #'+me.name ).change(function(  ) {
+		        if (!me.changeAutomatic)
+		            getExtrasVisible($(this).parents( "form" ));
+		        me.changeAutomatic = false;     
+            });
+            if (typeof cp_hourbk_overlapping_label != "undefined")
+                $.extend($.validator.messages, {avoid_overlapping: $.validator.format(cp_hourbk_overlapping_label)});        
+			if(!('avoid_overlapping' in $.validator.methods))
+			{ 
+			    function avoid_over_function(value, element){
+                    var validator = this,
+                        previous = validator.previousValue( element );
+                    if ( previous.old === value ) {
+                        return previous.valid;
+                    }
+                    previous.old = value;
+                    validator.startRequest( element );
+                    
+                    var p = element.id.split( '_' ),
+					    _index = ( p.length > 1 ) ? '_'+p[ 1 ] : '',
+					    me = ( 
+						    typeof $.fbuilder[ 'forms' ] != 'undefined' && 
+						    typeof $.fbuilder[ 'forms' ][ _index ] != 'undefined'  
+					        ) ? $.fbuilder[ 'forms' ][ _index ].getItem( p[ 0 ]+'_'+p[ 1 ] ) : null;
+                    
+                    if( me != null )  
+                    {
+                        $.ajax({
+                            dataType : 'json',
+		  		            type: "POST",
+		  		            url : document.location.href,
+		  		            data :  { cp_app_action: 'get_slots',
+		  		                formid: me.formId,
+		  		                initialID: me.initialID,
+		  		                formfield: me.name.replace(me.form_identifier, "")   
+		  		            },
+                            success: function(data) {
+                                var overlapping = false;
+                                var find = false;
+                                me.ignoreUsedSlots = true;
+                                me.cacheArr = new Array(); 
+                                for (var i=0;i<data.length;i++)
+		  		                {
+		  		                    var dd = data[i].d;
+		  		                    if (typeof data[i].sid !== 'undefined')
+		  		                        data[i].serviceindex = me.getServiceInd(data[i].sid);
+		  		                    me.cacheArr[dd] = me.cacheArr[dd] || [];
+		  		                    me.cacheArr[dd][me.cacheArr[dd].length] = data[i];	
+		  		                }
+		  		                me.slotsDate = [];
+		  			            me.loadOK = true;
+                                for (var i = 0; (i<me.allUsedSlots.length && !overlapping); i++)
+                                {
+                                    me.service_selected = me.allUsedSlots[i].serviceindex;
+                                    me.quantity_selected = me.allUsedSlots[i].quantity;
+                                    me.duration = parseFloat(me.services[me.service_selected].duration);
+                                    var d = me.allUsedSlots[i].d;
+                                    var t1 = me.allUsedSlots[i].h1 * 60 + me.allUsedSlots[i].m1;
+                                    var t2 = me.allUsedSlots[i].h2 * 60 + me.allUsedSlots[i].m2;
+                                    if (me.tz != 0)
+                                    {
+                                        var d1 = $.datepicker.parseDate("yy-mm-dd",d);
+                                        var d2 = new Date(d1.getTime()+t1*60*1000+me.tz*60*60*1000);
+                                        d = $.datepicker.formatDate("yy-mm-dd",d2);
+                                    }
+                                    var arr = me.getAvailableSlots(d);
+                                    if (me.showAllServices)
+			                            arr = me.availableSlotsByService[me.service_selected];
+                                    find = false;
+                                    for (var j=0;(j<arr.length  && !find);j++)
+                                    {
+                                        if (arr[j].t1<=t1 && arr[j].t2>=t2)
+                                            find = true;    
+                                    }
+                                    overlapping = !find; 
+                                } 
+                                me.ignoreUsedSlots = false;
+                                var isValid = !overlapping;
+                                if (true === isValid) {
+                                    var submitted = validator.formSubmitted;
+                                    validator.prepareElement( element );
+                                    validator.formSubmitted = submitted;
+                                    validator.successList.push( element );
+                                    delete validator.invalid[ element.name ];
+                                    validator.showErrors();
+                                  
+                                } else {
+                                    for (var i=0;i<data.length;i++)
+		  		                    {
+		  		                        var dd = data[i].d;
+		  		                        me.cacheArr[dd] = me.cacheArr[dd] || [];
+		  		                        me.cacheArr[dd][me.cacheArr[dd].length] = data[i];	
+		  		                    }
+		  		                    me.slotsDate = [];
+		  			                me.loadOK = true;
+                                    var errors = {};
+                                    errors[ element.name ] = validator.defaultMessage( element, "avoid_overlapping" );
+                                    validator.invalid[ element.name ] = true;
+                                    validator.showErrors( errors );
+                                    element.focus();
+                                }
+                                previous.valid = isValid;
+                                validator.stopRequest( element, isValid );
+                                cp_hourbk_avoid_overlapping--;    
+                            }
+                        });
+                        return "pending";
+                    }
+					return true;    
+                }
+			    $.validator.addMethod('avoid_overlapping', avoid_over_function);
+			}                          
+		},
+		val:function()
+		{
+		    return 0;
+		}
+	}         
+);	$.fbuilder.controls[ 'facceptance' ]=function(){};
+	$.extend(
+		$.fbuilder.controls[ 'facceptance' ].prototype,
+		$.fbuilder.controls[ 'ffields' ].prototype,
+		{
+			title:"Accept terms and conditions",
+			ftype:"facceptance",
+			value:"I accept",
+			required:true,
+			url:"",
+			message:"",
+			show:function()
+				{
+					var me = this,
+						dlg = '',
+						label = me.title;
+
+					if(!/^\s*$/.test(me.url))
+					{
+						label = '<a href="'+$.fbuilder.htmlEncode($.trim(me.url))+'" target="_blank">'+label+'</a>';
+					}
+					else if(!/^\s*$/.test(me.message))
+					{
+						label = '<a href="javascript:void(0);" class="cff-open-dlg">'+label+'</a>';
+						dlg += '<div class="cff-dialog hide"><span class="cff-close-dlg"></span><div class="cff-dialog-content">'+me.message+'</div></div>'
+					}
+					return '<div class="fields '+me.csslayout+' cff-checkbox-field" id="field'+me.form_identifier+'-'+me.index+'"><div class="dfield">'+
+					'<div class="one_column"><label><input name="'+me.name+'" id="'+me.name+'" class="field required" value="'+$.fbuilder.htmlEncode(me.value)+'" vt="'+$.fbuilder.htmlEncode((/^\s*$/.test(me.value)) ? me.title : me.value)+'" type="checkbox" /> <span>'+
+					$.fbuilder.htmlDecode( label )+''+((me.required)?'<span class="r">*</span>':'')+
+					'</span></label></div>'+
+					dlg+
+					'</div><div class="clearer"></div></div>';
+				},
+			after_show:function()
+				{
+					$(document).on('click','.cff-open-dlg', function(){
+						var dlg = $(this).closest('.fields').find('.cff-dialog'), w = dlg.data('width'), h=dlg.data('height');
+						dlg.removeClass('hide');
+
+						if('undefined' == typeof w) w = Math.min($(this).closest('form').width(), $(window).width(), dlg.width());
+						if('undefined' == typeof h) h = Math.min($(this).closest('form').height(), $(window).height(), dlg.height());
+
+						dlg.data('width',w);
+						dlg.data('height',h);
+
+						dlg.css({'width': w+'px', 'height': h+'px', 'margin-top': (-1*h/2)+'px', 'margin-left': (-1*w/2)+'px'});
+					});
+					$(document).on('click','.cff-close-dlg', function(){$(this).closest('.cff-dialog').addClass('hide');});
+				},
+			val:function()
+				{
+					var e = $('[id="'+this.name+'"]:checked:not(.ignore)');
+					if( e.length )
+					{
+						var t = $.fbuilder.parseValStr( e[0].value );
+						if(!$.isNumeric(t)) t = t.replace(/^"/,'').replace(/"$/,'');
+					}
+					return (v) ? (($.isNumeric(v)) ? v : '"'+v+'"') : 0;
+				}
+		}
+	);        var fcount = 1;
+        var fcount_tags = 1;
+        var fnum = "_"+fcount; 
+        var cp_avoid_hidden = false;
+        while (20>fcount || eval("typeof cp_appbooking_fbuilder_config"+fnum+" != 'undefined'"))
+        {
+            try {
+            var cp_appbooking_fbuilder_config = eval("cp_appbooking_fbuilder_config"+fnum);
+            while (20>fcount_tags && !$("#fbuilder_"+fcount_tags).length)
+                fcount_tags++;
+            cp_appbooking_fbuilder_config = $.parseJSON(cp_appbooking_fbuilder_config.obj);
+            cp_appbooking_fbuilder_config.identifier = "_"+fcount_tags;
+            
+                var opt_identifier = $("#fieldlist_"+fcount_tags);
+                opt_identifier.attr("fcount_tags",fcount_tags); 
+                opt_identifier.attr("fnum",fnum); 
+                opt_identifier.addClass("cp_avoid_hidden")
+                var f = $("#fbuilder_"+fcount_tags).fbuilder(cp_appbooking_fbuilder_config);
+			    f.fBuild.loadData("form_structure_"+fcount_tags);
+			    $.fbuilder.configValidate($("#cp_appbooking_pform_"+fcount_tags));   
+			    if((typeof opt_identifier.attr("fnum") !== 'undefined') && !opt_identifier.is(':hidden'))
+			        $(opt_identifier).addClass("cp_v_v");
+			    else
+			        cp_avoid_hidden = true;
+			            
+     		} catch (e) {}
+	    	fcount++;
+            fcount_tags++;
+	    	fnum = "_"+fcount;
+	    }
+	    
+	    if (cp_avoid_hidden)
+	        $( document ).each(
+	            function()
+	            {
+	            	(new MutationObserver(
+	            		function(mutationsList, observer)
+	            		{   
+	            			for(let k in mutationsList)
+	            			{
+	            			    var mutation = mutationsList[k];
+	            				if (mutation.type === 'childList')
+	            				{
+	            					if(mutation.addedNodes.length)
+	            					{
+	            						try{ 
+	            						    $(".cp_avoid_hidden").each(function(){
+	            						        var opt_identifier= $("#"+$(this).attr("id"));
+	            						        if((typeof opt_identifier.attr("fnum") !== 'undefined') && !opt_identifier.is(':hidden') && !opt_identifier.hasClass("cp_v_v"))
+	            						        {
+	            						            $(opt_identifier).addClass("cp_v_v");
+	            						            var fnum = opt_identifier.attr("fnum");   
+                                                    var fcount_tags = opt_identifier.attr("fcount_tags");
+	            						            var cp_appbooking_fbuilder_config = eval("cp_appbooking_fbuilder_config"+fnum);
+                                                    cp_appbooking_fbuilder_config = $.parseJSON(cp_appbooking_fbuilder_config.obj);
+                                                    cp_appbooking_fbuilder_config.identifier = "_"+fcount_tags;
+	            						            var f = $("#fbuilder_"+fcount_tags).fbuilder(cp_appbooking_fbuilder_config);
+			                                        f.fBuild.loadData("form_structure_"+fcount_tags);
+	            						            $.fbuilder.configValidate(opt_identifier.closest("form"));
+	            						        }
+	            						    })
+	            						}catch(err){}
+	            					}
+	            				}
+	            			}
+	            		}
+	            	)).observe(this, { childList: true, subtree: true });
+	            }
+	        );
+})(fbuilderjQuery);
+});
