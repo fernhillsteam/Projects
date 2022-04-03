@@ -1,0 +1,307 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 25 Mar 2022 14:19:18 at https://vizulab.com.au/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://vizulab.com.au/ -O1 "C:\My Web Sites\vizual" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:19:22	Warning: 	Note: due to https://vizulab.com.au remote robots.txt rules, links beginning with these path will be forbidden: /wp-admin/ (see in the options to disable this)
+14:20:33	Warning: 	file not stored in cache due to bogus state (incomplete type with OK (200), size 5499): vizulab.com.au/wp-content/uploads/2017/09/OptiTrack-450px.png
+14:22:20	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/11 (from https://vizulab.com.au/)
+14:22:20	Error: 	"Not Found" (404) at link https://vizulab.com.au/xmlrpc.php?rsd (from https://vizulab.com.au/)
+14:22:23	Warning: 	Note: due to vizulab.com.au remote robots.txt rules, links beginning with these path will be forbidden: /wp-admin/ (see in the options to disable this)
+14:23:52	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/vizmove-seated-vr-system/
+14:23:52	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/vizmove-seated-vr-system/ to https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/
+14:23:52	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/vizmove-standing-vr-system/
+14:23:52	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/vizmove-standing-vr-system/ to https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/
+14:23:52	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/vizmove-walking-vr-system/
+14:23:52	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/vizmove-walking-vr-system/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/
+14:23:52	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/worldviz-vizible/
+14:23:52	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/worldviz-vizible/ to https://vizulab.com.au/virtual-reality/worldviz-vizible/
+14:26:44	Error: 	"Not Found" (404) at link https://vizulab.com.au/pluraview-australia/ (from https://vizulab.com.au/)
+14:26:44	Error: 	"Not Found" (404) at link https://vizulab.com.au/aliscopy-3d-displays/ (from https://vizulab.com.au/)
+14:26:44	Error: 	"Not Found" (404) at link https://vizulab.com.au/redrover/ (from https://vizulab.com.au/)
+14:27:51	Error: 	"Not Found" (404) at link https://vizulab.com.au/education/ (from https://vizulab.com.au/)
+14:27:51	Error: 	"Not Found" (404) at link https://vizulab.com.au/defence/ (from https://vizulab.com.au/)
+14:27:51	Error: 	"Not Found" (404) at link https://vizulab.com.au/manufacturing/ (from https://vizulab.com.au/)
+14:28:21	Error: 	"Not Found" (404) at link vizulab.com.au/optitrack/ (from https://vizulab.com.au/)
+14:28:44	Error: 	"Not Found" (404) at link vizulab.com.au/worldviz-australia/ (from https://vizulab.com.au/)
+14:28:44	Error: 	"Not Found" (404) at link vizulab.com.au/geomagic-australia/ (from https://vizulab.com.au/)
+14:34:04	Warning: 	Found for https://vizulab.com.au/?nonamp=1/
+14:34:04	Warning: 	File has moved from https://vizulab.com.au/?nonamp=1/ to https://vizulab.com.au/
+14:34:04	Warning: 	File not parsed, looks like binary: vizulab.com.au/wp-content/themes/quark-child/fonts/ProximaNovaRegular.svg
+14:34:04	Warning: 	Warning: store application/octet-stream without scan: C:/My Web Sites/vizual/vizulab.com.au/wp-content/themes/quark-child/fonts/ProximaNovaRegular.svg
+14:35:32	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/22 (from vizulab.com.au/contact/)
+14:35:32	Warning: 	Moved Permanently for https://vizulab.com.au/?p=22
+14:35:32	Warning: 	File has moved from https://vizulab.com.au/?p=22 to https://vizulab.com.au/contact/
+14:35:35	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/14 (from https://vizulab.com.au/products/)
+14:35:35	Warning: 	Moved Permanently for https://vizulab.com.au/?p=14
+14:35:35	Warning: 	File has moved from https://vizulab.com.au/?p=14 to https://vizulab.com.au/products/
+14:36:52	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/344 (from https://vizulab.com.au/products/virtual-reality/)
+14:36:52	Warning: 	Moved Permanently for https://vizulab.com.au/?p=344
+14:36:52	Warning: 	File has moved from https://vizulab.com.au/?p=344 to https://vizulab.com.au/products/virtual-reality/
+14:37:21	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/661 (from https://vizulab.com.au/virtual-reality/worldviz-precision-position-tracking-ppt/)
+14:37:21	Warning: 	Moved Permanently for https://vizulab.com.au/?p=661
+14:37:21	Warning: 	File has moved from https://vizulab.com.au/?p=661 to https://vizulab.com.au/virtual-reality/worldviz-precision-position-tracking-ppt/
+14:37:21	Error: 	"Not Found" (404) at link https://vizulab.com.au/simulation/amp/ (from https://vizulab.com.au/simulation/)
+14:37:21	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/categories/11 (from https://vizulab.com.au/simulation/)
+14:37:22	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/530 (from https://vizulab.com.au/simulation/haptics/geomagic-phantom-premium-haptic-devices/)
+14:37:22	Warning: 	Moved Permanently for https://vizulab.com.au/?p=530
+14:37:22	Warning: 	File has moved from https://vizulab.com.au/?p=530 to https://vizulab.com.au/simulation/haptics/geomagic-phantom-premium-haptic-devices/
+14:37:24	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/540 (from https://vizulab.com.au/simulation/haptics/geomagic-openhaptics-toolkit/)
+14:37:24	Warning: 	Moved Permanently for https://vizulab.com.au/?p=540
+14:37:24	Warning: 	File has moved from https://vizulab.com.au/?p=540 to https://vizulab.com.au/simulation/haptics/geomagic-openhaptics-toolkit/
+14:37:24	Error: 	"Not Found" (404) at link https://vizulab.com.au/visualisation/amp/ (from https://vizulab.com.au/visualisation/)
+14:37:24	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/categories/19 (from https://vizulab.com.au/visualisation/)
+14:38:06	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/102 (from https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/)
+14:38:06	Warning: 	Moved Permanently for https://vizulab.com.au/?p=102
+14:38:06	Warning: 	File has moved from https://vizulab.com.au/?p=102 to https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/
+14:38:06	Error: 	"Bad Request" (400) at link https://i0.wp.com/vizulab.com.au/wp-content/uploads/2017/09/WorldViz-Vizible.jpg?fit=1400%2C400&ssl=1 (from https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/)
+14:38:06	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/16 (from https://vizulab.com.au/services/)
+14:38:06	Warning: 	Moved Permanently for https://vizulab.com.au/?p=16
+14:38:06	Warning: 	File has moved from https://vizulab.com.au/?p=16 to https://vizulab.com.au/services/
+14:38:06	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/18 (from https://vizulab.com.au/solutions/)
+14:38:06	Warning: 	Moved Permanently for https://vizulab.com.au/?p=18
+14:38:06	Warning: 	File has moved from https://vizulab.com.au/?p=18 to https://vizulab.com.au/solutions/
+14:38:07	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/20 (from https://vizulab.com.au/about/)
+14:38:07	Warning: 	Moved Permanently for https://vizulab.com.au/?p=20
+14:38:07	Warning: 	File has moved from https://vizulab.com.au/?p=20 to https://vizulab.com.au/about/
+14:38:07	Error: 	"Not Found" (404) at link https://vizulab.com.au/virtual-reality/amp/ (from vizulab.com.au/virtual-reality/)
+14:38:07	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/categories/6 (from vizulab.com.au/virtual-reality/)
+14:38:21	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1255 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-seated-vr-system/)
+14:38:21	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1255
+14:38:21	Warning: 	File has moved from https://vizulab.com.au/?p=1255 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-seated-vr-system/
+14:38:37	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1254 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-standing-vr-system/)
+14:38:37	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1254
+14:38:37	Warning: 	File has moved from https://vizulab.com.au/?p=1254 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-standing-vr-system/
+14:38:43	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1253 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/)
+14:38:43	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1253
+14:38:43	Warning: 	File has moved from https://vizulab.com.au/?p=1253 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/
+14:38:43	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1257 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-vizible/)
+14:38:43	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1257
+14:38:43	Warning: 	File has moved from https://vizulab.com.au/?p=1257 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-vizible/
+14:38:44	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1297 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-precision-position-tracking-ppt/)
+14:38:44	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1297
+14:38:44	Warning: 	File has moved from https://vizulab.com.au/?p=1297 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-precision-position-tracking-ppt/
+14:38:44	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/346 (from https://vizulab.com.au/products/simulation/)
+14:38:44	Warning: 	Moved Permanently for https://vizulab.com.au/?p=346
+14:38:44	Warning: 	File has moved from https://vizulab.com.au/?p=346 to https://vizulab.com.au/products/simulation/
+14:38:51	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1293 (from https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-phantom-premium-haptic-devices/)
+14:38:51	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1293
+14:38:51	Warning: 	File has moved from https://vizulab.com.au/?p=1293 to https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-phantom-premium-haptic-devices/
+14:39:03	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1292 (from https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-openhaptics-toolkit/)
+14:39:03	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1292
+14:39:03	Warning: 	File has moved from https://vizulab.com.au/?p=1292 to https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-openhaptics-toolkit/
+14:39:03	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/348 (from https://vizulab.com.au/products/visualisation/)
+14:39:03	Warning: 	Moved Permanently for https://vizulab.com.au/?p=348
+14:39:03	Warning: 	File has moved from https://vizulab.com.au/?p=348 to https://vizulab.com.au/products/visualisation/
+14:39:03	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1252 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-projection-vr-system/)
+14:39:03	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1252
+14:39:03	Warning: 	File has moved from https://vizulab.com.au/?p=1252 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-projection-vr-system/
+14:39:09	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/822 (from https://vizulab.com.au/products/visualisation/pluraview-australia/)
+14:39:09	Warning: 	Moved Permanently for https://vizulab.com.au/?p=822
+14:39:09	Warning: 	File has moved from https://vizulab.com.au/?p=822 to https://vizulab.com.au/products/visualisation/pluraview-australia/
+14:39:10	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/386 (from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/)
+14:39:10	Warning: 	Moved Permanently for https://vizulab.com.au/?p=386
+14:39:10	Warning: 	File has moved from https://vizulab.com.au/?p=386 to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/
+14:39:10	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/419 (from https://vizulab.com.au/products/visualisation/redrover/)
+14:39:10	Warning: 	Moved Permanently for https://vizulab.com.au/?p=419
+14:39:10	Warning: 	File has moved from https://vizulab.com.au/?p=419 to https://vizulab.com.au/products/visualisation/redrover/
+14:39:11	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/498 (from https://vizulab.com.au/solutions/education/)
+14:39:11	Warning: 	Moved Permanently for https://vizulab.com.au/?p=498
+14:39:11	Warning: 	File has moved from https://vizulab.com.au/?p=498 to https://vizulab.com.au/solutions/education/
+14:39:17	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/501 (from https://vizulab.com.au/solutions/defence/)
+14:39:17	Warning: 	Moved Permanently for https://vizulab.com.au/?p=501
+14:39:17	Warning: 	File has moved from https://vizulab.com.au/?p=501 to https://vizulab.com.au/solutions/defence/
+14:39:18	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/503 (from https://vizulab.com.au/solutions/manufacturing/)
+14:39:18	Warning: 	Moved Permanently for https://vizulab.com.au/?p=503
+14:39:18	Warning: 	File has moved from https://vizulab.com.au/?p=503 to https://vizulab.com.au/solutions/manufacturing/
+14:39:18	Warning: 	Found for https://vizulab.com.au/contact/?nonamp=1/
+14:39:18	Warning: 	File has moved from https://vizulab.com.au/contact/?nonamp=1/ to https://vizulab.com.au/contact/
+14:39:19	Warning: 	Found for https://vizulab.com.au/products/?nonamp=1/
+14:39:19	Warning: 	File has moved from https://vizulab.com.au/products/?nonamp=1/ to https://vizulab.com.au/products/
+14:39:19	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1276 (from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-3d-software/)
+14:39:19	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1276
+14:39:19	Warning: 	File has moved from https://vizulab.com.au/?p=1276 to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-3d-software/
+14:39:20	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1277 (from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-glasses-free-3d-displays/)
+14:39:20	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1277
+14:39:20	Warning: 	File has moved from https://vizulab.com.au/?p=1277 to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-glasses-free-3d-displays/
+14:39:20	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1247 (from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/)
+14:39:20	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1247
+14:39:20	Warning: 	File has moved from https://vizulab.com.au/?p=1247 to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/
+14:39:20	Error: 	"Bad Request" (400) at link https://i0.wp.com/vizulab.com.au/wp-content/uploads/2019/12/schneider-digital-3d-pluraview-beamsplitter-technologie.png?resize=790%2C412&ssl=1 (from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/)
+14:39:26	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1246 (from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-4k-3d-monitor/)
+14:39:26	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1246
+14:39:26	Warning: 	File has moved from https://vizulab.com.au/?p=1246 to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-4k-3d-monitor/
+14:39:27	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1248 (from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-fullhd-3d-monitor/)
+14:39:27	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1248
+14:39:27	Warning: 	File has moved from https://vizulab.com.au/?p=1248 to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-fullhd-3d-monitor/
+14:39:27	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1281 (from https://vizulab.com.au/products/visualisation/redrover/redrover-true3di-sdm-240-3d-monitor/)
+14:39:27	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1281
+14:39:27	Warning: 	File has moved from https://vizulab.com.au/?p=1281 to https://vizulab.com.au/products/visualisation/redrover/redrover-true3di-sdm-240-3d-monitor/
+14:39:28	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1256 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizard-virtual-reality-software/)
+14:39:28	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1256
+14:39:28	Warning: 	File has moved from https://vizulab.com.au/?p=1256 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizard-virtual-reality-software/
+14:39:28	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/?nonamp=1/
+14:39:28	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/
+14:39:29	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/130 (from https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/)
+14:39:29	Warning: 	Moved Permanently for https://vizulab.com.au/?p=130
+14:39:29	Warning: 	File has moved from https://vizulab.com.au/?p=130 to https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/
+14:39:30	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/122 (from https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/)
+14:39:30	Warning: 	Moved Permanently for https://vizulab.com.au/?p=122
+14:39:30	Warning: 	File has moved from https://vizulab.com.au/?p=122 to https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/
+14:39:30	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/643 (from https://vizulab.com.au/virtual-reality/worldviz-vizible/)
+14:39:30	Warning: 	Moved Permanently for https://vizulab.com.au/?p=643
+14:39:30	Warning: 	File has moved from https://vizulab.com.au/?p=643 to https://vizulab.com.au/virtual-reality/worldviz-vizible/
+14:39:30	Warning: 	Found for https://vizulab.com.au/virtual-reality/worldviz-precision-position-tracking-ppt/?nonamp=1/
+14:39:30	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/worldviz-precision-position-tracking-ppt/?nonamp=1/ to https://vizulab.com.au/virtual-reality/worldviz-precision-position-tracking-ppt/
+14:39:34	Warning: 	Found for https://vizulab.com.au/simulation/haptics/geomagic-phantom-premium-haptic-devices/?nonamp=1/
+14:39:34	Warning: 	File has moved from https://vizulab.com.au/simulation/haptics/geomagic-phantom-premium-haptic-devices/?nonamp=1/ to https://vizulab.com.au/simulation/haptics/geomagic-phantom-premium-haptic-devices/
+14:39:34	Warning: 	Found for https://vizulab.com.au/simulation/haptics/geomagic-openhaptics-toolkit/?nonamp=1/
+14:39:34	Warning: 	File has moved from https://vizulab.com.au/simulation/haptics/geomagic-openhaptics-toolkit/?nonamp=1/ to https://vizulab.com.au/simulation/haptics/geomagic-openhaptics-toolkit/
+14:39:38	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/411 (from https://vizulab.com.au/visualisation/alioscopy-3d-software/)
+14:39:38	Warning: 	Moved Permanently for https://vizulab.com.au/?p=411
+14:39:38	Warning: 	File has moved from https://vizulab.com.au/?p=411 to https://vizulab.com.au/visualisation/alioscopy-3d-software/
+14:39:38	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/403 (from https://vizulab.com.au/visualisation/alioscopy-glasses-free-3d-displays/)
+14:39:38	Warning: 	Moved Permanently for https://vizulab.com.au/?p=403
+14:39:38	Warning: 	File has moved from https://vizulab.com.au/?p=403 to https://vizulab.com.au/visualisation/alioscopy-glasses-free-3d-displays/
+14:39:38	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/850 (from https://vizulab.com.au/visualisation/pluraview-2-5k-3d-monitor/)
+14:39:38	Warning: 	Moved Permanently for https://vizulab.com.au/?p=850
+14:39:38	Warning: 	File has moved from https://vizulab.com.au/?p=850 to https://vizulab.com.au/visualisation/pluraview-2-5k-3d-monitor/
+14:39:44	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/859 (from https://vizulab.com.au/visualisation/pluraview-4k-3d-monitor/)
+14:39:44	Warning: 	Moved Permanently for https://vizulab.com.au/?p=859
+14:39:44	Warning: 	File has moved from https://vizulab.com.au/?p=859 to https://vizulab.com.au/visualisation/pluraview-4k-3d-monitor/
+14:39:45	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/835 (from https://vizulab.com.au/visualisation/pluraview-fullhd-3d-monitor/)
+14:39:45	Warning: 	Moved Permanently for https://vizulab.com.au/?p=835
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/?p=835 to https://vizulab.com.au/visualisation/pluraview-fullhd-3d-monitor/
+14:39:45	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/418 (from https://vizulab.com.au/visualisation/true3di-sdm-240-3d-monitor/)
+14:39:45	Warning: 	Moved Permanently for https://vizulab.com.au/?p=418
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/?p=418 to https://vizulab.com.au/visualisation/true3di-sdm-240-3d-monitor/
+14:39:45	Warning: 	Found for https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/?nonamp=1/
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/?nonamp=1/ to https://vizulab.com.au/visualisation/worldviz-vizmove-projection-vr-system/
+14:39:45	Warning: 	Found for https://vizulab.com.au/services/?nonamp=1/
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/services/?nonamp=1/ to https://vizulab.com.au/services/
+14:39:45	Warning: 	Found for https://vizulab.com.au/solutions/?nonamp=1/
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/solutions/?nonamp=1/ to https://vizulab.com.au/solutions/
+14:39:45	Warning: 	Found for https://vizulab.com.au/about/?nonamp=1/
+14:39:45	Warning: 	File has moved from https://vizulab.com.au/about/?nonamp=1/ to https://vizulab.com.au/about/
+14:39:46	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/139 (from https://vizulab.com.au/virtual-reality/vizard-virtual-reality-software/)
+14:39:46	Warning: 	Moved Permanently for https://vizulab.com.au/?p=139
+14:39:46	Warning: 	File has moved from https://vizulab.com.au/?p=139 to https://vizulab.com.au/virtual-reality/vizard-virtual-reality-software/
+14:39:49	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/posts/118 (from https://vizulab.com.au/virtual-reality/worldviz-vizmove-walking-vr-system/)
+14:39:49	Warning: 	Moved Permanently for https://vizulab.com.au/?p=118
+14:39:49	Warning: 	File has moved from https://vizulab.com.au/?p=118 to https://vizulab.com.au/virtual-reality/worldviz-vizmove-walking-vr-system/
+14:39:49	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-seated-vr-system/?nonamp=1/
+14:39:49	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-seated-vr-system/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-seated-vr-system/
+14:39:49	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/92 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/)
+14:39:49	Warning: 	Moved Permanently for https://vizulab.com.au/?p=92
+14:39:49	Warning: 	File has moved from https://vizulab.com.au/?p=92 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/
+14:39:49	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/virtual-reality-development/
+14:39:49	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/virtual-reality-development/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/
+14:39:49	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/virtual-reality-collaboration-software/
+14:39:49	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/virtual-reality-collaboration-software/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/
+14:39:50	Warning: 	Moved Permanently for https://vizulab.com.au/worldviz-australia/virtual-reality-solutions/
+14:39:50	Warning: 	File has moved from https://vizulab.com.au/worldviz-australia/virtual-reality-solutions/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-standing-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-standing-vr-system/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-standing-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-walking-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-vizible/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-vizible/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-vizible/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-precision-position-tracking-ppt/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-precision-position-tracking-ppt/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/worldviz-precision-position-tracking-ppt/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/simulation/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/simulation/?nonamp=1/ to https://vizulab.com.au/products/simulation/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-phantom-premium-haptic-devices/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-phantom-premium-haptic-devices/?nonamp=1/ to https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-phantom-premium-haptic-devices/
+14:39:51	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/654 (from https://vizulab.com.au/products/simulation/geomagic-australia/)
+14:39:51	Warning: 	Moved Permanently for https://vizulab.com.au/?p=654
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/?p=654 to https://vizulab.com.au/products/simulation/geomagic-australia/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-openhaptics-toolkit/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-openhaptics-toolkit/?nonamp=1/ to https://vizulab.com.au/products/simulation/geomagic-australia/geomagic-openhaptics-toolkit/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/?nonamp=1/ to https://vizulab.com.au/products/visualisation/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-projection-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-projection-vr-system/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizmove-projection-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/pluraview-australia/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/pluraview-australia/?nonamp=1/ to https://vizulab.com.au/products/visualisation/pluraview-australia/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/?nonamp=1/ to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/redrover/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/redrover/?nonamp=1/ to https://vizulab.com.au/products/visualisation/redrover/
+14:39:51	Warning: 	Found for https://vizulab.com.au/solutions/education/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/solutions/education/?nonamp=1/ to https://vizulab.com.au/solutions/education/
+14:39:51	Warning: 	Found for https://vizulab.com.au/solutions/defence/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/solutions/defence/?nonamp=1/ to https://vizulab.com.au/solutions/defence/
+14:39:51	Warning: 	Found for https://vizulab.com.au/solutions/manufacturing/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/solutions/manufacturing/?nonamp=1/ to https://vizulab.com.au/solutions/manufacturing/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-3d-software/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-3d-software/?nonamp=1/ to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-3d-software/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-glasses-free-3d-displays/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-glasses-free-3d-displays/?nonamp=1/ to https://vizulab.com.au/products/visualisation/aliscopy-3d-displays/alioscopy-glasses-free-3d-displays/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/?nonamp=1/ to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-2-5k-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-4k-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-4k-3d-monitor/?nonamp=1/ to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-4k-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-fullhd-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-fullhd-3d-monitor/?nonamp=1/ to https://vizulab.com.au/products/visualisation/pluraview-australia/pluraview-fullhd-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/visualisation/redrover/redrover-true3di-sdm-240-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/visualisation/redrover/redrover-true3di-sdm-240-3d-monitor/?nonamp=1/ to https://vizulab.com.au/products/visualisation/redrover/redrover-true3di-sdm-240-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizard-virtual-reality-software/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizard-virtual-reality-software/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/vizard-virtual-reality-software/
+14:39:51	Warning: 	Found for https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/?nonamp=1/ to https://vizulab.com.au/virtual-reality/vizmove-seated-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/?nonamp=1/ to https://vizulab.com.au/virtual-reality/vizmove-standing-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/virtual-reality/worldviz-vizible/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/worldviz-vizible/?nonamp=1/ to https://vizulab.com.au/virtual-reality/worldviz-vizible/
+14:39:51	Warning: 	Found for https://vizulab.com.au/category/virtual-reality/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/category/virtual-reality/?nonamp=1/ to https://vizulab.com.au/category/virtual-reality/
+14:39:51	Warning: 	Found for https://vizulab.com.au/category/simulation/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/category/simulation/?nonamp=1/ to https://vizulab.com.au/category/simulation/
+14:39:51	Warning: 	Found for https://vizulab.com.au/category/simulation/haptics/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/category/simulation/haptics/?nonamp=1/ to https://vizulab.com.au/category/simulation/haptics/
+14:39:51	Warning: 	Found for https://vizulab.com.au/category/visualisation/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/category/visualisation/?nonamp=1/ to https://vizulab.com.au/category/visualisation/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/alioscopy-3d-software/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/alioscopy-3d-software/?nonamp=1/ to https://vizulab.com.au/visualisation/alioscopy-3d-software/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/alioscopy-glasses-free-3d-displays/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/alioscopy-glasses-free-3d-displays/?nonamp=1/ to https://vizulab.com.au/visualisation/alioscopy-glasses-free-3d-displays/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/pluraview-2-5k-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/pluraview-2-5k-3d-monitor/?nonamp=1/ to https://vizulab.com.au/visualisation/pluraview-2-5k-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/pluraview-4k-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/pluraview-4k-3d-monitor/?nonamp=1/ to https://vizulab.com.au/visualisation/pluraview-4k-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/pluraview-fullhd-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/pluraview-fullhd-3d-monitor/?nonamp=1/ to https://vizulab.com.au/visualisation/pluraview-fullhd-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/visualisation/true3di-sdm-240-3d-monitor/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/visualisation/true3di-sdm-240-3d-monitor/?nonamp=1/ to https://vizulab.com.au/visualisation/true3di-sdm-240-3d-monitor/
+14:39:51	Warning: 	Found for https://vizulab.com.au/virtual-reality/vizard-virtual-reality-software/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/vizard-virtual-reality-software/?nonamp=1/ to https://vizulab.com.au/virtual-reality/vizard-virtual-reality-software/
+14:39:51	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/categories/28 (from https://vizulab.com.au/category/simulation/haptics/)
+14:39:51	Warning: 	Found for https://vizulab.com.au/virtual-reality/worldviz-vizmove-walking-vr-system/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/virtual-reality/worldviz-vizmove-walking-vr-system/?nonamp=1/ to https://vizulab.com.au/virtual-reality/worldviz-vizmove-walking-vr-system/
+14:39:51	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/?nonamp=1/
+14:39:51	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/
+14:40:57	Warning: 	Found for https://vizulab.com.au/products/simulation/geomagic-australia/?nonamp=1/
+14:40:57	Warning: 	File has moved from https://vizulab.com.au/products/simulation/geomagic-australia/?nonamp=1/ to https://vizulab.com.au/products/simulation/geomagic-australia/
+14:40:58	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1170 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/)
+14:40:58	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1170
+14:40:58	Warning: 	File has moved from https://vizulab.com.au/?p=1170 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/
+14:40:58	Error: 	"Bad Request" (400) at link https://i0.wp.com/vizulab.com.au/wp-content/uploads/2022/02/VR-DESIGN-SERVICES.gif?resize=480%2C360&ssl=1 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/)
+14:40:58	Error: 	"Bad Request" (400) at link https://i0.wp.com/vizulab.com.au/wp-content/uploads/2022/02/INSTALLATION-and-TRAINING.jpg?resize=790%2C593&ssl=1 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/)
+14:41:00	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1184 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/)
+14:41:00	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1184
+14:41:00	Warning: 	File has moved from https://vizulab.com.au/?p=1184 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/
+14:41:00	Error: 	"Unauthorized" (401) at link https://vizulab.com.au/wp-json/wp/v2/pages/1196 (from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/)
+14:41:00	Warning: 	Moved Permanently for https://vizulab.com.au/?p=1196
+14:41:00	Warning: 	File has moved from https://vizulab.com.au/?p=1196 to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/
+14:41:00	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/?nonamp=1/
+14:41:00	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-development/
+14:41:01	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/?nonamp=1/
+14:41:01	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-collaboration-software/
+14:41:02	Warning: 	Found for https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/?nonamp=1/
+14:41:02	Warning: 	File has moved from https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/?nonamp=1/ to https://vizulab.com.au/products/virtual-reality/worldviz-australia/virtual-reality-solutions/
+
+HTTrack Website Copier/3.49-2 mirror complete in 21 minutes 44 seconds : 925 links scanned, 742 files written (52432760 bytes overall) [44546923 bytes received at 34161 bytes/sec], 11909825 bytes transferred using HTTP compression in 151 files, ratio 20%, 2.0 requests per connection
+(71 errors, 225 warnings, 0 messages)
