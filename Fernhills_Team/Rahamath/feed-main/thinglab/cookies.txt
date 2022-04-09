@@ -1,5 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-thinglab.com.au	TRUE	/	FALSE	1999999999	PHPSESSID	a9f12150ca45241df3131711b9156ad2
-thinglab.com.au	TRUE	/	FALSE	1999999999	rand_code_1	f5f673168dd9361df4282b976963b2fb
-

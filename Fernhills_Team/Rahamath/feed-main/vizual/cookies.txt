@@ -1,4 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-vizulab.com.au	TRUE	/	FALSE	1999999999	PHPSESSID	9716460b9a0d1de6efba456ee115a5ec
-
