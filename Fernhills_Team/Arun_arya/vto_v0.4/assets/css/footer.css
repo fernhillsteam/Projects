@@ -1,0 +1,51 @@
+			
+			/*footer*/
+			
+.footer {
+    padding: 2% 7%;
+    color: white;
+    background-color: #09743b;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+ul>li {
+    padding: 4px
+}
+
+ul>li:hover {
+    color: #0fe529;
+    cursor: pointer
+}
+
+hr {
+    border-width: 3px
+}
+
+.social>i {
+    padding: 2%;
+    font-size: 25px;
+}
+
+.social>i:hover {
+    color: #0fe529;
+    cursor: pointer
+}
+
+.policy>div {
+    padding: 4px
+}
+
+.heading{
+	font-size: 18px;
+	font-weight: 800;
+}
+
+.divider {
+	margin-top: 10px;
+    border-top: 2px solid rgba(189, 196, 203, 0.5);
+}
