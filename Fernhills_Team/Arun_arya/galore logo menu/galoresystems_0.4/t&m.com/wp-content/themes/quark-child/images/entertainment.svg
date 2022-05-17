@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 113.4 113.4" style="enable-background:new 0 0 113.4 113.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#5E5E5E;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#5E5E5E;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<g>
+	<line class="st0" x1="40.1" y1="26.4" x2="50.1" y2="26.4"/>
+	<circle class="st1" cx="21.5" cy="21.7" r="18.7"/>
+	<circle class="st1" cx="68.1" cy="21.7" r="18.7"/>
+	<circle class="st1" cx="21.5" cy="21.7" r="9.3"/>
+	<circle class="st1" cx="68.1" cy="21.7" r="9.3"/>
+	<path class="st1" d="M82.1,34v34.2c0,2.6-2.1,4.6-4.6,4.6H12.2c-2.6,0-4.6-2.1-4.6-4.6V34"/>
+	<rect x="82.1" y="40.4" class="st1" width="9.3" height="18.7"/>
+	<polygon class="st1" points="110.6,68.4 91.4,59 91.4,40.4 110.6,31.1 	"/>
+	<rect x="35.5" y="73" class="st1" width="18.7" height="9.3"/>
+	<polyline class="st1" points="30.8,110.3 44.8,82.3 58.8,110.3 	"/>
+	<line class="st1" x1="44.8" y1="82.3" x2="44.8" y2="105.7"/>
+</g>
+</svg>
