@@ -46,7 +46,10 @@
 .nav__item a {
   display: block;
   padding: 1.5rem 1rem;
-  color: #000006; }
+  color: #000006;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: calson; }
 
 @media (min-width: 600px) {
   .nav__item--end {
