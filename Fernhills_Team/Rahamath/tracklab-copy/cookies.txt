@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+fred.maillist-manage.com	TRUE	/	FALSE	1999999999	c72887300d	174376ee7ca88cdda40cbf11948df17e
+
