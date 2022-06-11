@@ -1,12 +1,12 @@
 <?php
 // Username is root
-// $user = 'u152216168_vto';
-$user = 'root';
-// $password = 'Vto@1234567890'; 
-$password = ''; 
+ $user = 'u152216168_vto';
+//$user = 'root';
+ $password = 'Vto@1234567890'; 
+//$password = ''; 
   
 // Database name is gfg
-$database = 'vvto'; 
+$database = 'u152216168_vto'; 
   
 // Server is localhost with
 // port number 3308
