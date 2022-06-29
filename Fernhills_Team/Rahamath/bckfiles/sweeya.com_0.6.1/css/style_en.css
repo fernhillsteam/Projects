@@ -1,0 +1,65 @@
+
+.sign-form .form-area form{max-width: 530px;}
+#lib_member .leftMenu .li{font-size: 12px;}
+#lib_member .leftMenu{margin-left: 3%;}
+#lib_member .leftMenu .title{font-size: 20px;}
+
+.member_index .products-result .status{display: none;}
+
+#message .title{font-size: 26px !important;}
+#message .brief{font-size: 12px;height: 44px;overflow: hidden;}
+
+.info-wrap .style1 .title{font-size: 30px;}
+
+@media only screen and (max-width: 1480px){
+	.info-wrap .style1 .title{font-size: 28px;}
+
+	#message .title{font-size: 22px !important;}
+}
+
+@media only screen and (max-width: 1280px){
+	/*.resource-wrap .list .item .bot .title{height: 36px;}*/
+
+	.info-wrap .style1 .title{font-size: 26px;}
+}
+
+@media only screen and (max-width: 980px){
+	#lib_member .leftMenu .li{display: inline-block;width: 49%;margin-right: 2%;}
+	#lib_member .leftMenu .li:nth-child(3n){margin-right: 2%;}
+	#lib_member .leftMenu .li:nth-child(2n){margin-right: 0;}
+
+	#header-mobile .header-mobile .top .left a{font-size: 13px;}
+
+	.info-wrap .style1 .title{font-size: 22px;}
+
+}
+
+@media only screen and (max-width: 720px){
+	#header-mobile .header-mobile .nav .header2 a{padding-left: 18px;width: calc(50% - 18px);width: -moz-calc(50% - 18px);width: -webkit-calc(50% - 18px);}
+
+	.member_index .products-result .schedule .big{width: 27%;}
+
+	.resource-wrap .list .item .bot .brief{display: none;}
+
+	#message .title{font-size: 20px !important;}
+	/*#message .title2{display: none;}*/
+
+	.info-wrap .style1 .title{font-size: 20px;}
+
+	.join-wrap .join-row .item .place, .join-wrap .join-row .item.top .place{display: none;}
+	.join-wrap .join-row .item .middle,.join-wrap .join-row .item.top .middle{width: 48%;}
+
+	#resume .meg .row .file .file-row .file-right{font-size: 12px;}
+
+	.info-wrap .style1 .title{font-size: 18px;}
+}
+
+@media only screen and (max-width: 660px){
+	#message .title2{display: none;}
+}
+
+@media only screen and (max-width: 480px){
+	.join-wrap .join-row .item .middle,.join-wrap .join-row .item.top .middle{width: 46%;}
+
+	#message .title{font-size: 18px !important;}
+}

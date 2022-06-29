@@ -1,0 +1,137 @@
+
+    body{
+    	background-color: #000000f7;
+    }
+   .text1{
+font-family: Calibri;
+font-size: 70px;
+color:#38619d;
+position: relative;
+margin-top: 30px;
+padding-left: 20px;
+    }
+
+  .text2{
+    font-family: Calibri;
+font-size: 70px;
+color:#3d76ca;
+height:90px;
+padding-left: 20px;
+margin-top:-50px; 
+-moz-transform: scaleY(-1);
+ -o-transform: scaleY(-1);
+ -webkit-transform: scaleY(-1);
+ transform: scaleY(-1);
+ -webkit-mask-image: -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(10%,  #00000003),to(rgb(0 0 0)));
+}
+
+
+
+.text3{
+	font-family: Helvetica;
+	font-size: 20px;
+	color: #5260c0;
+	letter-spacing: 10px;
+	margin-top: -30px;
+	padding-left: 40px;
+}
+
+.form-signin{
+	max-width: 400px;
+	 -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                margin-left: 100px;
+
+                
+
+}
+.form-signin-heading 
+ {
+ 	
+ 	font-size: 30px;
+ 	color:#38619d;
+ }
+ .form-signin label{
+ 	font-size: 30px;
+ 	color:#38619d;
+ 	margin-left: -100px;
+ 	padding-top: 10px;
+ 	padding-bottom: 40px;
+
+
+ }
+ .form-signin input[type="text"]{
+ 	background-color:#509ddb;
+ 	color: black;
+ 	font-family:Helvetica;
+ 	font-size: 20px;
+ 	position: relative;
+ 	
+ 	border:#509ddb;
+ 	height: 25px;
+
+ 	padding-bottom: 20px;
+ 	max-width: 300px;
+ 	float:right;
+ 	left: -20px;
+
+ }
+
+   .white{
+   	color:black;
+   	position: relative;
+   left:180px;
+   	top:10px;
+   	float: right;
+   	font-size: 20px;
+
+   }
+.title p{
+     		margin-left: 80px;
+     		font-family:Helvetica;
+  font-size: 30px;
+  color:#38619d;
+  margin-top: -50px;
+    	}
+     	#example_wrapper{
+     		margin-left: 50px;
+     		margin-right: 50px;
+     		padding-left:80px;
+     		padding-right:80px;
+     	}
+     	#export{
+     		float:right;
+     		margin-right: 60px;
+     		margin-bottom: 20px;
+     		background-color:#008CBA;
+     		color: white;
+     		padding:  15px 30px;
+     		cursor: pointer;
+     		display: inline-block;
+     		font-family: Helvetica;
+     		font-size: 16px;
+     		border:none;
+     		border-radius: 12px;
+
+     	}
+     	#print{
+     		float:right;
+     		margin-right: 300px;
+     		margin-bottom: 20px;
+     		background-color:#008CBA;
+     		color: white;
+     		padding:  15px 30px;
+     		cursor: pointer;
+     		display: inline-block;
+     		font-family: Helvetica;
+     		font-size: 16px;
+     		border:none;
+     		border-radius: 12px;
+
+     	}
+
+     	
