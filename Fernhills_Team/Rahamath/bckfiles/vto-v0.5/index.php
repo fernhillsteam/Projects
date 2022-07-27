@@ -215,7 +215,7 @@ $result = $mysqli->query($sql);
 
 				<div class="col-md-6">
 
-					<img src="assets/images/about-us.jpg" alt="" class="img-responsive">
+					<img src="assets/images/about.png" alt="" class="img-responsive">
 
 				</div>
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+<script type="text/javascript">
+	var a;
+	function show_hide() {
+		if (a==0) {
+			document.getElementById("view").style.display="inline";
+			return a=1;
+		}
+		else{
+			document.getElementById("view").style.display="none";
+			return a=0;
+		}
+	}
+</script>
+</head>
+<body>
+ <p id="view">hello</p>
+ <div> 
+<button onclick="show_hide()">show/hide</button>
+ </div>
+</body>
+</html>
